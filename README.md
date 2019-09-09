@@ -2,7 +2,13 @@
 
 A marble diagram generator.
 
+## Example
+
+Here's Swirly rendering the effect of the `concatAll` operator:
+
 ![concatAll](examples/concatAll.svg)
+
+This example uses [this marble diagram](examples/concatAll.txt) as its input.
 
 ## Installation
 
