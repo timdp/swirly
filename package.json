@@ -1,0 +1,48 @@
+{
+  "name": "swirly",
+  "description": "A marble diagram generator.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "https://github.com/timdp/swirly",
+  "author": {
+    "name": "Tim De Pauw",
+    "url": "https://tmdpw.eu/"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "bin/",
+    "lib/",
+    "etc/"
+  ],
+  "bin": {
+    "swirly": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "standard",
+    "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\""
+  },
+  "dependencies": {
+    "degrees-radians": "^1.0.3",
+    "js-yaml": "^3.13.1",
+    "xmldom": "^0.1.27",
+    "yargs": "^14.0.0"
+  },
+  "devDependencies": {
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier-standard": "^14.0.5",
+    "standard": "^14.1.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-standard",
+      "standard --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
