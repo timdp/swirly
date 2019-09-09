@@ -19,11 +19,13 @@
   },
   "scripts": {
     "test": "standard",
-    "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\""
+    "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\"",
+    "build-example": "node bin/cli -f examples/concatAll.txt examples/concatAll.svg"
   },
   "dependencies": {
     "degrees-radians": "^1.0.3",
     "js-yaml": "^3.13.1",
+    "rxjs": "^6.5.3",
     "xmldom": "^0.1.27",
     "yargs": "^14.0.0"
   },

@@ -1,0 +1,20 @@
+# concatAll example based on
+# https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/concatAll-spec.ts
+
+x
+----a------b------|
+hidden
+
+y
+---c-d---|
+hidden
+
+z
+---e--f-|
+hidden
+
+input
+-x---y----z------|
+
+output
+-----a------b---------c-d------e--f-|

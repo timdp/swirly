@@ -7,11 +7,11 @@ styles:
   barrier_color: rgba(0,0,0,0.5)
   barrier_stroke_dash_width: 4
   barrier_stroke_width: 2
-  canvas_padding: 10
-  completion_height: 30
+  canvas_padding: 20
+  completion_height: 20
   completion_stroke_color: black
   completion_stroke_width: 2
-  error_size: 30
+  error_size: 20
   error_stroke_color: red
   error_stroke_width: 4
   event_fill_color: rgb(191,191,223)
@@ -20,7 +20,7 @@ styles:
   event_value_font_size: 18
   event_value_font_style: normal
   event_value_font_weight: bold
-  event_radius: 40
+  event_radius: 20
   event_stroke_color: black
   event_stroke_width: 2
   frame_size: 20
@@ -30,7 +30,7 @@ styles:
   observable_title_font_size: 18
   observable_title_font_style: normal
   observable_title_font_weight: bold
-  observable_title_width: 200
+  observable_title_width: 100
   observable_spacing: 20
   range_fill_color: rgba(95,95,95,0.25)
   range_height: 15

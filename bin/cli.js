@@ -2,8 +2,9 @@
 
 const YAML = require('js-yaml')
 const yargs = require('yargs')
-const { draw } = require('../lib/')
+const { draw, parseMarbles } = require('../lib/')
 const fs = require('fs')
+const path = require('path')
 
 const { _: filePaths, force } = yargs
   .usage('$0 [-f] input output')
@@ -26,7 +27,9 @@ if (!force && outFilePath != null && fs.existsSync(outFilePath)) {
 
 const inFileContents = fs.readFileSync(inFilePath, 'utf8')
 
-const spec = YAML.safeLoad(inFileContents)
+const spec = ['.yml', '.yaml'].includes(path.extname(inFilePath))
+  ? YAML.safeLoad(inFileContents)
+  : parseMarbles(inFileContents)
 const { document } = draw(spec)
 const xml = document.toString()
 

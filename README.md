@@ -2,6 +2,8 @@
 
 A marble diagram generator.
 
+![concatAll](examples/concatAll.svg)
+
 ## Installation
 
 ```bash
