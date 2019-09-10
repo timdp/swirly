@@ -19,8 +19,12 @@ npm install -g swirly
 ## Usage
 
 ```bash
-swirly input.yml output.svg
+swirly input.txt output.svg
 ```
+
+Input files use an extension of the syntax used for
+[RxJS marble testing](https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/docs_app/content/guide/testing/marble-testing.md).
+You can find [a few examples](examples/) in this repository.
 
 ## Author
 
