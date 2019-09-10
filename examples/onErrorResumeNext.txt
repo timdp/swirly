@@ -1,0 +1,13 @@
+# An example application of the onErrorResumeNext operator.
+# Showcases error notifications.
+# Based on RxJS's onErrorResumeNext diagram:
+# https://github.com/ReactiveX/rxjs/blob/86dfe3c78dd37c6828a08b45364f030796879cc0/spec/operators/onErrorResumeNext-spec.ts
+
+source
+--a--b--#
+
+next
+--c--d--|
+
+output
+--a--b----c--d--|
