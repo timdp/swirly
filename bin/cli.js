@@ -3,7 +3,8 @@
 const YAML = require('js-yaml')
 const { XMLSerializer } = require('xmldom')
 const yargs = require('yargs')
-const { draw, parseMarbles, svgToImage } = require('../lib/')
+const { draw, parseMarbles } = require('../lib/')
+const { svgToImage } = require('../lib/svg-to-image')
 const fs = require('fs')
 const path = require('path')
 
