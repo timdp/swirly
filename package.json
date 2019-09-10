@@ -19,8 +19,7 @@
   },
   "scripts": {
     "test": "standard",
-    "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\"",
-    "build-example": "node bin/cli -f examples/concatAll.txt examples/concatAll.svg"
+    "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\""
   },
   "dependencies": {
     "degrees-radians": "^1.0.3",

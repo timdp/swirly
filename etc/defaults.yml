@@ -23,7 +23,7 @@ styles:
   event_radius: 20
   event_stroke_color: black
   event_stroke_width: 2
-  frame_size: 20
+  frame_width: 20
   higher_order_angle: 30
   observable_title_color: black
   observable_title_font_family: sans-serif
