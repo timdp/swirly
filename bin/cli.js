@@ -3,7 +3,7 @@
 const YAML = require('js-yaml')
 const { DOMParser, XMLSerializer } = require('xmldom')
 const yargs = require('yargs')
-const { draw, parseMarbles } = require('../lib/')
+const { drawMarbleDiagram, parseMarbleDiagramSpec } = require('../lib/')
 const { svgToImage } = require('../lib/svg-to-image')
 const fs = require('fs')
 const path = require('path')
@@ -36,9 +36,9 @@ const inFileContents = fs.readFileSync(inFilePath, 'utf8')
 
 const spec = ['.yml', '.yaml'].includes(path.extname(inFilePath))
   ? YAML.safeLoad(inFileContents)
-  : parseMarbles(inFileContents)
+  : parseMarbleDiagramSpec(inFileContents)
 
-const { document, width, height } = draw(spec, { DOMParser })
+const { document, width, height } = drawMarbleDiagram(spec, { DOMParser })
 
 const xml = new XMLSerializer().serializeToString(document.documentElement)
 
