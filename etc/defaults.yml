@@ -2,7 +2,7 @@
 styles:
   arrow_color: black
   arrow_stroke_width: 2
-  arrowhead_width: 10
+  arrow_width: 10
   background_color: white
   barrier_color: rgba(0,0,0,0.5)
   barrier_stroke_dash_width: 4
@@ -12,9 +12,9 @@ styles:
   completion_stroke_color: black
   completion_stroke_width: 2
   error_size: 20
-  error_stroke_color: red
+  error_color: red
   error_stroke_width: 4
-  event_fill_color: rgb(191,191,223)
+  event_fill_color: auto_light
   event_value_color: black
   event_value_font_family: sans-serif
   event_value_font_size: 18
