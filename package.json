@@ -17,6 +17,9 @@
   "bin": {
     "swirly": "bin/cli.js"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "test": "standard",
     "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\""
