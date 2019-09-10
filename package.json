@@ -12,7 +12,8 @@
   "files": [
     "bin/",
     "lib/",
-    "etc/"
+    "etc/",
+    "examples/"
   ],
   "bin": {
     "swirly": "bin/cli.js"
