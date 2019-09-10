@@ -2,17 +2,22 @@
 
 const YAML = require('js-yaml')
 const yargs = require('yargs')
-const { draw, parseMarbles } = require('../lib/')
+const { draw, parseMarbles, svgToImage } = require('../lib/')
 const fs = require('fs')
 const path = require('path')
 
-const { _: filePaths, force } = yargs
+const { _: filePaths, force, scale } = yargs
   .usage('$0 [-f] input output')
   .demand(1)
   .option('f', {
     type: 'boolean',
     alias: 'force',
     description: 'Force overwrite'
+  })
+  .option('scale', {
+    type: 'number',
+    description: 'Image scale (not used for SVG)',
+    default: 100
   })
   .strict()
   .parse()
@@ -30,11 +35,21 @@ const inFileContents = fs.readFileSync(inFilePath, 'utf8')
 const spec = ['.yml', '.yaml'].includes(path.extname(inFilePath))
   ? YAML.safeLoad(inFileContents)
   : parseMarbles(inFileContents)
-const { document } = draw(spec)
+const { document, width, height } = draw(spec)
 const xml = document.toString()
 
-if (outFilePath != null) {
-  fs.writeFileSync(outFilePath, xml, 'utf8')
-} else {
+if (outFilePath == null) {
   console.info(xml)
+} else if (['.png', '.jpg'].includes(path.extname(outFilePath))) {
+  svgToImage(
+    xml,
+    (width * scale) / 100,
+    (height * scale) / 100,
+    outFilePath
+  ).catch(err => {
+    console.error(err)
+    process.exit(3)
+  })
+} else {
+  fs.writeFileSync(outFilePath, xml, 'utf8')
 }
