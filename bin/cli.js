@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const YAML = require('js-yaml')
-const { XMLSerializer } = require('xmldom')
+const { DOMParser, XMLSerializer } = require('xmldom')
 const yargs = require('yargs')
 const { draw, parseMarbles } = require('../lib/')
 const { svgToImage } = require('../lib/svg-to-image')
@@ -37,7 +37,9 @@ const inFileContents = fs.readFileSync(inFilePath, 'utf8')
 const spec = ['.yml', '.yaml'].includes(path.extname(inFilePath))
   ? YAML.safeLoad(inFileContents)
   : parseMarbles(inFileContents)
-const { document, width, height } = draw(spec)
+
+const { document, width, height } = draw(spec, { DOMParser })
+
 const xml = new XMLSerializer().serializeToString(document.documentElement)
 
 if (outFilePath == null) {

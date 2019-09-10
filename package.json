@@ -37,6 +37,12 @@
     "prettier-standard": "^14.0.5",
     "standard": "^14.1.0"
   },
+  "standard": {
+    "globals": [
+      "DOMParser",
+      "XMLSerializer"
+    ]
+  },
   "lint-staged": {
     "*.js": [
       "prettier-standard",
