@@ -4,6 +4,7 @@
   "version": "0.0.7",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
+  "homepage": "https://swirly.tmdpw.now.sh/",
   "author": {
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu/"
@@ -21,20 +22,33 @@
   },
   "scripts": {
     "test": "standard",
-    "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\""
+    "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\"",
+    "build": "yarn run clean && mkdir -p dist && rollup -c && cp src/index.html src/style.css dist/",
+    "clean": "rm -rf dist",
+    "deploy": "yarn run build && now ./dist -A ../now.json"
   },
   "dependencies": {
-    "degrees-radians": "^1.0.3",
     "js-yaml": "^3.13.1",
     "puppeteer": "^1.19.0",
     "rxjs": "^6.5.3",
+    "simple-sha1": "^3.0.1",
     "xmldom": "^0.1.27",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "buffer": "^5.4.2",
     "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
+    "now": "^16.2.0",
     "prettier-standard": "^14.0.5",
+    "rollup": "^1.21.2",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "standard": "^14.1.0"
   },
   "standard": {
