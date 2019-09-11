@@ -22,6 +22,8 @@
   },
   "scripts": {
     "test": "standard",
+    "prepare": "scripts/build-examples.sh",
+    "postpublish": "git push --tags && yarn run deploy",
     "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\"",
     "build": "yarn run clean && mkdir -p dist && rollup -c && cp src/index.html src/style.css dist/",
     "clean": "rm -rf dist",
