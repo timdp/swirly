@@ -10,11 +10,17 @@ html, body {
   background: white;
 }
 
+body, input, textarea, button {
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: normal;
+}
+
 a img {
   border: 0;
 }
 
-.container {
+.main {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -27,6 +33,30 @@ a img {
   overflow: auto;
 }
 
+.controls {
+  flex: 0;
+  display: flex;
+  background: #D0D0D0;
+}
+
+.controls .spacer {
+  flex: 1;
+}
+
+.controls button {
+  flex: 0;
+  margin: 0.5em 0.5em 0.5em 0;
+  padding: 0.25em;
+  background: white;
+  color: black;
+  border: 0;
+  white-space: nowrap;
+}
+
+.controls button:disabled {
+  color: #C0C0C0;
+}
+
 .input {
   flex: 0;
   min-height: 20em;
@@ -36,9 +66,10 @@ a img {
 .input textarea {
   width: 100%;
   height: 100%;
-  background: #F0F0F0;
+  background: white;
   color: black;
   border: 0;
+  border-top: 1px solid #C0C0C0;
   margin: 0;
   padding: 1ex;
 }

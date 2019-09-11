@@ -53,6 +53,7 @@
   },
   "standard": {
     "globals": [
+      "Image",
       "DOMParser",
       "XMLSerializer"
     ]
