@@ -30,7 +30,7 @@
     "build:css": "cleancss -o dist/style.css src/style.css",
     "build:js": "rollup -c",
     "clean": "rm -rf dist",
-    "deploy": "yarn run build && now ./dist -A ../now.json"
+    "deploy": "yarn run build && now ./dist -A ../now.json --prod"
   },
   "dependencies": {
     "js-yaml": "^3.13.1",
