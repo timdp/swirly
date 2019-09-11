@@ -1,5 +1,4 @@
 import '@babel/polyfill'
-import { Buffer } from 'buffer/'
 import { drawMarbleDiagram, parseMarbleDiagramSpec } from '../lib/'
 
 const EXAMPLE = `# An example application of the concatAll operator.
@@ -23,8 +22,6 @@ input
 output
 -----a------b---------c-d------e--f-|
 `
-
-window.Buffer = Buffer
 
 const resultContainer = document.querySelector('.result')
 const inputField = document.querySelector('.input textarea')
