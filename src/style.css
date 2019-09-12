@@ -75,12 +75,21 @@ a img {
 
 .branding {
   flex: 1;
-  padding: 0.75em 0.25em;
+  padding: 0.75em 1ex;
 }
 
-.controls button {
+.export {
   flex: 0;
-  margin: 0.5em 0.5em 0.5em 0;
+  display: flex;
+  padding-right: 1ex;
+}
+
+.export .label {
+  padding-top: 0.75em;
+}
+
+.export button {
+  margin: 0.5em 0 0.5em 1ex;
   padding: 0.25em;
   background: white;
   color: black;
