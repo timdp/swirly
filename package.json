@@ -23,7 +23,7 @@
   "scripts": {
     "test": "standard",
     "prepare": "scripts/build-examples.sh",
-    "postpublish": "git push && git push --tags && yarn run deploy",
+    "postversion": "git push && git push --tags && yarn run deploy",
     "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\"",
     "build": "yarn run clean && mkdir -p dist && run-p build:html build:css build:js",
     "build:html": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
