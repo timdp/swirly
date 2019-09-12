@@ -1,28 +1,35 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Swirly REPL</title>
-  </head>
-  <body>
-    <div class="main">
-      <div class="result"></div>
-      <div class="input"><textarea></textarea></div>
-      <div class="controls">
-        <div class="spacer"></div>
-        <button class="export-svg">Export to SVG</button>
-        <button class="export-png">Export to PNG</button>
+
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Swirly</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="result"></div>
+    <div class="input">
+      <textarea class="spec"></textarea>
+    </div>
+    <div class="controls">
+      <div class="branding">
+        <a href="https://github.com/timdp/swirly" target="_blank">
+          Swirly
+          <span class="version"></span>
+        </a>
       </div>
+      <button class="export-svg">
+        Export to SVG
+      </button>
+      <button class="export-png">
+        Export to PNG
+      </button>
     </div>
-    <div class="gh">
-      <a href="https://github.com/timdp/swirly">
-        <img width="149" height="149"
-        src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149"
-        alt="Fork me on GitHub">
-      </a>
-    </div>
-    <script src="bundle.js"></script>
-  </body>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+
 </html>

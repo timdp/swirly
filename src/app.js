@@ -1,5 +1,6 @@
 import '@babel/polyfill'
 import { drawMarbleDiagram, parseMarbleDiagramSpec } from '../lib/'
+import { version } from '../package.json'
 
 const EXAMPLE = `# An example application of the concatAll operator.
 # Edit this code to redraw the diagram in real time.
@@ -20,21 +21,15 @@ input
 -x---y----z------|
 
 output
------a------b---------c-d------e--f-|
-`
+-----a------b---------c-d------e--f-|`
 
+const versionContainer = document.querySelector('.version')
 const resultContainer = document.querySelector('.result')
-const inputField = document.querySelector('.input textarea')
+const specField = document.querySelector('.spec')
 const exportSvgButton = document.querySelector('.export-svg')
 const exportPngButton = document.querySelector('.export-png')
 
 let lastRendered = ''
-
-const emptyElement = element => {
-  while (element.firstChild != null) {
-    element.removeChild(element.firstChild)
-  }
-}
 
 const setControlsEnabled = enabled => {
   exportSvgButton.disabled = !enabled
@@ -42,13 +37,14 @@ const setControlsEnabled = enabled => {
 }
 
 const update = () => {
-  const value = inputField.value
+  const value = specField.value
 
   if (lastRendered === value) {
     return
   }
+  lastRendered = value
 
-  emptyElement(resultContainer)
+  resultContainer.innerHTML = ''
 
   try {
     const spec = parseMarbleDiagramSpec(value)
@@ -62,7 +58,6 @@ const update = () => {
     return
   }
 
-  lastRendered = value
   setControlsEnabled(true)
 }
 
@@ -92,10 +87,12 @@ const exportPng = () => {
   image.src = getSvgDataUri()
 }
 
-inputField.addEventListener('change', update)
-inputField.addEventListener('keyup', update)
+specField.addEventListener('change', update)
+specField.addEventListener('keyup', update)
 exportSvgButton.addEventListener('click', exportSvg)
 exportPngButton.addEventListener('click', exportPng)
 
-inputField.value = EXAMPLE
+versionContainer.textContent = `v${version}`
+
+specField.value = EXAMPLE
 update()
