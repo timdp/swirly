@@ -53,8 +53,9 @@ const update = () => {
     } = drawMarbleDiagram(spec)
     resultContainer.appendChild(svgElement)
   } catch (err) {
-    console.error(err)
     setControlsEnabled(false)
+    console.error(err)
+    alert('' + err)
     return
   }
 

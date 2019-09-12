@@ -63,7 +63,8 @@
     "globals": [
       "Image",
       "DOMParser",
-      "XMLSerializer"
+      "XMLSerializer",
+      "alert"
     ]
   },
   "lint-staged": {
