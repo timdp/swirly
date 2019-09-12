@@ -1,7 +1,7 @@
 {
   "name": "swirly",
   "description": "A marble diagram generator.",
-  "version": "0.0.11",
+  "version": "0.1.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
   "homepage": "https://swirly.now.sh/",
