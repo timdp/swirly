@@ -1,7 +1,7 @@
-# An example application of the pluck operator.
-# Showcases styles and event values.
-# Based on RxJS's pluck diagram:
-# https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/pluck-spec.ts
+% An example application of the pluck operator.
+% Showcases styles and event values.
+% Based on RxJS's pluck diagram:
+% https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/pluck-spec.ts
 
 [styles]
 event_radius = 30

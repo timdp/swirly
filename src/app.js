@@ -2,8 +2,8 @@ import '@babel/polyfill'
 import { drawMarbleDiagram, parseMarbleDiagramSpec } from '../lib/'
 import { version } from '../package.json'
 
-const EXAMPLE = `# An example application of the concatAll operator.
-# Edit this code to redraw the diagram in real time.
+const EXAMPLE = `% An example application of the concatAll operator.
+% Edit this code to redraw the diagram in real time.
 
 x
 ----a------b------|
