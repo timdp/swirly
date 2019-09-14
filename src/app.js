@@ -20,6 +20,8 @@ hidden
 input
 -x---y----z------|
 
+concatAll
+
 output
 -----a------b---------c-d------e--f-|`
 
