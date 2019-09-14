@@ -1,0 +1,14 @@
+# An example application of the skipUntil operator.
+# Based on RxJS's skipUntil diagram:
+# https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/skipUntil-spec.ts
+
+input
+--a--b--c--d--e----|
+
+notifier
+---------x------|
+
+skipUntil
+
+output
+-----------d--e----|

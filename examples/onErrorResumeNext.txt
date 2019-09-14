@@ -9,5 +9,7 @@ source
 next
 --c--d--|
 
+onErrorResumeNext
+
 output
 --a--b----c--d--|

@@ -5,6 +5,7 @@
 
 [styles]
 event_radius = 30
+operator_height = 60
 frame_width = 30
 
 input
@@ -12,6 +13,8 @@ input
 a := {v:1}
 b := {v:2}
 c := {v:3}
+
+pluck('v')
 
 output
 --x--y--z--|
