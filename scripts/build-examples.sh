@@ -9,4 +9,4 @@ for input in *.txt; do
     output=${input/.txt/.$ext}
     echo "$input" "$output"
   done
-done | xargs -t -n2 -P4 node ../bin/cli -f --scale=400
+done | xargs -t -n2 -P4 node ../bin/cli -f --scale=200

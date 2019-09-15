@@ -9,8 +9,10 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu/"
   },
-  "main": "lib/index.js",
+  "main": "index.js",
+  "browser": "lib/index.js",
   "files": [
+    "index.js",
     "bin/",
     "lib/"
   ],

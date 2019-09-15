@@ -6,7 +6,6 @@
 [styles]
 event_radius = 30
 operator_height = 60
-frame_width = 30
 
 input
 --a--b--c--|
