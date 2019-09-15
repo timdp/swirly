@@ -1,15 +1,15 @@
 % An example application of the onErrorResumeNext operator.
-% Showcases error notifications.
+% Showcases titles and error notifications.
 % Based on RxJS's onErrorResumeNext diagram:
 % https://github.com/ReactiveX/rxjs/blob/86dfe3c78dd37c6828a08b45364f030796879cc0/spec/operators/onErrorResumeNext-spec.ts
 
-source
 --a--b--#
+title = source
 
-next
 --c--d--|
+title = next
 
-onErrorResumeNext
+> onErrorResumeNext
 
-output
 --a--b----c--d--|
+title = output

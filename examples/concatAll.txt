@@ -1,24 +1,21 @@
 % An example application of the concatAll operator.
-% Showcases higher-order observables.
+% Showcases styles and higher-order observables.
 % Based on RxJS's concatAll diagram:
 % https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/concatAll-spec.ts
 
-x
-----a------b------|
-hidden
+[styles]
+frame_width = 20
+completion_height = 20
+higher_order_angle = 30
 
-y
----c-d---|
-hidden
+x = ----a------b------|
 
-z
----e--f-|
-hidden
+y = ---c-d---|
 
-input
+z = ---e--f-|
+
 -x---y----z------|
 
-concatAll
+> concatAll
 
-output
 -----a------b---------c-d------e--f-|

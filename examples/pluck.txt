@@ -1,5 +1,5 @@
 % An example application of the pluck operator.
-% Showcases styles and event values.
+% Showcases styles and notification values.
 % Based on RxJS's pluck diagram:
 % https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/pluck-spec.ts
 
@@ -7,15 +7,13 @@
 event_radius = 30
 operator_height = 60
 
-input
 --a--b--c--|
 a := {v:1}
 b := {v:2}
 c := {v:3}
 
-pluck('v')
+> pluck('v')
 
-output
 --x--y--z--|
 x := 1
 y := 2

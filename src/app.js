@@ -5,24 +5,16 @@ import { version } from '../package.json'
 const EXAMPLE = `% An example application of the concatAll operator.
 % Edit this code to redraw the diagram in real time.
 
-x
-----a------b------|
-hidden
+x = ----a------b------|
 
-y
----c-d---|
-hidden
+y = ---c-d---|
 
-z
----e--f-|
-hidden
+z = ---e--f-|
 
-input
 -x---y----z------|
 
-concatAll
+> concatAll
 
-output
 -----a------b---------c-d------e--f-|`
 
 const versionContainer = document.querySelector('.version')
