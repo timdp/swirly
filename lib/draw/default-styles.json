@@ -39,6 +39,7 @@
   "range_height": 15,
   "range_stroke_color": "black",
   "range_stroke_width": 0,
+  "stacking_height": 50,
   "stream_spacing": 20,
   "stream_title_color": "black",
   "stream_title_font_family": "Arial, Helvetica, sans-serif",
