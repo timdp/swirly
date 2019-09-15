@@ -30,6 +30,13 @@ const setControlsEnabled = enabled => {
   exportPngButton.disabled = !enabled
 }
 
+const createErrorContainer = msg => {
+  const div = document.createElement('div')
+  div.className = 'error'
+  div.innerText = msg
+  return div
+}
+
 const update = () => {
   const value = specField.value
 
@@ -48,8 +55,7 @@ const update = () => {
     resultContainer.appendChild(svgElement)
   } catch (err) {
     setControlsEnabled(false)
-    console.error(err)
-    alert('' + err)
+    resultContainer.appendChild(createErrorContainer(err.stack))
     return
   }
 
