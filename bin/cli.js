@@ -44,8 +44,8 @@ if (outFilePath == null) {
 } else if (['.png', '.jpg'].includes(path.extname(outFilePath))) {
   svgToImage(
     xml,
-    (width * scale) / 100,
-    (height * scale) / 100,
+    Math.round((width * scale) / 100),
+    Math.round((height * scale) / 100),
     outFilePath
   ).catch(err => {
     console.error(err)
