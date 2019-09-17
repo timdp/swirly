@@ -35,6 +35,7 @@
     "deploy": "yarn run build && now ./dist -A ../now.json --prod"
   },
   "dependencies": {
+    "dedent": "^0.7.0",
     "js-yaml": "^3.13.1",
     "puppeteer": "^1.19.0",
     "rxjs": "^6.5.3",

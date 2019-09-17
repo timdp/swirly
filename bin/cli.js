@@ -3,7 +3,7 @@
 const YAML = require('js-yaml')
 const yargs = require('yargs')
 const { drawMarbleDiagram, parseMarbleDiagramSpec } = require('../')
-const { svgToImage } = require('../lib/svg-to-image')
+const { rasterizeSvg } = require('../lib/rasterize')
 const fs = require('fs')
 const path = require('path')
 
@@ -42,7 +42,7 @@ const { xml, width, height } = drawMarbleDiagram(spec)
 if (outFilePath == null) {
   console.info(xml)
 } else if (['.png', '.jpg'].includes(path.extname(outFilePath))) {
-  svgToImage(
+  rasterizeSvg(
     xml,
     Math.round((width * scale) / 100),
     Math.round((height * scale) / 100),
