@@ -1,0 +1,33 @@
+{
+  "name": "swirly-web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "postpublish": "yarn run deploy",
+    "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
+    "build:html": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
+    "build:css": "cleancss -o dist/style.css src/style.css",
+    "build:js": "rollup -c",
+    "clean": "rm -rf dist",
+    "deploy": "yarn run build && now ./dist -A ../now.json --prod"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "swirly-parser": "^0.0.0",
+    "swirly-renderer": "^0.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "clean-css-cli": "^4.3.0",
+    "html-minifier": "^4.0.0",
+    "now": "^16.2.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.25.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1"
+  }
+}

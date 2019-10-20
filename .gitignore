@@ -6,4 +6,4 @@ node_modules/
 .nyc_output/
 /.idea/
 /.vscode/
-/dist/
+dist/
