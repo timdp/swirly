@@ -27,7 +27,7 @@
     "prepare": "scripts/build-examples.sh",
     "postversion": "git push && git push --tags && yarn run deploy",
     "format": "prettier-standard \"**/*.js\" && standard --fix \"**/*.js\"",
-    "build": "yarn run clean && mkdir -p dist && run-p build:html build:css build:js",
+    "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
     "build:html": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
     "build:css": "cleancss -o dist/style.css src/style.css",
     "build:js": "rollup -c",
