@@ -1,6 +1,6 @@
 {
   "name": "swirly-web",
-  "version": "0.6.0-alpha.0",
+  "version": "0.6.0-alpha.1",
   "private": true,
   "scripts": {
     "postversion": "yarn run deploy",
