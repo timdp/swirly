@@ -3,7 +3,7 @@
   "version": "0.6.0-alpha.0",
   "private": true,
   "scripts": {
-    "postpublish": "yarn run deploy",
+    "postversion": "yarn run deploy",
     "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
     "build:html": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
     "build:css": "cleancss -o dist/style.css src/style.css",
