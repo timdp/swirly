@@ -24,6 +24,7 @@
   "event_value_font_weight": "normal",
   "frame_width": 30,
   "higher_order_angle": 18,
+  "higher_order_event_value_angle": 0,
   "operator_corner_radius": 0,
   "operator_fill_color": "white",
   "operator_stroke_color": "black",
