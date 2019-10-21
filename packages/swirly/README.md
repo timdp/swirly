@@ -1,6 +1,6 @@
 # Swirly
 
-[![npm](https://img.shields.io/npm/v/swirly.svg)](https://www.npmjs.com/package/swirly) [![Dependencies](https://img.shields.io/david/timdp/swirly.svg)](https://david-dm.org/timdp/swirly) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
+[![npm](https://img.shields.io/npm/v/swirly.svg)](https://www.npmjs.com/package/swirly) [![Dependencies](https://david-dm.org/timdp/swirly/status.svg?path=packages/swirly)](https://david-dm.org/timdp/swirly?path=packages/swirly) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
 
 A marble diagram generator.
 
