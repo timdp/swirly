@@ -1,4 +1,5 @@
 {
+  "name": "swirly",
   "private": true,
   "scripts": {
     "test": "run-s 'test:*' && lerna run test",
@@ -37,6 +38,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "name": "swirly"
+  ]
 }
