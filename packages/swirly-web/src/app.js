@@ -63,7 +63,8 @@ const update = () => {
   setControlsEnabled(true)
 }
 
-const getSvgDataUri = () => 'data:image/svg+xml,' + resultContainer.innerHTML
+const getSvgDataUri = () =>
+  'data:image/svg+xml,' + encodeURI(resultContainer.innerHTML)
 
 const download = (dataUri, name) => {
   const a = document.createElement('a')
