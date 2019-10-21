@@ -1,6 +1,6 @@
 {
   "name": "swirly-parser",
-  "description": "A marble diagram generator.",
+  "description": "Parser for the Swirly marble diagram format.",
   "version": "0.7.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",

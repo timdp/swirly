@@ -1,6 +1,6 @@
 {
   "name": "swirly-renderer",
-  "description": "A marble diagram generator.",
+  "description": "Renderer for Swirly marble diagrams.",
   "version": "0.7.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",

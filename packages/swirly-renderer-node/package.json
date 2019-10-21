@@ -1,6 +1,6 @@
 {
   "name": "swirly-renderer-node",
-  "description": "A marble diagram generator.",
+  "description": "Renderer for Swirly marble diagrams, for Node.js.",
   "version": "0.7.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
