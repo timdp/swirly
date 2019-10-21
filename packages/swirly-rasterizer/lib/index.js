@@ -1,6 +1,5 @@
 const { Screenshotter } = require('./screenshot')
 const { createHtml } = require('./html')
-const fs = require('fs').promises
 
 const safeDispose = async screenshotter => {
   try {
@@ -8,7 +7,7 @@ const safeDispose = async screenshotter => {
   } catch (_) {}
 }
 
-const rasterizeSvg = async (svgXml, width, height, imageFilePath) => {
+const rasterizeSvg = async (svgXml, width, height) => {
   const html = createHtml(svgXml, width, height)
 
   const screenshotter = new Screenshotter()
@@ -27,17 +26,12 @@ const rasterizeSvg = async (svgXml, width, height, imageFilePath) => {
   }
 
   try {
-    await fs.writeFile(imageFilePath, imageData)
-  } catch (err) {
-    await safeDispose(screenshotter)
-    throw new Error(`Failed to write ${imageFilePath}: ${err}`)
-  }
-
-  try {
     await screenshotter.dispose()
   } catch (err) {
     throw new Error(`Failed to dispose browser: ${err}`)
   }
+
+  return imageData
 }
 
 module.exports = { rasterizeSvg }
