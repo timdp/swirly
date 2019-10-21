@@ -2,7 +2,7 @@ const yargs = require('yargs')
 
 const getOpts = () => {
   const { _: filePaths, force, optimize, scale } = yargs
-    .usage('$0 [-f] input output')
+    .usage('$0 <input> [output]')
     .demand(1)
     .option('f', {
       type: 'boolean',
