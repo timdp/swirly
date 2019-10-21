@@ -6,7 +6,7 @@ const createWriteStreamFactory = encoding => (file, force) =>
     encoding
   })
 
-const defaultFormatOutput = async xml => xml
+const defaultFormatOutput = async ({ xml }) => xml
 
 module.exports = {
   createWriteStreamFactory,

@@ -7,7 +7,7 @@ const safeDispose = async screenshotter => {
   } catch (_) {}
 }
 
-const rasterizeSvg = async (svgXml, width, height) => {
+const rasterizeSvg = async (svgXml, width, height, type) => {
   const html = createHtml(svgXml, width, height)
 
   const screenshotter = new Screenshotter()
@@ -19,7 +19,7 @@ const rasterizeSvg = async (svgXml, width, height) => {
 
   let imageData
   try {
-    imageData = await screenshotter.capture(html, width, height)
+    imageData = await screenshotter.capture(html, width, height, type)
   } catch (err) {
     await safeDispose(screenshotter)
     throw new Error(`Failed to create screenshot: ${err}`)

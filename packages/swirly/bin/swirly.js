@@ -9,7 +9,14 @@ const { optimizeXml } = require('../lib/optimize-xml')
 const { writers } = require('../lib/writers')
 
 ;(async () => {
-  const { inFilePath, outFilePath, force, optimize, scale } = getOpts()
+  const {
+    inFilePath,
+    outFilePath,
+    force,
+    optimize,
+    scale,
+    rasterizer
+  } = getOpts()
 
   const writer = writers.find(writer => writer.match(outFilePath))
 
@@ -18,7 +25,14 @@ const { writers } = require('../lib/writers')
   const { xml: unoptXml, width, height } = drawMarbleDiagram(spec)
   const xml = optimize ? await optimizeXml(unoptXml) : unoptXml
 
-  const output = await writer.formatOutput(xml, width, height, scale)
+  const output = await writer.formatOutput({
+    xml,
+    width,
+    height,
+    scale,
+    filename: outFilePath,
+    rasterizer
+  })
 
   const outStream = writer.createWriteStream(outFilePath, force)
   const writing = streamToPromise(outStream)
