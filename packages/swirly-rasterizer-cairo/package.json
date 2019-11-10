@@ -1,0 +1,23 @@
+{
+  "name": "swirly-rasterizer-cairo",
+  "description": "Rasterizer for Swirly marble diagrams, using Cairo.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "https://github.com/timdp/swirly",
+  "homepage": "https://swirly.now.sh/",
+  "author": {
+    "name": "Tim De Pauw",
+    "url": "https://tmdpw.eu/"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "fabric": "^3.4.0",
+    "stream-to-promise": "^2.2.0"
+  }
+}
