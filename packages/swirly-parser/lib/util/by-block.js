@@ -1,10 +1,14 @@
 const { byLine } = require('./by-line')
 
+const reComment = /^\s*%/
+
+const isComment = line => reComment.test(line)
+
 function * byBlock (str) {
   const acc = []
 
   for (const line of byLine(str)) {
-    if (/^\s*%/.test(line)) {
+    if (isComment(line)) {
       continue
     }
 
