@@ -28,6 +28,6 @@
     "swirly-rasterizer-inkscape": "^0.8.1",
     "swirly-rasterizer-puppeteer": "^0.8.1",
     "swirly-renderer-node": "^0.8.1",
-    "yargs": "^14.0.0"
+    "yargs": "^15.0.2"
   }
 }
