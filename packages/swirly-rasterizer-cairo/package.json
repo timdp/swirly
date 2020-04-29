@@ -17,7 +17,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "fabric": "^3.5.1",
+    "fabric": "^3.6.3",
     "stream-to-promise": "^2.2.0"
   }
 }

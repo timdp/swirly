@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "swirly-renderer": "^0.8.1",
-    "xmldom": "^0.1.27"
+    "xmldom": "^0.3.0"
   }
 }
