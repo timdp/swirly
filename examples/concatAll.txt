@@ -7,6 +7,7 @@
 frame_width = 20
 completion_height = 20
 higher_order_angle = 30
+arrow_fill_color = black
 
 x = ----a------b------|
 
