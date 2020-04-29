@@ -44,7 +44,7 @@ const createDrawStream = drawMessage => (ctx, isHigherOrder, stream) => {
 
   const arrowStyles = mergeStyles('arrow_', styles, stream.styles)
   const scaledDuration = scaleTime(stream.duration)
-  add(drawArrow(ctx, arrowStyles, scaledDuration))
+  add(drawArrow(ctx, arrowStyles, styles.arrowhead_angle, scaledDuration))
 
   for (let i = stream.messages.length - 1; i >= 0; --i) {
     const message = stream.messages[i]

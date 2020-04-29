@@ -1,7 +1,9 @@
 {
-  "arrow_color": "black",
+  "arrow_fill_color": "",
+  "arrow_stroke_color": "black",
   "arrow_stroke_width": 2,
   "arrow_width": 10,
+  "arrowhead_angle": 60,
   "background_color": "white",
   "barrier_color": "rgba(0,0,0,0.5)",
   "barrier_stroke_dash_width": 4,

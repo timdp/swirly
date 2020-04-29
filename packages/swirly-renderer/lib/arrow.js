@@ -1,14 +1,17 @@
 const { createElement } = require('./util/create-element')
+const { degreesToRadians } = require('./util/degrees-to-radians')
 
 const drawArrow = (
   { document, styles, streamHeight },
   arrowStyles,
+  arrowheadAngle,
   duration
 ) => {
   const y = streamHeight / 2
   const width = duration * styles.frame_width + streamHeight
-  const arrowHeadWidth = arrowStyles.width
-  const arrowheadHeight = arrowStyles.width / Math.sqrt(2)
+  const arrowheadWidth = arrowStyles.width
+  const arrowheadHeight =
+    arrowheadWidth * Math.tan(degreesToRadians(arrowheadAngle / 2))
   const y1 = y - arrowheadHeight
   const y2 = y + arrowheadHeight
 
@@ -20,21 +23,29 @@ const drawArrow = (
       y1: y,
       x2: width,
       y2: y,
-      stroke: arrowStyles.color,
+      stroke: arrowStyles.stroke_color,
       'stroke-width': arrowStyles.stroke_width
     })
   )
 
+  const fillColor = arrowStyles.fill_color
+  const filled = typeof fillColor === 'string' && fillColor !== ''
+  const points = [
+    `${width - arrowheadWidth},${y1}`,
+    `${width},${y}`,
+    `${width - arrowheadWidth},${y2}`
+  ]
+  if (filled) {
+    points.push(points[0])
+  }
+
   $group.appendChild(
     createElement(document, 'polyline', {
-      points: [
-        `${width - arrowHeadWidth},${y1}`,
-        `${width},${y}`,
-        `${width - arrowHeadWidth},${y2}`
-      ].join(' '),
-      stroke: arrowStyles.color,
+      points: points.join(' '),
+      fill: filled ? fillColor : 'none',
+      stroke: arrowStyles.stroke_color,
       'stroke-width': arrowStyles.stroke_width,
-      fill: 'none'
+      'stroke-linecap': 'square'
     })
   )
 
