@@ -15,21 +15,22 @@ const drawArrow = (
   const y1 = y - arrowheadHeight
   const y2 = y + arrowheadHeight
 
+  const fillColor = arrowStyles.fill_color
+  const filled = typeof fillColor === 'string' && fillColor !== ''
+
   const $group = createElement(document, 'g')
 
   $group.appendChild(
     createElement(document, 'line', {
       x1: 0,
       y1: y,
-      x2: width,
+      x2: width - (filled ? arrowheadWidth : 0),
       y2: y,
       stroke: arrowStyles.stroke_color,
       'stroke-width': arrowStyles.stroke_width
     })
   )
 
-  const fillColor = arrowStyles.fill_color
-  const filled = typeof fillColor === 'string' && fillColor !== ''
   const points = [
     `${width - arrowheadWidth},${y1}`,
     `${width},${y}`,
