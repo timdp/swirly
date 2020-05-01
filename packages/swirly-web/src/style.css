@@ -41,36 +41,49 @@ a img {
   flex-direction: column;
 }
 
-.result {
+.split {
   flex: 1;
+}
+
+.gutter {
+  background: #E0E0E0;
+  cursor: row-resize;
+}
+
+.controls {
+  flex: 0;
+  display: flex;
+  background: #E0E0E0;
+}
+
+.gutter, .controls {
+  border: 1px solid #D0D0D0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.result {
   overflow: auto;
 }
 
-.input {
-  flex: 0;
-  min-height: 20em;
-  max-height: 50%;
+.error {
+  color: #C00000;
+  white-space: pre-wrap;
+  padding: 0.75em;
 }
 
 .spec {
   width: 100%;
   height: 100%;
-  background: white;
+  background: #FCFCFC;
   color: black;
   border: 0;
-  border-top: 1px solid #C0C0C0;
   margin: 0;
   padding: 0.75em;
 }
 
 .spec:focus {
   outline: 0;
-}
-
-.controls {
-  flex: 0;
-  display: flex;
-  background: #C0C0C0;
 }
 
 .branding {
@@ -92,17 +105,11 @@ a img {
   margin: 0.5em 0 0.5em 1ex;
   padding: 0.25em;
   background: white;
+  border: 1px solid #D0D0D0;
   color: black;
-  border: 0;
   white-space: nowrap;
 }
 
-.controls button:disabled {
-  color: #C0C0C0;
-}
-
-.error {
-  color: #C00000;
-  white-space: pre-wrap;
-  padding: 0.75em;
+.export button:disabled {
+  color: #E0E0E0;
 }

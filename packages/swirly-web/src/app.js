@@ -1,8 +1,10 @@
 import '@babel/polyfill'
 import { parseMarbleDiagramSpec } from 'swirly-parser'
 import { drawMarbleDiagram } from 'swirly-renderer'
+import split from 'split.js'
 import { version } from '../package.json'
 
+const GUTTER_SIZE = 5
 const EXAMPLE = `% An example application of the concatAll operator.
 % Edit this code to redraw the diagram in real time.
 
@@ -20,6 +22,7 @@ z = ---e--f-|
 
 const versionContainer = document.querySelector('.version')
 const resultContainer = document.querySelector('.result')
+const inputContainer = document.querySelector('.input')
 const specField = document.querySelector('.spec')
 const exportSvgButton = document.querySelector('.export-svg')
 const exportPngButton = document.querySelector('.export-png')
@@ -90,12 +93,17 @@ const exportPng = () => {
   image.src = getSvgDataUri()
 }
 
+split([resultContainer, inputContainer], {
+  direction: 'vertical',
+  gutterSize: GUTTER_SIZE
+})
+
+versionContainer.textContent = `v${version}`
+specField.value = EXAMPLE
+
 specField.addEventListener('change', update)
 specField.addEventListener('keyup', update)
 exportSvgButton.addEventListener('click', exportSvg)
 exportPngButton.addEventListener('click', exportPng)
 
-versionContainer.textContent = `v${version}`
-
-specField.value = EXAMPLE
 update()

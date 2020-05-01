@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
+    "split.js": "^1.5.11",
     "swirly-parser": "^0.9.0",
     "swirly-renderer": "^0.9.0"
   },
