@@ -1,7 +1,7 @@
 {
   "name": "swirly-renderer",
   "description": "Renderer for Swirly marble diagrams.",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
   "homepage": "https://swirly.now.sh/",
@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "simple-sha1": "^3.0.1",
-    "swirly-theme-default": "^0.0.0"
+    "swirly-theme-default": "^0.10.0"
   }
 }
