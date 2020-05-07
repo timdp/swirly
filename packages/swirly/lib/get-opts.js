@@ -1,10 +1,18 @@
 const yargs = require('yargs')
 const { rasterizers } = require('./rasterizers')
+const { themes } = require('./themes')
 
 const getOpts = () => {
-  const { _: filePaths, force, optimize, scale, rasterizer } = yargs
+  const { _: filePaths, theme, force, optimize, scale, rasterizer } = yargs
     .usage('$0 <input> [output]')
     .demand(1)
+    .option('t', {
+      type: 'string',
+      alias: 'theme',
+      description: 'Theme',
+      choices: Object.keys(themes),
+      default: 'light'
+    })
     .option('f', {
       type: 'boolean',
       alias: 'force',
@@ -34,7 +42,7 @@ const getOpts = () => {
   const inFilePath = filePaths[0]
   const outFilePath = filePaths[1] !== '-' ? filePaths[1] : null
 
-  return { inFilePath, outFilePath, force, optimize, scale, rasterizer }
+  return { inFilePath, outFilePath, theme, force, optimize, scale, rasterizer }
 }
 
 module.exports = { getOpts }

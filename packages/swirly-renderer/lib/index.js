@@ -1,8 +1,8 @@
+const defaultTheme = require('swirly-theme-default')
 const { drawStream } = require('./stream')
 const { drawOperator } = require('./operator')
 const { createElement } = require('./util/create-element')
 const { translate } = require('./util/transform')
-const DEFAULT_STYLES = require('./default-styles.json')
 
 const EMPTY_SVG = '<svg xmlns="http://www.w3.org/2000/svg"/>'
 const MIME_TYPE = 'image/svg+xml'
@@ -14,7 +14,8 @@ const drawMarbleDiagram = (spec, options = {}) => {
   const $svg = document.documentElement
 
   const styles = {
-    ...DEFAULT_STYLES,
+    ...defaultTheme,
+    ...options.styles,
     ...spec.styles
   }
 

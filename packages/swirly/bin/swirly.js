@@ -4,25 +4,27 @@ require('hard-rejection/register')
 const { drawMarbleDiagram } = require('swirly-renderer-node')
 const streamToPromise = require('stream-to-promise')
 const { getOpts } = require('../lib/get-opts')
-const { readDiagramSpec } = require('../lib/read-diagram-spec')
 const { optimizeXml } = require('../lib/optimize-xml')
+const { readDiagramSpec } = require('../lib/read-diagram-spec')
+const { themes } = require('../lib/themes')
 const { writers } = require('../lib/writers')
 
 ;(async () => {
   const {
     inFilePath,
     outFilePath,
+    theme,
     force,
     optimize,
     scale,
     rasterizer
   } = getOpts()
 
+  const spec = await readDiagramSpec(inFilePath)
+  const styles = themes[theme]
   const writer = writers.find(writer => writer.match(outFilePath))
 
-  const spec = await readDiagramSpec(inFilePath)
-
-  const { xml: unoptXml, width, height } = drawMarbleDiagram(spec)
+  const { xml: unoptXml, width, height } = drawMarbleDiagram(spec, { styles })
   const xml = optimize ? await optimizeXml(unoptXml) : unoptXml
 
   const output = await writer.formatOutput({

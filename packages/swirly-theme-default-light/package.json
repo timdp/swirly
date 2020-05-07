@@ -1,7 +1,7 @@
 {
-  "name": "swirly-renderer",
-  "description": "Renderer for Swirly marble diagrams.",
-  "version": "0.9.0",
+  "name": "swirly-theme-default-light",
+  "description": "Light theme for Swirly marble diagrams.",
+  "version": "0.0.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
   "homepage": "https://swirly.now.sh/",
@@ -17,7 +17,6 @@
     "node": ">=10"
   },
   "dependencies": {
-    "simple-sha1": "^3.0.1",
-    "swirly-theme-default": "^0.0.0"
+    "swirly-theme-default-base": "^0.0.0"
   }
 }
