@@ -1,4 +1,5 @@
-import '@babel/polyfill'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import { parseMarbleDiagramSpec } from 'swirly-parser'
 import { drawMarbleDiagram } from 'swirly-renderer'
 import split from 'split.js'

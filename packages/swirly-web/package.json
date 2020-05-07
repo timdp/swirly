@@ -10,7 +10,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.8.7",
+    "core-js": "^3.6.5",
+    "regenerator-runtime": "^0.13.5",
     "split.js": "^1.5.11",
     "swirly-parser": "^0.9.0",
     "swirly-renderer": "^0.9.0"
