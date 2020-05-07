@@ -3,14 +3,11 @@
   "version": "0.9.1",
   "private": true,
   "scripts": {
-    "postversion": "yarn run deploy",
     "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
     "build:html": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
     "build:css": "cleancss -o dist/style.css src/style.css",
     "build:js": "rollup -c",
-    "build:now": "cp -R .now dist/",
-    "clean": "rm -rf dist",
-    "deploy": "yarn run build && now ./dist --prod --no-clipboard"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
