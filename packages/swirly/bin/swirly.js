@@ -6,7 +6,7 @@ const streamToPromise = require('stream-to-promise')
 const { getOpts } = require('../lib/get-opts')
 const { optimizeXml } = require('../lib/optimize-xml')
 const { readDiagramSpec } = require('../lib/read-diagram-spec')
-const { themes } = require('../lib/themes')
+const { stylesByTheme } = require('../lib/themes')
 const { writers } = require('../lib/writers')
 
 ;(async () => {
@@ -21,7 +21,7 @@ const { writers } = require('../lib/writers')
   } = getOpts()
 
   const spec = await readDiagramSpec(inFilePath)
-  const styles = themes[theme]
+  const styles = stylesByTheme[theme]
   const writer = writers.find(writer => writer.match(outFilePath))
 
   const { xml: unoptXml, width, height } = drawMarbleDiagram(spec, { styles })

@@ -1,6 +1,6 @@
 const yargs = require('yargs')
 const { rasterizers } = require('./rasterizers')
-const { themes } = require('./themes')
+const { stylesByTheme } = require('./themes')
 
 const getOpts = () => {
   const { _: filePaths, theme, force, optimize, scale, rasterizer } = yargs
@@ -10,7 +10,7 @@ const getOpts = () => {
       type: 'string',
       alias: 'theme',
       description: 'Theme',
-      choices: Object.keys(themes),
+      choices: Object.keys(stylesByTheme),
       default: 'light'
     })
     .option('f', {

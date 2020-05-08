@@ -1,9 +1,9 @@
-const defaultLightTheme = require('swirly-theme-default-light')
-const defaultDarkTheme = require('swirly-theme-default-dark')
+const { styles: light } = require('swirly-theme-default-light')
+const { styles: dark } = require('swirly-theme-default-dark')
 
-const themes = {
-  light: defaultLightTheme,
-  dark: defaultDarkTheme
+const stylesByTheme = {
+  light,
+  dark
 }
 
-module.exports = { themes }
+module.exports = { stylesByTheme }
