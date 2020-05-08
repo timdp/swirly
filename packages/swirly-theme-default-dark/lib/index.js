@@ -1,7 +1,9 @@
-const baseStyles = require('swirly-theme-default-base')
-const styles = require('./styles.json')
+const { styles: baseStyles } = require('swirly-theme-default-base')
+const ourStyles = require('./styles.json')
 
 module.exports = {
-  ...baseStyles,
-  ...styles
+  styles: {
+    ...baseStyles,
+    ...ourStyles
+  }
 }

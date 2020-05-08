@@ -14,7 +14,9 @@
     "regenerator-runtime": "^0.13.5",
     "split.js": "^1.5.11",
     "swirly-parser": "^0.10.0",
-    "swirly-renderer": "^0.10.0"
+    "swirly-renderer": "^0.10.0",
+    "swirly-theme-default-dark": "^0.10.0",
+    "swirly-theme-default-light": "^0.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

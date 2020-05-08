@@ -1,5 +1,19 @@
+/* Base styles */
+
 * {
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F0F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D0D0D0;
 }
 
 html, body {
@@ -8,6 +22,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   background: white;
+  color: black;
 }
 
 body, input, textarea, button {
@@ -16,22 +31,24 @@ body, input, textarea, button {
   font-weight: normal;
 }
 
-a:link, a:visited {
-  color: #0000E0;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:active {
-  color: #0000C0;
-}
-
 a img {
   border: 0;
 }
+
+a:link, a:visited {
+  color: #0060FF;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: underline;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Core layout */
 
 .main {
   position: absolute;
@@ -46,21 +63,22 @@ a img {
 }
 
 .gutter {
-  background: #E0E0E0;
   cursor: row-resize;
 }
 
 .controls {
   flex: 0;
   display: flex;
-  background: #E0E0E0;
 }
 
 .gutter, .controls {
+  background: #E0E0E0;
   border: 1px solid #D0D0D0;
   border-left: 0;
   border-right: 0;
 }
+
+/* Diagram */
 
 .result {
   overflow: auto;
@@ -72,10 +90,12 @@ a img {
   padding: 0.75em;
 }
 
+/* Code */
+
 .spec {
   width: 100%;
   height: 100%;
-  background: #FCFCFC;
+  background: white;
   color: black;
   border: 0;
   margin: 0;
@@ -86,30 +106,100 @@ a img {
   outline: 0;
 }
 
+/* Version */
+
 .branding {
   flex: 1;
   padding: 0.75em 1ex;
 }
 
-.export {
+/* Buttons */
+
+.options {
   flex: 0;
   display: flex;
   padding-right: 1ex;
-}
-
-.export .label {
-  padding-top: 0.75em;
-}
-
-.export button {
-  margin: 0.5em 0 0.5em 1ex;
-  padding: 0.25em;
-  background: white;
-  border: 1px solid #D0D0D0;
-  color: black;
   white-space: nowrap;
 }
 
-.export button:disabled {
+.options .label {
+  padding-top: 0.75em;
+}
+
+.options button {
+  margin: 0.5em 0 0.5em 1ex;
+  padding: 0;
+  background: white;
+  border: 1px solid #D0D0D0;
+  color: black;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.options button:disabled {
   color: #E0E0E0;
+}
+
+.options button:focus {
+  outline: 0;
+  background: #F0F0F0;
+}
+
+.theme {
+  padding-right: 2ex;
+}
+
+.theme button {
+  width: 9ex;
+}
+
+.export button {
+  width: 7ex;
+}
+
+.options .accel {
+  text-decoration: underline;
+}
+
+/* Dark theme */
+
+body.dark ::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background: #303030;
+}
+
+body.dark {
+  background: black;
+  color: white;
+}
+
+body.dark .gutter, body.dark .controls {
+  background: #303030;
+  border-color: #404040;
+}
+
+body.dark .error {
+  color: #FF0000;
+}
+
+body.dark .spec {
+  background: black;
+  color: white;
+}
+
+body.dark .options button {
+  background: #404040;
+  border-color: #303030;
+  color: white;
+}
+
+body.dark .options button:disabled {
+  color: #606060;
+}
+
+body.dark .options button:focus {
+  background: #505050;
 }

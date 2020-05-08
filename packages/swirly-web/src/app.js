@@ -2,6 +2,8 @@ import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import { parseMarbleDiagramSpec } from 'swirly-parser'
 import { drawMarbleDiagram } from 'swirly-renderer'
+import { styles as lightStyles } from 'swirly-theme-default-light'
+import { styles as darkStyles } from 'swirly-theme-default-dark'
 import split from 'split.js'
 import { version } from '../package.json'
 
@@ -25,10 +27,12 @@ const versionContainer = document.querySelector('.version')
 const resultContainer = document.querySelector('.result')
 const inputContainer = document.querySelector('.input')
 const specField = document.querySelector('.spec')
+const themeToggleButton = document.querySelector('.theme-toggle')
 const exportSvgButton = document.querySelector('.export-svg')
 const exportPngButton = document.querySelector('.export-png')
 
 let lastRendered = ''
+let darkThemeEnabled = false
 
 const setControlsEnabled = enabled => {
   exportSvgButton.disabled = !enabled
@@ -42,29 +46,32 @@ const createErrorContainer = msg => {
   return div
 }
 
-const update = () => {
-  const value = specField.value
+const renderResult = (element, isError) => {
+  resultContainer.innerHTML = ''
+  resultContainer.appendChild(element)
+  setControlsEnabled(!isError)
+}
 
-  if (lastRendered === value) {
+const update = () => {
+  const code = specField.value
+
+  const serialized = darkThemeEnabled + ';' + code
+  if (lastRendered === serialized) {
     return
   }
-  lastRendered = value
-
-  resultContainer.innerHTML = ''
+  lastRendered = serialized
 
   try {
-    const spec = parseMarbleDiagramSpec(value)
+    const spec = parseMarbleDiagramSpec(code)
+    const styles = darkThemeEnabled ? darkStyles : lightStyles
     const {
       document: { documentElement: svgElement }
-    } = drawMarbleDiagram(spec)
-    resultContainer.appendChild(svgElement)
+    } = drawMarbleDiagram(spec, { styles })
+    renderResult(svgElement, false)
   } catch (err) {
-    setControlsEnabled(false)
-    resultContainer.appendChild(createErrorContainer(err.stack))
-    return
+    const errorContainer = createErrorContainer(err.stack)
+    renderResult(errorContainer, true)
   }
-
-  setControlsEnabled(true)
 }
 
 const getSvgDataUri = () =>
@@ -75,6 +82,13 @@ const download = (dataUri, name) => {
   a.href = dataUri
   a.download = name
   a.click()
+}
+
+const toggleTheme = () => {
+  darkThemeEnabled = !darkThemeEnabled
+  themeToggleButton.textContent = darkThemeEnabled ? 'Dark' : 'Light'
+  document.body.className = darkThemeEnabled ? 'dark' : ''
+  update()
 }
 
 const exportSvg = () => {
@@ -104,6 +118,7 @@ specField.value = EXAMPLE
 
 specField.addEventListener('change', update)
 specField.addEventListener('keyup', update)
+themeToggleButton.addEventListener('click', toggleTheme)
 exportSvgButton.addEventListener('click', exportSvg)
 exportPngButton.addEventListener('click', exportPng)
 
