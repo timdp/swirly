@@ -1,6 +1,6 @@
 {
   "name": "swirly-web",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "private": true,
   "scripts": {
     "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
@@ -14,7 +14,7 @@
     "regenerator-runtime": "^0.13.5",
     "split.js": "^1.5.11",
     "swirly-parser": "^0.11.0",
-    "swirly-renderer": "^0.11.0",
+    "swirly-renderer": "^0.11.1",
     "swirly-theme-default-dark": "^0.11.0",
     "swirly-theme-default-light": "^0.11.0"
   },
