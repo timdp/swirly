@@ -6,6 +6,7 @@
 
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -202,4 +203,12 @@ body.dark .options button:disabled {
 
 body.dark .options button:focus {
   background: #505050;
+}
+
+/* Hide theme toggle on narrow screens */
+
+@media (max-width: 479px) {
+  .theme {
+    display: none;
+  }
 }
