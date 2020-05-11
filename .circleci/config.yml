@@ -1,6 +1,10 @@
-version: 2
+version: 2.1
+
 jobs:
-  build:
+  test_node_version:
+    parameters:
+      version:
+        type: string
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
@@ -8,12 +12,26 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
+            - v2-dependencies-node<< parameters.version >>-{{ checksum "yarn.lock" }}
+            - v2-dependencies-node<< parameters.version >>-
       - run: yarn --frozen-lockfile
       - save_cache:
           paths:
             - node_modules
             - packages/*/node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v2-dependencies-node<< parameters.version >>-{{ checksum "yarn.lock" }}
       - run: yarn test
+
+workflows:
+  test_node10:
+    jobs:
+      - test_node_version:
+          version: "10"
+  test_node12:
+    jobs:
+      - test_node_version:
+          version: "12"
+  test_node14:
+    jobs:
+      - test_node_version:
+          version: "14"
