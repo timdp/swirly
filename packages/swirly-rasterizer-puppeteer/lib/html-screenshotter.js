@@ -1,6 +1,6 @@
 const { BrowserFacade } = require('./browser')
 
-class Screenshotter extends BrowserFacade {
+class HtmlScreenshotter extends BrowserFacade {
   async capture (html, width, height, type) {
     const page = await this._browser.newPage()
     await page.setViewport({ width, height })
@@ -17,4 +17,4 @@ class Screenshotter extends BrowserFacade {
   }
 }
 
-module.exports = { Screenshotter }
+module.exports = { HtmlScreenshotter }

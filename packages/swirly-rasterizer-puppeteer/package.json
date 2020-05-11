@@ -17,7 +17,6 @@
     "node": ">=10"
   },
   "dependencies": {
-    "dedent": "^0.7.0",
     "puppeteer": "^3.0.4"
   }
 }
