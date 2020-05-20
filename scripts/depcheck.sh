@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eo pipefail
+set -e
 
 SELF=$0
 DIRNAME=$( dirname "$SELF" )
