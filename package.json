@@ -2,6 +2,8 @@
   "name": "swirly",
   "private": true,
   "scripts": {
+    "build": "lerna run build",
+    "clean": "lerna run clean",
     "test": "run-s 'test:*' && lerna run test",
     "test:lint": "standard \"**/*.js\"",
     "test:deps": "scripts/depcheck.sh",
