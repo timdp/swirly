@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "build": "yarn run clean && tsc",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublish": "yarn run build"
   },
   "engines": {
     "node": ">=10"
