@@ -9,15 +9,26 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu/"
   },
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "files": [
-    "lib/"
+    "src/",
+    "dist/"
   ],
+  "scripts": {
+    "build": "yarn run clean && tsc",
+    "clean": "rm -rf dist"
+  },
   "engines": {
     "node": ">=10"
   },
   "dependencies": {
     "fabric": "^3.6.3",
     "stream-to-promise": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/fabric": "^3.6.3",
+    "@types/node": "^14.0.4",
+    "@types/stream-to-promise": "^2.2.1",
+    "swirly-types": "0.0.0"
   }
 }

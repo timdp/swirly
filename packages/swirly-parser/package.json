@@ -9,14 +9,23 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu/"
   },
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "browser": "src/index.ts",
   "files": [
-    "lib/"
+    "src/",
+    "dist/"
   ],
+  "scripts": {
+    "build": "yarn run clean && tsc",
+    "clean": "rm -rf dist"
+  },
   "engines": {
     "node": ">=10"
   },
   "dependencies": {
-    "rxjs": "^6.5.5"
+    "rxjs": "6.5.5"
+  },
+  "devDependencies": {
+    "swirly-types": "0.0.0"
   }
 }

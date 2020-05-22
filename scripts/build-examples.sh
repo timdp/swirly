@@ -9,4 +9,4 @@ for input in *.txt; do
     output=${input/.txt/.$ext}
     echo "$input" "$output"
   done
-done | xargs -t -n2 -P4 node ../packages/swirly/bin/swirly -f -o -z 200
+done | xargs -t -n2 -P4 node ../packages/swirly/dist/cli -f -o -z 200

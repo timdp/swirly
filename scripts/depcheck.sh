@@ -16,7 +16,7 @@ fi
 erroneous=0
 for pkgdir in "$@"; do
   pkgname=$( basename "$pkgdir" )
-  missing=$( "$DEPCHECK" "$pkgdir" --json | jq -r '.missing | keys | join(" ")' )
+  missing=$( "$DEPCHECK" "$pkgdir" --json --ignore-dirs=dist | jq -r '.missing | keys | join(" ")' )
   if [[ -n $missing ]]; then
     printf '%-32s %s\n' "$pkgname" "$missing" >&2
     (( erroneous++ ))

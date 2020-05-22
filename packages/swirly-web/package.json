@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
-    "build:html": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
+    "build:html": "run-s \"build:html:*\"",
+    "build:html:01_minify": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
+    "build:html:02_dev": "sed s/__SCRIPT__/bundle.js/ dist/index.html > dist/debug.html",
+    "build:html:03_prod": "sed -i s/__SCRIPT__/bundle.min.js/ dist/index.html",
     "build:css": "cleancss -o dist/style.css src/style.css",
-    "build:js": "rollup -c",
+    "build:js": "webpack",
     "clean": "rm -rf dist"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "regenerator-runtime": "^0.13.5",
     "split.js": "^1.5.11",
     "swirly-parser": "^0.12.0",
     "swirly-renderer": "^0.12.0",
@@ -19,16 +21,13 @@
     "swirly-theme-default-light": "^0.12.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^11.1.0",
-    "@rollup/plugin-json": "^4.0.3",
-    "@rollup/plugin-node-resolve": "^7.1.3",
+    "@types/split.js": "^1.4.0",
     "clean-css-cli": "^4.3.0",
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
-    "rollup": "^2.9.1",
-    "rollup-plugin-terser": "^5.3.0"
+    "run-sequence": "^2.2.1",
+    "ts-loader": "^7.0.4",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }

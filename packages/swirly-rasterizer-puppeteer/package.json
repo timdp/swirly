@@ -9,14 +9,23 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu/"
   },
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "files": [
-    "lib/"
+    "src/",
+    "dist/"
   ],
+  "scripts": {
+    "build": "yarn run clean && tsc",
+    "clean": "rm -rf dist"
+  },
   "engines": {
     "node": ">=10"
   },
   "dependencies": {
-    "puppeteer": "^3.0.4"
+    "puppeteer": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^3.0.0",
+    "swirly-types": "0.0.0"
   }
 }
