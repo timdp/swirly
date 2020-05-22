@@ -10,7 +10,7 @@ The `swirly` npm package provides Swirly as a CLI utility. Documentation for
 this utility is available [on GitHub](https://github.com/timdp/swirly).
 
 Alternatively, you can also use Swirly in your browser. To do so, hit
-[**swirly.now.sh**](https://swirly.now.sh/) and start your editing!
+[**swirly.tmdpw.eu**](https://swirly.tmdpw.eu/) and start your editing!
 
 ## Author
 

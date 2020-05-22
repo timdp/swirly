@@ -20,7 +20,7 @@ You can find [a few examples](examples/) in this repository.
 ## Web Version
 
 You can use Swirly in your browser at
-[**swirly.now.sh**](https://swirly.now.sh/).
+[**swirly.tmdpw.eu**](https://swirly.tmdpw.eu/).
 
 The Web version allows you to edit diagram specifications in real time and
 export them to an SVG or a PNG image.
