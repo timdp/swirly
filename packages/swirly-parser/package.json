@@ -1,7 +1,7 @@
 {
   "name": "swirly-parser",
   "description": "Parser for the Swirly marble diagram format.",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
   "homepage": "https://swirly.tmdpw.eu",
@@ -27,6 +27,6 @@
     "rxjs": "6.5.5"
   },
   "devDependencies": {
-    "swirly-types": "^0.13.0"
+    "swirly-types": "^0.13.1"
   }
 }
