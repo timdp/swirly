@@ -4,10 +4,10 @@
   "version": "0.13.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
-  "homepage": "https://swirly.tmdpw.eu/",
+  "homepage": "https://swirly.tmdpw.eu",
   "author": {
     "name": "Tim De Pauw",
-    "url": "https://tmdpw.eu/"
+    "url": "https://tmdpw.eu"
   },
   "main": "src/index.ts",
   "files": [
