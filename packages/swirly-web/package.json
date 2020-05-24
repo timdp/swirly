@@ -10,6 +10,7 @@
     "build:html:03_prod": "sed -i s/__SCRIPT__/bundle.min.js/ dist/index.html",
     "build:css": "cleancss -o dist/style.css src/style.css",
     "build:js": "webpack",
+    "build:img": "cp src/logo.png dist/logo.png",
     "clean": "rm -rf dist"
   },
   "dependencies": {
