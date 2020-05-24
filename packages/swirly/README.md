@@ -1,8 +1,16 @@
-# Swirly
+<p align="center">
+  <img alt="Swirly" src="logo.png" width="480">
+</p>
 
-[![npm](https://img.shields.io/npm/v/swirly.svg)](https://www.npmjs.com/package/swirly) [![Dependencies](https://david-dm.org/timdp/swirly/status.svg?path=packages/swirly)](https://david-dm.org/timdp/swirly?path=packages/swirly) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
+<p align="center">
+  A marble diagram generator.
+</p>
 
-A marble diagram generator.
+<p align="center">
+  <a href="https://www.npmjs.com/package/swirly"><img alt="npm" src="https://img.shields.io/npm/v/swirly.svg"></a>
+  <a href="https://david-dm.org/timdp/swirly?path=packages/swirly"><img alt="Dependencies" src="https://david-dm.org/timdp/swirly/status.svg?path=packages/swirly"></a>
+  <a href="https://standardjs.com/"><img alt="Javascript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
+</p>
 
 ## Usage
 
