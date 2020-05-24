@@ -6,7 +6,7 @@ import { renderMarbleDiagram } from 'swirly-renderer'
 import { styles as darkStyles } from 'swirly-theme-default-dark'
 import { styles as lightStyles } from 'swirly-theme-default-light'
 
-import { version } from '../package.json'
+import { version } from '../../../lerna.json'
 
 const GUTTER_SIZE = 5
 const EXAMPLE = `% An example application of the concatAll operator.
