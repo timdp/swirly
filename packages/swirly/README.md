@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Swirly" src="https://user-images.githubusercontent.com/201034/82752209-b4be3c00-9dbc-11ea-8ca2-a76fbea7c6df.png" width="480">
+  <img alt="Swirly" src="https://user-images.githubusercontent.com/201034/82764045-6173da00-9e0c-11ea-9bee-4fb6543d977a.png" width="480">
 </p>
 
 <p align="center">
