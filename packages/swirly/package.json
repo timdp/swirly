@@ -17,7 +17,7 @@
     "swirly": "dist/cli.js"
   },
   "scripts": {
-    "build": "yarn run clean && tsc",
+    "build": "yarn run clean && swc src -d dist -s --config-file ../../.swcrc",
     "clean": "rm -rf dist",
     "prepublish": "yarn run build"
   },
