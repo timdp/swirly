@@ -11,8 +11,7 @@
   },
   "files": [
     "src/",
-    "dist/",
-    "logo.png"
+    "dist/"
   ],
   "bin": {
     "swirly": "dist/cli.js"
