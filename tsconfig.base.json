@@ -14,5 +14,6 @@
     "sourceMap": true,
     "strict": true,
     "target": "ESNext"
-  }
+  },
+  "exclude": ["**/node_modules", "**/.*/"]
 }
