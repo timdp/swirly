@@ -1,5 +1,4 @@
-// @ts-ignore
-import { TestScheduler } from 'rxjs/testing'
+import { parseMarbles } from 'swirly-parser-rxjs'
 
 import { toStreamSpec } from '../spec/stream'
 import { Parser, ParserContext } from '../types'
@@ -51,7 +50,7 @@ const run = (lines: string[], { content, allValues }: ParserContext) => {
 
   const localValues = buildLocalValues(marbles, config.values, allValues)
 
-  const messages = TestScheduler.parseMarbles(marbles, localValues)
+  const messages = parseMarbles(marbles, localValues)
 
   if (name != null) {
     allValues[name] = messages

@@ -1,7 +1,7 @@
 {
-  "name": "swirly-parser",
-  "description": "Parser for the Swirly marble diagram format.",
-  "version": "0.13.1",
+  "name": "swirly-parser-rxjs",
+  "description": "The RxJS marble parser, extracted for Swirly.",
+  "version": "0.0.0",
   "license": "MIT",
   "repository": "https://github.com/timdp/swirly",
   "homepage": "https://swirly.tmdpw.eu",
@@ -16,17 +16,17 @@
     "dist/"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc",
+    "build": "yarn run clean && rollup -c",
     "clean": "rm -rf dist",
     "prepublish": "yarn run build"
   },
   "engines": {
     "node": ">=10"
   },
-  "dependencies": {
-    "swirly-parser-rxjs": "^0.0.0"
-  },
   "devDependencies": {
-    "swirly-types": "^0.13.1"
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "rollup": "^2.10.9",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "rxjs": "6.5.5"
   }
 }

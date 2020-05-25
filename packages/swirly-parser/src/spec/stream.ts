@@ -1,4 +1,4 @@
-import { TestMessage } from 'rxjs/internal/testing/TestMessage'
+import { TestMessage } from 'swirly-parser-rxjs'
 import {
   CompletionMessageSpecification,
   ErrorMessageSpecification,
