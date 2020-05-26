@@ -1,4 +1,7 @@
 const path = require('path')
+const { DefinePlugin } = require('webpack')
+
+const { version } = require('../../lerna.json')
 
 const baseConfig = {
   target: 'web',
@@ -15,6 +18,11 @@ const baseConfig = {
   resolve: {
     extensions: ['.ts', '.js']
   },
+  plugins: [
+    new DefinePlugin({
+      VERSION: JSON.stringify(version)
+    })
+  ],
   output: {
     path: path.resolve(__dirname, 'dist')
   }

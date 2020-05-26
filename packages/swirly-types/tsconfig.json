@@ -7,13 +7,5 @@
   },
   "include": [
     "src"
-  ],
-  "references": [
-    {
-      "path": "../swirly-renderer"
-    },
-    {
-      "path": "../swirly-types"
-    }
   ]
 }

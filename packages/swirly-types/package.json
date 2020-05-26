@@ -9,8 +9,20 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "browser": "src/index.ts",
   "files": [
-    "src/"
-  ]
+    "src/",
+    "dist/"
+  ],
+  "scripts": {
+    "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
+    "build:tsconfig": "../../scripts/build-tsconfig.js",
+    "build:js": "tsc",
+    "clean": "rm -rf dist",
+    "prepublish": "yarn run build"
+  },
+  "engines": {
+    "node": ">=10"
+  }
 }

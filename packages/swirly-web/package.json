@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
-    "build:html": "run-s \"build:html:*\"",
-    "build:html:01_minify": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
-    "build:html:02_dev": "sed s/__SCRIPT__/bundle.js/ dist/index.html > dist/debug.html",
-    "build:html:03_prod": "sed -i s/__SCRIPT__/bundle.min.js/ dist/index.html",
+    "build:html": "run-s \"_build:html:*\"",
+    "_build:html:01_minify": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
+    "_build:html:02_dev": "sed s/__SCRIPT__/bundle.js/ dist/index.html > dist/debug.html",
+    "_build:html:03_prod": "sed -i s/__SCRIPT__/bundle.min.js/ dist/index.html",
     "build:css": "cleancss -o dist/style.css src/style.css",
-    "build:js": "webpack",
+    "build:js": "tsc",
     "build:img": "cp src/logo.png dist/logo.png",
     "clean": "rm -rf dist"
   },
@@ -30,5 +30,10 @@
     "ts-loader": "^7.0.4",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
+  },
+  "standardx": {
+    "globals": [
+      "VERSION"
+    ]
   }
 }

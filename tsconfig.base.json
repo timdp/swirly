@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "composite": true,
     "declaration": true,
     "esModuleInterop": true,
     "module": "CommonJS",

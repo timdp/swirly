@@ -1,9 +1,34 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist/"
+    "outDir": "dist",
+    "rootDir": "src",
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
   },
   "include": [
     "src"
+  ],
+  "references": [
+    {
+      "path": "../swirly-parser"
+    },
+    {
+      "path": "../swirly-rasterizer-inkscape"
+    },
+    {
+      "path": "../swirly-rasterizer-puppeteer"
+    },
+    {
+      "path": "../swirly-renderer-node"
+    },
+    {
+      "path": "../swirly-theme-default-dark"
+    },
+    {
+      "path": "../swirly-theme-default-light"
+    },
+    {
+      "path": "../swirly-types"
+    }
   ]
 }

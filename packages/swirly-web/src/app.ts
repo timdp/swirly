@@ -6,7 +6,7 @@ import { renderMarbleDiagram } from 'swirly-renderer'
 import { styles as darkStyles } from 'swirly-theme-default-dark'
 import { styles as lightStyles } from 'swirly-theme-default-light'
 
-import { version } from '../../../lerna.json'
+declare const VERSION: string
 
 const GUTTER_SIZE = 5
 const EXAMPLE = `% An example application of the concatAll operator.
@@ -115,7 +115,7 @@ split([resultContainer, inputContainer], {
   gutterSize: GUTTER_SIZE
 })
 
-versionContainer.textContent = `v${version}`
+versionContainer.textContent = `v${VERSION}`
 specField.value = EXAMPLE
 
 specField.addEventListener('change', update)
