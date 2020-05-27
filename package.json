@@ -3,6 +3,10 @@
   "private": true,
   "scripts": {
     "build": "lerna run build",
+    "buildfast": "npm-run-all build:parser-rxjs --parallel build:cli build:web",
+    "build:parser-rxjs": "yarn workspace swirly-parser-rxjs build",
+    "build:cli": "yarn workspace swirly tsc --build",
+    "build:web": "yarn workspace swirly-web build",
     "clean": "lerna run clean",
     "test": "lerna run test",
     "lint": "yarn run lint:js && yarn run lint:deps",
@@ -51,7 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn run lint && yarn run build && yarn run test && scripts/build-examples.sh"
+      "pre-commit": "lint-staged && yarn run lint && yarn run buildfast && yarn run test && scripts/build-examples.sh"
     }
   },
   "workspaces": [
