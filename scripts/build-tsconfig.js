@@ -4,7 +4,6 @@ const fs = require('fs')
 const path = require('path')
 
 const PKG_ROOT = '../'
-const PKG_NAME_PREFIX = 'swirly-'
 
 const cwd = process.cwd()
 const pkgPath = path.join(cwd, 'package.json')
@@ -28,6 +27,22 @@ if (tsconfig.references == null) {
   tsconfig.references = []
 }
 
+// List packages in monorepo
+const monorepoPkgs = fs
+  .readdirSync(PKG_ROOT, { withFileTypes: true })
+  .filter(ent => ent.isDirectory())
+  .map(ent => ent.name)
+  .map(dir => {
+    try {
+      const { name } = require(path.join(PKG_ROOT, dir, 'package.json'))
+      return name
+    } catch {
+      return null
+    }
+  })
+  .filter(name => name != null)
+const isMonorepoPkg = name => monorepoPkgs.includes(name)
+
 // Read package.json
 const pkg = require(pkgPath)
 const { dependencies = {}, devDependencies = {} } = pkg
@@ -37,7 +52,7 @@ let updated = false
 
 // List monorepo references in package.json
 const refPkgNames = Object.keys({ ...dependencies, ...devDependencies }).filter(
-  name => name.startsWith(PKG_NAME_PREFIX)
+  isMonorepoPkg
 )
 
 // Add monorepo references found in package.json but not tsconfig.json
@@ -55,8 +70,10 @@ if (missingRefNames.length > 0) {
 // Remove monorepo references found in tsconfig.json but not package.json
 const prunedRefs = tsconfig.references.filter(
   ref =>
-    !ref.path.startsWith(PKG_ROOT + PKG_NAME_PREFIX) ||
-    refPkgNames.includes(ref.path.substr(PKG_ROOT.length))
+    !(
+      ref.path.startsWith(PKG_ROOT) &&
+      isMonorepoPkg(ref.path.substr(PKG_ROOT.length))
+    ) || refPkgNames.includes(ref.path.substr(PKG_ROOT.length))
 )
 if (prunedRefs.length !== tsconfig.references.length) {
   tsconfig.references = prunedRefs
