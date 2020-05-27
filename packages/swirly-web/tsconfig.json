@@ -7,5 +7,19 @@
   },
   "include": [
     "src"
+  ],
+  "references": [
+    {
+      "path": "../swirly-parser"
+    },
+    {
+      "path": "../swirly-renderer"
+    },
+    {
+      "path": "../swirly-theme-default-dark"
+    },
+    {
+      "path": "../swirly-theme-default-light"
+    }
   ]
 }

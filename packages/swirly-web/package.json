@@ -3,7 +3,8 @@
   "version": "0.13.6",
   "private": true,
   "scripts": {
-    "build": "yarn run clean && mkdir -p dist && run-p \"build:*\"",
+    "build": "yarn run clean && mkdir -p dist && yarn run _build:tsconfig && run-p \"build:*\"",
+    "_build:tsconfig": "../../scripts/build-tsconfig.js",
     "build:html": "run-s \"_build:html:*\"",
     "_build:html:01_minify": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
     "_build:html:02_dev": "sed s/__SCRIPT__/bundle.js/ dist/index.html > dist/debug.html",
