@@ -54,7 +54,9 @@ const renderMarbleDiagram = (
     styles.error_size!
   )
 
-  const ctx: RendererContext = { document, styles, streamHeight }
+  let index = 0
+  const nextIndex = () => index++
+  const ctx: RendererContext = { document, styles, streamHeight, nextIndex }
 
   const updaters = []
 

@@ -10,7 +10,7 @@ const supports = ({ notification: { kind } }: MessageSpecification) =>
   NotificationKind.COMPLETE.equals(kind)
 
 const render = (
-  { document, styles, streamHeight }: RendererContext,
+  { document, styles, streamHeight, nextIndex }: RendererContext,
   message: MessageSpecification
 ): RendererResult => {
   const s: CompletionMessageStyles = mergeStyles(
@@ -23,7 +23,11 @@ const render = (
   const y1 = (streamHeight - s.height!) / 2
   const y2 = y1 + s.height!
 
-  const $group = createElement(document, 'g')
+  const $group = createElement(document, 'g', {
+    role: 'listitem',
+    'aria-label': 'Completion',
+    tabindex: nextIndex()
+  })
   translate($group, x, 0)
 
   $group.appendChild(

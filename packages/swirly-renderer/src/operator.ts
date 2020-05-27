@@ -12,10 +12,14 @@ export const renderOperator = (
   ctx: RendererContext,
   operator: OperatorSpecification
 ): UpdatableRendererResult => {
-  const { document, styles } = ctx
+  const { document, styles, nextIndex } = ctx
   const s: OperatorStyles = mergeStyles(styles, operator.styles, 'operator_')
 
-  const $group = createElement(document, 'g')
+  // TODO Find a good `role`
+  const $group = createElement(document, 'g', {
+    'aria-label': 'Operator: ' + operator.title,
+    tabindex: nextIndex()
+  })
 
   const $rect = createElement(document, 'rect', {
     x: 0,

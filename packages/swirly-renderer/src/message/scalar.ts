@@ -23,7 +23,7 @@ const COLOR_TO_MODE: { [key: string]: 'light' | 'dark' } = {
 const supports = () => true
 
 const render = (
-  { document, styles, streamHeight }: RendererContext,
+  { document, styles, streamHeight, nextIndex }: RendererContext,
   message: MessageSpecification,
   { valueAngle }: MessageRendererOptions
 ): RendererResult => {
@@ -36,7 +36,11 @@ const render = (
 
   const x = message.frame * styles.frame_width! - styles.event_radius!
 
-  const $group = createElement(document, 'g')
+  const $group = createElement(document, 'g', {
+    role: 'listitem',
+    'aria-label': 'Message: ' + value,
+    tabindex: nextIndex()
+  })
   translate($group, x, 0)
 
   const fillColorMode = COLOR_TO_MODE[s.fill_color!]

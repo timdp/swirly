@@ -50,13 +50,21 @@ export const createRenderStream = (renderMessage: MessageRenderer) => (
   isHigherOrder: boolean,
   stream: StreamSpecification
 ): RendererResult => {
-  const { document, styles } = ctx
+  const { document, styles, nextIndex } = ctx
 
   const scaleTime = isHigherOrder
     ? createScaleTime(styles.higher_order_angle!)
     : nullScaleTime
 
-  const $group = createElement(document, 'g')
+  const label =
+    stream.title != null && stream.title !== ''
+      ? 'Stream: ' + stream.title
+      : 'Stream'
+  const $group = createElement(document, 'g', {
+    role: 'list',
+    'aria-label': label,
+    tabindex: nextIndex()
+  })
   const bboxes: Rectangle[] = []
 
   const add = ({ element, bbox }: RendererResult) => {

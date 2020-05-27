@@ -10,7 +10,7 @@ const supports = ({ notification: { kind } }: MessageSpecification) =>
   NotificationKind.ERROR.equals(kind)
 
 const render = (
-  { document, styles, streamHeight }: RendererContext,
+  { document, styles, streamHeight, nextIndex }: RendererContext,
   message: MessageSpecification
 ): RendererResult => {
   const s: ErrorMessageStyles = mergeStyles(styles, message.styles, 'error_')
@@ -18,7 +18,11 @@ const render = (
   const x = message.frame * styles.frame_width! - s.size! / 2
   const y = (streamHeight - s.size!) / 2
 
-  const $group = createElement(document, 'g')
+  const $group = createElement(document, 'g', {
+    role: 'listitem',
+    'aria-label': 'Error',
+    tabindex: nextIndex()
+  })
   translate($group, x, y)
 
   $group.appendChild(
