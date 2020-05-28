@@ -29,7 +29,7 @@
     "stream-to-promise": "^2.2.0"
   },
   "devDependencies": {
-    "@types/fabric": "^3.6.3",
+    "@types/fabric": "^3.6.5",
     "@types/node": "^14.0.4",
     "@types/stream-to-promise": "^2.2.1",
     "swirly-types": "^0.13.6"

@@ -23,11 +23,10 @@ export const rasterizeSvg = async (
   height: number,
   format: RasterizerOutputFormat
 ): Promise<Buffer> => {
-  // @ts-ignore
-  const canvas: RasterizingStaticCanvas = new fabric.StaticCanvas(null, {
+  const canvas = new fabric.StaticCanvas(null, {
     width,
     height
-  })
+  }) as RasterizingStaticCanvas
   const group = await loadSvg(svgXml)
   group.scaleToWidth(width)
   canvas.add(group)
