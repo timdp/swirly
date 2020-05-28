@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "fabric": "^3.6.3",
-    "stream-to-promise": "^2.2.0"
+    "stream-to-promise": "^3.0.0"
   },
   "devDependencies": {
     "@types/fabric": "^3.6.5",
