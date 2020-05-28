@@ -19,7 +19,7 @@
   "scripts": {
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
     "build:tsconfig": "../../scripts/build-tsconfig.js",
-    "build:js": "tsc",
+    "build:js": "rollup -c",
     "clean": "rm -rf dist",
     "prepublish": "yarn run build"
   },
@@ -41,11 +41,14 @@
     "yargs": "^15.3.1"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^8.0.0",
     "@types/js-yaml": "^3.12.4",
     "@types/node": "^14.0.4",
     "@types/stream-to-promise": "^2.2.1",
     "@types/svgo": "^1.3.3",
     "@types/yargs": "^15.0.5",
+    "rollup": "^2.11.2",
+    "rollup-plugin-typescript2": "^0.27.1",
     "swirly-types": "^0.13.6"
   }
 }

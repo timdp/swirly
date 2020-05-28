@@ -10,6 +10,7 @@
     "url": "https://tmdpw.eu"
   },
   "main": "dist/index.js",
+  "browser": "src/index.ts",
   "files": [
     "src/",
     "dist/"

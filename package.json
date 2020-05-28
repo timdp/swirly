@@ -5,7 +5,7 @@
     "build": "lerna run build",
     "buildfast": "npm-run-all build:parser-rxjs --parallel build:cli build:web",
     "build:parser-rxjs": "yarn workspace swirly-parser-rxjs build",
-    "build:cli": "yarn workspace swirly tsc --build",
+    "build:cli": "yarn workspace swirly build",
     "build:web": "yarn workspace swirly-web build",
     "clean": "lerna run clean",
     "test": "lerna run test",
