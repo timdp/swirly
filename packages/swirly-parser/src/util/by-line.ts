@@ -11,7 +11,8 @@ export function * byLine (str: string): Generator<string, void, undefined> {
     idx = str.indexOf('\n', idx + 1)
   }
 
-  if (prevIdx >= 0) {
-    yield removeCr(str.substring(prevIdx + 1))
+  const lastLine = removeCr(str.substring(prevIdx + 1))
+  if (lastLine !== '') {
+    yield lastLine
   }
 }
