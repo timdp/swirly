@@ -7,6 +7,7 @@ import { parseConfig } from './config'
 
 const reName = /([A-Za-z0-9])/g
 const reNameAndMarbles = /^([A-Za-z0-9])\s*=\s*(\S+)\s*$/
+const reLeadingWhitespace = /^(\s+)/
 
 function * extractNames (marbles: string): Generator<string, void, undefined> {
   let match
@@ -52,10 +53,13 @@ const run = (lines: string[], { content, allValues }: ParserContext) => {
 
   const messages = parseMarbles(marbles, localValues)
 
+  const match = reLeadingWhitespace.exec(marbles)
+  const frame = match != null ? match[0].length : 0
+
   if (name != null) {
     allValues[name] = messages
   } else {
-    const spec = toStreamSpec(messages, config.title)
+    const spec = toStreamSpec(messages, config.title, frame)
     content.push(spec)
   }
 }

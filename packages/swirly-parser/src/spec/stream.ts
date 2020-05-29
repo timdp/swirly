@@ -57,12 +57,17 @@ const testMessageToMessageSpecification = ({
 
 export const toStreamSpec = (
   messagesIn: TestMessage[],
-  title: string | null = null
+  title: string | null = null,
+  frame: number = 0
 ): StreamSpecification => {
   const messagesOut = messagesIn.map(testMessageToMessageSpecification)
+  for (const message of messagesOut) {
+    message.frame -= frame
+  }
   return {
     kind: 'S',
     title,
+    frame,
     duration: getDuration(messagesOut),
     messages: messagesOut
   }
