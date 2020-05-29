@@ -22,7 +22,7 @@
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "husky": "^4.2.5",
     "lerna": "^3.21.0",
-    "lint-staged": "^10.2.4",
+    "lint-staged": "^10.2.7",
     "prettier-standard": "^16.3.0",
     "standardx": "^5.0.0",
     "typescript": "^3.9.3"

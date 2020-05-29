@@ -25,7 +25,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "puppeteer": "^3.1.0"
+    "puppeteer": "^3.2.0"
   },
   "devDependencies": {
     "@types/puppeteer": "^3.0.0",
