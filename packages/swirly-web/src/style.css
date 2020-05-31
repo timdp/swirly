@@ -172,6 +172,20 @@ textarea {
   overflow: auto;
 }
 
+.result > svg {
+  user-select: none;
+  min-width: 100%;
+}
+
+.result.fit {
+  overflow: hidden;
+}
+
+.result.fit > svg {
+  width: 100%;
+  height: 100%;
+}
+
 .error {
   color: #C00000;
   white-space: pre-wrap;

@@ -11,6 +11,7 @@ declare const VERSION: string
 type State = {
   code: string
   darkThemeEnabled: boolean
+  scaleToFitEnabled: boolean
 }
 
 const EXAMPLE_CODE = `% An example application of the concatAll operator.
@@ -30,13 +31,18 @@ z = ---e--f-|
 
 const GUTTER_SIZE = 5
 
-const defaultState = {
+const DOUBLECLICK_INTERVAL = 500
+
+const DEFAULT_STATE: State = {
   code: EXAMPLE_CODE,
-  darkThemeEnabled: false
+  darkThemeEnabled: false,
+  scaleToFitEnabled: false
 }
 
 let lastRendered: string = ''
-let darkThemeEnabled: boolean
+let darkThemeEnabled: boolean = false
+let scaleToFitEnabled: boolean = false
+let lastSvgClick: number = 0
 
 const el = (className: string) => document.querySelector('.' + className)
 const versionContainer = el('version') as HTMLSpanElement
@@ -53,16 +59,20 @@ const readState = (): State => {
     state = JSON.parse(window.localStorage.state)
   } catch (_) {}
   if (state == null || typeof state !== 'object') {
-    state = defaultState
+    state = DEFAULT_STATE
   }
   if (typeof state.code !== 'string' || state.code.trim() === '') {
-    state.code = defaultState.code
+    state.code = DEFAULT_STATE.code
   }
   return state
 }
 
-const writeState = (code: string, darkThemeEnabled: boolean) => {
-  const state: State = { code, darkThemeEnabled }
+const writeState = () => {
+  const state: State = {
+    code: specField.value,
+    darkThemeEnabled,
+    scaleToFitEnabled
+  }
   try {
     window.localStorage.state = JSON.stringify(state)
   } catch (_) {}
@@ -73,17 +83,47 @@ const setControlsEnabled = (enabled: boolean) => {
   exportPngButton.disabled = !enabled
 }
 
-const createErrorContainer = (msg: string): HTMLDivElement => {
-  const div = document.createElement('div')
-  div.className = 'error'
-  div.innerText = msg
-  return div
+const setScaleToFitEnabled = (enabled: boolean) => {
+  scaleToFitEnabled = enabled
+  resultContainer.className = 'result' + (enabled ? ' fit' : '')
+}
+
+const setDarkThemeEnabled = (value: boolean) => {
+  darkThemeEnabled = value
+  document.body.className = darkThemeEnabled ? 'dark' : ''
+  update()
+}
+
+const toggleTheme = () => {
+  setDarkThemeEnabled(!darkThemeEnabled)
+}
+
+const onSvgClick = () => {
+  const now = Date.now()
+  const elapsed = now - lastSvgClick
+  if (elapsed < DOUBLECLICK_INTERVAL) {
+    lastSvgClick = 0
+    setScaleToFitEnabled(!scaleToFitEnabled)
+    writeState()
+  } else {
+    lastSvgClick = now
+  }
 }
 
 const renderResult = (element: HTMLElement, isError: boolean) => {
   resultContainer.innerHTML = ''
   resultContainer.appendChild(element)
+  if (!isError) {
+    element.addEventListener('click', onSvgClick)
+  }
   setControlsEnabled(!isError)
+}
+
+const createErrorContainer = (msg: string): HTMLDivElement => {
+  const div = document.createElement('div')
+  div.className = 'error'
+  div.innerText = msg
+  return div
 }
 
 const update = () => {
@@ -95,7 +135,7 @@ const update = () => {
   }
   lastRendered = serialized
 
-  writeState(code, darkThemeEnabled)
+  writeState()
 
   try {
     const spec = parseMarbleDiagramSpec(code)
@@ -118,16 +158,6 @@ const download = (dataUri: string, name: string) => {
   a.href = dataUri
   a.download = name
   a.click()
-}
-
-const setDarkThemeEnabled = (value: boolean) => {
-  darkThemeEnabled = value
-  document.body.className = darkThemeEnabled ? 'dark' : ''
-  update()
-}
-
-const toggleTheme = () => {
-  setDarkThemeEnabled(!darkThemeEnabled)
 }
 
 const exportSvg = () => {
@@ -170,4 +200,5 @@ versionContainer.textContent = `v${VERSION}`
 const state = readState()
 specField.value = state.code
 setDarkThemeEnabled(!!state.darkThemeEnabled)
+setScaleToFitEnabled(!!state.scaleToFitEnabled)
 update()
