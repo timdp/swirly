@@ -223,3 +223,21 @@ body.dark .spec {
   background: black;
   color: white;
 }
+
+/* Tweaks for small screens */
+
+@media (max-width: 479px) {
+  body,
+  button,
+  textarea {
+    font-size: 13px;
+  }
+
+  .logo img {
+    height: 26px;
+  }
+
+  .version {
+    display: none;
+  }
+}
