@@ -8,10 +8,12 @@ import { styles as lightStyles } from 'swirly-theme-default-light'
 
 declare const VERSION: string
 
+type ScaleMode = 'fit' | 'none'
+
 type State = {
   code: string
   darkThemeEnabled: boolean
-  scaleToFitEnabled: boolean
+  scaleMode: ScaleMode
 }
 
 const EXAMPLE_CODE = `% An example application of the concatAll operator.
@@ -36,12 +38,12 @@ const DOUBLECLICK_INTERVAL = 500
 const DEFAULT_STATE: State = {
   code: EXAMPLE_CODE,
   darkThemeEnabled: false,
-  scaleToFitEnabled: false
+  scaleMode: 'fit'
 }
 
 let lastRendered: string = ''
-let darkThemeEnabled: boolean = false
-let scaleToFitEnabled: boolean = false
+let darkThemeEnabled: boolean
+let scaleMode: ScaleMode
 let lastSvgClick: number = 0
 
 const el = (className: string) => document.querySelector('.' + className)
@@ -64,6 +66,9 @@ const readState = (): State => {
   if (typeof state.code !== 'string' || state.code.trim() === '') {
     state.code = DEFAULT_STATE.code
   }
+  if (state.scaleMode == null) {
+    state.scaleMode = 'fit'
+  }
   return state
 }
 
@@ -71,7 +76,7 @@ const writeState = () => {
   const state: State = {
     code: specField.value,
     darkThemeEnabled,
-    scaleToFitEnabled
+    scaleMode
   }
   try {
     window.localStorage.state = JSON.stringify(state)
@@ -83,9 +88,13 @@ const setControlsEnabled = (enabled: boolean) => {
   exportPngButton.disabled = !enabled
 }
 
-const setScaleToFitEnabled = (enabled: boolean) => {
-  scaleToFitEnabled = enabled
-  resultContainer.className = 'result' + (enabled ? ' fit' : '')
+const setScaleMode = (mode: ScaleMode) => {
+  scaleMode = mode
+  resultContainer.className = 'result' + (mode === 'fit' ? ' fit' : '')
+}
+
+const toggleScaleMode = () => {
+  setScaleMode(scaleMode === 'fit' ? 'none' : 'fit')
 }
 
 const setDarkThemeEnabled = (value: boolean) => {
@@ -103,7 +112,7 @@ const onSvgClick = () => {
   const elapsed = now - lastSvgClick
   if (elapsed < DOUBLECLICK_INTERVAL) {
     lastSvgClick = 0
-    setScaleToFitEnabled(!scaleToFitEnabled)
+    toggleScaleMode()
     writeState()
   } else {
     lastSvgClick = now
@@ -200,5 +209,5 @@ versionContainer.textContent = `v${VERSION}`
 const state = readState()
 specField.value = state.code
 setDarkThemeEnabled(!!state.darkThemeEnabled)
-setScaleToFitEnabled(!!state.scaleToFitEnabled)
+setScaleMode(state.scaleMode)
 update()
