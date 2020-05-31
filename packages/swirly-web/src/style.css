@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: 0;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -119,6 +123,11 @@ textarea {
   color: black;
   text-align: center;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.button button:hover {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .button button:disabled {
@@ -126,8 +135,11 @@ textarea {
 }
 
 .button button:focus {
-  outline: 0;
-  background: #F0F0F0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button button:active {
+  margin-top: 2px;
 }
 
 .theme .label-dark {
@@ -151,10 +163,6 @@ textarea {
   border: 0;
   margin: 0;
   padding: 15px;
-}
-
-.spec:focus {
-  outline: 0;
 }
 
 /* Diagram */
@@ -191,10 +199,6 @@ body.dark .button button {
 
 body.dark .button button:disabled {
   color: #606060;
-}
-
-body.dark .button button:focus {
-  background: #505050;
 }
 
 body.dark .theme .label-light {
