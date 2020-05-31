@@ -106,7 +106,7 @@ textarea {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  margin-right: 10px;
+  margin-right: 1ex;
 }
 
 .button:last-child {
