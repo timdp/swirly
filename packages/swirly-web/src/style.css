@@ -60,6 +60,7 @@ a:active {
 }
 
 textarea {
+  white-space: pre;
   resize: none;
 }
 
