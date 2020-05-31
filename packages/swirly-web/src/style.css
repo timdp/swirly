@@ -83,8 +83,8 @@ textarea {
 
 .gutter,
 .menu {
-  background: #E0E0E0;
-  border: 1px solid #D0D0D0;
+  background: #ECECEC;
+  border: 1px solid #DCDCDC;
   border-left: 0;
   border-right: 0;
 }
@@ -98,7 +98,7 @@ textarea {
 .version {
   display: none;
   padding-left: 1ex;
-  color: #808080;
+  opacity: 0.33;
 }
 
 .button {
@@ -117,7 +117,7 @@ textarea {
   flex: 0;
   margin: 0;
   padding: 3px 12px;
-  border: 0;
+  border: 1px solid #DCDCDC;
   border-radius: 1000px;
   background: white;
   color: black;
@@ -130,16 +130,17 @@ textarea {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.button button:disabled {
-  color: #E0E0E0;
-}
-
 .button button:focus {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .button button:active {
   margin-top: 2px;
+}
+
+.button button:disabled {
+  cursor: default;
+  opacity: 0.5;
 }
 
 .theme .label-dark {
@@ -195,10 +196,7 @@ body.dark {
 body.dark .button button {
   background: #404040;
   color: white;
-}
-
-body.dark .button button:disabled {
-  color: #606060;
+  border-color: #303030;
 }
 
 body.dark .theme .label-light {
@@ -211,8 +209,8 @@ body.dark .theme .label-dark {
 
 body.dark .gutter,
 body.dark .menu {
-  background: #303030;
-  border-color: #404040;
+  background: #202020;
+  border-color: #303030;
 }
 
 body.dark .error {
