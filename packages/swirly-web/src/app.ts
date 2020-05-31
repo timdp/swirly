@@ -8,8 +8,12 @@ import { styles as lightStyles } from 'swirly-theme-default-light'
 
 declare const VERSION: string
 
-const GUTTER_SIZE = 5
-const EXAMPLE = `% An example application of the concatAll operator.
+type State = {
+  code: string
+  darkThemeEnabled: boolean
+}
+
+const EXAMPLE_CODE = `% An example application of the concatAll operator.
 % Edit this code to redraw the diagram in real time.
 
 x = ----a------b------|
@@ -24,6 +28,16 @@ z = ---e--f-|
 
 -----a------b---------c-d------e--f-|`
 
+const GUTTER_SIZE = 5
+
+const defaultState = {
+  code: EXAMPLE_CODE,
+  darkThemeEnabled: false
+}
+
+let lastRendered: string = ''
+let darkThemeEnabled: boolean
+
 const el = (className: string) => document.querySelector('.' + className)
 const versionContainer = el('version') as HTMLSpanElement
 const themeToggleButton = el('theme-toggle') as HTMLButtonElement
@@ -33,8 +47,26 @@ const inputContainer = el('input') as HTMLDivElement
 const specField = el('spec') as HTMLTextAreaElement
 const resultContainer = el('result') as HTMLDivElement
 
-let lastRendered: string = ''
-let darkThemeEnabled: boolean = false
+const readState = (): State => {
+  let state
+  try {
+    state = JSON.parse(window.localStorage.state)
+  } catch (_) {}
+  if (state == null || typeof state !== 'object') {
+    state = defaultState
+  }
+  if (typeof state.code !== 'string' || state.code.trim() === '') {
+    state.code = defaultState.code
+  }
+  return state
+}
+
+const writeState = (code: string, darkThemeEnabled: boolean) => {
+  const state: State = { code, darkThemeEnabled }
+  try {
+    window.localStorage.state = JSON.stringify(state)
+  } catch (_) {}
+}
 
 const setControlsEnabled = (enabled: boolean) => {
   exportSvgButton.disabled = !enabled
@@ -63,6 +95,8 @@ const update = () => {
   }
   lastRendered = serialized
 
+  writeState(code, darkThemeEnabled)
+
   try {
     const spec = parseMarbleDiagramSpec(code)
     const styles = darkThemeEnabled ? darkStyles : lightStyles
@@ -86,10 +120,14 @@ const download = (dataUri: string, name: string) => {
   a.click()
 }
 
-const toggleTheme = () => {
-  darkThemeEnabled = !darkThemeEnabled
+const setDarkThemeEnabled = (value: boolean) => {
+  darkThemeEnabled = value
   document.body.className = darkThemeEnabled ? 'dark' : ''
   update()
+}
+
+const toggleTheme = () => {
+  setDarkThemeEnabled(!darkThemeEnabled)
 }
 
 const exportSvg = () => {
@@ -114,13 +152,14 @@ split([inputContainer, resultContainer], {
   gutterSize: GUTTER_SIZE
 })
 
-versionContainer.textContent = `v${VERSION}`
-specField.value = EXAMPLE
-
 specField.addEventListener('change', update)
 specField.addEventListener('keyup', update)
 themeToggleButton.addEventListener('click', toggleTheme)
 exportSvgButton.addEventListener('click', exportSvg)
 exportPngButton.addEventListener('click', exportPng)
 
+versionContainer.textContent = `v${VERSION}`
+const state = readState()
+specField.value = state.code
+setDarkThemeEnabled(!!state.darkThemeEnabled)
 update()
