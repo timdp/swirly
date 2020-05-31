@@ -147,6 +147,14 @@ const exportPng = () => {
   image.src = getSvgDataUri()
 }
 
+const updateBodyHeight = () => {
+  document.body.style.height = window.innerHeight + 'px'
+}
+
+updateBodyHeight()
+window.addEventListener('resize', updateBodyHeight)
+window.addEventListener('orientationchange', updateBodyHeight)
+
 split([inputContainer, resultContainer], {
   direction: 'vertical',
   gutterSize: GUTTER_SIZE

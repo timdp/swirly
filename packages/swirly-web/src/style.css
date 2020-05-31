@@ -21,8 +21,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
   background: white;
   color: black;
 }
@@ -31,7 +29,7 @@ body,
 button,
 textarea {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
   font-style: normal;
 }
@@ -66,21 +64,13 @@ textarea {
 
 /* Core layout */
 
-.main {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .menu {
-  flex: 0;
+  height: 40px;
   display: flex;
 }
 
 .split {
-  flex: 1;
+  height: calc(100% - 40px);
 }
 
 .gutter {
@@ -97,7 +87,12 @@ textarea {
 
 /* Menu */
 
+.logo {
+  margin: 5px 0;
+}
+
 .version {
+  display: none;
   padding-left: 1ex;
   color: #808080;
 }
@@ -117,9 +112,9 @@ textarea {
 .button button {
   flex: 0;
   margin: 0;
-  padding: 5px 15px;
+  padding: 3px 12px;
   border: 0;
-  border-radius: 15px;
+  border-radius: 1000px;
   background: white;
   color: black;
   text-align: center;
@@ -225,20 +220,30 @@ body.dark .spec {
   color: white;
 }
 
-/* Tweaks for small screens */
-
-@media (max-width: 479px) {
+@media (min-width: 480px) {
   body,
   button,
   textarea {
-    font-size: 13px;
+    font-size: 15px;
+  }
+
+  .button button {
+    padding: 5px 15px;
   }
 
   .logo img {
-    height: 26px;
+    height: 30px;
+  }
+
+  .menu {
+    height: 50px;
+  }
+
+  .split {
+    height: calc(100% - 50px);
   }
 
   .version {
-    display: none;
+    display: inline;
   }
 }
