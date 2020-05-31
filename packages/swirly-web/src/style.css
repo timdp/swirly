@@ -43,7 +43,7 @@ button {
 }
 
 textarea {
-  font-family: monospace;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 a img {
