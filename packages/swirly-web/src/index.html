@@ -11,38 +11,35 @@
 
 <body>
   <div class="main">
-    <div class="split">
-      <div class="result"></div>
-      <div class="input">
-        <textarea class="spec" accesskey="c"></textarea>
-      </div>
-    </div>
-    <div class="controls">
+    <div class="menu">
       <div class="branding">
         <a class="logo" href="https://github.com/timdp/swirly" target="_blank">
-          <img src="logo.png" alt="Swirly">
+          <img src="logo.png" alt="Swirly" height="30">
         </a>
         <span class="version"></span>
       </div>
-      <div class="options theme">
-        <span class="label">
-          <span class="accel">T</span>heme:
-        </span>
-        <button class="theme-toggle" accesskey="t">
-          Light
-        </button>
-      </div>
-      <div class="options export">
-        <span class="label">
-          Export:
-        </span>
+      <div class="button export">
         <button class="export-svg" accesskey="s">
-          <span class="accel">S</span>VG
-        </button>
-        <button class="export-png" accesskey="p">
-          <span class="accel">P</span>NG
+          💾 SVG
         </button>
       </div>
+      <div class="button export">
+        <button class="export-png" accesskey="p">
+          💾 PNG
+        </button>
+      </div>
+      <div class="button theme">
+        <button class="theme-toggle" accesskey="t">
+          <span class="label-light">☀️</span>
+          <span class="label-dark">🌙</span>
+        </button>
+      </div>
+    </div>
+    <div class="split">
+      <div class="input">
+        <textarea class="spec" accesskey="c"></textarea>
+      </div>
+      <div class="result"></div>
     </div>
   </div>
   <script src="__SCRIPT__"></script>

@@ -26,12 +26,12 @@ z = ---e--f-|
 
 const el = (className: string) => document.querySelector('.' + className)
 const versionContainer = el('version') as HTMLSpanElement
-const resultContainer = el('result') as HTMLDivElement
-const inputContainer = el('input') as HTMLDivElement
-const specField = el('spec') as HTMLTextAreaElement
 const themeToggleButton = el('theme-toggle') as HTMLButtonElement
 const exportSvgButton = el('export-svg') as HTMLButtonElement
 const exportPngButton = el('export-png') as HTMLButtonElement
+const inputContainer = el('input') as HTMLDivElement
+const specField = el('spec') as HTMLTextAreaElement
+const resultContainer = el('result') as HTMLDivElement
 
 let lastRendered: string = ''
 let darkThemeEnabled: boolean = false
@@ -88,7 +88,6 @@ const download = (dataUri: string, name: string) => {
 
 const toggleTheme = () => {
   darkThemeEnabled = !darkThemeEnabled
-  themeToggleButton.textContent = darkThemeEnabled ? 'Dark' : 'Light'
   document.body.className = darkThemeEnabled ? 'dark' : ''
   update()
 }
@@ -110,7 +109,7 @@ const exportPng = () => {
   image.src = getSvgDataUri()
 }
 
-split([resultContainer, inputContainer], {
+split([inputContainer, resultContainer], {
   direction: 'vertical',
   gutterSize: GUTTER_SIZE
 })
