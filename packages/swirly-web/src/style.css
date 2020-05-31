@@ -150,7 +150,7 @@ textarea {
   flex: 1;
   display: flex;
   align-items: center;
-  padding: 5px 15px;
+  padding: 0 15px;
 }
 
 /* Code */
