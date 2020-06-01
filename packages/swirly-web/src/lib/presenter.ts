@@ -67,13 +67,12 @@ export class Presenter implements IEventTarget {
     const styles = this._model.darkThemeEnabled ? darkStyles : lightStyles
     try {
       const spec = parseMarbleDiagramSpec(this._model.code)
-      const renderResult = renderMarbleDiagram(spec, { styles })
-      const svgElement = (renderResult.document
-        .documentElement as unknown) as SVGElement
+      const { document: doc } = renderMarbleDiagram(spec, { styles })
+      const svgElement = (doc.documentElement as unknown) as SVGElement
       this._view.setScaleMode(this._model.scaleMode)
-      this._view.setResult(svgElement)
+      this._view.setDiagramRendering(svgElement)
     } catch (err) {
-      this._view.setError(err.stack)
+      this._view.setRenderErrorMessage(err.stack)
     }
   }
 
@@ -82,7 +81,7 @@ export class Presenter implements IEventTarget {
   }
 
   _getSvgDataUri (): string {
-    const svgXml = this._view.getResultHtml()
+    const svgXml = this._view.getDiagramSvgXml()
     return 'data:image/svg+xml,' + encodeURI(svgXml)
   }
 }

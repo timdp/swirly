@@ -17,6 +17,8 @@ export class View {
   private _inputContainer: HTMLDivElement
   private _specField: HTMLTextAreaElement
   private _resultContainer: HTMLDivElement
+  private _diagramContainer: HTMLDivElement
+  private _errorContainer: HTMLDivElement
   private _eventTarget?: IEventTarget
   private _lastSvgClick: number = 0
 
@@ -28,6 +30,8 @@ export class View {
     this._inputContainer = el('input')
     this._specField = el('spec')
     this._resultContainer = el('result')
+    this._diagramContainer = el('diagram')
+    this._errorContainer = el('error')
   }
 
   init (version: string, eventTarget: IEventTarget, code: string) {
@@ -41,33 +45,33 @@ export class View {
     this._addDomListeners()
   }
 
-  getResultHtml (): string {
-    return this._resultContainer.innerHTML
+  getDiagramSvgXml (): string {
+    return this._diagramContainer.innerHTML
   }
 
-  setResult (svgElement: SVGElement) {
+  setDiagramRendering (svgElement: SVGElement) {
     this._lastSvgClick = 0
     svgElement.addEventListener('click', () => {
       this._onSvgClick()
     })
-    this._populateResultContainer(svgElement)
+    this._resultContainer.classList.remove('failed')
+    this._diagramContainer.innerHTML = ''
+    this._diagramContainer.appendChild(svgElement)
     this._setControlsEnabled(true)
   }
 
-  setError (stack: string) {
-    const div = document.createElement('div')
-    div.className = 'error'
-    div.innerText = stack
-    this._populateResultContainer(div)
+  setRenderErrorMessage (message: string) {
+    this._resultContainer.classList.add('failed')
+    this._errorContainer.textContent = message
     this._setControlsEnabled(false)
   }
 
   setDarkThemeEnabled (enabled: boolean) {
-    document.body.className = enabled ? 'dark' : ''
+    document.body.classList.toggle('dark', enabled)
   }
 
   setScaleMode (scaleMode: ScaleMode) {
-    this._resultContainer.className = 'result scale-' + scaleMode
+    this._diagramContainer.classList.toggle('scale-fit', scaleMode === 'fit')
   }
 
   _addDomListeners () {
@@ -85,11 +89,6 @@ export class View {
     this._exportPngButton.addEventListener('click', () => {
       this._eventTarget!.onPngExportRequested()
     })
-  }
-
-  _populateResultContainer (element: Element) {
-    this._resultContainer.innerHTML = ''
-    this._resultContainer.appendChild(element)
   }
 
   _setControlsEnabled (enabled: boolean) {
