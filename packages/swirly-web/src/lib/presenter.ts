@@ -68,15 +68,27 @@ export class Presenter implements IEventTarget {
   }
 
   _render () {
-    const styles = this._model.darkThemeEnabled ? darkStyles : lightStyles
+    const { code, darkThemeEnabled } = this._model
+    const styles = darkThemeEnabled ? darkStyles : lightStyles
+
+    let spec
     try {
-      const spec = parseMarbleDiagramSpec(this._model.code)
-      const { document: doc } = renderMarbleDiagram(spec, { styles })
-      const svgElement = (doc.documentElement as unknown) as SVGElement
-      this._view.setDiagramRendering(svgElement)
+      spec = parseMarbleDiagramSpec(code)
     } catch (err) {
-      this._view.setRenderErrorMessage(err.stack)
+      this._view.setRenderErrorMessage('Failed to parse: ' + err.stack)
+      return
     }
+
+    let result
+    try {
+      result = renderMarbleDiagram(spec, { styles })
+    } catch (err) {
+      this._view.setRenderErrorMessage('Failed to render: ' + err.stack)
+      return
+    }
+
+    const svg = (result.document.documentElement as unknown) as SVGElement
+    this._view.setDiagramRendering(svg)
   }
 
   _modelUpdated () {
