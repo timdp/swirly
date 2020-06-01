@@ -23,11 +23,15 @@ export class Presenter implements IEventTarget {
   }
 
   start () {
-    this._view.init(VERSION, this, this._model.code)
+    const { code, darkThemeEnabled, scaleMode } = this._model
+    this._view.init(this, VERSION, code, darkThemeEnabled, scaleMode)
     this._render()
   }
 
   onSpecificationChange (code: string) {
+    if (code === this._model.code) {
+      return
+    }
     this._model.code = code
     this._modelUpdated()
     this._render()
@@ -36,7 +40,14 @@ export class Presenter implements IEventTarget {
   onThemeToggleRequested () {
     this._model.darkThemeEnabled = !this._model.darkThemeEnabled
     this._modelUpdated()
+    this._view.setDarkThemeEnabled(this._model.darkThemeEnabled)
     this._render()
+  }
+
+  onScaleModeToggleRequested () {
+    this._model.scaleMode = this._model.scaleMode === 'fit' ? 'none' : 'fit'
+    this._modelUpdated()
+    this._view.setScaleMode(this._model.scaleMode)
   }
 
   onPngExportRequested () {
@@ -56,20 +67,12 @@ export class Presenter implements IEventTarget {
     download(this._getSvgDataUri(), 'diagram.svg')
   }
 
-  onScaleModeToggleRequested () {
-    this._model.scaleMode = this._model.scaleMode === 'fit' ? 'none' : 'fit'
-    this._modelUpdated()
-    this._view.setScaleMode(this._model.scaleMode)
-  }
-
   _render () {
-    this._view.setDarkThemeEnabled(this._model.darkThemeEnabled)
     const styles = this._model.darkThemeEnabled ? darkStyles : lightStyles
     try {
       const spec = parseMarbleDiagramSpec(this._model.code)
       const { document: doc } = renderMarbleDiagram(spec, { styles })
       const svgElement = (doc.documentElement as unknown) as SVGElement
-      this._view.setScaleMode(this._model.scaleMode)
       this._view.setDiagramRendering(svgElement)
     } catch (err) {
       this._view.setRenderErrorMessage(err.stack)

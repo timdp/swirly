@@ -34,14 +34,22 @@ export class View {
     this._errorContainer = el('error')
   }
 
-  init (version: string, eventTarget: IEventTarget, code: string) {
-    this._versionContainer.textContent = `v${version}`
+  init (
+    eventTarget: IEventTarget,
+    version: string,
+    code: string,
+    darkThemeEnabled: boolean,
+    scaleMode: ScaleMode
+  ) {
     this._eventTarget = eventTarget
-    this._specField.value = code
+    this._versionContainer.textContent = `v${version}`
     split([this._inputContainer, this._resultContainer], {
       direction: 'vertical',
       gutterSize: View.GUTTER_SIZE
     })
+    this._specField.value = code
+    this.setDarkThemeEnabled(darkThemeEnabled)
+    this.setScaleMode(scaleMode)
     this._addDomListeners()
   }
 
