@@ -6,6 +6,7 @@ const createHtml = (svgXml: string, width: number, height: number) => `
   <!doctype html>
   <html>
     <head>
+      <meta charset="utf-8">
       <style>
         html, body { margin: 0; padding: 0; }
         body > svg { width: ${width}px; height: ${height}px; }
