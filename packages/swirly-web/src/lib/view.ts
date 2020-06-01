@@ -20,7 +20,7 @@ export class View {
   private _diagramContainer: HTMLDivElement
   private _errorContainer: HTMLDivElement
   private _eventTarget?: IEventTarget
-  private _lastSvgClick: number = 0
+  private _lastSvgClick: number
 
   constructor () {
     this._versionContainer = el('version')
@@ -32,6 +32,7 @@ export class View {
     this._resultContainer = el('result')
     this._diagramContainer = el('diagram')
     this._errorContainer = el('error')
+    this._lastSvgClick = 0
   }
 
   init (
