@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "dedent": "^0.7.0",
     "split.js": "^1.5.11",
     "swirly-parser": "^0.13.7",
     "swirly-renderer": "^0.13.7",
@@ -23,6 +24,7 @@
     "swirly-theme-default-light": "^0.13.7"
   },
   "devDependencies": {
+    "@types/dedent": "^0.7.0",
     "@types/split.js": "^1.4.0",
     "clean-css-cli": "^4.3.0",
     "html-minifier": "^4.0.0",
