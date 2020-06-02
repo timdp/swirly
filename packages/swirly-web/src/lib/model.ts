@@ -1,26 +1,7 @@
-import dedent from 'dedent'
-
 import { ScaleMode } from './types'
 
 export class Model {
-  static readonly DEFAULT_CODE = dedent(`
-    % An example application of the concatAll operator.
-    % Edit this code to redraw the diagram in real time.
-
-    x = ----a------b------|
-
-    y = ---c-d---|
-
-    z = ---e--f-|
-
-    -x---y----z------|
-
-    > concatAll
-
-    -----a------b---------c-d------e--f-|
-  `)
-
-  code: string = Model.DEFAULT_CODE
+  code: string = ''
   darkThemeEnabled: boolean = false
   scaleMode: ScaleMode = 'fit'
 

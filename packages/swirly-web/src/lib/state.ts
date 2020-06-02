@@ -13,13 +13,13 @@ export class StateRepository {
 
     const model = new Model()
 
-    if (typeof state.code === 'string' && state.code.trim() !== '') {
+    if (typeof state.code === 'string') {
       model.code = state.code
     }
 
     model.darkThemeEnabled = !!state.darkThemeEnabled
 
-    if (state.scaleMode != null) {
+    if (typeof state.scaleMode === 'string') {
       model.scaleMode = state.scaleMode
     }
 

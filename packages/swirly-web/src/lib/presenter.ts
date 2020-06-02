@@ -1,3 +1,4 @@
+import dedent from 'dedent'
 import { parseMarbleDiagramSpec } from 'swirly-parser'
 import { renderMarbleDiagram } from 'swirly-renderer'
 import { styles as darkStyles } from 'swirly-theme-default-dark'
@@ -12,6 +13,23 @@ import { View } from './view'
 declare const VERSION: string
 
 export class Presenter implements IEventTarget {
+  static readonly DEFAULT_CODE = dedent(`
+    % An example application of the concatAll operator.
+    % Edit this code to redraw the diagram in real time.
+
+    x = ----a------b------|
+
+    y = ---c-d---|
+
+    z = ---e--f-|
+
+    -x---y----z------|
+
+    > concatAll
+
+    -----a------b---------c-d------e--f-|
+  `)
+
   private _model: Model
   private _view: View
   private _stateRepository: StateRepository
@@ -23,6 +41,9 @@ export class Presenter implements IEventTarget {
   }
 
   start () {
+    if (this._model.code === '') {
+      this._model.code = Presenter.DEFAULT_CODE
+    }
     const { code, darkThemeEnabled, scaleMode } = this._model
     this._view.init(this, VERSION, code, darkThemeEnabled, scaleMode)
     this._render()
