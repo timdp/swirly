@@ -25,6 +25,7 @@
     "node": ">=10"
   },
   "devDependencies": {
+    "@types/node": "^14.0.9",
     "swirly-types": "^0.13.7"
   }
 }

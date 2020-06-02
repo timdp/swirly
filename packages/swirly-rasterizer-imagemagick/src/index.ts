@@ -1,4 +1,4 @@
-import { spawnSync } from 'child_process'
+import { spawnSync, StdioOptions } from 'child_process'
 import { RasterizerOutputFormat } from 'swirly-types'
 
 export const rasterizeSvg = async (
@@ -11,10 +11,10 @@ export const rasterizeSvg = async (
   const args = ['-resize', `${width}x${height}!`, 'svg:-', `${format}:-`]
   const options = {
     input: svgXml,
-    stdio: [null, 'pipe', 'ignore'],
-    shell: true
+    stdio: [null, 'pipe', 'ignore'] as StdioOptions,
+    shell: true,
+    encoding: null
   }
-  // XXX Typings for spawnSync are weird
-  const { stdout } = spawnSync(cmd, args, options as any)
+  const { stdout } = spawnSync(cmd, args, options)
   return (stdout as unknown) as Buffer
 }
