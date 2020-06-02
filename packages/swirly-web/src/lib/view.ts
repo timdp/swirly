@@ -1,5 +1,6 @@
 import split from 'split.js'
 
+import { onDoubleClick } from './double-click'
 import { IEventTarget, ScaleMode } from './types'
 
 const el = <T extends HTMLElement>(className: string) =>
@@ -7,8 +8,6 @@ const el = <T extends HTMLElement>(className: string) =>
 
 export class View {
   static readonly GUTTER_SIZE = 5
-
-  static readonly DOUBLECLICK_INTERVAL = 500
 
   private _versionContainer: HTMLSpanElement
   private _themeToggleButton: HTMLButtonElement
@@ -19,8 +18,6 @@ export class View {
   private _resultContainer: HTMLDivElement
   private _diagramContainer: HTMLDivElement
   private _errorContainer: HTMLDivElement
-  private _eventTarget?: IEventTarget
-  private _lastSvgClick: number
 
   constructor () {
     this._versionContainer = el('version')
@@ -32,7 +29,6 @@ export class View {
     this._resultContainer = el('result')
     this._diagramContainer = el('diagram')
     this._errorContainer = el('error')
-    this._lastSvgClick = 0
   }
 
   init (
@@ -42,7 +38,6 @@ export class View {
     darkThemeEnabled: boolean,
     scaleMode: ScaleMode
   ) {
-    this._eventTarget = eventTarget
     this._versionContainer.textContent = `v${version}`
     split([this._inputContainer, this._resultContainer], {
       direction: 'vertical',
@@ -51,7 +46,7 @@ export class View {
     this._specField.value = code
     this.setDarkThemeEnabled(darkThemeEnabled)
     this.setScaleMode(scaleMode)
-    this._addDomListeners()
+    this._addDomListeners(eventTarget)
   }
 
   getDiagramSvgXml (): string {
@@ -59,10 +54,6 @@ export class View {
   }
 
   setDiagramRendering (svgElement: SVGElement) {
-    this._lastSvgClick = 0
-    svgElement.addEventListener('click', () => {
-      this._onSvgClick()
-    })
     this._resultContainer.classList.remove('failed')
     this._diagramContainer.innerHTML = ''
     this._diagramContainer.appendChild(svgElement)
@@ -83,36 +74,28 @@ export class View {
     this._diagramContainer.classList.toggle('scale-fit', scaleMode === 'fit')
   }
 
-  _addDomListeners () {
+  _addDomListeners (eventTarget: IEventTarget) {
     const onSpecificationChange = () => {
-      this._eventTarget!.onSpecificationChange(this._specField.value)
+      eventTarget.onSpecificationChange(this._specField.value)
     }
     this._specField.addEventListener('change', onSpecificationChange)
     this._specField.addEventListener('keyup', onSpecificationChange)
+    onDoubleClick(this._diagramContainer, () => {
+      eventTarget.onScaleModeToggleRequested()
+    })
     this._themeToggleButton.addEventListener('click', () => {
-      this._eventTarget!.onThemeToggleRequested()
+      eventTarget.onThemeToggleRequested()
     })
     this._exportSvgButton.addEventListener('click', () => {
-      this._eventTarget!.onSvgExportRequested()
+      eventTarget.onSvgExportRequested()
     })
     this._exportPngButton.addEventListener('click', () => {
-      this._eventTarget!.onPngExportRequested()
+      eventTarget.onPngExportRequested()
     })
   }
 
   _setControlsEnabled (enabled: boolean) {
     this._exportSvgButton.disabled = !enabled
     this._exportPngButton.disabled = !enabled
-  }
-
-  _onSvgClick () {
-    const now = Date.now()
-    const elapsed = now - this._lastSvgClick
-    if (elapsed < View.DOUBLECLICK_INTERVAL) {
-      this._lastSvgClick = 0
-      this._eventTarget!.onScaleModeToggleRequested()
-    } else {
-      this._lastSvgClick = now
-    }
   }
 }
