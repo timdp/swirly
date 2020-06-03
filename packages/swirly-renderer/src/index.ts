@@ -37,13 +37,6 @@ const renderMarbleDiagram = (
     ...spec.styles
   }
 
-  const $bg = createElement(document, 'rect', {
-    x: 0,
-    y: 0,
-    fill: styles.background_color
-  })
-  $svg.appendChild($bg)
-
   const $group = createElement(document, 'g')
   translate($group, styles.canvas_padding!, styles.canvas_padding!)
   $svg.appendChild($group)
@@ -89,8 +82,17 @@ const renderMarbleDiagram = (
   $svg.setAttribute('width', '' + width)
   $svg.setAttribute('height', '' + height)
 
-  $bg.setAttribute('width', '' + width)
-  $bg.setAttribute('height', '' + height)
+  const bgColor = styles.background_color!
+  if (bgColor !== '' && bgColor !== 'transparent') {
+    const $bg = createElement(document, 'rect', {
+      x: 0,
+      y: 0,
+      width: '' + width,
+      height: '' + height,
+      fill: bgColor
+    })
+    $svg.insertBefore($bg, $svg.firstChild)
+  }
 
   for (const update of updaters) {
     update({ width: maxX, height: y })
