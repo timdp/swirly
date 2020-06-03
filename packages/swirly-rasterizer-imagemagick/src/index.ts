@@ -16,5 +16,5 @@ export const rasterizeSvg = async (
     encoding: null
   }
   const { stdout } = spawnSync(cmd, args, options)
-  return (stdout as unknown) as Buffer
+  return stdout
 }

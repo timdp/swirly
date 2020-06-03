@@ -108,7 +108,7 @@ export class Presenter implements IEventTarget {
       return
     }
 
-    const svg = (result.document.documentElement as unknown) as SVGElement
+    const svg = (result.document.documentElement as unknown) as SVGSVGElement
     this._view.setDiagramRendering(svg)
   }
 
