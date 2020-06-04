@@ -27,7 +27,7 @@ You can find [a few examples](examples/) in this repository.
 ## Web Version
 
 You can use Swirly in your browser at
-[**swirly.tmdpw.eu**](https://swirly.tmdpw.eu/).
+[**swirly.dev**](https://swirly.dev/).
 
 The Web version allows you to edit diagram specifications in real time and
 export them to an SVG or a PNG image.
