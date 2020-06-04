@@ -1,6 +1,6 @@
 {
   "name": "swirly-web",
-  "version": "0.13.9",
+  "version": "0.13.10",
   "private": true,
   "scripts": {
     "build": "yarn run clean && mkdir -p dist && yarn run _build:tsconfig && run-p \"build:*\"",
@@ -18,10 +18,10 @@
     "core-js": "^3.6.5",
     "dedent": "^0.7.0",
     "split.js": "^1.5.11",
-    "swirly-parser": "^0.13.9",
-    "swirly-renderer": "^0.13.9",
-    "swirly-theme-default-dark": "^0.13.7",
-    "swirly-theme-default-light": "^0.13.7"
+    "swirly-parser": "^0.13.10",
+    "swirly-renderer": "^0.13.10",
+    "swirly-theme-default-dark": "^0.13.10",
+    "swirly-theme-default-light": "^0.13.10"
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",
