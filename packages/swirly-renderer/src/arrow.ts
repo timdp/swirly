@@ -37,12 +37,9 @@ export const renderArrow = (
     `${width},${y}`,
     `${width - arrowheadWidth},${y2}`
   ]
-  if (filled) {
-    points.push(points[0])
-  }
 
   $group.appendChild(
-    createElement(document, 'polyline', {
+    createElement(document, filled ? 'polygon' : 'polyline', {
       points: points.join(' '),
       fill: filled ? fillColor : 'none',
       stroke: arrowStyles.stroke_color!,
