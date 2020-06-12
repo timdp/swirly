@@ -1,19 +1,29 @@
 import split from 'split.js'
 
-import { onDoubleClick } from './double-click'
-import { IEventTarget, ScaleMode } from './types'
+import { Example, IEventTarget, ScaleMode } from './types'
+import { onDoubleClick } from './util/double-click'
+import {
+  closeSubmenu,
+  createSubmenu,
+  createSubmenuButton
+} from './util/submenu'
 
-const el = <T extends HTMLElement>(selector: string) =>
-  document.querySelector(selector) as T
+const el = <T extends HTMLElement>(className: string) =>
+  document.getElementsByClassName(className)[0] as T
 
 export class View {
   static readonly GUTTER_SIZE = 5
 
+  private _eventTarget?: IEventTarget
   private _versionContainer: HTMLSpanElement
   private _themeToggleButton: HTMLButtonElement
-  private _exportSpecButton: HTMLButtonElement
-  private _exportSvgButton: HTMLButtonElement
-  private _exportPngButton: HTMLButtonElement
+  private _saveButton: HTMLButtonElement
+  private _saveMenu: HTMLDivElement
+  private _saveSpecButton: HTMLButtonElement
+  private _saveSvgButton: HTMLButtonElement
+  private _savePngButton: HTMLButtonElement
+  private _examplesButton: HTMLButtonElement
+  private _examplesMenu: HTMLDivElement
   private _inputContainer: HTMLDivElement
   private _specField: HTMLTextAreaElement
   private _resultContainer: HTMLDivElement
@@ -21,16 +31,20 @@ export class View {
   private _errorContainer: HTMLDivElement
 
   constructor () {
-    this._versionContainer = el('.version')
-    this._themeToggleButton = el('.theme-toggle')
-    this._exportSpecButton = el('.export-spec button')
-    this._exportSvgButton = el('.export-svg button')
-    this._exportPngButton = el('.export-png button')
-    this._inputContainer = el('.input')
-    this._specField = el('.spec')
-    this._resultContainer = el('.result')
-    this._diagramContainer = el('.diagram')
-    this._errorContainer = el('.error')
+    this._versionContainer = el('version')
+    this._themeToggleButton = el('theme-toggle')
+    this._saveButton = el('save')
+    this._saveMenu = el('save-menu')
+    this._saveSpecButton = el('save-spec')
+    this._saveSvgButton = el('save-svg')
+    this._savePngButton = el('save-png')
+    this._examplesButton = el('examples')
+    this._examplesMenu = el('examples-menu')
+    this._inputContainer = el('input')
+    this._specField = el('spec')
+    this._resultContainer = el('result')
+    this._diagramContainer = el('diagram')
+    this._errorContainer = el('error')
   }
 
   init (
@@ -38,21 +52,31 @@ export class View {
     version: string,
     code: string,
     darkThemeEnabled: boolean,
-    scaleMode: ScaleMode
+    scaleMode: ScaleMode,
+    examples: Example[]
   ) {
+    this._eventTarget = eventTarget
     this._versionContainer.textContent = `v${version}`
     split([this._inputContainer, this._resultContainer], {
       direction: 'vertical',
       gutterSize: View.GUTTER_SIZE
     })
+    createSubmenu(this._saveButton, this._saveMenu)
+    createSubmenu(this._examplesButton, this._examplesMenu)
     this._specField.value = code
     this.setDarkThemeEnabled(darkThemeEnabled)
     this.setScaleMode(scaleMode)
-    this._addDomListeners(eventTarget)
+    this._addDomListeners()
+    this._populateExamplesMenu(examples)
   }
 
   getDiagramSvgXml (): string {
     return this._diagramContainer.innerHTML
+  }
+
+  setDiagramSpecification (code: string) {
+    this._specField.value = code
+    this._eventTarget!.onSpecificationChange(code)
   }
 
   setDiagramRendering (svgElement: SVGElement) {
@@ -76,31 +100,44 @@ export class View {
     this._diagramContainer.classList.toggle('scale-fit', scaleMode === 'fit')
   }
 
-  _addDomListeners (eventTarget: IEventTarget) {
+  _populateExamplesMenu (examples: Example[]) {
+    for (const example of examples) {
+      this._examplesMenu.appendChild(
+        createSubmenuButton(example.title, () => {
+          this._eventTarget!.onExampleRequested(example)
+        })
+      )
+    }
+  }
+
+  _addDomListeners () {
     const onSpecificationChange = () => {
-      eventTarget.onSpecificationChange(this._specField.value)
+      this._eventTarget!.onSpecificationChange(this._specField.value)
     }
     this._specField.addEventListener('change', onSpecificationChange)
     this._specField.addEventListener('keyup', onSpecificationChange)
     onDoubleClick(this._diagramContainer, () => {
-      eventTarget.onScaleModeToggleRequested()
+      this._eventTarget!.onScaleModeToggleRequested()
     })
     this._themeToggleButton.addEventListener('click', () => {
-      eventTarget.onThemeToggleRequested()
+      this._eventTarget!.onThemeToggleRequested()
     })
-    this._exportSpecButton.addEventListener('click', () => {
-      eventTarget.onSpecificationExportRequested()
+    this._saveSpecButton.addEventListener('click', () => {
+      closeSubmenu()
+      this._eventTarget!.onSpecificationExportRequested()
     })
-    this._exportSvgButton.addEventListener('click', () => {
-      eventTarget.onSvgExportRequested()
+    this._saveSvgButton.addEventListener('click', () => {
+      closeSubmenu()
+      this._eventTarget!.onSvgExportRequested()
     })
-    this._exportPngButton.addEventListener('click', () => {
-      eventTarget.onPngExportRequested()
+    this._savePngButton.addEventListener('click', () => {
+      closeSubmenu()
+      this._eventTarget!.onPngExportRequested()
     })
   }
 
   _setControlsEnabled (enabled: boolean) {
-    this._exportSvgButton.disabled = !enabled
-    this._exportPngButton.disabled = !enabled
+    this._saveSvgButton.disabled = !enabled
+    this._savePngButton.disabled = !enabled
   }
 }

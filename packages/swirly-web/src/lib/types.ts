@@ -1,5 +1,10 @@
 export type ScaleMode = 'fit' | 'none'
 
+export type Example = {
+  title: string
+  code: string
+}
+
 export interface IEventTarget {
   onSpecificationChange(code: string): void
   onThemeToggleRequested(): void
@@ -7,4 +12,5 @@ export interface IEventTarget {
   onSpecificationExportRequested(): void
   onSvgExportRequested(): void
   onPngExportRequested(): void
+  onExampleRequested(example: Example): void
 }

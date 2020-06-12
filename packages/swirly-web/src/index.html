@@ -17,23 +17,39 @@
       </a>
       <span class="version"></span>
     </div>
-    <div class="button export-spec">
-      <button accesskey="x">
-        💾 TXT
+    <div class="button">
+      <button class="save" title="Save" accesskey="s">
+        💾
       </button>
+      <div class="submenu save-menu">
+        <div class="button">
+          <button class="icon-and-text save-spec" accesskey="c">
+            <span class="icon">✏️</span>
+            <span class="text">Code</span>
+          </button>
+        </div>
+        <div class="button">
+          <button class="icon-and-text save-svg" accesskey="v">
+            <span class="icon">🐯</span>
+            <span class="text">SVG</span>
+          </button>
+        </div>
+        <div class="button">
+          <button class="icon-and-text save-png" accesskey="p">
+            <span class="icon">👾</span>
+            <span class="text">PNG</span>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="button export-svg">
-      <button accesskey="s">
-        💾 SVG
+    <div class="button">
+      <button class="icon-only examples" title="Examples" accesskey="e">
+        <span class="icon">🍭</span>
       </button>
+      <div class="submenu examples-menu"></div>
     </div>
-    <div class="button export-png">
-      <button accesskey="p">
-        💾 PNG
-      </button>
-    </div>
-    <div class="button theme">
-      <button class="theme-toggle" accesskey="t">
+    <div class="button">
+      <button class="icon-only theme-toggle" title="Theme" accesskey="t">
         <span class="label-light">☀️</span>
         <span class="label-dark">🌙</span>
       </button>
@@ -48,6 +64,7 @@
       <div class="error"></div>
     </div>
   </div>
+  <div class="overlay"></div>
   <script src="__SCRIPT__"></script>
 </body>
 

@@ -4,31 +4,23 @@ import { renderMarbleDiagram } from 'swirly-renderer'
 import { styles as darkStyles } from 'swirly-theme-default-dark'
 import { styles as lightStyles } from 'swirly-theme-default-light'
 
-import { download } from './download'
+import { examples } from './examples'
 import { Model } from './model'
 import { StateRepository } from './state'
-import { IEventTarget } from './types'
+import { Example, IEventTarget } from './types'
+import { download } from './util/download'
 import { View } from './view'
 
 declare const VERSION: string
 
 export class Presenter implements IEventTarget {
-  static readonly DEFAULT_CODE = dedent(`
+  static readonly DEFAULT_CODE =
+    dedent(`
     % An example application of the concatAll operator.
     % Edit this code to redraw the diagram in real time.
-
-    x = ----a------b------|
-
-    y = ---c-d---|
-
-    z = ---e--f-|
-
-    -x---y----z------|
-
-    > concatAll
-
-    -----a------b---------c-d------e--f-|
-  `)
+  `) +
+    '\n\n' +
+    examples[0].code
 
   private _model: Model
   private _view: View
@@ -45,7 +37,7 @@ export class Presenter implements IEventTarget {
       this._model.code = Presenter.DEFAULT_CODE
     }
     const { code, darkThemeEnabled, scaleMode } = this._model
-    this._view.init(this, VERSION, code, darkThemeEnabled, scaleMode)
+    this._view.init(this, VERSION, code, darkThemeEnabled, scaleMode, examples)
     this._render()
   }
 
@@ -75,6 +67,10 @@ export class Presenter implements IEventTarget {
     download(this._getSpecDataUri(), 'diagram.txt')
   }
 
+  onSvgExportRequested () {
+    download(this._getSvgDataUri(), 'diagram.svg')
+  }
+
   onPngExportRequested () {
     const image = new Image()
     image.onload = () => {
@@ -88,8 +84,9 @@ export class Presenter implements IEventTarget {
     image.src = this._getSvgDataUri()
   }
 
-  onSvgExportRequested () {
-    download(this._getSvgDataUri(), 'diagram.svg')
+  onExampleRequested (example: Example) {
+    // TODO Open in new window instead
+    this._view.setDiagramSpecification(example.code)
   }
 
   _render () {

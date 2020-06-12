@@ -40,6 +40,11 @@ textarea {
 
 button {
   font-weight: bold;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button::-moz-focus-inner {
+  border: 0;
 }
 
 textarea {
@@ -102,19 +107,11 @@ textarea {
 }
 
 .button {
-  flex: 0;
-  display: flex;
   align-items: center;
   white-space: nowrap;
-  margin-right: 1ex;
-}
-
-.button:last-child {
-  margin-right: 15px;
 }
 
 .button button {
-  flex: 0;
   margin: 0;
   padding: 3px 12px;
   border: 1px solid #DCDCDC;
@@ -137,7 +134,7 @@ textarea {
 }
 
 .button button:active {
-  margin-top: 2px;
+  margin: 1px 0 -1px 0;
 }
 
 .button button:disabled {
@@ -145,11 +142,48 @@ textarea {
   opacity: 0.5;
 }
 
-.export-spec {
-  display: none;
+button.icon-and-text .icon {
+  float: right;
+  margin-left: 1ex;
 }
 
-.theme .label-dark {
+.menu > .button {
+  margin-right: 1ex;
+  flex: 0;
+  display: flex;
+}
+
+.menu > .button:last-child {
+  margin-right: 15px;
+}
+
+.menu > .button button {
+  flex: 0;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.submenu .button {
+  margin-top: 0.75ex;
+  text-align: right;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.theme-toggle .label-dark {
   display: none;
 }
 
@@ -234,11 +268,11 @@ body.dark .button button {
   border-color: #303030;
 }
 
-body.dark .theme .label-light {
+body.dark .theme-toggle .label-light {
   display: none;
 }
 
-body.dark .theme .label-dark {
+body.dark .theme-toggle .label-dark {
   display: inline;
 }
 
@@ -255,6 +289,10 @@ body.dark .error {
 body.dark .spec {
   background: black;
   color: white;
+}
+
+body.dark .overlay {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 480px) {
@@ -282,9 +320,5 @@ body.dark .spec {
 
   .version {
     display: inline;
-  }
-
-  .export-spec {
-    display: flex;
   }
 }

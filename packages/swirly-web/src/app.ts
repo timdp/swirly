@@ -1,9 +1,9 @@
 import 'core-js/stable'
 
-import { maintainFullHeight } from './lib/height'
 import { Model } from './lib/model'
 import { Presenter } from './lib/presenter'
 import { StateRepository } from './lib/state'
+import { maintainFullHeight } from './lib/util/full-height'
 import { View } from './lib/view'
 
 maintainFullHeight()
