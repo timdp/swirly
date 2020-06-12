@@ -145,6 +145,10 @@ textarea {
   opacity: 0.5;
 }
 
+.export-spec {
+  display: none;
+}
+
 .theme .label-dark {
   display: none;
 }
@@ -278,5 +282,9 @@ body.dark .spec {
 
   .version {
     display: inline;
+  }
+
+  .export-spec {
+    display: flex;
   }
 }

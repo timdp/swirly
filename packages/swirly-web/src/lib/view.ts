@@ -3,14 +3,15 @@ import split from 'split.js'
 import { onDoubleClick } from './double-click'
 import { IEventTarget, ScaleMode } from './types'
 
-const el = <T extends HTMLElement>(className: string) =>
-  document.querySelector('.' + className) as T
+const el = <T extends HTMLElement>(selector: string) =>
+  document.querySelector(selector) as T
 
 export class View {
   static readonly GUTTER_SIZE = 5
 
   private _versionContainer: HTMLSpanElement
   private _themeToggleButton: HTMLButtonElement
+  private _exportSpecButton: HTMLButtonElement
   private _exportSvgButton: HTMLButtonElement
   private _exportPngButton: HTMLButtonElement
   private _inputContainer: HTMLDivElement
@@ -20,15 +21,16 @@ export class View {
   private _errorContainer: HTMLDivElement
 
   constructor () {
-    this._versionContainer = el('version')
-    this._themeToggleButton = el('theme-toggle')
-    this._exportSvgButton = el('export-svg')
-    this._exportPngButton = el('export-png')
-    this._inputContainer = el('input')
-    this._specField = el('spec')
-    this._resultContainer = el('result')
-    this._diagramContainer = el('diagram')
-    this._errorContainer = el('error')
+    this._versionContainer = el('.version')
+    this._themeToggleButton = el('.theme-toggle')
+    this._exportSpecButton = el('.export-spec button')
+    this._exportSvgButton = el('.export-svg button')
+    this._exportPngButton = el('.export-png button')
+    this._inputContainer = el('.input')
+    this._specField = el('.spec')
+    this._resultContainer = el('.result')
+    this._diagramContainer = el('.diagram')
+    this._errorContainer = el('.error')
   }
 
   init (
@@ -85,6 +87,9 @@ export class View {
     })
     this._themeToggleButton.addEventListener('click', () => {
       eventTarget.onThemeToggleRequested()
+    })
+    this._exportSpecButton.addEventListener('click', () => {
+      eventTarget.onSpecificationExportRequested()
     })
     this._exportSvgButton.addEventListener('click', () => {
       eventTarget.onSvgExportRequested()

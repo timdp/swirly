@@ -71,6 +71,10 @@ export class Presenter implements IEventTarget {
     this._view.setScaleMode(this._model.scaleMode)
   }
 
+  onSpecificationExportRequested () {
+    download(this._getSpecDataUri(), 'diagram.txt')
+  }
+
   onPngExportRequested () {
     const image = new Image()
     image.onload = () => {
@@ -114,6 +118,11 @@ export class Presenter implements IEventTarget {
 
   _modelUpdated () {
     this._stateRepository.write(this._model)
+  }
+
+  _getSpecDataUri (): string {
+    const { code } = this._model
+    return 'data:text/plain,' + encodeURI(code)
   }
 
   _getSvgDataUri (): string {
