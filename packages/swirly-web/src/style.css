@@ -101,7 +101,6 @@ textarea {
 }
 
 .version {
-  display: none;
   padding-left: 1ex;
   opacity: 0.33;
 }
@@ -316,9 +315,5 @@ body.dark .overlay {
 
   .split {
     height: calc(100% - 50px);
-  }
-
-  .version {
-    display: inline;
   }
 }
