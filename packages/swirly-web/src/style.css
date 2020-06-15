@@ -107,7 +107,8 @@ textarea {
 
 .button {
   align-items: center;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .button button {
@@ -141,8 +142,13 @@ textarea {
   opacity: 0.5;
 }
 
+button.icon-and-text {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
 button.icon-and-text .icon {
-  float: right;
   margin-left: 1ex;
 }
 
