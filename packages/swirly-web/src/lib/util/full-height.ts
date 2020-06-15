@@ -6,4 +6,5 @@ export const maintainFullHeight = () => {
   updateBodyHeight()
   window.addEventListener('resize', updateBodyHeight)
   window.addEventListener('orientationchange', updateBodyHeight)
+  setInterval(updateBodyHeight, 250)
 }
