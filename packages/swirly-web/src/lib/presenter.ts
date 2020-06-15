@@ -16,9 +16,9 @@ declare const VERSION: string
 export class Presenter implements IEventTarget {
   static readonly DEFAULT_CODE =
     dedent(`
-    % An example application of the concatAll operator.
-    % Edit this code to redraw the diagram in real time.
-  `) +
+      % An example application of the concatAll operator.
+      % Edit this code to redraw the diagram in real time.
+    `) +
     '\n\n' +
     examples[0].code
 
