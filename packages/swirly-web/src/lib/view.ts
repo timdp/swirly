@@ -53,7 +53,7 @@ export class View {
     code: string,
     darkThemeEnabled: boolean,
     scaleMode: ScaleMode,
-    examples: Example[]
+    examples: readonly Example[]
   ) {
     this._eventTarget = eventTarget
     this._versionContainer.textContent = `v${version}`
@@ -100,7 +100,7 @@ export class View {
     this._diagramContainer.classList.toggle('scale-fit', scaleMode === 'fit')
   }
 
-  _populateExamplesMenu (examples: Example[]) {
+  _populateExamplesMenu (examples: readonly Example[]) {
     for (const example of examples) {
       this._examplesMenu.appendChild(
         createSubmenuButton(example.title, () => {

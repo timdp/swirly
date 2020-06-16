@@ -43,7 +43,10 @@ const buildLocalValues = (
 
 const match = () => true
 
-const run = (lines: string[], { content, allValues }: ParserContext) => {
+const run = (
+  lines: readonly string[],
+  { content, allValues }: ParserContext
+) => {
   const [nameAndMarbles, ...configLines] = lines
 
   const [name, marbles] = parseNameAndMarbles(nameAndMarbles)

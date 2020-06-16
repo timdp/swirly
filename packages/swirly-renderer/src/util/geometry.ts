@@ -58,7 +58,7 @@ export const rotateRectangle = (
   }
 }
 
-export const rectangleUnion = (rects: Rectangle[]): Rectangle => {
+export const rectangleUnion = (rects: readonly Rectangle[]): Rectangle => {
   const nonEmptyRects = rects.filter(
     ({ x1, y1, x2, y2 }) => x2 - x1 !== 0 && y2 - y1 !== 0
   )

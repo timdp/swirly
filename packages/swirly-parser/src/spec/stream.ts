@@ -10,10 +10,10 @@ import {
 
 import { SCALE } from '../constants'
 
-const getDuration = (messages: MessageSpecification[]): number => {
+const getDuration = (messages: readonly MessageSpecification[]): number => {
   let maxFrame = 0
 
-  const walk = (messages: MessageSpecification[], delta: number) => {
+  const walk = (messages: readonly MessageSpecification[], delta: number) => {
     for (const { frame, notification } of messages) {
       const frameAbs = delta + frame
       if ('value' in notification && Array.isArray(notification.value)) {
@@ -56,7 +56,7 @@ const testMessageToMessageSpecification = ({
 }
 
 export const toStreamSpec = (
-  messagesIn: TestMessage[],
+  messagesIn: readonly TestMessage[],
   title: string | null = null,
   frame: number = 0
 ): StreamSpecification => {

@@ -4,7 +4,7 @@ import { parseConfig } from './config'
 
 const match = (line: string): boolean => line === STYLES_HEADER
 
-const run = (lines: string[], { styles }: ParserContext) => {
+const run = (lines: readonly string[], { styles }: ParserContext) => {
   const extraStyles = parseConfig(lines.slice(1), false)
   Object.assign(styles, extraStyles)
 }

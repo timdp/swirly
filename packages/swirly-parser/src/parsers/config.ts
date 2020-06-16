@@ -13,7 +13,7 @@ const parseValue = (value: string): string | number | boolean => {
 }
 
 export const parseConfig = (
-  lines: string[],
+  lines: readonly string[],
   allowAssignment: boolean
 ): { [key: string]: any } => {
   const config: { [key: string]: any } = {}

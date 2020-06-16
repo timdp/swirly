@@ -34,7 +34,7 @@ const isNotification = ({
 const countPriors = (
   message: MessageSpecification,
   index: number,
-  messages: MessageSpecification[]
+  messages: readonly MessageSpecification[]
 ): number => {
   let count = 0
   for (let i = 0; i < index; ++i) {

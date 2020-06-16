@@ -2,7 +2,7 @@ import dedent from 'dedent'
 
 import { Example } from './types'
 
-export const examples = [
+export const examples: readonly Example[] = [
   {
     title: 'concatAll',
     code: dedent(`
