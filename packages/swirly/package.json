@@ -20,7 +20,7 @@
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
     "build:tsconfig": "../../scripts/build-tsconfig.js",
     "build:js": "tsc",
-    "clean": "rm -rf dist",
+    "clean": "shx rm -rf dist",
     "prepublish": "yarn run build"
   },
   "engines": {
@@ -46,6 +46,7 @@
     "@types/stream-to-promise": "^2.2.1",
     "@types/svgo": "^1.3.3",
     "@types/yargs": "^15.0.5",
+    "shx": "^0.3.2",
     "swirly-types": "^0.13.10"
   }
 }

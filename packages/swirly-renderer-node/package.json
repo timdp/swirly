@@ -18,7 +18,7 @@
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
     "build:tsconfig": "../../scripts/build-tsconfig.js",
     "build:js": "tsc",
-    "clean": "rm -rf dist",
+    "clean": "shx rm -rf dist",
     "prepublish": "yarn run build"
   },
   "engines": {
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/xmldom": "^0.1.29",
+    "shx": "^0.3.2",
     "swirly-types": "^0.13.10"
   }
 }

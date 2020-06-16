@@ -19,10 +19,13 @@
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
     "build:tsconfig": "../../scripts/build-tsconfig.js",
     "build:js": "tsc",
-    "clean": "rm -rf dist",
+    "clean": "shx rm -rf dist",
     "prepublish": "yarn run build"
   },
   "engines": {
     "node": ">=10"
+  },
+  "devDependencies": {
+    "shx": "^0.3.2"
   }
 }
