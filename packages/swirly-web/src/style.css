@@ -144,12 +144,11 @@ textarea {
 
 button.icon-and-text {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
 }
 
 button.icon-and-text .icon {
-  margin-left: 1ex;
+  margin: 0 1ex 0 0;
 }
 
 .menu > .button {
@@ -175,6 +174,14 @@ button.icon-and-text .icon {
 .submenu .button {
   margin-top: 0.75ex;
   text-align: right;
+}
+
+.submenu button.icon-and-text {
+  flex-direction: row-reverse;
+}
+
+.submenu button.icon-and-text .icon {
+  margin: 0 0 0 1ex;
 }
 
 .overlay {
