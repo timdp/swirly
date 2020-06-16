@@ -18,7 +18,7 @@
   "scripts": {
     "build": "yarn run clean && rollup -c",
     "clean": "shx rm -rf dist",
-    "prepublish": "yarn run build"
+    "prepare": "yarn run build"
   },
   "engines": {
     "node": ">=10"
