@@ -4,8 +4,8 @@
   "version": "0.13.10",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/timdp/swirly.git",
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
     "directory": "packages/swirly-rasterizer-imagemagick"
   },
   "homepage": "https://swirly.dev",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@swirly/types": "^0.13.10",
-    "@types/node": "^14.0.9",
+    "@types/node": "^14.0.13",
     "shx": "^0.3.2"
   }
 }

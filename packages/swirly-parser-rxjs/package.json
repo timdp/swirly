@@ -4,8 +4,8 @@
   "version": "0.13.10",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/timdp/swirly.git",
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
     "directory": "packages/swirly-parser-rxjs"
   },
   "homepage": "https://swirly.dev",
@@ -28,8 +28,8 @@
     "node": ">=10"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "rollup": "^2.12.1",
+    "@rollup/plugin-node-resolve": "^8.0.1",
+    "rollup": "^2.17.0",
     "rollup-plugin-typescript2": "^0.27.1",
     "rxjs": "6.5.5",
     "shx": "^0.3.2"
