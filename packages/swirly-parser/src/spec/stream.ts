@@ -1,4 +1,4 @@
-import { TestMessage } from 'swirly-parser-rxjs'
+import { TestMessage } from '@swirly/parser-rxjs'
 import {
   CompletionMessageSpecification,
   ErrorMessageSpecification,
@@ -6,7 +6,7 @@ import {
   ScalarNextMessageSpecification,
   StreamNextMessageSpecification,
   StreamSpecification
-} from 'swirly-types'
+} from '@swirly/types'
 
 import { SCALE } from '../constants'
 

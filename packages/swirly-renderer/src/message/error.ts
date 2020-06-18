@@ -1,4 +1,4 @@
-import { ErrorMessageStyles, MessageSpecification } from 'swirly-types'
+import { ErrorMessageStyles, MessageSpecification } from '@swirly/types'
 
 import { RendererContext, RendererResult } from '../types'
 import { createElement } from '../util/create-element'

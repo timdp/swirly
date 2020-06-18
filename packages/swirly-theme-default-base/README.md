@@ -1,6 +1,6 @@
-# swirly-theme-default-base
+# @swirly/theme-default-base
 
-[![npm](https://img.shields.io/npm/v/swirly-theme-default-base.svg)](https://www.npmjs.com/package/swirly-theme-default-base) [![Dependencies](https://david-dm.org/timdp/swirly/status.svg?path=packages/swirly-theme-default-base)](https://david-dm.org/timdp/swirly?path=packages/swirly-theme-default-base) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
+[![npm](https://img.shields.io/npm/v/@swirly/theme-default-base.svg)](https://www.npmjs.com/package/@swirly/theme-default-base) [![Dependencies](https://david-dm.org/timdp/swirly/status.svg?path=packages/swirly-theme-default-base)](https://david-dm.org/timdp/swirly?path=packages/swirly-theme-default-base) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
 
 Base theme for [Swirly](https://github.com/timdp/swirly) marble diagrams.
 

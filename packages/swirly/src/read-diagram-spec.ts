@@ -1,8 +1,8 @@
+import { parseMarbleDiagramSpec } from '@swirly/parser'
+import { DiagramSpecification } from '@swirly/types'
 import { promises as fs } from 'fs'
 import YAML from 'js-yaml'
 import path from 'path'
-import { parseMarbleDiagramSpec } from 'swirly-parser'
-import { DiagramSpecification } from 'swirly-types'
 
 import { YAML_EXTENSIONS } from './constants'
 

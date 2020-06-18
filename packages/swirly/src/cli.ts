@@ -3,8 +3,8 @@
 import 'source-map-support/register'
 import 'hard-rejection/register'
 
+import { renderMarbleDiagram } from '@swirly/renderer-node'
 import streamToPromise from 'stream-to-promise'
-import { renderMarbleDiagram } from 'swirly-renderer-node'
 
 import { getOpts } from './get-opts'
 import { optimizeXml } from './optimize-xml'

@@ -1,9 +1,13 @@
 {
-  "name": "swirly-types",
+  "name": "@swirly/types",
   "description": "TypeScript typings for Swirly.",
   "version": "0.13.10",
   "license": "MIT",
-  "repository": "https://github.com/timdp/swirly",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-types"
+  },
   "homepage": "https://swirly.dev",
   "author": {
     "name": "Tim De Pauw",
@@ -17,7 +21,7 @@
   ],
   "scripts": {
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
-    "build:tsconfig": "../../scripts/build-tsconfig.js",
+    "build:tsconfig": "node ../../scripts/build-tsconfig.js",
     "build:js": "tsc",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"

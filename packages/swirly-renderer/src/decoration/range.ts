@@ -2,7 +2,7 @@ import {
   DecorationSpecification,
   RangeDecorationSpecification,
   RangeDecorationStyles
-} from 'swirly-types'
+} from '@swirly/types'
 
 import {
   DecorationRenderer,

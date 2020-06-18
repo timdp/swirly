@@ -2,7 +2,7 @@ import {
   ArrowStyles,
   MessageSpecification,
   StreamSpecification
-} from 'swirly-types'
+} from '@swirly/types'
 
 import { renderArrow } from './arrow'
 import { renderDecoration } from './decoration'

@@ -1,4 +1,4 @@
-import { StreamSpecification, StreamStyles } from 'swirly-types'
+import { StreamSpecification, StreamStyles } from '@swirly/types'
 
 import { renderMessage } from './message'
 import { createRenderStream } from './stream-factory'

@@ -1,5 +1,5 @@
+import { RasterizerOutputFormat } from '@swirly/types'
 import { spawnSync, StdioOptions } from 'child_process'
-import { RasterizerOutputFormat } from 'swirly-types'
 
 export const rasterizeSvg = async (
   svgXml: string,

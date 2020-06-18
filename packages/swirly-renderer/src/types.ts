@@ -2,7 +2,7 @@ import {
   DecorationSpecification,
   DiagramStyles,
   MessageSpecification
-} from 'swirly-types'
+} from '@swirly/types'
 
 export type Point = {
   x: number

@@ -3,7 +3,11 @@
   "description": "A marble diagram generator.",
   "version": "0.13.10",
   "license": "MIT",
-  "repository": "https://github.com/timdp/swirly",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly"
+  },
   "homepage": "https://swirly.dev",
   "author": {
     "name": "Tim De Pauw",
@@ -18,7 +22,7 @@
   },
   "scripts": {
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
-    "build:tsconfig": "../../scripts/build-tsconfig.js",
+    "build:tsconfig": "node ../../scripts/build-tsconfig.js",
     "build:js": "tsc",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
@@ -27,26 +31,26 @@
     "node": ">=10"
   },
   "dependencies": {
+    "@swirly/parser": "^0.13.10",
+    "@swirly/rasterizer-inkscape": "^0.13.10",
+    "@swirly/rasterizer-puppeteer": "^0.13.10",
+    "@swirly/renderer-node": "^0.13.10",
+    "@swirly/theme-default-dark": "^0.13.10",
+    "@swirly/theme-default-light": "^0.13.10",
     "hard-rejection": "^2.1.0",
     "js-yaml": "^3.13.1",
     "source-map-support": "^0.5.19",
     "stream-to-promise": "^3.0.0",
     "svgo": "^1.3.2",
-    "swirly-parser": "^0.13.10",
-    "swirly-rasterizer-inkscape": "^0.13.10",
-    "swirly-rasterizer-puppeteer": "^0.13.10",
-    "swirly-renderer-node": "^0.13.10",
-    "swirly-theme-default-dark": "^0.13.10",
-    "swirly-theme-default-light": "^0.13.10",
     "yargs": "^15.3.1"
   },
   "devDependencies": {
+    "@swirly/types": "^0.13.10",
     "@types/js-yaml": "^3.12.4",
     "@types/node": "^14.0.9",
     "@types/stream-to-promise": "^2.2.1",
     "@types/svgo": "^1.3.3",
     "@types/yargs": "^15.0.5",
-    "shx": "^0.3.2",
-    "swirly-types": "^0.13.10"
+    "shx": "^0.3.2"
   }
 }

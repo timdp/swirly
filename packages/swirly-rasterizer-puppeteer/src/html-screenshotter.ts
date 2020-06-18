@@ -1,4 +1,4 @@
-import { RasterizerOutputFormat } from 'swirly-types'
+import { RasterizerOutputFormat } from '@swirly/types'
 
 import { BrowserFacade } from './browser'
 

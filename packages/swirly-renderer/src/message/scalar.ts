@@ -2,7 +2,7 @@ import {
   MessageSpecification,
   ScalarNextMessageStyles,
   ScalarNextNotificationSpecification
-} from 'swirly-types'
+} from '@swirly/types'
 
 import {
   MessageRendererOptions,

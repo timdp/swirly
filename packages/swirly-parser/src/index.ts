@@ -1,4 +1,4 @@
-import { DiagramSpecification } from 'swirly-types'
+import { DiagramSpecification } from '@swirly/types'
 
 import { parsers } from './parsers'
 import { ParserContext } from './types'

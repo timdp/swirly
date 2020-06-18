@@ -1,9 +1,13 @@
 {
-  "name": "swirly-parser",
+  "name": "@swirly/parser",
   "description": "Parser for the Swirly marble diagram format.",
   "version": "0.13.10",
   "license": "MIT",
-  "repository": "https://github.com/timdp/swirly",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-parser"
+  },
   "homepage": "https://swirly.dev",
   "author": {
     "name": "Tim De Pauw",
@@ -17,7 +21,7 @@
   ],
   "scripts": {
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
-    "build:tsconfig": "../../scripts/build-tsconfig.js",
+    "build:tsconfig": "node ../../scripts/build-tsconfig.js",
     "build:js": "tsc",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
@@ -26,10 +30,10 @@
     "node": ">=10"
   },
   "dependencies": {
-    "swirly-parser-rxjs": "^0.13.10"
+    "@swirly/parser-rxjs": "^0.13.10"
   },
   "devDependencies": {
-    "shx": "^0.3.2",
-    "swirly-types": "^0.13.10"
+    "@swirly/types": "^0.13.10",
+    "shx": "^0.3.2"
   }
 }

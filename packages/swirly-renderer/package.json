@@ -1,9 +1,13 @@
 {
-  "name": "swirly-renderer",
+  "name": "@swirly/renderer",
   "description": "Renderer for Swirly marble diagrams.",
   "version": "0.13.10",
   "license": "MIT",
-  "repository": "https://github.com/timdp/swirly",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-renderer"
+  },
   "homepage": "https://swirly.dev",
   "author": {
     "name": "Tim De Pauw",
@@ -17,7 +21,7 @@
   ],
   "scripts": {
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
-    "build:tsconfig": "../../scripts/build-tsconfig.js",
+    "build:tsconfig": "node ../../scripts/build-tsconfig.js",
     "build:js": "tsc",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
@@ -26,11 +30,11 @@
     "node": ">=10"
   },
   "dependencies": {
-    "simple-sha1": "^3.0.1",
-    "swirly-theme-default-light": "^0.13.10"
+    "@swirly/theme-default-light": "^0.13.10",
+    "simple-sha1": "^3.0.1"
   },
   "devDependencies": {
-    "shx": "^0.3.2",
-    "swirly-types": "^0.13.10"
+    "@swirly/types": "^0.13.10",
+    "shx": "^0.3.2"
   }
 }

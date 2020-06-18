@@ -1,7 +1,7 @@
 import {
   MessageSpecification,
   StreamNextNotificationSpecification
-} from 'swirly-types'
+} from '@swirly/types'
 
 import { createRenderStream } from '../stream-factory'
 import {

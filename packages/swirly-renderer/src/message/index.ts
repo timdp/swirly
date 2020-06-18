@@ -1,4 +1,4 @@
-import { MessageSpecification } from 'swirly-types'
+import { MessageSpecification } from '@swirly/types'
 
 import {
   MessageRendererOptions,

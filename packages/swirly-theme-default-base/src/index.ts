@@ -1,4 +1,4 @@
-import { DiagramStyles } from 'swirly-types'
+import { DiagramStyles } from '@swirly/types'
 
 export const styles: DiagramStyles = {
   arrow_fill_color: '',

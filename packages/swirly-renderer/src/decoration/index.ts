@@ -1,4 +1,4 @@
-import { DecorationSpecification } from 'swirly-types'
+import { DecorationSpecification } from '@swirly/types'
 
 import {
   DecorationRenderer,

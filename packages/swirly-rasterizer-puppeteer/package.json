@@ -1,9 +1,13 @@
 {
-  "name": "swirly-rasterizer-puppeteer",
+  "name": "@swirly/rasterizer-puppeteer",
   "description": "Rasterizer for Swirly marble diagrams, using Puppeteer.",
   "version": "0.13.10",
   "license": "MIT",
-  "repository": "https://github.com/timdp/swirly",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-rasterizer-puppeteer"
+  },
   "homepage": "https://swirly.dev",
   "author": {
     "name": "Tim De Pauw",
@@ -16,7 +20,7 @@
   ],
   "scripts": {
     "build": "yarn run clean && yarn run build:tsconfig && yarn run build:js",
-    "build:tsconfig": "../../scripts/build-tsconfig.js",
+    "build:tsconfig": "node ../../scripts/build-tsconfig.js",
     "build:js": "tsc",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
@@ -28,8 +32,8 @@
     "puppeteer": "^3.3.0"
   },
   "devDependencies": {
+    "@swirly/types": "^0.13.10",
     "@types/puppeteer": "^3.0.0",
-    "shx": "^0.3.2",
-    "swirly-types": "^0.13.10"
+    "shx": "^0.3.2"
   }
 }

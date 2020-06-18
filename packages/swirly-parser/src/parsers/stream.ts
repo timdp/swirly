@@ -1,4 +1,4 @@
-import { parseMarbles } from 'swirly-parser-rxjs'
+import { parseMarbles } from '@swirly/parser-rxjs'
 
 import { toStreamSpec } from '../spec/stream'
 import { Parser, ParserContext } from '../types'

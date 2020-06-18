@@ -1,10 +1,10 @@
-import { styles as defaultStyles } from 'swirly-theme-default-light'
+import { styles as defaultStyles } from '@swirly/theme-default-light'
 import {
   DiagramRendering,
   DiagramSpecification,
   OperatorSpecification,
   StreamSpecification
-} from 'swirly-types'
+} from '@swirly/types'
 
 import { renderOperator } from './operator'
 import { renderStream } from './stream'

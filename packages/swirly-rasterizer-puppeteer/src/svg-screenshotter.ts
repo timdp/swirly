@@ -1,4 +1,4 @@
-import { RasterizerOutputFormat } from 'swirly-types/src'
+import { RasterizerOutputFormat } from '@swirly/types/src'
 
 import { HtmlScreenshotter } from './html-screenshotter'
 

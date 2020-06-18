@@ -1,4 +1,4 @@
-import { FreeformStyles } from 'swirly-types'
+import { FreeformStyles } from '@swirly/types'
 
 export const mergeStyles = (
   globalStyles: FreeformStyles,

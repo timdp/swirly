@@ -83,5 +83,6 @@ if (prunedRefs.length !== tsconfig.references.length) {
 // Update tsconfig.json if modified
 if (updated) {
   tsconfig.references.sort((a, b) => a.path.localeCompare(b.path))
-  fs.writeFileSync(tsconfigPath, JSON.stringify(tsconfig, null, 2), 'utf8')
+  const data = JSON.stringify(tsconfig, null, 2) + '\n'
+  fs.writeFileSync(tsconfigPath, data, 'utf8')
 }

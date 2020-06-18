@@ -1,10 +1,22 @@
 {
-  "name": "swirly-web",
+  "name": "@swirly/web",
+  "description": "The Swirly Web app.",
   "version": "0.13.11",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-web"
+  },
+  "homepage": "https://swirly.dev",
+  "author": {
+    "name": "Tim De Pauw",
+    "url": "https://tmdpw.eu"
+  },
   "scripts": {
     "build": "yarn run clean && mkdir -p dist && yarn run _build:tsconfig && run-p \"build:*\"",
-    "_build:tsconfig": "../../scripts/build-tsconfig.js",
+    "_build:tsconfig": "node ../../scripts/build-tsconfig.js",
     "build:html": "run-s \"_build:html:*\"",
     "_build:html:01_minify": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
     "_build:html:02_dev": "shx sed s/__SCRIPT__/bundle.js/ dist/index.html > dist/debug.html",
@@ -15,13 +27,13 @@
     "clean": "shx rm -rf dist"
   },
   "dependencies": {
+    "@swirly/parser": "^0.13.10",
+    "@swirly/renderer": "^0.13.10",
+    "@swirly/theme-default-dark": "^0.13.10",
+    "@swirly/theme-default-light": "^0.13.10",
     "core-js": "^3.6.5",
     "dedent": "^0.7.0",
-    "split.js": "^1.5.11",
-    "swirly-parser": "^0.13.10",
-    "swirly-renderer": "^0.13.10",
-    "swirly-theme-default-dark": "^0.13.10",
-    "swirly-theme-default-light": "^0.13.10"
+    "split.js": "^1.5.11"
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",

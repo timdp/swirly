@@ -1,5 +1,5 @@
+import { Rasterizer, RasterizerOutputFormat } from '@swirly/types'
 import path from 'path'
-import { Rasterizer, RasterizerOutputFormat } from 'swirly-types'
 
 import { RASTER_EXTENSIONS } from '../constants'
 import { rasterizers } from '../rasterizers'

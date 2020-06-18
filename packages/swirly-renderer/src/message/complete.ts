@@ -1,4 +1,4 @@
-import { CompletionMessageStyles, MessageSpecification } from 'swirly-types'
+import { CompletionMessageStyles, MessageSpecification } from '@swirly/types'
 
 import { RendererContext, RendererResult } from '../types'
 import { createElement } from '../util/create-element'

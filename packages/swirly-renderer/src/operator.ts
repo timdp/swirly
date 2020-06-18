@@ -1,4 +1,4 @@
-import { OperatorSpecification, OperatorStyles } from 'swirly-types'
+import { OperatorSpecification, OperatorStyles } from '@swirly/types'
 
 import {
   PostRenderUpdateContext,

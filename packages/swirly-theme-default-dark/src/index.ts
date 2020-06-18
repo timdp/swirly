@@ -1,5 +1,5 @@
-import { styles as baseStyles } from 'swirly-theme-default-base'
-import { DiagramStyles } from 'swirly-types'
+import { styles as baseStyles } from '@swirly/theme-default-base'
+import { DiagramStyles } from '@swirly/types'
 
 export const styles: DiagramStyles = {
   ...baseStyles,

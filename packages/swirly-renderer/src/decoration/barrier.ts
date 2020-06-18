@@ -2,7 +2,7 @@ import {
   BarrierDecorationSpecification,
   BarrierDecorationStyles,
   DecorationSpecification
-} from 'swirly-types'
+} from '@swirly/types'
 
 import { DecorationRendererContext, DecorationRendererResult } from '../types'
 import { createElement } from '../util/create-element'

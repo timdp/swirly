@@ -1,4 +1,4 @@
-import { DiagramSpecification } from 'swirly-types'
+import { DiagramSpecification } from '@swirly/types'
 
 export type Parser = {
   match: (line: string) => boolean
