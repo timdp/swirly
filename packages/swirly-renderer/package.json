@@ -4,14 +4,17 @@
   "version": "0.13.10",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/timdp/swirly.git",
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
     "directory": "packages/swirly-renderer"
   },
   "homepage": "https://swirly.dev",
   "author": {
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "main": "dist/index.js",
   "browser": "src/index.ts",

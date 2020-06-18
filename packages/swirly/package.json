@@ -13,6 +13,9 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "src/",
     "dist/"
