@@ -4,7 +4,7 @@ export class StateRepository {
   read (): Model | null {
     let state
     try {
-      state = JSON.parse(window.localStorage.state)
+      state = JSON.parse(localStorage.state)
     } catch (_) {}
 
     if (state == null || typeof state !== 'object') {
@@ -28,7 +28,7 @@ export class StateRepository {
 
   write (model: Model) {
     try {
-      window.localStorage.state = JSON.stringify(model.toJSON())
+      localStorage.state = JSON.stringify(model.toJSON())
     } catch (_) {}
   }
 }

@@ -1,2 +1,5 @@
-export const buildDataUri = (mimeType: string, data: string) =>
-  'data:' + mimeType + ',' + encodeURI(data)
+export const buildDataUri = (
+  contentType: string,
+  charset: string,
+  data: string
+) => `data:${contentType};charset=${charset};base64,${encodeURI(btoa(data))}`

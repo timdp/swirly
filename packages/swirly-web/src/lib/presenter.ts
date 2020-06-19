@@ -119,10 +119,10 @@ export class Presenter implements IEventTarget {
   }
 
   _getSpecDataUri (): string {
-    return buildDataUri('text/plain', this._model.code)
+    return buildDataUri('text/plain', 'utf-8', this._model.code)
   }
 
   _getSvgDataUri (): string {
-    return buildDataUri('image/svg+xml', this._view.getDiagramSvgXml())
+    return buildDataUri('image/svg+xml', 'utf-8', this._view.getDiagramSvgXml())
   }
 }

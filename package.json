@@ -35,7 +35,9 @@
     "globals": [
       "Image",
       "DOMParser",
-      "XMLSerializer"
+      "XMLSerializer",
+      "btoa",
+      "localStorage"
     ]
   },
   "eslintConfig": {
