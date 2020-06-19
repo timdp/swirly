@@ -13,7 +13,7 @@ export const renderStream = (
   ctx: RendererContext,
   stream: StreamSpecification
 ): RendererResult => {
-  const { document, styles, streamHeight } = ctx
+  const { document, styles, streamHeight, streamTitleEnabled } = ctx
   const s: StreamStyles = mergeStyles(styles, stream.styles, 'stream_')
 
   const renderStreamResult = renderStreamImpl(ctx, false, stream)
@@ -27,12 +27,13 @@ export const renderStream = (
     bbox.x2 += dx
   }
 
-  if (stream.title == null || stream.title === '') {
+  if (!streamTitleEnabled) {
     return renderStreamResult
   }
 
   const $outerGroup = createElement(document, 'g')
 
+  const title = typeof stream.title === 'string' ? stream.title : ''
   $outerGroup.appendChild(
     createElement(
       document,
@@ -47,7 +48,7 @@ export const renderStream = (
         'font-style': s.title_font_style!,
         'dominant-baseline': 'middle'
       },
-      stream.title
+      title
     )
   )
 

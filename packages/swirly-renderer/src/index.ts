@@ -20,6 +20,12 @@ import { translate } from './util/transform'
 const EMPTY_SVG = '<svg xmlns="http://www.w3.org/2000/svg"/>'
 const MIME_TYPE = 'image/svg+xml'
 
+const isOperator = (item: StreamSpecification | OperatorSpecification) =>
+  item.kind === 'O'
+
+const isStream = (item: StreamSpecification | OperatorSpecification) =>
+  !isOperator(item)
+
 const renderMarbleDiagram = (
   spec: DiagramSpecification,
   options: RendererOptions = {}
@@ -47,17 +53,25 @@ const renderMarbleDiagram = (
     styles.error_size!
   )
 
-  const ctx: RendererContext = { document, styles, streamHeight }
+  const streamTitleEnabled = spec.content.some(
+    item => isStream(item) && item.title != null && item.title !== ''
+  )
+
+  const ctx: RendererContext = {
+    document,
+    styles,
+    streamHeight,
+    streamTitleEnabled
+  }
 
   const updaters = []
 
   let maxX = 0
   let y = 0
   for (const item of spec.content) {
-    const rendererResult: RendererResult | UpdatableRendererResult =
-      item.kind === 'O'
-        ? renderOperator(ctx, item as OperatorSpecification)
-        : renderStream(ctx, item as StreamSpecification)
+    const rendererResult: RendererResult = isOperator(item)
+      ? renderOperator(ctx, item as OperatorSpecification)
+      : renderStream(ctx, item as StreamSpecification)
     const { element, bbox, update } = rendererResult as UpdatableRendererResult
 
     translate(element, 0, y - bbox.y1)

@@ -27,6 +27,7 @@ export type RendererContext = {
   document: XMLDocument
   styles: DiagramStyles
   streamHeight: number
+  streamTitleEnabled: boolean
 }
 
 export type RendererResult = {
