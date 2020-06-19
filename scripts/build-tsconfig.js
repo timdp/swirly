@@ -1,88 +1,82 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
+require('hard-rejection/register')
+const fs = require('fs-extra')
 const path = require('path')
 
-const PKG_ROOT = '../'
+const PKG_ROOT = '..'
 
-const cwd = process.cwd()
-const pkgPath = path.join(cwd, 'package.json')
-const tsconfigPath = path.join(cwd, 'tsconfig.json')
+const listCandidateReferences = async () => {
+  const pkgs = []
+  const ents = await fs.readdir(PKG_ROOT, { withFileTypes: true })
+  await Promise.all(
+    ents.map(async ent => {
+      if (!ent.isDirectory()) {
+        return
+      }
 
-// Read tsconfig.json if it exists
-let tsconfig
-try {
-  tsconfig = require(tsconfigPath)
-} catch (err) {
-  if (err.code !== 'MODULE_NOT_FOUND') {
-    // Unexpected error, crash
-    throw err
-  }
-  // Not a TypeScript module, abort
-  process.exit()
-}
+      const dir = path.join(PKG_ROOT, ent.name)
 
-// Ensure tsconfig.references is an array so we can update it
-if (tsconfig.references == null) {
-  tsconfig.references = []
-}
+      let name, tsBuildInfoFile
+      try {
+        const [pkg, tsconfig] = await Promise.all([
+          fs.readJson(path.join(dir, 'package.json')),
+          fs.readJson(path.join(dir, 'tsconfig.json'))
+        ])
+        name = pkg.name
+        tsBuildInfoFile = tsconfig.compilerOptions.tsBuildInfoFile
+      } catch {
+        return
+      }
 
-// List packages in monorepo
-const monorepoPkgs = fs
-  .readdirSync(PKG_ROOT, { withFileTypes: true })
-  .filter(ent => ent.isDirectory())
-  .map(ent => ent.name)
-  .map(dir => {
-    try {
-      const { name } = require(path.join(PKG_ROOT, dir, 'package.json'))
-      return name
-    } catch {
-      return null
-    }
-  })
-  .filter(name => name != null)
-const isMonorepoPkg = name => monorepoPkgs.includes(name)
+      if (tsBuildInfoFile == null) {
+        return
+      }
 
-// Read package.json
-const pkg = require(pkgPath)
-const { dependencies = {}, devDependencies = {} } = pkg
-
-// Tracks whether tsconfig.json is going to be written
-let updated = false
-
-// List monorepo references in package.json
-const refPkgNames = Object.keys({ ...dependencies, ...devDependencies }).filter(
-  isMonorepoPkg
-)
-
-// Add monorepo references found in package.json but not tsconfig.json
-const refPaths = tsconfig.references.map(ref => ref.path)
-const missingRefNames = refPkgNames.filter(
-  name => !refPaths.includes(PKG_ROOT + name)
-)
-if (missingRefNames.length > 0) {
-  tsconfig.references.push(
-    ...missingRefNames.map(name => ({ path: PKG_ROOT + name }))
+      pkgs.push({
+        path: dir,
+        name
+      })
+    })
   )
-  updated = true
+  return pkgs
 }
 
-// Remove monorepo references found in tsconfig.json but not package.json
-const prunedRefs = tsconfig.references.filter(
-  ref =>
-    !(
-      ref.path.startsWith(PKG_ROOT) &&
-      isMonorepoPkg(ref.path.substr(PKG_ROOT.length))
-    ) || refPkgNames.includes(ref.path.substr(PKG_ROOT.length))
-)
-if (prunedRefs.length !== tsconfig.references.length) {
-  tsconfig.references = prunedRefs
-  updated = true
+const pkgToDependencies = pkg => {
+  const { dependencies = {}, devDependencies = {} } = pkg
+  return [...Object.keys(dependencies), ...Object.keys(devDependencies)]
 }
 
-// Update tsconfig.json if modified
-if (updated) {
+const dependenciesToKnownPaths = (allDepNames, pkgs) =>
+  allDepNames
+    .map(name => pkgs.find(pkg => pkg.name === name))
+    .filter(Boolean)
+    .map(pkg => pkg.path)
+
+const main = async () => {
+  const [pkg, tsconfig, pkgs] = await Promise.all([
+    fs.readJson('package.json'),
+    fs.readJson('tsconfig.json'),
+    listCandidateReferences()
+  ])
+  if (tsconfig.references == null) {
+    tsconfig.references = []
+  }
+
+  const allDepNames = pkgToDependencies(pkg)
+  const tsDepPaths = dependenciesToKnownPaths(allDepNames, pkgs)
+
+  const missingTsDepPaths = tsDepPaths.filter(
+    path => !tsconfig.references.some(ref => ref.path === path)
+  )
+
+  if (missingTsDepPaths.length === 0) {
+    return
+  }
+
+  tsconfig.references.push(...missingTsDepPaths.map(path => ({ path })))
   tsconfig.references.sort((a, b) => a.path.localeCompare(b.path))
-  const data = JSON.stringify(tsconfig, null, 2) + '\n'
-  fs.writeFileSync(tsconfigPath, data, 'utf8')
+  await fs.writeJson('tsconfig.json', tsconfig, { spaces: 2 })
 }
+
+main()

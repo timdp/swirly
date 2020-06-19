@@ -10,9 +10,6 @@
   ],
   "references": [
     {
-      "path": "../swirly-parser-rxjs"
-    },
-    {
       "path": "../swirly-types"
     }
   ]
