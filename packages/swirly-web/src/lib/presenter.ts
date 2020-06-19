@@ -8,6 +8,7 @@ import { examples } from './examples'
 import { Model } from './model'
 import { StateRepository } from './state'
 import { Example, IEventTarget } from './types'
+import { buildDataUri } from './util/data-uri'
 import { download } from './util/download'
 import { View } from './view'
 
@@ -118,12 +119,10 @@ export class Presenter implements IEventTarget {
   }
 
   _getSpecDataUri (): string {
-    const { code } = this._model
-    return 'data:text/plain,' + encodeURI(code)
+    return buildDataUri('text/plain', this._model.code)
   }
 
   _getSvgDataUri (): string {
-    const svgXml = this._view.getDiagramSvgXml()
-    return 'data:image/svg+xml,' + encodeURI(svgXml)
+    return buildDataUri('image/svg+xml', this._view.getDiagramSvgXml())
   }
 }
