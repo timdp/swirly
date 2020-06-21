@@ -86,8 +86,7 @@ export class Presenter implements IEventTarget {
   }
 
   onExampleRequested (example: Example) {
-    // TODO Open in new window instead
-    this._view.setDiagramSpecification(example.code)
+    window.open('#code=' + encodeURIComponent(example.code), '_blank')
   }
 
   _render () {

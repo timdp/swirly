@@ -74,11 +74,6 @@ export class View {
     return this._diagramContainer.innerHTML
   }
 
-  setDiagramSpecification (code: string) {
-    this._specField.value = code
-    this._eventTarget!.onSpecificationChange(code)
-  }
-
   setDiagramRendering (svgElement: SVGElement) {
     this._resultContainer.classList.remove('failed')
     this._diagramContainer.innerHTML = ''

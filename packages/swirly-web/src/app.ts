@@ -9,7 +9,20 @@ import { View } from './lib/view'
 maintainFullHeight()
 
 const stateRepository = new StateRepository()
+
 const model = stateRepository.read() || new Model()
+
+const paramsStr = window.location.hash.substr(1)
+if (paramsStr !== '') {
+  const params = new URLSearchParams(window.location.hash.substr(1))
+  const code = params.get('code')
+  if (code != null && code !== '') {
+    model.code = code
+    window.location.replace('#')
+  }
+}
+
 const view = new View()
+
 const presenter = new Presenter(model, view, stateRepository)
 presenter.start()
