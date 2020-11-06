@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@swirly/renderer": "^0.14.2",
-    "xmldom": "^0.3.0"
+    "xmldom": "^0.4.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.14.0",

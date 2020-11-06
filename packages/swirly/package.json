@@ -45,7 +45,7 @@
     "source-map-support": "^0.5.19",
     "stream-to-promise": "^3.0.0",
     "svgo": "^1.3.2",
-    "yargs": "^15.3.1"
+    "yargs": "^16.1.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.14.0",

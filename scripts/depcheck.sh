@@ -17,7 +17,7 @@ erroneous=0
 for pkgdir in "$@"; do
   pkgname=$( basename "$pkgdir" )
   missing=$(
-    "$DEPCHECK" "$pkgdir" --json --ignore-dirs=dist |
+    "$DEPCHECK" "$pkgdir" --json --ignore-patterns=dist/ |
       jq -r '.missing | keys | join(" ")'
   )
   if [[ -n $missing ]]; then
