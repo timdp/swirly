@@ -1,6 +1,6 @@
 import { parseMarbles } from '@swirly/parser-rxjs'
 
-import { toStreamSpec } from '../spec/stream'
+import { createStreamSpecification } from '../spec/stream'
 import { Parser, ParserContext } from '../types'
 import { firstNonNull } from '../util/first-non-null'
 import { parseConfig } from './config'
@@ -62,7 +62,7 @@ const run = (
   if (name != null) {
     allValues[name] = messages
   } else {
-    const spec = toStreamSpec(messages, config.title, frame)
+    const spec = createStreamSpecification(messages, config.title, frame)
     content.push(spec)
   }
 }

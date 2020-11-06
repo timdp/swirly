@@ -1,4 +1,4 @@
-import { parseMarbleDiagramSpec } from '@swirly/parser'
+import { parseMarbleDiagramSpecification } from '@swirly/parser'
 import { DiagramSpecification } from '@swirly/types'
 import { promises as fs } from 'fs'
 import YAML from 'js-yaml'
@@ -15,5 +15,5 @@ export const readDiagramSpec = async (
     return YAML.safeLoad(inFileContents)
   }
 
-  return parseMarbleDiagramSpec(inFileContents)
+  return parseMarbleDiagramSpecification(inFileContents)
 }

@@ -42,7 +42,7 @@ const testMessageToMessageSpecification = ({
     case Array.isArray(value):
       return {
         frame,
-        notification: { kind: 'N', value: toStreamSpec(value) }
+        notification: { kind: 'N', value: createStreamSpecification(value) }
       } as StreamNextMessageSpecification
     default:
       return {
@@ -55,7 +55,7 @@ const testMessageToMessageSpecification = ({
   }
 }
 
-export const toStreamSpec = (
+export const createStreamSpecification = (
   messagesIn: readonly TestMessage[],
   title: string | null = null,
   frame: number = 0

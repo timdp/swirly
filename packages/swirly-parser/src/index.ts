@@ -1,10 +1,13 @@
 import { DiagramSpecification } from '@swirly/types'
 
 import { parsers } from './parsers'
+import { createDiagramSpecification } from './spec/diagram'
+import { createOperatorSpecification } from './spec/operator'
+import { createStreamSpecification } from './spec/stream'
 import { ParserContext } from './types'
 import { byBlock } from './util/by-block'
 
-export const parseMarbleDiagramSpec = (str: string): DiagramSpecification => {
+const parseMarbleDiagramSpecification = (str: string): DiagramSpecification => {
   const ctx: ParserContext = { content: [], styles: {}, allValues: {} }
 
   for (const lines of byBlock(str)) {
@@ -12,5 +15,12 @@ export const parseMarbleDiagramSpec = (str: string): DiagramSpecification => {
     parser.run(lines, ctx)
   }
 
-  return ctx
+  return createDiagramSpecification(ctx.content, ctx.styles)
+}
+
+export {
+  parseMarbleDiagramSpecification,
+  createDiagramSpecification,
+  createOperatorSpecification,
+  createStreamSpecification
 }

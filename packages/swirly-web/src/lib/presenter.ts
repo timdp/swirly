@@ -1,4 +1,4 @@
-import { parseMarbleDiagramSpec } from '@swirly/parser'
+import { parseMarbleDiagramSpecification } from '@swirly/parser'
 import { renderMarbleDiagram } from '@swirly/renderer'
 import { styles as darkStyles } from '@swirly/theme-default-dark'
 import { styles as lightStyles } from '@swirly/theme-default-light'
@@ -95,7 +95,7 @@ export class Presenter implements IEventTarget {
 
     let spec
     try {
-      spec = parseMarbleDiagramSpec(code)
+      spec = parseMarbleDiagramSpecification(code)
     } catch (err) {
       this._view.setRenderErrorMessage('Failed to parse: ' + err.stack)
       return
