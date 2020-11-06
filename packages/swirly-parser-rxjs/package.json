@@ -1,7 +1,7 @@
 {
   "name": "@swirly/parser-rxjs",
   "description": "The RxJS marble parser, extracted for Swirly.",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "license": "MIT",
   "repository": {
     "type": "git",

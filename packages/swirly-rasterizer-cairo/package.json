@@ -1,7 +1,7 @@
 {
   "name": "@swirly/rasterizer-cairo",
   "description": "Rasterizer for Swirly marble diagrams, using Cairo.",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "stream-to-promise": "^3.0.0"
   },
   "devDependencies": {
-    "@swirly/types": "^0.14.0",
+    "@swirly/types": "^0.15.0",
     "@types/fabric": "^3.6.9",
     "@types/node": "^14.14.6",
     "@types/stream-to-promise": "^2.2.1",
