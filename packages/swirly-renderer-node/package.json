@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@swirly/types": "^0.14.0",
-    "@types/xmldom": "^0.1.29",
-    "shx": "^0.3.2"
+    "@types/xmldom": "^0.1.30",
+    "shx": "^0.3.3"
   }
 }

@@ -49,11 +49,11 @@
   },
   "devDependencies": {
     "@swirly/types": "^0.14.0",
-    "@types/js-yaml": "^3.12.4",
-    "@types/node": "^14.0.13",
+    "@types/js-yaml": "^3.12.5",
+    "@types/node": "^14.14.6",
     "@types/stream-to-promise": "^2.2.1",
     "@types/svgo": "^1.3.3",
-    "@types/yargs": "^15.0.5",
-    "shx": "^0.3.2"
+    "@types/yargs": "^15.0.9",
+    "shx": "^0.3.3"
   }
 }
