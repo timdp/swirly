@@ -10,8 +10,11 @@ const baseConfig = {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        loader: 'ts-loader',
+        options: {
+          logLevel: 'info',
+          projectReferences: true
+        }
       }
     ]
   },
