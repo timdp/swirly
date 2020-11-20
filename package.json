@@ -10,51 +10,32 @@
     "clean": "lerna run clean",
     "test": "lerna run test",
     "lint": "yarn run lint:js && yarn run lint:deps",
-    "lint:js": "standardx \"**/*.{js,ts}\"",
+    "lint:js": "eslint \"**/*.{js,ts}\"",
     "lint:deps": "scripts/depcheck.sh",
-    "format": "prettier-standard \"**/*.{js,ts}\" && standardx --fix \"**/*.{js,ts}\"",
+    "format": "prettier-eslint --write \"$PWD/**/*.{js,ts}\"",
     "publish": "lerna publish"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",
     "depcheck": "^1.2.0",
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "fs-extra": "^9.0.1",
     "hard-rejection": "^2.1.0",
     "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.1",
-    "prettier-standard": "^16.4.1",
-    "standardx": "^5.0.0",
+    "prettier-eslint-cli": "^5.0.0",
     "typescript": "^3.9.5"
-  },
-  "standardx": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint/eslint-plugin"
-    ],
-    "globals": [
-      "Image",
-      "DOMParser",
-      "XMLSerializer",
-      "btoa",
-      "localStorage"
-    ]
-  },
-  "eslintConfig": {
-    "plugins": [
-      "simple-import-sort"
-    ],
-    "rules": {
-      "no-unused-vars": "off",
-      "simple-import-sort/sort": "error"
-    }
   },
   "lint-staged": {
     "*.{js,ts}": [
-      "prettier-standard",
-      "standardx --fix"
+      "prettier-eslint --write"
     ]
   },
   "husky": {

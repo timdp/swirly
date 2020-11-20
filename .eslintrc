@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "extends": "standard",
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint/eslint-plugin",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "no-unused-vars": "off",
+    "simple-import-sort/sort": "error"
+  },
+  "ignorePatterns": [
+    "**/dist/*"
+  ]
+}

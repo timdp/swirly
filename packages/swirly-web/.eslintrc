@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "Image": "readonly",
+    "DOMParser": "readonly",
+    "XMLSerializer": "readonly",
+    "atob": "readonly",
+    "btoa": "readonly",
+    "localStorage": "readonly"
+  }
+}
