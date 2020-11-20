@@ -19,6 +19,7 @@
     "BufferEncoding": true
   },
   "ignorePatterns": [
-    "**/dist/*"
+    "**/dist/*",
+    "**/node_modules/*"
   ]
 }
