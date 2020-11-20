@@ -19,8 +19,8 @@ const parseMarbleDiagramSpecification = (str: string): DiagramSpecification => {
 }
 
 export {
-  parseMarbleDiagramSpecification,
   createDiagramSpecification,
   createOperatorSpecification,
-  createStreamSpecification
+  createStreamSpecification,
+  parseMarbleDiagramSpecification
 }

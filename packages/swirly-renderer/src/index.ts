@@ -119,4 +119,4 @@ const renderMarbleDiagram = (
   }
 }
 
-export { renderMarbleDiagram, RendererOptions }
+export { RendererOptions, renderMarbleDiagram }
