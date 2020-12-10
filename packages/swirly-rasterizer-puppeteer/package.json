@@ -38,5 +38,9 @@
     "@swirly/types": "^0.15.0",
     "@types/puppeteer": "^5.4.0",
     "shx": "^0.3.3"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
   }
 }

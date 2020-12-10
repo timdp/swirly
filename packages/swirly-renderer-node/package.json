@@ -39,5 +39,9 @@
     "@swirly/types": "^0.15.0",
     "@types/xmldom": "^0.1.30",
     "shx": "^0.3.3"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
   }
 }

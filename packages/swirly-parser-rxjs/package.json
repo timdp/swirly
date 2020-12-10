@@ -36,5 +36,9 @@
     "rollup-plugin-typescript2": "^0.29.0",
     "rxjs": "6.6.3",
     "shx": "^0.3.3"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
   }
 }
