@@ -1,7 +1,7 @@
 {
   "name": "@swirly/rasterizer-puppeteer",
   "description": "Rasterizer for Swirly marble diagrams, using Puppeteer.",
-  "version": "0.15.0",
+  "version": "0.15.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "puppeteer": "^5.4.1"
   },
   "devDependencies": {
-    "@swirly/types": "^0.15.0",
+    "@swirly/types": "^0.15.2",
     "@types/puppeteer": "^5.4.0",
     "shx": "^0.3.3"
   },

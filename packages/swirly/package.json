@@ -1,7 +1,7 @@
 {
   "name": "swirly",
   "description": "A marble diagram generator.",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -34,12 +34,12 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@swirly/parser": "^0.15.1",
-    "@swirly/rasterizer-inkscape": "^0.15.0",
-    "@swirly/rasterizer-puppeteer": "^0.15.0",
-    "@swirly/renderer-node": "^0.15.1",
-    "@swirly/theme-default-dark": "^0.15.0",
-    "@swirly/theme-default-light": "^0.15.0",
+    "@swirly/parser": "^0.15.2",
+    "@swirly/rasterizer-inkscape": "^0.15.2",
+    "@swirly/rasterizer-puppeteer": "^0.15.2",
+    "@swirly/renderer-node": "^0.15.2",
+    "@swirly/theme-default-dark": "^0.15.2",
+    "@swirly/theme-default-light": "^0.15.2",
     "hard-rejection": "^2.1.0",
     "js-yaml": "^3.13.1",
     "source-map-support": "^0.5.19",
@@ -48,7 +48,7 @@
     "yargs": "^16.1.0"
   },
   "devDependencies": {
-    "@swirly/types": "^0.15.0",
+    "@swirly/types": "^0.15.2",
     "@types/js-yaml": "^3.12.5",
     "@types/node": "^14.14.6",
     "@types/stream-to-promise": "^2.2.1",
