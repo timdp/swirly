@@ -1,9 +1,7 @@
+import { RasterizerName } from '@swirly/types'
 import { Writable } from 'stream'
 
-import { rasterizers } from './rasterizers'
 import { stylesByTheme } from './themes'
-
-export type RasterizerName = keyof typeof rasterizers
 
 export type ThemeName = keyof typeof stylesByTheme
 
@@ -15,6 +13,7 @@ export type CommandLineOptions = {
   optimize: boolean
   scale: number
   rasterizer: RasterizerName
+  rasterizationServer: string
 }
 
 export type FormatOutputOptions = {
@@ -24,6 +23,7 @@ export type FormatOutputOptions = {
   scale: number
   filename: string | null
   rasterizer: RasterizerName
+  rasterizationServer: string
 }
 
 export type WriteStreamFactory = (

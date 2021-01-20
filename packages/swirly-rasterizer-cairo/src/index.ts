@@ -1,4 +1,4 @@
-import { RasterizerOutputFormat } from '@swirly/types'
+import { Rasterizer, RasterizerOutputFormat } from '@swirly/types'
 import { fabric } from 'fabric'
 import { Readable } from 'stream'
 import streamToPromise from 'stream-to-promise'
@@ -17,7 +17,7 @@ const loadSvg = (svgXml: string): Promise<fabric.Object> =>
     })
   })
 
-export const rasterizeSvg = async (
+export const rasterizeSvg: Rasterizer = async (
   svgXml: string,
   width: number,
   height: number,

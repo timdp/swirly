@@ -13,10 +13,10 @@
       "path": "../swirly-parser"
     },
     {
-      "path": "../swirly-rasterizer-inkscape"
+      "path": "../swirly-rasterization-client"
     },
     {
-      "path": "../swirly-rasterizer-puppeteer"
+      "path": "../swirly-rasterization-server"
     },
     {
       "path": "../swirly-renderer-node"

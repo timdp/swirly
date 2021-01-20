@@ -31,7 +31,7 @@
     "node": ">=10"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-node-resolve": "^11.1.0",
     "rollup": "^2.33.1",
     "rollup-plugin-typescript2": "^0.29.0",
     "rxjs": "6.6.3",

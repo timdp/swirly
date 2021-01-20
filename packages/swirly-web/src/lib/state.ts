@@ -5,7 +5,7 @@ export class StateRepository {
     let state
     try {
       state = JSON.parse(localStorage.state)
-    } catch (_) {}
+    } catch {}
 
     if (state == null || typeof state !== 'object') {
       return null
@@ -29,6 +29,6 @@ export class StateRepository {
   write (model: Model) {
     try {
       localStorage.state = JSON.stringify(model.toJSON())
-    } catch (_) {}
+    } catch {}
   }
 }

@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-simple-import-sort": "^6.0.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "fs-extra": "^9.0.1",
     "hard-rejection": "^2.1.0",
     "husky": "^4.3.0",

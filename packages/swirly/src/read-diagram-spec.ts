@@ -12,7 +12,7 @@ export const readDiagramSpec = async (
   const inFileContents: string = await fs.readFile(inFilePath, 'utf8')
 
   if (YAML_EXTENSIONS.includes(path.extname(inFilePath))) {
-    return YAML.safeLoad(inFileContents) as DiagramSpecification
+    return YAML.load(inFileContents) as DiagramSpecification
   }
 
   return parseMarbleDiagramSpecification(inFileContents)

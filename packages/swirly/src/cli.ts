@@ -21,7 +21,8 @@ const main = async () => {
     force,
     optimize,
     scale,
-    rasterizer
+    rasterizer,
+    rasterizationServer
   }: CommandLineOptions = getOpts()
 
   const spec = await readDiagramSpec(inFilePath)
@@ -37,7 +38,8 @@ const main = async () => {
     height,
     scale,
     filename: outFilePath,
-    rasterizer
+    rasterizer,
+    rasterizationServer
   })
 
   const outStream = writer.createWriteStream(outFilePath, force)

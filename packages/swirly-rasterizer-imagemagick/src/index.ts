@@ -1,7 +1,7 @@
-import { RasterizerOutputFormat } from '@swirly/types'
+import { Rasterizer, RasterizerOutputFormat } from '@swirly/types'
 import { spawnSync, StdioOptions } from 'child_process'
 
-export const rasterizeSvg = async (
+export const rasterizeSvg: Rasterizer = async (
   svgXml: string,
   width: number,
   height: number,

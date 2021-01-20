@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/swirly"><img alt="npm" src="https://img.shields.io/npm/v/swirly.svg"></a>
-  <a href="https://standardjs.com/"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
+  <a href="https://standardjs.com"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
 </p>
 
 ## Example
@@ -63,7 +63,7 @@ swirly --scale=200 diagram.txt diagram.png
 
 ## Author
 
-[Tim De Pauw](https://tmdpw.eu/)
+[Tim De Pauw](https://tmdpw.eu)
 
 ## License
 
