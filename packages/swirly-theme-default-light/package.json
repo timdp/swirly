@@ -1,7 +1,7 @@
 {
   "name": "@swirly/theme-default-light",
   "description": "Light theme for Swirly marble diagrams.",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -33,10 +33,10 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@swirly/theme-default-base": "^0.16.0"
+    "@swirly/theme-default-base": "^0.17.0"
   },
   "devDependencies": {
-    "@swirly/types": "^0.16.0",
+    "@swirly/types": "^0.17.0",
     "shx": "^0.3.3"
   },
   "funding": {
