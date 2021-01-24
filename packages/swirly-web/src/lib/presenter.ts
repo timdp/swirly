@@ -1,7 +1,7 @@
 import { parseMarbleDiagramSpecification } from '@swirly/parser'
 import { renderMarbleDiagram } from '@swirly/renderer'
-import { styles as darkStyles } from '@swirly/theme-default-dark'
-import { styles as lightStyles } from '@swirly/theme-default-light'
+import { darkStyles } from '@swirly/theme-default-dark'
+import { lightStyles } from '@swirly/theme-default-light'
 import dedent from 'dedent'
 
 import { examples } from './examples'

@@ -15,7 +15,7 @@ echo "Server started, PID is $SERVER_PID"
 
 kill_server () {
   echo "Killing server with PID $SERVER_PID"
-  kill -9 $SERVER_PID
+  kill $SERVER_PID
 }
 
 trap kill_server exit

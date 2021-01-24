@@ -1,7 +1,7 @@
-import { styles as baseStyles } from '@swirly/theme-default-base'
+import { baseStyles } from '@swirly/theme-default-base'
 import { DiagramStyles } from '@swirly/types'
 
-export const styles: DiagramStyles = {
+export const darkStyles: DiagramStyles = {
   ...baseStyles,
   arrow_stroke_color: 'white',
   background_color: 'black',

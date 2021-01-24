@@ -1,18 +1,21 @@
-import { rasterizeSvg as inkscape } from '@swirly/rasterizer-inkscape'
-import { rasterizeSvg as puppeteer } from '@swirly/rasterizer-puppeteer'
-import { RasterizationRequest, Rasterizer, RasterizerName } from '@swirly/types'
+import { InkscapeRasterizer } from '@swirly/rasterizer-inkscape'
+import { PuppeteerRasterizer } from '@swirly/rasterizer-puppeteer'
+import {
+  IRasterizer,
+  RasterizationRequest,
+  RasterizerName
+} from '@swirly/types'
 import fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
+import pMemoize from 'p-memoize'
 
-const rasterizers: {
-  [N in RasterizerName]: Rasterizer
-} = {
-  inkscape,
-  puppeteer
+const rasterizerImpls: { [N in RasterizerName]: { new (): IRasterizer } } = {
+  puppeteer: PuppeteerRasterizer,
+  inkscape: InkscapeRasterizer
 }
 
 export class RasterizationServer {
   static readonly RASTERIZER_NAMES = Object.keys(
-    rasterizers
+    rasterizerImpls
   ) as RasterizerName[]
 
   private _port: number
@@ -21,9 +24,15 @@ export class RasterizationServer {
 
   private _fastify?: FastifyInstance
 
+  private _rasterizers: Map<RasterizerName, IRasterizer>
+
   constructor (port: number = 0, address: string | null = null) {
     this._port = port
     this._address = address != null ? address : '0.0.0.0'
+    this._rasterizers = new Map<RasterizerName, IRasterizer>()
+    this._createRasterizer = pMemoize(this._createRasterizer.bind(this), {
+      cachePromiseRejection: true
+    })
   }
 
   get url (): string {
@@ -42,6 +51,12 @@ export class RasterizationServer {
 
   async stop (): Promise<void> {
     await this._fastify!.close()
+    const rasterizers = Array.from(this._rasterizers.values())
+    await Promise.all(
+      rasterizers.map(async rasterizer => {
+        await rasterizer.dispose()
+      })
+    )
   }
 
   _registerRoutes () {
@@ -58,8 +73,15 @@ export class RasterizationServer {
           height,
           format
         } = request.body as RasterizationRequest
-        const rasterizeSvg: Rasterizer = rasterizers[rasterizer]
-        const output = await rasterizeSvg(svgXml, width, height, format)
+        const rasterizerImpl: IRasterizer = await this._createRasterizer(
+          rasterizer
+        )
+        const output = await rasterizerImpl.rasterize(
+          svgXml,
+          width,
+          height,
+          format
+        )
         reply.header('content-type', 'application/octet-stream')
         return output
       }
@@ -80,5 +102,13 @@ export class RasterizationServer {
         }
       )
     })
+  }
+
+  async _createRasterizer (name: RasterizerName): Promise<IRasterizer> {
+    const RasterizerImpl = rasterizerImpls[name]
+    const rasterizer: IRasterizer = new RasterizerImpl()
+    await rasterizer.init()
+    this._rasterizers.set(name, rasterizer)
+    return rasterizer
   }
 }

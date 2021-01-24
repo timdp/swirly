@@ -1,4 +1,4 @@
-import { styles as defaultStyles } from '@swirly/theme-default-light'
+import { lightStyles } from '@swirly/theme-default-light'
 import {
   DiagramRendering,
   DiagramSpecification,
@@ -38,7 +38,7 @@ const renderMarbleDiagram = (
   const $svg = (document.documentElement as unknown) as SVGSVGElement
 
   const styles = {
-    ...defaultStyles,
+    ...lightStyles,
     ...options.styles,
     ...spec.styles
   }

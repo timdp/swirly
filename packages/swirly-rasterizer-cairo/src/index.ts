@@ -1,4 +1,4 @@
-import { Rasterizer, RasterizerOutputFormat } from '@swirly/types'
+import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
 import { fabric } from 'fabric'
 import { Readable } from 'stream'
 import streamToPromise from 'stream-to-promise'
@@ -17,22 +17,28 @@ const loadSvg = (svgXml: string): Promise<fabric.Object> =>
     })
   })
 
-export const rasterizeSvg: Rasterizer = async (
-  svgXml: string,
-  width: number,
-  height: number,
-  format: RasterizerOutputFormat
-): Promise<Buffer> => {
-  const canvas = new fabric.StaticCanvas(null, {
-    width,
-    height
-  }) as RasterizingStaticCanvas
-  const group = await loadSvg(svgXml)
-  group.scaleToWidth(width)
-  canvas.add(group)
-  canvas.renderAll()
-  const stream =
-    format === 'jpeg' ? canvas.createJPEGStream() : canvas.createPNGStream()
-  const data = await streamToPromise(stream)
-  return data
+export class CairoRasterizer implements IRasterizer {
+  async init (): Promise<void> {}
+
+  async dispose (): Promise<void> {}
+
+  async rasterize (
+    svgXml: string,
+    width: number,
+    height: number,
+    format: RasterizerOutputFormat
+  ): Promise<Buffer> {
+    const canvas = new fabric.StaticCanvas(null, {
+      width,
+      height
+    }) as RasterizingStaticCanvas
+    const group = await loadSvg(svgXml)
+    group.scaleToWidth(width)
+    canvas.add(group)
+    canvas.renderAll()
+    const stream =
+      format === 'jpeg' ? canvas.createJPEGStream() : canvas.createPNGStream()
+    const data = await streamToPromise(stream)
+    return data
+  }
 }

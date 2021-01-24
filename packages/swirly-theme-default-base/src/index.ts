@@ -1,6 +1,6 @@
 import { DiagramStyles } from '@swirly/types'
 
-export const styles: DiagramStyles = {
+export const baseStyles: DiagramStyles = {
   arrow_fill_color: '',
   arrow_stroke_width: 2,
   arrow_width: 10,
