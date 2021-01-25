@@ -1,7 +1,7 @@
 {
   "name": "@swirly/web",
   "description": "The Swirly Web app.",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "private": true,
   "license": "MIT",
   "repository": {
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@swirly/parser": "^0.17.0",
-    "@swirly/renderer": "^0.17.0",
+    "@swirly/renderer": "^0.17.1",
     "@swirly/theme-default-dark": "^0.17.0",
     "@swirly/theme-default-light": "^0.17.0",
     "core-js": "^3.7.0",
