@@ -34,7 +34,7 @@ export const renderOperator = (
     'text',
     {
       x: s.spacing!,
-      y: s.spacing! + s.height! / 2 + 'px',
+      y: s.spacing! + s.height! / 2,
       fill: s.title_color!,
       'font-family': s.title_font_family!,
       'font-size': s.title_font_size! + 'px',
