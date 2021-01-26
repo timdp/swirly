@@ -1,17 +1,17 @@
 export const createElement = (
   document: XMLDocument,
   name: string,
-  attrs: any = {},
+  attrs: { [name: string]: any } = {},
   text: string = ''
 ): SVGElement => {
   const $el = document.createElementNS('http://www.w3.org/2000/svg', name)
 
   for (const [name, value] of Object.entries(attrs)) {
-    $el.setAttribute(name, '' + value)
+    $el.setAttribute(name, String(value))
   }
 
   if (text !== '') {
-    $el.textContent = '' + text
+    $el.textContent = text
   }
 
   return $el

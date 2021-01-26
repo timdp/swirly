@@ -55,9 +55,9 @@ export const renderOperator = (
   }
 
   const update = ({ width }: PostRenderUpdateContext) => {
-    $rect.setAttribute('width', '' + width)
-    $text.setAttribute('x', '' + width / 2)
-    $text.setAttribute('width', '' + width)
+    $rect.setAttribute('width', String(width))
+    $text.setAttribute('x', String(width / 2))
+    $text.setAttribute('width', String(width))
   }
 
   return {

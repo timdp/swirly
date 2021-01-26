@@ -49,7 +49,7 @@ const testMessageToMessageSpecification = ({
         frame,
         notification: {
           kind: 'N',
-          value: value != null ? '' + value : ''
+          value: value != null ? String(value) : ''
         }
       } as ScalarNextMessageSpecification
   }

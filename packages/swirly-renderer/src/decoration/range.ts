@@ -4,11 +4,7 @@ import {
   RangeDecorationStyles
 } from '@swirly/types'
 
-import {
-  DecorationRenderer,
-  DecorationRendererContext,
-  DecorationRendererResult
-} from '../types'
+import { DecorationRendererContext, DecorationRendererResult } from '../types'
 import { createElement } from '../util/create-element'
 import { mergeStyles } from '../util/merge-styles'
 import { translate } from '../util/transform'

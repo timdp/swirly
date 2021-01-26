@@ -8,6 +8,7 @@ import {
 import fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import pMemoize from 'p-memoize'
 
+// eslint-disable-next-line no-unused-vars
 const rasterizerImpls: { [N in RasterizerName]: { new (): IRasterizer } } = {
   puppeteer: PuppeteerRasterizer,
   inkscape: InkscapeRasterizer

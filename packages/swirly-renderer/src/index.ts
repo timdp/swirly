@@ -93,16 +93,16 @@ const renderMarbleDiagram = (
   const height = styles.canvas_padding! + y + styles.canvas_padding!
 
   $svg.setAttribute('viewBox', `0 0 ${width} ${height}`)
-  $svg.setAttribute('width', '' + width)
-  $svg.setAttribute('height', '' + height)
+  $svg.setAttribute('width', String(width))
+  $svg.setAttribute('height', String(height))
 
   const bgColor = styles.background_color!
   if (bgColor !== '' && bgColor !== 'transparent') {
     const $bg = createElement(document, 'rect', {
       x: 0,
       y: 0,
-      width: '' + width,
-      height: '' + height,
+      width,
+      height,
       fill: bgColor
     })
     $svg.insertBefore($bg, $svg.firstChild)
