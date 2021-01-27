@@ -1,7 +1,7 @@
 {
   "name": "@swirly/rasterization-server",
   "description": "Rasterization server for Swirly marble diagrams.",
-  "version": "0.17.0",
+  "version": "0.17.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@swirly/rasterizer-inkscape": "^0.17.0",
+    "@swirly/rasterizer-inkscape": "^0.17.2",
     "@swirly/rasterizer-puppeteer": "^0.17.0",
     "fastify": "^3.10.1",
     "hard-rejection": "^2.1.0",
