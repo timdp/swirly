@@ -1,5 +1,5 @@
 import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
-import { spawnSync, StdioOptions } from 'child_process'
+import execa from 'execa'
 
 export class InkscapeRasterizer implements IRasterizer {
   async init (): Promise<void> {}
@@ -27,21 +27,12 @@ export class InkscapeRasterizer implements IRasterizer {
       String(height)
     ]
     const options = {
+      encoding: null,
       input: svgXml,
-      stdio: [null, 'pipe', 'pipe'] as StdioOptions,
-      shell: true
+      stdin: undefined,
+      sderr: undefined
     }
-    const { status, signal, stdout, stderr } = spawnSync(cmd, args, options)
-    if (status !== 0 || signal != null) {
-      const err = new Error(stderr.toString())
-      Object.assign(err, {
-        status,
-        signal,
-        stdout,
-        stderr
-      })
-      throw err
-    }
+    const { stdout } = await execa(cmd, args, options)
     return stdout
   }
 }
