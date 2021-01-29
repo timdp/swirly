@@ -47,7 +47,7 @@ export class RasterizationServer {
   async start (): Promise<void> {
     this._fastify = fastify()
     this._registerRoutes()
-    await this._listen()
+    await this._fastify!.listen(this._port, this._address)
   }
 
   async stop (): Promise<void> {
@@ -87,22 +87,6 @@ export class RasterizationServer {
         return output
       }
     )
-  }
-
-  _listen (): Promise<void> {
-    return new Promise((resolve, reject) => {
-      this._fastify!.listen(
-        this._port,
-        this._address,
-        (err: Error, address: string) => {
-          if (err != null) {
-            reject(err)
-          } else {
-            resolve()
-          }
-        }
-      )
-    })
   }
 
   async _createRasterizer (name: RasterizerName): Promise<IRasterizer> {
