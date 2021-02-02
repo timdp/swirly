@@ -32,7 +32,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "puppeteer": "^5.4.1"
+    "puppeteer": "^6.0.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.17.0",
