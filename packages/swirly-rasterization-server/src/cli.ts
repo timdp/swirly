@@ -38,32 +38,21 @@ const startServer = async (
   return server
 }
 
-const listenForKillSignal = (server: RasterizationServer) => {
-  let stopping = false
-  const onSignal = () => {
-    if (stopping) {
-      console.warn('Multiple kill signals received, terminating immediately')
-      process.exit(0)
-    }
-    stopping = true
-    server.stop().then(
-      () => {
-        process.exit(0)
-      },
-      err => {
-        console.error(err)
-        process.exit(1)
-      }
-    )
+const listenForKillSignals = (server: RasterizationServer) => {
+  const stopServerAndExit = () => {
+    process.removeListener('SIGINT', stopServerAndExit)
+    process.removeListener('SIGTERM', stopServerAndExit)
+    // Fire-and-forget, relying on hard-rejection
+    server.stop()
   }
-  process.on('SIGINT', onSignal)
-  process.on('SIGTERM', onSignal)
+  process.on('SIGINT', stopServerAndExit)
+  process.on('SIGTERM', stopServerAndExit)
 }
 
 const main = async () => {
   const { port, address } = getOpts()
   const server = await startServer(port, address)
-  listenForKillSignal(server)
+  listenForKillSignals(server)
   process.stdout.write(server.url)
   process.stdout.write(EOL)
 }
