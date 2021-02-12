@@ -83,7 +83,7 @@ export class RasterizationServer {
           height,
           format
         )
-        reply.header('content-type', 'application/octet-stream')
+        reply.header('content-type', `image/${format}`)
         return output
       }
     )
