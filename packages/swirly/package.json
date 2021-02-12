@@ -1,7 +1,7 @@
 {
   "name": "swirly",
   "description": "A marble diagram generator.",
-  "version": "0.17.4",
+  "version": "0.17.5",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -34,9 +34,9 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@swirly/parser": "^0.17.4",
+    "@swirly/parser": "^0.17.5",
     "@swirly/rasterization-client": "^0.17.0",
-    "@swirly/rasterization-server": "^0.17.4",
+    "@swirly/rasterization-server": "^0.17.5",
     "@swirly/renderer-node": "^0.17.2",
     "@swirly/theme-default-dark": "^0.17.0",
     "@swirly/theme-default-light": "^0.17.0",
