@@ -13,35 +13,31 @@
     "lint:js": "eslint \"**/*.{js,ts}\"",
     "lint:deps": "scripts/depcheck.sh",
     "format": "prettier-eslint --write \"$PWD/**/*.{js,ts}\"",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "postinstall": "husky install"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.2",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
     "depcheck": "^1.2.0",
     "eslint": "^7.19.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "fs-extra": "^9.0.1",
     "hard-rejection": "^2.1.0",
-    "husky": "^4.3.0",
+    "husky": "^5.0.9",
     "lerna": "^3.22.1",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.4",
     "prettier-eslint-cli": "^5.0.0",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.5"
   },
   "lint-staged": {
     "*.{js,ts}": [
       "prettier-eslint --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && yarn run lint && yarn run buildfast && yarn run test && scripts/build-examples.sh"
-    }
   },
   "workspaces": [
     "packages/*"

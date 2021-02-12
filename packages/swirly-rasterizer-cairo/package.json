@@ -38,7 +38,7 @@
   "devDependencies": {
     "@swirly/types": "^0.17.0",
     "@types/fabric": "^4.2.2",
-    "@types/node": "^14.14.6",
+    "@types/node": "^14.14.27",
     "@types/stream-to-promise": "^2.2.1",
     "shx": "^0.3.3"
   },

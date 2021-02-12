@@ -54,6 +54,6 @@ export class PuppeteerRasterizer implements IRasterizer {
         width,
         height
       }
-    })
+    }) as Promise<Buffer>
   }
 }

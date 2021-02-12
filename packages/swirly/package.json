@@ -50,7 +50,7 @@
   "devDependencies": {
     "@swirly/types": "^0.17.0",
     "@types/js-yaml": "^4.0.0",
-    "@types/node": "^14.14.6",
+    "@types/node": "^14.14.27",
     "@types/stream-to-promise": "^2.2.1",
     "@types/svgo": "^1.3.3",
     "@types/yargs": "^16.0.0",

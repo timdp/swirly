@@ -32,11 +32,11 @@
     "node": ">=10"
   },
   "dependencies": {
-    "puppeteer": "^6.0.0"
+    "puppeteer": "^7.1.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.17.0",
-    "@types/puppeteer": "^5.4.0",
+    "@types/puppeteer": "^5.4.3",
     "shx": "^0.3.3"
   },
   "funding": {
