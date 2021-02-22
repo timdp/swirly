@@ -34,6 +34,8 @@ jobs:
       - run:
           name: Lint
           command: yarn run lint
+          environment:
+            TERM: xterm
       - run:
           name: Build
           command: yarn run build
