@@ -30,7 +30,7 @@ const main = async () => {
   const writer = writers.find((writer: Writer) => writer.match(outFilePath))!
 
   const { xml: unoptXml, width, height } = renderMarbleDiagram(spec, { styles })
-  const xml = optimize ? await optimizeXml(unoptXml) : unoptXml
+  const xml = optimize ? optimizeXml(unoptXml) : unoptXml
 
   const output = await writer.formatOutput({
     xml,

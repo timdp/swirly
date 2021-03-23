@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@swirly/theme-default-light": "^0.17.0",
-    "simple-sha1": "^3.0.1"
+    "simple-sha1": "^3.1.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.17.0",

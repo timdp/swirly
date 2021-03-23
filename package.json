@@ -17,10 +17,10 @@
     "postinstall": "husky install"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
-    "depcheck": "^1.2.0",
-    "eslint": "^7.19.0",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "depcheck": "^1.4.0",
+    "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
@@ -28,11 +28,11 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "fs-extra": "^9.0.1",
     "hard-rejection": "^2.1.0",
-    "husky": "^5.0.9",
-    "lerna": "^3.22.1",
+    "husky": "^5.2.0",
+    "lerna": "^4.0.0",
     "lint-staged": "^10.5.4",
-    "prettier-eslint-cli": "^5.0.0",
-    "typescript": "^4.1.5"
+    "prettier-eslint-cli": "^5.0.1",
+    "typescript": "^4.2.3"
   },
   "lint-staged": {
     "*.{js,ts}": [

@@ -31,20 +31,20 @@
     "@swirly/renderer": "^0.17.2",
     "@swirly/theme-default-dark": "^0.17.0",
     "@swirly/theme-default-light": "^0.17.0",
-    "core-js": "^3.7.0",
+    "core-js": "^3.9.1",
     "dedent": "^0.7.0",
     "split.js": "^1.6.2"
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",
     "@types/split.js": "^1.6.0",
-    "clean-css-cli": "^5.1.0",
+    "clean-css-cli": "^5.2.2",
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "run-sequence": "^2.2.1",
     "shx": "^0.3.3",
-    "ts-loader": "^8.0.17",
-    "webpack": "^5.21.2",
+    "ts-loader": "^8.0.18",
+    "webpack": "^5.27.2",
     "webpack-cli": "^4.5.0"
   },
   "funding": {

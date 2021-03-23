@@ -1,7 +1,13 @@
-import SVGO from 'svgo'
+import { extendDefaultPlugins, optimize } from 'svgo'
 
-export const optimizeXml = async (unoptXml: string): Promise<string> => {
-  const svgo = new SVGO({ plugins: [{ removeViewBox: false }] })
-  const { data: optXml } = await svgo.optimize(unoptXml)
-  return optXml
+export const optimizeXml = (unoptXml: string): string => {
+  const { data } = optimize(unoptXml, {
+    plugins: extendDefaultPlugins([
+      {
+        name: 'removeViewBox',
+        active: false
+      }
+    ])
+  })
+  return data
 }

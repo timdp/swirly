@@ -31,10 +31,10 @@
     "node": ">=10"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^11.1.1",
-    "rollup": "^2.38.5",
-    "rollup-plugin-typescript2": "^0.29.0",
-    "rxjs": "6.6.3",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "rollup": "^2.42.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rxjs": "6.6.6",
     "shx": "^0.3.3"
   },
   "funding": {
