@@ -15,8 +15,8 @@ const parseValue = (value: string): string | number | boolean => {
 export const parseConfig = (
   lines: readonly string[],
   allowAssignment: boolean
-): { [key: string]: any } => {
-  const config: { [key: string]: any } = {}
+): Record<string, any> => {
+  const config: Record<string, any> = {}
   if (allowAssignment) {
     config.values = {}
   }

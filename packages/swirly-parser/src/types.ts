@@ -3,7 +3,7 @@ import { DiagramContent, DiagramStyles } from '@swirly/types'
 export type ParserContext = {
   content: DiagramContent
   styles: DiagramStyles
-  allValues: { [key: string]: any }
+  allValues: Record<string, any>
 }
 
 export type Parser = {

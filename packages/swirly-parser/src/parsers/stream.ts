@@ -31,8 +31,8 @@ const parseNameAndMarbles = (
 
 const buildLocalValues = (
   marbles: string,
-  configValues: { [key: string]: any },
-  allValues: { [key: string]: any }
+  configValues: Record<string, any>,
+  allValues: Record<string, any>
 ): any => {
   const localValues: any = {}
   for (const name of extractNames(marbles)) {

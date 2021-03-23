@@ -1,7 +1,7 @@
 export const createElement = (
   document: XMLDocument,
   name: string,
-  attrs: { [name: string]: any } = {},
+  attrs: Record<string, any> = {},
   text: string = ''
 ): SVGElement => {
   const $el = document.createElementNS('http://www.w3.org/2000/svg', name)

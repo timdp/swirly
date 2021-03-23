@@ -14,7 +14,7 @@ import { mergeStyles } from '../util/merge-styles'
 import { stringToColor } from '../util/string-to-color'
 import { rotate, translate } from '../util/transform'
 
-const COLOR_TO_MODE: { [key: string]: 'light' | 'dark' } = {
+const COLOR_TO_MODE: Record<string, 'light' | 'dark'> = {
   auto: 'light',
   auto_light: 'light',
   auto_dark: 'dark'

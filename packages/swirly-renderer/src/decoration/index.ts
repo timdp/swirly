@@ -8,7 +8,7 @@ import {
 import { renderBarrierDecoration } from './barrier'
 import { renderRangeDecoration } from './range'
 
-const strategies: { [key: string]: DecorationRenderer } = {
+const strategies: Record<string, DecorationRenderer> = {
   barrier: renderBarrierDecoration,
   range: renderRangeDecoration
 }

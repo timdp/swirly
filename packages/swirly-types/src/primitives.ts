@@ -8,4 +8,4 @@ export type FontStyle = string
 
 export type FontWeight = string | number
 
-export type FreeformStyles = { [key: string]: any }
+export type FreeformStyles = Record<string, any>
