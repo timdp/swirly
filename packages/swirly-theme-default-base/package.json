@@ -1,7 +1,7 @@
 {
   "name": "@swirly/theme-default-base",
   "description": "Base theme for Swirly marble diagrams.",
-  "version": "0.17.0",
+  "version": "0.17.6",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "node": ">=10"
   },
   "devDependencies": {
-    "@swirly/types": "^0.17.0",
+    "@swirly/types": "^0.17.6",
     "shx": "^0.3.3"
   },
   "funding": {
