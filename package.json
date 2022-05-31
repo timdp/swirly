@@ -13,7 +13,7 @@
     "lint:js": "eslint \"**/*.{js,ts}\"",
     "lint:deps": "scripts/depcheck.sh",
     "format": "prettier-eslint --write \"$PWD/**/*.{js,ts}\"",
-    "publish": "lerna publish",
+    "publish": "lerna publish --concurrency=1",
     "prepare": "husky install"
   },
   "devDependencies": {
