@@ -1,6 +1,7 @@
 import { parseMarbles } from '@swirly/parser-rxjs'
 
 import { createStreamSpecification } from '../spec/stream'
+import { kIsGhost } from '../symbols'
 import { Parser, ParserContext } from '../types'
 import { firstNonNull } from '../util/first-non-null'
 import { parseConfig } from './config'
@@ -8,6 +9,7 @@ import { parseConfig } from './config'
 const reName = /([A-Za-z0-9])/g
 const reNameAndMarbles = /^([A-Za-z0-9])\s*=\s*(\S+)\s*$/
 const reLeadingWhitespace = /^(\s+)/
+const reGhostNameSeparator = /\s*,\s*/
 
 function * extractNames (marbles: string): Generator<string, void, undefined> {
   let match
@@ -53,7 +55,16 @@ const run = (
   const config = parseConfig(configLines, true)
 
   const localValues = buildLocalValues(marbles, config.values, allValues)
-
+  if (typeof config.ghosts === 'string') {
+    const ghostNames = config.ghosts.split(reGhostNameSeparator)
+    for (const ghostName of ghostNames) {
+      if (localValues[ghostName] != null) {
+        const copy = localValues[ghostName].slice()
+        copy[kIsGhost] = true
+        localValues[ghostName] = copy
+      }
+    }
+  }
   const messages = parseMarbles(marbles, localValues)
 
   const match = reLeadingWhitespace.exec(marbles)

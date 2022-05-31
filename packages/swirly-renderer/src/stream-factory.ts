@@ -49,8 +49,9 @@ export const createRenderStream =
   (renderMessage: MessageRenderer) =>
     (
       ctx: RendererContext,
+      stream: StreamSpecification,
       isHigherOrder: boolean,
-      stream: StreamSpecification
+      isGhost: boolean
     ): RendererResult => {
       const { document, styles } = ctx
 
@@ -58,7 +59,15 @@ export const createRenderStream =
         ? createScaleTime(styles.higher_order_angle!)
         : nullScaleTime
 
-      const $group = createElement(document, 'g')
+      const $group = createElement(
+        document,
+        'g',
+        isGhost
+          ? {
+              style: `filter: opacity(${styles.ghost_opacity}%)`
+            }
+          : undefined
+      )
       const bboxes: Rectangle[] = []
 
       const add = ({ element, bbox }: RendererResult) => {

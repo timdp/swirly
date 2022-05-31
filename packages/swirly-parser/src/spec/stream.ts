@@ -9,6 +9,7 @@ import {
 } from '@swirly/types'
 
 import { SCALE } from '../constants'
+import { kIsGhost } from '../symbols'
 
 const getDuration = (messages: readonly MessageSpecification[]): number => {
   let maxFrame = 0
@@ -48,7 +49,8 @@ const testMessageToMessageSpecification = ({
         frame,
         notification: {
           kind: 'N',
-          value: createStreamSpecification(value)
+          value: createStreamSpecification(value),
+          isGhost: !!value[kIsGhost]
         }
       } as StreamNextMessageSpecification
     default: // NextNotification, scalar

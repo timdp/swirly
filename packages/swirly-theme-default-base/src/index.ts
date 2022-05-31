@@ -19,6 +19,7 @@ export const baseStyles: DiagramStyles = {
   event_value_font_style: 'normal',
   event_value_font_weight: 'normal',
   frame_width: 30,
+  ghost_opacity: 50,
   higher_order_angle: 18,
   higher_order_event_value_angle: 0,
   operator_corner_radius: 0,

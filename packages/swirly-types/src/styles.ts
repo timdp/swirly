@@ -103,6 +103,7 @@ export type DiagramStyles = {
   event_value_font_style?: FontStyle
   event_value_font_weight?: FontWeight
   frame_width?: NonNegativeNumber
+  ghost_opacity?: NonNegativeNumber
   higher_order_angle?: NonNegativeNumber
   higher_order_event_value_angle?: NonNegativeNumber
   operator_corner_radius?: NonNegativeNumber

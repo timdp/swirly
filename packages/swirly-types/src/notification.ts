@@ -8,6 +8,7 @@ export type ScalarNextNotificationSpecification = {
 export type StreamNextNotificationSpecification = {
   kind: 'N'
   value: StreamSpecification
+  isGhost: boolean
 }
 
 export type NextNotificationSpecification =

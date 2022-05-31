@@ -25,12 +25,12 @@ const render = (
   { verticalOffset }: MessageRendererOptions
 ): RendererResult => {
   const { styles, streamHeight } = ctx
-  const { value } = notification as StreamNextNotificationSpecification
+  const { value, isGhost } = notification as StreamNextNotificationSpecification
 
   const x = frame * styles.frame_width!
   const y = streamHeight / 2 + verticalOffset
 
-  const { element: $group, bbox } = renderStreamImpl(ctx, true, value)
+  const { element: $group, bbox } = renderStreamImpl(ctx, value, true, isGhost)
 
   rotate($group, styles.higher_order_angle!, x, y)
   translate($group, x, 0)

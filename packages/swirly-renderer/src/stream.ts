@@ -16,7 +16,7 @@ export const renderStream = (
   const { document, styles, streamHeight, streamTitleEnabled } = ctx
   const s: StreamStyles = mergeStyles(styles, stream.styles, 'stream_')
 
-  const renderStreamResult = renderStreamImpl(ctx, false, stream)
+  const renderStreamResult = renderStreamImpl(ctx, stream, false, false)
 
   const { element: $streamGroup, bbox } = renderStreamResult
 
