@@ -34,11 +34,17 @@ const parseNameAndMarbles = (
 const buildLocalValues = (
   marbles: string,
   configValues: Record<string, any>,
-  allValues: Record<string, any>
-): any => {
-  const localValues: any = {}
+  allValues: Record<string, any>,
+  ghostNames: string[]
+): Record<string, any> => {
+  const localValues: Record<string, any> = {}
   for (const name of extractNames(marbles)) {
-    localValues[name] = firstNonNull(configValues[name], allValues[name], name)
+    let value = firstNonNull(configValues[name], allValues[name], name)
+    if (Array.isArray(value) && ghostNames.includes(name)) {
+      value = value.slice()
+      value[kIsGhost] = true
+    }
+    localValues[name] = value
   }
   return localValues
 }
@@ -54,17 +60,16 @@ const run = (
   const [name, marbles] = parseNameAndMarbles(nameAndMarbles)
   const config = parseConfig(configLines, true)
 
-  const localValues = buildLocalValues(marbles, config.values, allValues)
-  if (typeof config.ghosts === 'string') {
-    const ghostNames = config.ghosts.split(reGhostNameSeparator)
-    for (const ghostName of ghostNames) {
-      if (localValues[ghostName] != null) {
-        const copy = localValues[ghostName].slice()
-        copy[kIsGhost] = true
-        localValues[ghostName] = copy
-      }
-    }
-  }
+  const ghostNames =
+    typeof config.ghosts === 'string'
+      ? config.ghosts.split(reGhostNameSeparator)
+      : []
+  const localValues = buildLocalValues(
+    marbles,
+    config.values,
+    allValues,
+    ghostNames
+  )
   const messages = parseMarbles(marbles, localValues)
 
   const match = reLeadingWhitespace.exec(marbles)
