@@ -1,7 +1,7 @@
 {
   "name": "@swirly/rasterization-client",
   "description": "Rasterization client for Swirly marble diagrams.",
-  "version": "0.17.6",
+  "version": "0.18.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {
-    "@swirly/types": "^0.17.6",
+    "@swirly/types": "^0.18.0",
     "@types/node-fetch": "^2.6.1",
     "shx": "^0.3.3"
   },
