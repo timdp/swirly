@@ -30,7 +30,7 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "dependencies": {
     "@swirly/parser-rxjs": "^0.17.6"

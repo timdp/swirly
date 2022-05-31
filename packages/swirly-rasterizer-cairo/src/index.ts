@@ -11,7 +11,7 @@ interface RasterizingStaticCanvas extends fabric.StaticCanvas {
 }
 
 const loadSvg = (svgXml: string): Promise<fabric.Object> =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     fabric.loadSVGFromString(svgXml, (objects, options) => {
       resolve(fabric.util.groupSVGElements(objects, options))
     })

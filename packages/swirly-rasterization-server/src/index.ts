@@ -54,7 +54,7 @@ export class RasterizationServer {
     await this._fastify!.close()
     const rasterizers = Array.from(this._rasterizers.values())
     await Promise.all(
-      rasterizers.map(async rasterizer => {
+      rasterizers.map(async (rasterizer) => {
         await rasterizer.dispose()
       })
     )
@@ -67,13 +67,8 @@ export class RasterizationServer {
     this._fastify!.post(
       '/rasterize',
       async (request: FastifyRequest, reply: FastifyReply) => {
-        const {
-          rasterizer,
-          svgXml,
-          width,
-          height,
-          format
-        } = request.body as RasterizationRequest
+        const { rasterizer, svgXml, width, height, format } =
+          request.body as RasterizationRequest
         const rasterizerImpl: IRasterizer = await this._createRasterizer(
           rasterizer
         )

@@ -29,14 +29,14 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "@swirly/types": "^0.17.6",
-    "@types/node-fetch": "^2.5.8",
+    "@types/node-fetch": "^2.6.1",
     "shx": "^0.3.3"
   },
   "funding": {

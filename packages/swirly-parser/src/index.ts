@@ -8,10 +8,14 @@ import { ParserContext } from './types'
 import { byBlock } from './util/by-block'
 
 const parseMarbleDiagramSpecification = (str: string): DiagramSpecification => {
-  const ctx: ParserContext = { content: [], styles: {}, allValues: {} }
+  const ctx: ParserContext = {
+    content: [],
+    styles: {},
+    allValues: {}
+  }
 
   for (const lines of byBlock(str)) {
-    const parser = parsers.find(parser => parser.match(lines[0]))!
+    const parser = parsers.find((parser) => parser.match(lines[0]))!
     parser.run(lines, ctx)
   }
 

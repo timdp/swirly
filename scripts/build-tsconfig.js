@@ -10,7 +10,7 @@ const listCandidateReferences = async () => {
   const pkgs = []
   const ents = await fs.readdir(PKG_ROOT, { withFileTypes: true })
   await Promise.all(
-    ents.map(async ent => {
+    ents.map(async (ent) => {
       if (!ent.isDirectory()) {
         return
       }
@@ -42,16 +42,16 @@ const listCandidateReferences = async () => {
   return pkgs
 }
 
-const pkgToDependencies = pkg => {
+const pkgToDependencies = (pkg) => {
   const { dependencies = {}, devDependencies = {} } = pkg
   return [...Object.keys(dependencies), ...Object.keys(devDependencies)]
 }
 
 const dependenciesToKnownPaths = (allDepNames, pkgs) =>
   allDepNames
-    .map(name => pkgs.find(pkg => pkg.name === name))
+    .map((name) => pkgs.find((pkg) => pkg.name === name))
     .filter(Boolean)
-    .map(pkg => pkg.path)
+    .map((pkg) => pkg.path)
 
 const main = async () => {
   const [pkg, tsconfig, pkgs] = await Promise.all([
@@ -67,14 +67,14 @@ const main = async () => {
   const tsDepPaths = dependenciesToKnownPaths(allDepNames, pkgs)
 
   const missingTsDepPaths = tsDepPaths.filter(
-    path => !tsconfig.references.some(ref => ref.path === path)
+    (path) => !tsconfig.references.some((ref) => ref.path === path)
   )
 
   if (missingTsDepPaths.length === 0) {
     return
   }
 
-  tsconfig.references.push(...missingTsDepPaths.map(path => ({ path })))
+  tsconfig.references.push(...missingTsDepPaths.map((path) => ({ path })))
   tsconfig.references.sort((a, b) => a.path.localeCompare(b.path))
   await fs.writeJson('tsconfig.json', tsconfig, { spaces: 2 })
 }

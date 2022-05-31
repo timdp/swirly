@@ -31,20 +31,27 @@ const getDuration = (messages: readonly MessageSpecification[]): number => {
 
 const testMessageToMessageSpecification = ({
   frame: unscaledFrame,
-  notification: { kind, value }
+  notification
 }: TestMessage): MessageSpecification => {
   const frame = unscaledFrame * SCALE
+  const { kind, value } = notification as any
   switch (true) {
-    case kind === 'C':
-      return { frame, notification: { kind } } as CompletionMessageSpecification
-    case kind === 'E':
-      return { frame, notification: { kind } } as ErrorMessageSpecification
-    case Array.isArray(value):
+    case kind === 'C': // CompleteNotification
       return {
         frame,
-        notification: { kind: 'N', value: createStreamSpecification(value) }
+        notification: { kind }
+      } as CompletionMessageSpecification
+    case kind === 'E': // ErrorNotification
+      return { frame, notification: { kind } } as ErrorMessageSpecification
+    case Array.isArray(value): // NextNotification, stream
+      return {
+        frame,
+        notification: {
+          kind: 'N',
+          value: createStreamSpecification(value)
+        }
       } as StreamNextMessageSpecification
-    default:
+    default: // NextNotification, scalar
       return {
         frame,
         notification: {

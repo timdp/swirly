@@ -13,10 +13,8 @@ export const renderBarrierDecoration = (
   { document, styles, bbox, scaleTime }: DecorationRendererContext,
   decoration: DecorationSpecification
 ): DecorationRendererResult => {
-  const {
-    frame,
-    styles: ownStyles
-  } = decoration as BarrierDecorationSpecification
+  const { frame, styles: ownStyles } =
+    decoration as BarrierDecorationSpecification
 
   const s: BarrierDecorationStyles = mergeStyles(styles, ownStyles, 'barrier_')
 

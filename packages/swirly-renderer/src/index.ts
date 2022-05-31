@@ -35,7 +35,7 @@ const renderMarbleDiagram = (
   const parser: DOMParser = new DOMParserImpl()
   const document: XMLDocument = parser.parseFromString(EMPTY_SVG, MIME_TYPE)
   // XXX Typings for Document think it's HTML
-  const $svg = (document.documentElement as unknown) as SVGSVGElement
+  const $svg = document.documentElement as unknown as SVGSVGElement
 
   const styles = {
     ...lightStyles,
@@ -54,7 +54,7 @@ const renderMarbleDiagram = (
   )
 
   const streamTitleEnabled = spec.content.some(
-    item => isStream(item) && item.title != null && item.title !== ''
+    (item) => isStream(item) && item.title != null && item.title !== ''
   )
 
   const ctx: RendererContext = {

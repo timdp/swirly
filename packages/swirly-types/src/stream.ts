@@ -8,6 +8,6 @@ export type StreamSpecification = {
   frame?: number
   duration: number
   messages: MessageSpecification[]
-  styles?: StreamStyles
-  decorations?: DecorationSpecification[]
+  styles?: StreamStyles | null
+  decorations?: DecorationSpecification[] | null
 }

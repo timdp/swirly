@@ -23,7 +23,7 @@ const render = (
   message: MessageSpecification,
   options: MessageRendererOptions
 ): RendererResult => {
-  const renderer = strategies.find(renderer => renderer.supports(message))!
+  const renderer = strategies.find((renderer) => renderer.supports(message))!
   return renderer.render(ctx, message, options)
 }
 

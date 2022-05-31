@@ -29,14 +29,13 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "dependencies": {
-    "puppeteer": "^8.0.0"
+    "puppeteer": "^14.1.2"
   },
   "devDependencies": {
     "@swirly/types": "^0.17.6",
-    "@types/puppeteer": "^5.4.3",
     "shx": "^0.3.3"
   },
   "funding": {

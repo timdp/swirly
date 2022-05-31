@@ -9,52 +9,51 @@ export const getOpts = (): CommandLineOptions => {
   const argv = yargs
     .usage('$0 <input> [output]')
     .demand(1)
-    .option('t', {
-      type: 'string',
-      alias: 'theme',
-      description: 'Theme',
-      choices: Object.keys(stylesByTheme),
-      default: 'light'
-    })
-    .option('f', {
-      type: 'boolean',
-      alias: 'force',
-      description: 'Force overwrite'
-    })
-    .options('o', {
-      type: 'boolean',
-      alias: 'optimize',
-      description: 'Optimize SVG output using SVGO'
-    })
-    .option('z', {
-      type: 'number',
-      alias: 'scale',
-      description: 'Image scale (raster images only)',
-      default: 100
-    })
-    .option('r', {
-      type: 'string',
-      alias: 'rasterizer',
-      description: 'Method for rasterizing images',
-      choices: RasterizationServer.RASTERIZER_NAMES,
-      default: 'puppeteer'
-    })
-    .option('rasterization-server', {
-      type: 'string',
-      description: 'URL to rasterization server'
+    .options({
+      theme: {
+        type: 'string',
+        alias: 't',
+        description: 'Theme',
+        choices: Object.keys(stylesByTheme),
+        default: 'light'
+      },
+      force: {
+        type: 'boolean',
+        alias: 'f',
+        description: 'Force overwrite'
+      },
+      optimize: {
+        type: 'boolean',
+        alias: 'o',
+        description: 'Optimize SVG output using SVGO'
+      },
+      scale: {
+        type: 'number',
+        alias: 'z',
+        description: 'Image scale (raster images only)',
+        default: 100
+      },
+      rasterizer: {
+        type: 'string',
+        alias: 'r',
+        description: 'Method for rasterizing images',
+        choices: RasterizationServer.RASTERIZER_NAMES,
+        default: 'puppeteer'
+      },
+      'rasterization-server': {
+        type: 'string',
+        description: 'URL to rasterization server'
+      }
     })
     .strict()
-    .parse()
+    .parseSync()
 
   const inFilePath = String(argv._[0])
   const outFilePath = argv._[1] !== '-' ? String(argv._[1]) : null
 
+  const { force = false, optimize = false, scale, rasterizationServer } = argv
   const theme = argv.theme as ThemeName
-  const force = argv.force as boolean
-  const optimize = argv.optimize as boolean
-  const scale = argv.scale as number
   const rasterizer = argv.rasterizer as RasterizerName
-  const rasterizationServer = argv.rasterizationServer as string
 
   return {
     inFilePath,

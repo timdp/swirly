@@ -35,14 +35,13 @@ export class RasterizationClient {
       body: JSON.stringify(body)
     })
     if (!resp.ok) {
-      let msg: string
+      let msg: string | null = null
       try {
-        msg = (await resp.json()).message
-      } catch {
-        msg = 'Unknown error'
-      }
-      throw new Error(`HTTP ${resp.status}: ${msg}`)
+        msg = ((await resp.json()) as any).message
+      } catch {}
+      throw new Error(`HTTP ${resp.status}: ${msg ?? 'Unknown error'}`)
     }
-    return resp.buffer()
+    const arrayBuffer = await resp.arrayBuffer()
+    return Buffer.from(arrayBuffer)
   }
 }

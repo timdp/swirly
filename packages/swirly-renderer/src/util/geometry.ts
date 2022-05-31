@@ -66,9 +66,9 @@ export const rectangleUnion = (rects: readonly Rectangle[]): Rectangle => {
     throw new Error('All rectangles empty')
   }
   return {
-    x1: Math.min(...nonEmptyRects.map(rect => rect.x1)),
-    y1: Math.min(...nonEmptyRects.map(rect => rect.y1)),
-    x2: Math.max(...nonEmptyRects.map(rect => rect.x2)),
-    y2: Math.max(...nonEmptyRects.map(rect => rect.y2))
+    x1: Math.min(...nonEmptyRects.map((rect) => rect.x1)),
+    y1: Math.min(...nonEmptyRects.map((rect) => rect.y1)),
+    x2: Math.max(...nonEmptyRects.map((rect) => rect.x2)),
+    y2: Math.max(...nonEmptyRects.map((rect) => rect.y2))
   }
 }

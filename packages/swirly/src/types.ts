@@ -13,7 +13,7 @@ export type CommandLineOptions = {
   optimize: boolean
   scale: number
   rasterizer: RasterizerName
-  rasterizationServer: string
+  rasterizationServer?: string
 }
 
 export type FormatOutputOptions = {
@@ -23,7 +23,7 @@ export type FormatOutputOptions = {
   scale: number
   filename: string | null
   rasterizer: RasterizerName
-  rasterizationServer: string
+  rasterizationServer?: string
 }
 
 export type WriteStreamFactory = (

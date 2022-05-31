@@ -44,15 +44,15 @@ jobs:
           command: yarn run test
 
 workflows:
-  test_node10:
-    jobs:
-      - test_node_version:
-          version: "10"
-  test_node12:
-    jobs:
-      - test_node_version:
-          version: "12"
   test_node14:
     jobs:
       - test_node_version:
           version: "14"
+  test_node16:
+    jobs:
+      - test_node_version:
+          version: "16"
+  test_node18:
+    jobs:
+      - test_node_version:
+          version: "18"

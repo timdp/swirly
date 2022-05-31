@@ -1,13 +1,17 @@
-import { extendDefaultPlugins, optimize } from 'svgo'
+import { optimize, OptimizedSvg } from 'svgo'
 
 export const optimizeXml = (unoptXml: string): string => {
   const { data } = optimize(unoptXml, {
-    plugins: extendDefaultPlugins([
+    plugins: [
       {
-        name: 'removeViewBox',
-        active: false
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false
+          }
+        }
       }
-    ])
-  })
+    ]
+  }) as OptimizedSvg
   return data
 }

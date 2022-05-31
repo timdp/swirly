@@ -14,7 +14,7 @@ const match = (file: string | null): boolean =>
   RASTER_EXTENSIONS.includes(path.extname(file as string).toLowerCase())
 
 const startServerSession = async (
-  rasterizationServer: string
+  rasterizationServer?: string
 ): Promise<{ serverUrl: string; end: () => Promise<void> }> => {
   if (rasterizationServer != null) {
     return {

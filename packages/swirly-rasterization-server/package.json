@@ -32,16 +32,16 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "dependencies": {
     "@swirly/rasterizer-inkscape": "^0.17.6",
     "@swirly/rasterizer-puppeteer": "^0.17.6",
     "fastify": "^3.14.0",
     "hard-rejection": "^2.1.0",
-    "p-memoize": "^4.0.1",
+    "p-memoize": "^4.0.4",
     "source-map-support": "^0.5.19",
-    "yargs": "^16.1.0"
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
     "@swirly/types": "^0.17.6",

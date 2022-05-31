@@ -1,9 +1,10 @@
+import { TestMessage } from '@swirly/parser-rxjs'
 import { DiagramContent, DiagramStyles } from '@swirly/types'
 
 export type ParserContext = {
   content: DiagramContent
   styles: DiagramStyles
-  allValues: Record<string, any>
+  allValues: Record<string, TestMessage[]>
 }
 
 export type Parser = {

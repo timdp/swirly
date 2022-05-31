@@ -97,7 +97,9 @@ export class Presenter implements IEventTarget {
     try {
       spec = parseMarbleDiagramSpecification(code)
     } catch (err) {
-      this._view.setRenderErrorMessage('Failed to parse: ' + err.stack)
+      this._view.setRenderErrorMessage(
+        'Failed to parse: ' + (err as Error).stack
+      )
       return
     }
 
@@ -105,11 +107,13 @@ export class Presenter implements IEventTarget {
     try {
       result = renderMarbleDiagram(spec, { styles })
     } catch (err) {
-      this._view.setRenderErrorMessage('Failed to render: ' + err.stack)
+      this._view.setRenderErrorMessage(
+        'Failed to render: ' + (err as Error).stack
+      )
       return
     }
 
-    const svg = (result.document.documentElement as unknown) as SVGSVGElement
+    const svg = result.document.documentElement as unknown as SVGSVGElement
     this._view.setDiagramRendering(svg)
   }
 

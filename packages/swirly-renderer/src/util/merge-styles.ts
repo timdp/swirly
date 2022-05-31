@@ -8,7 +8,7 @@ export const mergeStyles = (
 ): FreeformStyles => {
   const result: FreeformStyles = {}
 
-  const globalKeys = Object.keys(globalStyles).filter(key =>
+  const globalKeys = Object.keys(globalStyles).filter((key) =>
     key.startsWith(globalPrefix)
   )
   for (const globalKey of globalKeys) {

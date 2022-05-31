@@ -31,7 +31,7 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "dependencies": {
     "@swirly/parser": "^0.17.6",
@@ -44,16 +44,16 @@
     "js-yaml": "^4.0.0",
     "source-map-support": "^0.5.19",
     "stream-to-promise": "^3.0.0",
-    "svgo": "^2.2.2",
-    "yargs": "^16.1.0"
+    "svgo": "^2.8.0",
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
     "@swirly/types": "^0.17.6",
     "@types/js-yaml": "^4.0.0",
-    "@types/node": "^14.14.35",
+    "@types/node": "^14",
     "@types/stream-to-promise": "^2.2.1",
     "@types/svgo": "^2.0.0",
-    "@types/yargs": "^16.0.0",
+    "@types/yargs": "^17.0.10",
     "shx": "^0.3.3"
   },
   "funding": {

@@ -9,23 +9,23 @@ import yargs from 'yargs'
 import { RasterizationServer } from './index'
 
 const getOpts = (): { port: number; address: string } => {
-  const argv = yargs
-    .option('p', {
-      type: 'number',
-      alias: 'port',
-      description: 'Port (0 means auto)',
-      default: 0
-    })
-    .option('a', {
-      type: 'string',
-      alias: 'address',
-      description: 'Address',
-      default: '0.0.0.0'
+  const { port, address } = yargs
+    .options({
+      port: {
+        type: 'number',
+        alias: 'p',
+        description: 'Port (0 means auto)',
+        default: 0
+      },
+      address: {
+        type: 'string',
+        alias: 'a',
+        description: 'Address',
+        default: '0.0.0.0'
+      }
     })
     .strict()
-    .parse()
-  const port = argv.port as number
-  const address = argv.address as string
+    .parseSync()
   return { port, address }
 }
 
