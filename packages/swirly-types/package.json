@@ -1,7 +1,7 @@
 {
   "name": "@swirly/types",
   "description": "TypeScript typings for Swirly.",
-  "version": "0.18.1-alpha.0",
+  "version": "0.18.1",
   "license": "MIT",
   "repository": {
     "type": "git",

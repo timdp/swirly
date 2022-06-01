@@ -1,7 +1,7 @@
 {
   "name": "@swirly/parser",
   "description": "Parser for the Swirly marble diagram format.",
-  "version": "0.18.1-alpha.0",
+  "version": "0.18.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -33,10 +33,10 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@swirly/parser-rxjs": "^0.18.0"
+    "@swirly/parser-rxjs": "^0.18.1"
   },
   "devDependencies": {
-    "@swirly/types": "^0.18.1-alpha.0",
+    "@swirly/types": "^0.18.1",
     "shx": "^0.3.3"
   },
   "funding": {
