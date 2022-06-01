@@ -1,0 +1,15 @@
+% An example application of the exhaustAll operator.
+% Showcases ghost notifications.
+
+x = --a---b---c--|
+
+y = ---d--e---f---|
+
+z = ---g--h---i---|
+
+------x-------y------z--|
+ghosts = y
+
+> exhaustAll
+
+--------a---b---c-------g--h---i---|
