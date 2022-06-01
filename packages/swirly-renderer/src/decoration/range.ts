@@ -5,8 +5,8 @@ import {
 } from '@swirly/types'
 
 import { DecorationRendererContext, DecorationRendererResult } from '../types'
-import { createElement } from '../util/create-element'
 import { mergeStyles } from '../util/merge-styles'
+import { createSvgElement } from '../util/svg-xml'
 import { translate } from '../util/transform'
 
 export const renderRangeDecoration = (
@@ -26,7 +26,7 @@ export const renderRangeDecoration = (
   const width = scaleTime(duration) * styles.frame_width!
   const height = s.height!
 
-  const $rect = createElement(document, 'rect', {
+  const $rect = createSvgElement(document, 'rect', {
     x: 0,
     y: 0,
     width,

@@ -1,6 +1,6 @@
 import { RendererContext, RendererResult } from './types'
-import { createElement } from './util/create-element'
 import { degreesToRadians } from './util/degrees-to-radians'
+import { createSvgElement } from './util/svg-xml'
 
 export const renderArrow = (
   { document, styles, streamHeight }: RendererContext,
@@ -19,10 +19,10 @@ export const renderArrow = (
   const fillColor = arrowStyles.fill_color!
   const filled = typeof fillColor === 'string' && fillColor !== ''
 
-  const $group = createElement(document, 'g')
+  const $group = createSvgElement(document, 'g')
 
   $group.appendChild(
-    createElement(document, 'line', {
+    createSvgElement(document, 'line', {
       x1: 0,
       y1: y,
       x2: width - (filled ? arrowheadWidth : 0),
@@ -39,7 +39,7 @@ export const renderArrow = (
   ]
 
   $group.appendChild(
-    createElement(document, filled ? 'polygon' : 'polyline', {
+    createSvgElement(document, filled ? 'polygon' : 'polyline', {
       points: points.join(' '),
       fill: filled ? fillColor : 'none',
       stroke: arrowStyles.stroke_color!,

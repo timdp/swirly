@@ -5,8 +5,8 @@ import {
 } from '@swirly/types'
 
 import { DecorationRendererContext, DecorationRendererResult } from '../types'
-import { createElement } from '../util/create-element'
 import { mergeStyles } from '../util/merge-styles'
+import { createSvgElement } from '../util/svg-xml'
 import { translate } from '../util/transform'
 
 export const renderBarrierDecoration = (
@@ -22,7 +22,7 @@ export const renderBarrierDecoration = (
   const y = bbox.y1
   const height = bbox.y2 - bbox.y1
 
-  const $line = createElement(document, 'line', {
+  const $line = createSvgElement(document, 'line', {
     x1: 0,
     y1: 0,
     x2: 0,

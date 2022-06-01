@@ -9,9 +9,9 @@ import {
   RendererContext,
   RendererResult
 } from '../types'
-import { createElement } from '../util/create-element'
 import { mergeStyles } from '../util/merge-styles'
 import { stringToColor } from '../util/string-to-color'
+import { createSvgElement } from '../util/svg-xml'
 import { rotate, translate } from '../util/transform'
 
 const COLOR_TO_MODE: Record<string, 'light' | 'dark'> = {
@@ -36,7 +36,7 @@ const render = (
 
   const x = message.frame * styles.frame_width! - styles.event_radius!
 
-  const $group = createElement(document, 'g')
+  const $group = createSvgElement(document, 'g')
   translate($group, x, 0)
 
   const fillColorMode = COLOR_TO_MODE[s.fill_color!]
@@ -44,7 +44,7 @@ const render = (
     fillColorMode != null ? stringToColor(value, fillColorMode) : s.fill_color!
 
   $group.appendChild(
-    createElement(document, 'ellipse', {
+    createSvgElement(document, 'ellipse', {
       cx: styles.event_radius,
       cy: streamHeight / 2,
       rx: styles.event_radius! - s.stroke_width! / 2,
@@ -55,7 +55,7 @@ const render = (
     })
   )
 
-  const $label = createElement(
+  const $label = createSvgElement(
     document,
     'text',
     {

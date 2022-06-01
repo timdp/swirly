@@ -5,8 +5,8 @@ import {
   RendererContext,
   UpdatableRendererResult
 } from './types'
-import { createElement } from './util/create-element'
 import { mergeStyles } from './util/merge-styles'
+import { createSvgElement } from './util/svg-xml'
 
 export const renderOperator = (
   ctx: RendererContext,
@@ -15,9 +15,9 @@ export const renderOperator = (
   const { document, styles } = ctx
   const s: OperatorStyles = mergeStyles(styles, operator.styles, 'operator_')
 
-  const $group = createElement(document, 'g')
+  const $group = createSvgElement(document, 'g')
 
-  const $rect = createElement(document, 'rect', {
+  const $rect = createSvgElement(document, 'rect', {
     x: 0,
     y: s.spacing!,
     width: 1,
@@ -29,7 +29,7 @@ export const renderOperator = (
   })
   $group.appendChild($rect)
 
-  const $text = createElement(
+  const $text = createSvgElement(
     document,
     'text',
     {

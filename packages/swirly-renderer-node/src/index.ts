@@ -15,8 +15,7 @@ export const renderMarbleDiagram = (
     DOMParser,
     ...options
   })
-  // XXX Typings for Document think it's HTML
-  const svgRoot = result.document.documentElement as unknown as SVGSVGElement
+  const svgRoot = result.document.documentElement
   const serializer = new XMLSerializer()
   const xml = serializer.serializeToString(svgRoot)
   return {

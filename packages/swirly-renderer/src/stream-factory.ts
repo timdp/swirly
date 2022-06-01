@@ -13,11 +13,11 @@ import {
   RendererResult,
   TimeScaler
 } from './types'
-import { createElement } from './util/create-element'
 import { degreesToRadians } from './util/degrees-to-radians'
 import { rectangleUnion } from './util/geometry'
 import { mergeStyles } from './util/merge-styles'
 import { NotificationKind } from './util/notification-kind'
+import { createSvgElement } from './util/svg-xml'
 import { translate } from './util/transform'
 
 const nullScaleTime: TimeScaler = (time) => time
@@ -59,7 +59,7 @@ export const createRenderStream =
         ? createScaleTime(styles.higher_order_angle!)
         : nullScaleTime
 
-      const $group = createElement(
+      const $group = createSvgElement(
         document,
         'g',
         isGhost

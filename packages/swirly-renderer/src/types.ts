@@ -1,7 +1,8 @@
 import {
   DecorationSpecification,
   DiagramStyles,
-  MessageSpecification
+  MessageSpecification,
+  SVGDocument
 } from '@swirly/types'
 
 export type Point = {
@@ -24,7 +25,7 @@ export type RendererOptions = {
 }
 
 export type RendererContext = {
-  document: XMLDocument
+  document: SVGDocument
   styles: DiagramStyles
   streamHeight: number
   streamTitleEnabled: boolean

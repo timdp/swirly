@@ -113,8 +113,7 @@ export class Presenter implements IEventTarget {
       return
     }
 
-    const svg = result.document.documentElement as unknown as SVGSVGElement
-    this._view.setDiagramRendering(svg)
+    this._view.setDiagramRendering(result.document.documentElement)
   }
 
   _modelUpdated () {

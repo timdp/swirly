@@ -3,8 +3,8 @@ import { StreamSpecification, StreamStyles } from '@swirly/types'
 import { renderMessage } from './message'
 import { createRenderStream } from './stream-factory'
 import { RendererContext, RendererResult } from './types'
-import { createElement } from './util/create-element'
 import { mergeStyles } from './util/merge-styles'
+import { createSvgElement } from './util/svg-xml'
 import { translate } from './util/transform'
 
 const renderStreamImpl = createRenderStream(renderMessage)
@@ -31,11 +31,11 @@ export const renderStream = (
     return renderStreamResult
   }
 
-  const $outerGroup = createElement(document, 'g')
+  const $outerGroup = createSvgElement(document, 'g')
 
   const title = typeof stream.title === 'string' ? stream.title : ''
   $outerGroup.appendChild(
-    createElement(
+    createSvgElement(
       document,
       'text',
       {

@@ -14,11 +14,8 @@ import {
   RendererResult,
   UpdatableRendererResult
 } from './types'
-import { createElement } from './util/create-element'
+import { createSvgDocument, createSvgElement } from './util/svg-xml'
 import { translate } from './util/transform'
-
-const EMPTY_SVG = '<svg xmlns="http://www.w3.org/2000/svg"/>'
-const MIME_TYPE = 'image/svg+xml'
 
 const isOperator = (item: StreamSpecification | OperatorSpecification) =>
   item.kind === 'O'
@@ -30,20 +27,16 @@ const renderMarbleDiagram = (
   spec: DiagramSpecification,
   options: RendererOptions = {}
 ): DiagramRendering => {
-  const DOMParserImpl: typeof DOMParser =
-    options.DOMParser != null ? options.DOMParser : DOMParser
-  const parser: DOMParser = new DOMParserImpl()
-  const document: XMLDocument = parser.parseFromString(EMPTY_SVG, MIME_TYPE)
-  // XXX Typings for Document think it's HTML
-  const $svg = document.documentElement as unknown as SVGSVGElement
-
   const styles = {
     ...lightStyles,
     ...options.styles,
     ...spec.styles
   }
 
-  const $group = createElement(document, 'g')
+  const document = createSvgDocument(options.DOMParser)
+  const $svg = document.documentElement
+
+  const $group = createSvgElement(document, 'g')
   translate($group, styles.canvas_padding!, styles.canvas_padding!)
   $svg.appendChild($group)
 
@@ -98,7 +91,7 @@ const renderMarbleDiagram = (
 
   const bgColor = styles.background_color!
   if (bgColor !== '' && bgColor !== 'transparent') {
-    const $bg = createElement(document, 'rect', {
+    const $bg = createSvgElement(document, 'rect', {
       x: 0,
       y: 0,
       width,

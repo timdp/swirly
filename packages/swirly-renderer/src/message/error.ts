@@ -1,9 +1,9 @@
 import { ErrorMessageStyles, MessageSpecification } from '@swirly/types'
 
 import { RendererContext, RendererResult } from '../types'
-import { createElement } from '../util/create-element'
 import { mergeStyles } from '../util/merge-styles'
 import { NotificationKind } from '../util/notification-kind'
+import { createSvgElement } from '../util/svg-xml'
 import { translate } from '../util/transform'
 
 const supports = ({ notification: { kind } }: MessageSpecification) =>
@@ -18,11 +18,11 @@ const render = (
   const x = message.frame * styles.frame_width! - s.size! / 2
   const y = (streamHeight - s.size!) / 2
 
-  const $group = createElement(document, 'g')
+  const $group = createSvgElement(document, 'g')
   translate($group, x, y)
 
   $group.appendChild(
-    createElement(document, 'line', {
+    createSvgElement(document, 'line', {
       x1: 0,
       y1: 0,
       x2: s.size!,
@@ -33,7 +33,7 @@ const render = (
   )
 
   $group.appendChild(
-    createElement(document, 'line', {
+    createSvgElement(document, 'line', {
       x1: s.size!,
       y1: 0,
       x2: 0,
