@@ -3,8 +3,7 @@ import {
   renderMarbleDiagram as renderMarbleDiagramBase
 } from '@swirly/renderer'
 import { DiagramRendering, DiagramSpecification } from '@swirly/types'
-// @ts-ignore
-import { DOMParser, XMLSerializer } from 'xmldom'
+import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 
 type NodeDiagramRendering = DiagramRendering & { xml: string }
 
