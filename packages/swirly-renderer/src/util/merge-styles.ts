@@ -12,7 +12,7 @@ export const mergeStyles = (
     key.startsWith(globalPrefix)
   )
   for (const globalKey of globalKeys) {
-    const simpleKey = globalKey.substr(globalPrefix.length)
+    const simpleKey = globalKey.substring(globalPrefix.length)
     const localKey = localStylesPrefixed ? globalKey : simpleKey
     result[simpleKey] =
       localStyles != null && localStyles[localKey] != null

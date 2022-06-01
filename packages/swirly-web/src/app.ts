@@ -12,9 +12,9 @@ const stateRepository = new StateRepository()
 
 const model = stateRepository.read() || new Model()
 
-const paramsStr = window.location.hash.substr(1)
+const paramsStr = window.location.hash.substring(1)
 if (paramsStr !== '') {
-  const params = new URLSearchParams(window.location.hash.substr(1))
+  const params = new URLSearchParams(window.location.hash.substring(1))
   const code = params.get('code')
   if (code != null && code !== '') {
     model.code = code
