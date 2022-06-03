@@ -66,6 +66,21 @@ const createRootDiv = (document: Document, styles: Record<string, any>) => {
   return $div
 }
 
+const renderStream = (text: string, ctx: RendererContext) => {
+  const content: DiagramContent = []
+  streamParser.run([text], { content, styles: {}, allValues: {} })
+  const [spec] = content as StreamSpecification[]
+  const {
+    element: $group,
+    bbox: { x2: width, y2: height }
+  } = renderStreamBase(ctx, spec, false, false)
+  return {
+    $group,
+    width,
+    height
+  }
+}
+
 const tokenRenderers = {
   text: (value: string, ctx: RendererContext) => {
     const $div = ctx.document.createElement('div')
@@ -73,14 +88,8 @@ const tokenRenderers = {
     return $div
   },
   observable: (value: string, ctx: RendererContext, styles: OperatorStyles) => {
-    const content: DiagramContent = []
-    streamParser.run([value], { content, styles: {}, allValues: {} })
-    const [spec] = content as StreamSpecification[]
-    const {
-      element: $group,
-      bbox: { x2: width, y2: height }
-    } = renderStreamBase(ctx, spec, false, false)
     const { documentElement: $svg } = createSvgDocument(ctx.DOMParser)
+    const { $group, width, height } = renderStream(value, ctx)
     setSvgDimensions($svg, width, height, (styles.stream_scale ?? 100) / 100)
     $svg.appendChild($group)
     return $svg
