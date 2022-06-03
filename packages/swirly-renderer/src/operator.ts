@@ -22,20 +22,20 @@ import {
 } from './util/svg-xml'
 
 type Token = {
-  type: 'text' | 'observable'
+  type: 'text' | 'stream'
   value: string
 }
 
 const NON_BREAKING_SPACE = '\xA0'
 
-const reInnerObservable = /`(.+?)`/g
+const reInnerStream = /`(.+?)`/g
 const reSpace = / /g
 
 const parseTitle = (text: string): Token[] => {
   const tokens: Token[] = []
   let index = 0
   let match
-  while ((match = reInnerObservable.exec(text)) != null) {
+  while ((match = reInnerStream.exec(text)) != null) {
     if (index !== match.index) {
       tokens.push({
         type: 'text',
@@ -43,7 +43,7 @@ const parseTitle = (text: string): Token[] => {
       })
     }
     tokens.push({
-      type: 'observable',
+      type: 'stream',
       value: match[1]
     })
     index = match.index + match[0].length
@@ -87,7 +87,7 @@ const tokenRenderers = {
     $div.textContent = value.replace(reSpace, NON_BREAKING_SPACE)
     return $div
   },
-  observable: (value: string, ctx: RendererContext, styles: OperatorStyles) => {
+  stream: (value: string, ctx: RendererContext, styles: OperatorStyles) => {
     const { documentElement: $svg } = createSvgDocument(ctx.DOMParser)
     const { $group, width, height } = renderStream(value, ctx)
     setSvgDimensions($svg, width, height, (styles.stream_scale ?? 100) / 100)
