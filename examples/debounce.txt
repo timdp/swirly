@@ -1,0 +1,10 @@
+% An example application of the debounce operator.
+% Showcases marble diagrams inside operators.
+% Based on RxJS's debounce diagram:
+% https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/debounce-spec.ts
+
+-a--bc--d---|
+
+> debounce(() => `--|`)
+
+---a---c--d-|

@@ -7,14 +7,18 @@ import {
 } from '@swirly/types'
 
 import { renderOperator } from './operator'
-import { renderStream } from './stream'
+import { renderStream } from './stream/full'
 import {
   RendererContext,
   RendererOptions,
   RendererResult,
   UpdatableRendererResult
 } from './types'
-import { createSvgDocument, createSvgElement } from './util/svg-xml'
+import {
+  createSvgDocument,
+  createSvgElement,
+  setSvgDimensions
+} from './util/svg-xml'
 import { translate } from './util/transform'
 
 const isOperator = (item: StreamSpecification | OperatorSpecification) =>
@@ -51,6 +55,7 @@ const renderMarbleDiagram = (
   )
 
   const ctx: RendererContext = {
+    DOMParser: options.DOMParser,
     document,
     styles,
     streamHeight,
@@ -85,9 +90,7 @@ const renderMarbleDiagram = (
   const width = styles.canvas_padding! + maxX + styles.canvas_padding!
   const height = styles.canvas_padding! + y + styles.canvas_padding!
 
-  $svg.setAttribute('viewBox', `0 0 ${width} ${height}`)
-  $svg.setAttribute('width', String(width))
-  $svg.setAttribute('height', String(height))
+  setSvgDimensions($svg, width, height)
 
   const bgColor = styles.background_color!
   if (bgColor !== '' && bgColor !== 'transparent') {

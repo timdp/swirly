@@ -1,13 +1,10 @@
 import { StreamSpecification, StreamStyles } from '@swirly/types'
 
-import { renderMessage } from './message'
-import { createRenderStream } from './stream-factory'
-import { RendererContext, RendererResult } from './types'
-import { mergeStyles } from './util/merge-styles'
-import { createSvgElement } from './util/svg-xml'
-import { translate } from './util/transform'
-
-const renderStreamImpl = createRenderStream(renderMessage)
+import { RendererContext, RendererResult } from '../types'
+import { mergeStyles } from '../util/merge-styles'
+import { createSvgElement } from '../util/svg-xml'
+import { translate } from '../util/transform'
+import { renderStreamBase } from './core'
 
 export const renderStream = (
   ctx: RendererContext,
@@ -16,7 +13,7 @@ export const renderStream = (
   const { document, styles, streamHeight, streamTitleEnabled } = ctx
   const s: StreamStyles = mergeStyles(styles, stream.styles, 'stream_')
 
-  const renderStreamResult = renderStreamImpl(ctx, stream, false, false)
+  const renderStreamResult = renderStreamBase(ctx, stream, false, false)
 
   const { element: $streamGroup, bbox } = renderStreamResult
 

@@ -3,7 +3,7 @@ import {
   StreamNextNotificationSpecification
 } from '@swirly/types'
 
-import { createRenderStream } from '../stream-factory'
+import { createRenderStream } from '../stream/factory'
 import {
   MessageRendererOptions,
   RendererContext,

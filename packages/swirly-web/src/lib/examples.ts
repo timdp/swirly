@@ -20,6 +20,33 @@ export const examples: readonly Example[] = [
     `)
   },
   {
+    title: 'debounce',
+    code: dedent(`
+      -a--bc--d---|
+
+      > debounce(() => \`--|\`)
+
+      ---a---c--d-|
+    `)
+  },
+  {
+    title: 'exhaustAll',
+    code: dedent(`
+      x = --a---b---c--|
+
+      y = ---d--e---f---|
+
+      z = ---g--h---i---|
+
+      ------x-------y------z--|
+      ghosts = y
+
+      > exhaustAll
+
+      --------a---b---c-------g--h---i---|
+    `)
+  },
+  {
     title: 'onErrorResumeNext',
     code: dedent(`
       --a--b--#

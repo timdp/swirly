@@ -61,6 +61,7 @@ export type OperatorStyles = {
   title_font_size?: NonNegativeNumber
   title_font_style?: FontStyle
   title_font_weight?: FontWeight
+  stream_scale?: number
 }
 
 export type BarrierDecorationStyles = {
@@ -117,6 +118,7 @@ export type DiagramStyles = {
   operator_title_font_size?: NonNegativeNumber
   operator_title_font_style?: FontStyle
   operator_title_font_weight?: FontWeight
+  operator_stream_scale?: number
   range_fill_color?: Color
   range_height?: NonNegativeNumber
   range_stroke_color?: Color

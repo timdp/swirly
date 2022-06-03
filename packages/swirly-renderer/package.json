@@ -33,6 +33,7 @@
     "node": ">=14"
   },
   "dependencies": {
+    "@swirly/parser": "^0.18.1",
     "@swirly/theme-default-light": "^0.18.1",
     "simple-sha1": "^3.1.0"
   },

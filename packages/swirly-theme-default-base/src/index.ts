@@ -30,6 +30,7 @@ export const baseStyles: DiagramStyles = {
   operator_title_font_weight: 'normal',
   operator_height: 50,
   operator_spacing: 10,
+  operator_stream_scale: 75,
   range_height: 15,
   range_stroke_width: 0,
   stacking_height: 50,

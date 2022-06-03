@@ -25,6 +25,7 @@ export type RendererOptions = {
 }
 
 export type RendererContext = {
+  DOMParser?: typeof DOMParser
   document: SVGDocument
   styles: DiagramStyles
   streamHeight: number
