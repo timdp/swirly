@@ -1,7 +1,12 @@
 import { OperatorStyles } from './styles'
 
+export type OperatorTitleSegment = {
+  type: 'text' | 'stream'
+  value: string
+}
+
 export type OperatorSpecification = {
   kind: 'O'
-  title: string
+  title: OperatorTitleSegment[]
   styles?: OperatorStyles
 }

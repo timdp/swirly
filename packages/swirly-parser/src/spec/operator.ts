@@ -1,7 +1,7 @@
-import { OperatorSpecification } from '@swirly/types'
+import { OperatorSpecification, OperatorTitleSegment } from '@swirly/types'
 
 export const createOperatorSpecification = (
-  title: string
+  title: OperatorTitleSegment[]
 ): OperatorSpecification => ({
   kind: 'O',
   title

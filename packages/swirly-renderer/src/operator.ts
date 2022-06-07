@@ -4,6 +4,7 @@ import {
   DiagramContent,
   OperatorSpecification,
   OperatorStyles,
+  OperatorTitleSegment,
   StreamSpecification
 } from '@swirly/types'
 
@@ -21,39 +22,9 @@ import {
   XHTML_NS
 } from './util/svg-xml'
 
-type Token = {
-  type: 'text' | 'stream'
-  value: string
-}
-
 const NON_BREAKING_SPACE = '\xA0'
 
-const reInnerStream = /`(.+?)`/g
 const reSpace = / /g
-
-const parseTitle = (text: string): Token[] => {
-  const tokens: Token[] = []
-  let index = 0
-  let match
-  while ((match = reInnerStream.exec(text)) != null) {
-    if (index !== match.index) {
-      tokens.push({
-        type: 'text',
-        value: text.substring(index, match.index)
-      })
-    }
-    tokens.push({
-      type: 'stream',
-      value: match[1]
-    })
-    index = match.index + match[0].length
-  }
-  tokens.push({
-    type: 'text',
-    value: text.substring(index)
-  })
-  return tokens
-}
 
 const createRootDiv = (document: Document, styles: Record<string, any>) => {
   const $div = document.createElementNS(XHTML_NS, 'div')
@@ -81,7 +52,7 @@ const renderStream = (text: string, ctx: RendererContext) => {
   }
 }
 
-const tokenRenderers = {
+const segmentRenderers = {
   text: (value: string, ctx: RendererContext) => {
     const $div = ctx.document.createElement('div')
     $div.textContent = value.replace(reSpace, NON_BREAKING_SPACE)
@@ -97,7 +68,7 @@ const tokenRenderers = {
 }
 
 const renderRichTitle = (
-  tokens: Token[],
+  segments: OperatorTitleSegment[],
   ctx: RendererContext,
   color: Color,
   styles: OperatorStyles,
@@ -117,8 +88,8 @@ const renderRichTitle = (
     ...fontStyles
   })
   $foreignObject.appendChild($container)
-  for (const token of tokens) {
-    const $element = tokenRenderers[token.type](token.value, ctx, styles)
+  for (const { type, value } of segments) {
+    const $element = segmentRenderers[type](value, ctx, styles)
     $container.appendChild($element)
   }
   return $foreignObject
@@ -146,7 +117,7 @@ const renderTextTitle = (
   )
 
 const renderTitle = (
-  text: string,
+  segments: OperatorTitleSegment[],
   ctx: RendererContext,
   styles: OperatorStyles
 ) => {
@@ -158,12 +129,11 @@ const renderTitle = (
     'font-style': styles.title_font_style!
   }
 
-  const tokens = parseTitle(text)
-  const isText = tokens.length === 1 && tokens[0].type === 'text'
+  const isText = segments.length === 1 && segments[0].type === 'text'
 
   const $title = isText
-    ? renderTextTitle(text, ctx, color, styles, fontStyles)
-    : renderRichTitle(tokens, ctx, color, styles, fontStyles)
+    ? renderTextTitle(segments[0].value, ctx, color, styles, fontStyles)
+    : renderRichTitle(segments, ctx, color, styles, fontStyles)
 
   return { $title, shouldCenter: isText }
 }
