@@ -1,15 +1,4 @@
-import { TestMessage } from '@swirly/parser-rxjs'
-import {
-  CompletionMessageSpecification,
-  ErrorMessageSpecification,
-  MessageSpecification,
-  ScalarNextMessageSpecification,
-  StreamNextMessageSpecification,
-  StreamSpecification
-} from '@swirly/types'
-
-import { SCALE } from '../constants'
-import { kIsGhost } from '../symbols'
+import { MessageSpecification, StreamSpecification } from '@swirly/types'
 
 const getDuration = (messages: readonly MessageSpecification[]): number => {
   let maxFrame = 0
@@ -30,54 +19,14 @@ const getDuration = (messages: readonly MessageSpecification[]): number => {
   return maxFrame
 }
 
-const testMessageToMessageSpecification = ({
-  frame: unscaledFrame,
-  notification
-}: TestMessage): MessageSpecification => {
-  const frame = unscaledFrame * SCALE
-  const { kind, value } = notification as any
-  switch (true) {
-    case kind === 'C': // CompleteNotification
-      return {
-        frame,
-        notification: { kind }
-      } as CompletionMessageSpecification
-    case kind === 'E': // ErrorNotification
-      return { frame, notification: { kind } } as ErrorMessageSpecification
-    case Array.isArray(value): // NextNotification, stream
-      return {
-        frame,
-        notification: {
-          kind: 'N',
-          value: createStreamSpecification(value),
-          isGhost: !!value[kIsGhost]
-        }
-      } as StreamNextMessageSpecification
-    default: // NextNotification, scalar
-      return {
-        frame,
-        notification: {
-          kind: 'N',
-          value: value != null ? String(value) : ''
-        }
-      } as ScalarNextMessageSpecification
-  }
-}
-
 export const createStreamSpecification = (
-  messagesIn: readonly TestMessage[],
+  messages: MessageSpecification[],
   title: string | null = null,
   frame: number = 0
-): StreamSpecification => {
-  const messagesOut = messagesIn.map(testMessageToMessageSpecification)
-  for (const message of messagesOut) {
-    message.frame -= frame
-  }
-  return {
-    kind: 'S',
-    title,
-    frame,
-    duration: getDuration(messagesOut),
-    messages: messagesOut
-  }
-}
+): StreamSpecification => ({
+  kind: 'S',
+  title,
+  frame,
+  duration: getDuration(messages),
+  messages
+})

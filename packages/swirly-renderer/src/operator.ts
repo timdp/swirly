@@ -39,7 +39,12 @@ const createRootDiv = (document: Document, styles: Record<string, any>) => {
 
 const renderStream = (text: string, ctx: RendererContext) => {
   const content: DiagramContent = []
-  streamParser.run([text], { content, styles: {}, allValues: {} })
+  streamParser.run([text], {
+    content,
+    diagramStyles: {},
+    messageStyles: {},
+    allValues: {}
+  })
   const [spec] = content as StreamSpecification[]
   const {
     element: $group,

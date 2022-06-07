@@ -1,12 +1,11 @@
 import { OperatorTitleSegment } from '@swirly/types'
 
-import { OPERATOR_PREFIX } from '../constants'
 import { createOperatorSpecification } from '../spec/operator'
 import { Parser, ParserContext } from '../types'
 
 const reInnerStream = /`(.+?)`/g
 
-const match = (line: string): boolean => line.startsWith(OPERATOR_PREFIX)
+const match = (line: string): boolean => line.startsWith('>')
 
 const parseTitle = (text: string): OperatorTitleSegment[] => {
   const segments: OperatorTitleSegment[] = []
@@ -32,11 +31,11 @@ const parseTitle = (text: string): OperatorTitleSegment[] => {
   return segments
 }
 
-const run = (lines: readonly string[], { content }: ParserContext) => {
-  const titleStr = lines[0].substring(OPERATOR_PREFIX.length).trim()
+const run = (lines: readonly string[], ctx: ParserContext) => {
+  const titleStr = lines[0].substring(1).trim()
   const titleSegments = parseTitle(titleStr)
   const spec = createOperatorSpecification(titleSegments)
-  content.push(spec)
+  ctx.content.push(spec)
 }
 
 export const operatorParser: Parser = {

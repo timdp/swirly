@@ -1,9 +1,14 @@
 import { TestMessage } from '@swirly/parser-rxjs'
-import { DiagramContent, DiagramStyles } from '@swirly/types'
+import {
+  DiagramContent,
+  DiagramStyles,
+  ScalarNextMessageStyles
+} from '@swirly/types'
 
 export type ParserContext = {
   content: DiagramContent
-  styles: DiagramStyles
+  diagramStyles: DiagramStyles
+  messageStyles: Record<string, ScalarNextMessageStyles>
   allValues: Record<string, TestMessage[]>
 }
 

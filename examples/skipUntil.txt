@@ -1,6 +1,29 @@
 % An example application of the skipUntil operator.
+% Showcases notification-level styling.
 % Based on RxJS's skipUntil diagram:
 % https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/skipUntil-spec.ts
+
+[styles]
+event_value_color = white
+
+[styles.a]
+fill_color = #FF0000
+
+[styles.b]
+fill_color = green
+
+[styles.c]
+fill_color = rgb(0, 0, 255)
+
+[styles.d]
+fill_color = yellow
+value_color = black
+
+[styles.e]
+fill_color = magenta
+
+[styles.x]
+fill_color = rgb(63, 63, 63)
 
 --a--b--c--d--e----|
 

@@ -1,10 +1,12 @@
 import { Parser } from '../types'
+import { diagramStylesParser } from './diagram-styles'
+import { messageStylesParser } from './message-styles'
 import { operatorParser } from './operator'
 import { streamParser } from './stream'
-import { stylesParser } from './styles'
 
 export const parsers: readonly Parser[] = [
-  stylesParser,
+  diagramStylesParser,
+  messageStylesParser,
   operatorParser,
   streamParser
 ]

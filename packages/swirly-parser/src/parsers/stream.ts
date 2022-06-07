@@ -1,4 +1,12 @@
-import { parseMarbles } from '@swirly/parser-rxjs'
+import { parseMarbles, TestMessage } from '@swirly/parser-rxjs'
+import {
+  CompletionMessageSpecification,
+  ErrorMessageSpecification,
+  MessageSpecification,
+  ScalarNextMessageSpecification,
+  ScalarNextMessageStyles,
+  StreamNextMessageSpecification
+} from '@swirly/types'
 
 import { createStreamSpecification } from '../spec/stream'
 import { kIsGhost } from '../symbols'
@@ -49,12 +57,60 @@ const buildLocalValues = (
   return localValues
 }
 
+const testMessageToMessageSpecification = ({
+  frame,
+  notification
+}: TestMessage): MessageSpecification => {
+  const { kind, value } = notification as any
+  switch (true) {
+    case kind === 'C': // CompleteNotification
+      return {
+        frame,
+        notification: { kind }
+      } as CompletionMessageSpecification
+    case kind === 'E': // ErrorNotification
+      return { frame, notification: { kind } } as ErrorMessageSpecification
+    case Array.isArray(value): // NextNotification, stream
+      return {
+        frame,
+        notification: {
+          kind: 'N',
+          value: createStreamSpecification(value),
+          isGhost: !!value[kIsGhost]
+        }
+      } as StreamNextMessageSpecification
+    default: // NextNotification, scalar
+      return {
+        frame,
+        notification: {
+          kind: 'N',
+          value: value != null ? String(value) : ''
+        }
+      } as ScalarNextMessageSpecification
+  }
+}
+
+const testMessagesToMessageSpecifications = (
+  testMessages: TestMessage[],
+  frame: number,
+  messageStyles: Record<string, ScalarNextMessageStyles>
+): MessageSpecification[] => {
+  const messageSpecs = testMessages.map(testMessageToMessageSpecification)
+  for (const message of messageSpecs) {
+    message.frame -= frame
+    if (message.notification.kind === 'N') {
+      message.styles =
+        messageStyles[
+          (message as ScalarNextMessageSpecification).notification.value
+        ]
+    }
+  }
+  return messageSpecs
+}
+
 const match = () => true
 
-const run = (
-  lines: readonly string[],
-  { content, allValues }: ParserContext
-) => {
+const run = (lines: readonly string[], ctx: ParserContext) => {
   const [nameAndMarbles, ...configLines] = lines
 
   const [name, marbles] = parseNameAndMarbles(nameAndMarbles)
@@ -67,19 +123,33 @@ const run = (
   const localValues = buildLocalValues(
     marbles,
     config.values,
-    allValues,
+    ctx.allValues,
     ghostNames
   )
-  const messages = parseMarbles(marbles, localValues)
+
+  const testMessages = parseMarbles(marbles, localValues)
+  // RxJS TestScheduler.frameTimeFactor is 10, so undo that
+  for (const message of testMessages) {
+    message.frame = message.frame / 10
+  }
 
   const match = reLeadingWhitespace.exec(marbles)
   const frame = match != null ? match[0].length : 0
 
   if (name != null) {
-    allValues[name] = messages
+    ctx.allValues[name] = testMessages
   } else {
-    const spec = createStreamSpecification(messages, config.title, frame)
-    content.push(spec)
+    const messageSpecs = testMessagesToMessageSpecifications(
+      testMessages,
+      frame,
+      ctx.messageStyles
+    )
+    const streamSpec = createStreamSpecification(
+      messageSpecs,
+      config.title,
+      frame
+    )
+    ctx.content.push(streamSpec)
   }
 }
 
