@@ -12,6 +12,7 @@ import { createStreamSpecification } from '../spec/stream'
 import { kIsGhost } from '../symbols'
 import { Parser, ParserContext } from '../types'
 import { firstNonNull } from '../util/first-non-null'
+import { invertObject } from '../util/invert-object'
 import { parseConfig } from './config'
 
 const reName = /([A-Za-z0-9])/g
@@ -93,16 +94,15 @@ const testMessageToMessageSpecification = ({
 const testMessagesToMessageSpecifications = (
   testMessages: TestMessage[],
   frame: number,
-  messageStyles: Record<string, ScalarNextMessageStyles>
+  messageStyles: Record<string, ScalarNextMessageStyles>,
+  valueToLocal: Record<string, string>
 ): MessageSpecification[] => {
   const messageSpecs = testMessages.map(testMessageToMessageSpecification)
   for (const message of messageSpecs) {
     message.frame -= frame
     if (message.notification.kind === 'N') {
-      message.styles =
-        messageStyles[
-          (message as ScalarNextMessageSpecification).notification.value
-        ]
+      const { value } = (message as ScalarNextMessageSpecification).notification
+      message.styles = messageStyles[valueToLocal[value] ?? value]
     }
   }
   return messageSpecs
@@ -139,10 +139,13 @@ const run = (lines: readonly string[], ctx: ParserContext) => {
   if (name != null) {
     ctx.allValues[name] = testMessages
   } else {
+    // XXX Assumes values are unique
+    const valueToLocal = invertObject(localValues)
     const messageSpecs = testMessagesToMessageSpecifications(
       testMessages,
       frame,
-      ctx.messageStyles
+      ctx.messageStyles,
+      valueToLocal
     )
     const streamSpec = createStreamSpecification(
       messageSpecs,
