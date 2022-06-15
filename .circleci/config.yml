@@ -7,7 +7,7 @@ jobs:
         type: string
     docker:
       - image: cimg/node:<< parameters.version >>
-    working_directory: ~/repo
+    working_directory: ~/project
     steps:
       - checkout
       - restore_cache:
@@ -28,9 +28,6 @@ jobs:
       - run:
           name: Build
           command: yarn run build
-      - run:
-          name: Test
-          command: yarn run test
 
 workflows:
   test_node14:
