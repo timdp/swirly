@@ -3,6 +3,5 @@
 
 yarn run lint-staged
 yarn run lint
-yarn run buildfast
-yarn run test
+yarn run build
 scripts/build-examples.sh

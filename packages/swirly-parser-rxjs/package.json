@@ -23,7 +23,7 @@
     "dist/cjs"
   ],
   "scripts": {
-    "build": "yarn run clean && tsc && rollup -c",
+    "build": "../../scripts/build-ts.sh && rollup -c",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },

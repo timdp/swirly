@@ -1,11 +1,12 @@
 Thumbs.db
 .DS_Store
+/.idea/
+/.vscode/
 npm-debug.log
 yarn-error.log
 lerna-debug.log
 node_modules/
-.nyc_output/
-/.idea/
-/.vscode/
 dist/
+.turbo/
+.nyc_output/
 *.tsbuildinfo

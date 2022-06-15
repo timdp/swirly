@@ -2,13 +2,9 @@
   "name": "swirly",
   "private": true,
   "scripts": {
-    "build": "lerna run build",
-    "buildfast": "npm-run-all build:parser-rxjs --parallel build:cli build:web",
-    "build:parser-rxjs": "yarn workspace @swirly/parser-rxjs build",
-    "build:cli": "yarn workspace swirly tsc --build",
-    "build:web": "yarn workspace @swirly/web build",
-    "clean": "lerna run clean",
-    "test": "lerna run test",
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "test": "yarn run lint",
     "lint": "yarn run lint:js && yarn run lint:deps",
     "lint:js": "eslint \"**/*.{js,ts}\"",
     "lint:deps": "scripts/depcheck.sh",
@@ -33,6 +29,7 @@
     "lerna": "^5.0.0",
     "lint-staged": "^13.0.0",
     "prettier-eslint-cli": "^6.0.1",
+    "turbo": "^1.2.16",
     "typescript": "^4.7.2"
   },
   "lint-staged": {
