@@ -21,6 +21,12 @@ fi
 erroneous=0
 for pkgdir in "$@"; do
   pkgname=$(basename "$pkgdir")
+
+  # TODO Make configurable
+  if [[ $pkgname == swirly-examples ]]; then
+    continue
+  fi
+
   result=$($DEPCHECK "$pkgdir" --ignore-patterns=dist/ --json || true)
 
   unused=$(

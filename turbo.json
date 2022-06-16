@@ -7,6 +7,11 @@
       "inputs": ["src/**"],
       "outputs": ["dist/**"]
     },
+    "@swirly/examples#build": {
+      "dependsOn": ["^build"],
+      "inputs": ["examples/*.txt"],
+      "outputs": ["examples/*.svg", "examples/*.png"]
+    },
     "clean": {
       "cache": false,
       "inputs": ["dist/**"],

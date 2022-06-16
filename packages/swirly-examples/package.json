@@ -1,0 +1,29 @@
+{
+  "name": "@swirly/examples",
+  "description": "Swirly example diagrams.",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-examples"
+  },
+  "homepage": "https://swirly.dev",
+  "author": {
+    "name": "Tim De Pauw",
+    "url": "https://tmdpw.eu"
+  },
+  "scripts": {
+    "build": "yarn run clean && scripts/build-examples.sh",
+    "clean": "shx rm -f \"../../examples/*.{svg,png}\""
+  },
+  "dependencies": {
+    "swirly": "^0.18.1",
+    "@swirly/rasterization-server": "^0.18.1"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
+  }
+}

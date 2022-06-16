@@ -4,4 +4,3 @@
 yarn run lint-staged
 yarn run lint
 yarn run build
-scripts/build-examples.sh
