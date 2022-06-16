@@ -17,7 +17,7 @@ cli_path() {
 
 echo "Starting server at $SERVER_URL"
 
-node $(cli_path swirly-rasterization-server) -p $SERVER_PORT >/dev/null &
+node "$(cli_path swirly-rasterization-server)" -p $SERVER_PORT >/dev/null &
 SERVER_PID=$!
 
 echo "Server started, PID is $SERVER_PID"
@@ -46,7 +46,7 @@ for input in *.txt; do
     echo "$input" "$output"
   done
 done | xargs -r -t -n2 -P4 \
-  node $(cli_path swirly) \
+  node "$(cli_path swirly)" \
     --rasterization-server "$SERVER_URL" \
     --force \
     --optimize \
