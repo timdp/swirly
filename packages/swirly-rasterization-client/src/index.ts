@@ -3,7 +3,8 @@ import {
   RasterizerName,
   RasterizerOutputFormat
 } from '@swirly/types'
-import fetch from 'node-fetch'
+// @ts-ignore
+import fetch from 'minipass-fetch'
 
 export class RasterizationClient {
   private _serverUrl: string
@@ -37,7 +38,7 @@ export class RasterizationClient {
     if (!resp.ok) {
       let msg: string | null = null
       try {
-        msg = ((await resp.json()) as any).message
+        msg = (await resp.json()).message
       } catch {}
       throw new Error(`HTTP ${resp.status}: ${msg ?? 'Unknown error'}`)
     }
