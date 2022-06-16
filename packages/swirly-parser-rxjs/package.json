@@ -20,7 +20,7 @@
   "browser": "src/index.ts",
   "files": [
     "src/",
-    "dist/cjs"
+    "dist/cjs/"
   ],
   "scripts": {
     "build": "yarn run clean && run-p \"build:*\"",
