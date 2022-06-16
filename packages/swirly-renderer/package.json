@@ -23,7 +23,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "../../scripts/build-ts.sh",
+    "build": "yarn run clean && ../../scripts/build-ts.sh",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },

@@ -23,7 +23,9 @@
     "dist/cjs"
   ],
   "scripts": {
-    "build": "../../scripts/build-ts.sh && rollup -c",
+    "build": "yarn run clean && run-p \"build:*\"",
+    "build:esm": "../../scripts/build-ts.sh",
+    "build:cjs": "esbuild --bundle --platform=neutral --format=cjs src/index.ts --outfile=dist/cjs/index.js",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },
@@ -31,9 +33,7 @@
     "node": ">=14"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "rollup": "^2.75.4",
-    "rollup-plugin-typescript2": "^0.31.2",
+    "esbuild": "^0.14.44",
     "rxjs": "7.5.5",
     "shx": "^0.3.3"
   },

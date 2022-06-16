@@ -15,14 +15,14 @@
     "url": "https://tmdpw.eu"
   },
   "scripts": {
-    "build": "yarn run clean && mkdir -p dist && yarn run _build:tsconfig && run-p \"build:*\"",
+    "build": "yarn run clean && shx mkdir -p dist && yarn run _build:tsconfig && run-p \"build:*\"",
     "_build:tsconfig": "node ../../scripts/build-tsconfig.js",
     "build:html": "run-s \"_build:html:*\"",
     "_build:html:01_minify": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
     "_build:html:02_dev": "shx sed s/__SCRIPT__/bundle.js/ dist/index.html > dist/debug.html",
     "_build:html:03_prod": "shx sed -i s/__SCRIPT__/bundle.min.js/ dist/index.html",
     "build:css": "cleancss -o dist/style.css src/style.css",
-    "build:js": "webpack",
+    "build:js": "node scripts/build.js",
     "build:img": "shx cp src/logo.png src/favicon.ico dist/",
     "clean": "shx rm -rf dist"
   },
@@ -39,13 +39,12 @@
     "@types/dedent": "^0.7.0",
     "@types/split.js": "^1.6.0",
     "clean-css-cli": "^5.2.2",
+    "esbuild": "^0.14.44",
+    "hard-rejection": "^2.1.0",
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "run-sequence": "^2.2.1",
-    "shx": "^0.3.3",
-    "ts-loader": "^9.3.0",
-    "webpack": "^5.27.2",
-    "webpack-cli": "^4.5.0"
+    "shx": "^0.3.3"
   },
   "funding": {
     "type": "github",
