@@ -6,7 +6,7 @@ jobs:
       version:
         type: string
     docker:
-      - image: cimg/node:<< parameters.version >>
+      - image: cimg/node:<< parameters.version >>-browsers
     working_directory: ~/project
     steps:
       - checkout
