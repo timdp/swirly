@@ -16,13 +16,13 @@ const listCandidateReferences = async () => {
         return
       }
 
-      const dir = path.resolve(PKG_ROOT, ent.name)
+      const dir = path.join(PKG_ROOT, ent.name)
 
       let name, tsBuildInfoFile
       try {
         const [pkg, tsconfig] = await Promise.all([
-          fs.readJson(path.resolve(dir, 'package.json')),
-          fs.readJson(path.resolve(dir, 'tsconfig.json'))
+          fs.readJson(path.join(dir, 'package.json')),
+          fs.readJson(path.join(dir, 'tsconfig.json'))
         ])
         name = pkg.name
         tsBuildInfoFile = tsconfig.compilerOptions.tsBuildInfoFile
