@@ -20,11 +20,13 @@ const DEFAULT_CONFIG = {
   verbose: false
 }
 
-const filter = (depNames, pkgName, ignores) =>
-  micromatch.not(depNames, [
-    ...(ignores['*'] ?? []),
-    ...(ignores[pkgName] ?? [])
-  ])
+const filter = (depNames, pkgName, ignores) => {
+  const patterns = [...(ignores['*'] ?? []), ...(ignores[pkgName] ?? [])]
+  if (patterns.length === 0) {
+    return depNames
+  }
+  return micromatch.not(depNames, patterns)
+}
 
 const print = (
   pkgNameFixed,
