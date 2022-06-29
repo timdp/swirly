@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import { FormatOutputOptions, WriteStreamFactory } from '../types'
+import { FormatOutputOptions, WriteStreamFactory } from '../types.js'
 
 export const createWriteStreamFactory =
   (encoding?: BufferEncoding): WriteStreamFactory =>

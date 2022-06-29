@@ -1,10 +1,10 @@
 import { StreamSpecification, StreamStyles } from '@swirly/types'
 
-import { RendererContext, RendererResult } from '../types'
-import { mergeStyles } from '../util/merge-styles'
-import { createSvgElement } from '../util/svg-xml'
-import { translate } from '../util/transform'
-import { renderStreamBase } from './core'
+import { RendererContext, RendererResult } from '../types.js'
+import { mergeStyles } from '../util/merge-styles.js'
+import { createSvgElement } from '../util/svg-xml.js'
+import { translate } from '../util/transform.js'
+import { renderStreamBase } from './core.js'
 
 export const renderStream = (
   ctx: RendererContext,

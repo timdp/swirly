@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
-import 'source-map-support/register'
-import 'hard-rejection/register'
+import 'source-map-support/register.js'
+import 'hard-rejection/register.js'
 
 import { EOL } from 'os'
 import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 
-import { RasterizationServer } from './index'
+import { RasterizationServer } from './index.js'
 
 const getOpts = (): { port: number; address: string } => {
-  const { port, address } = yargs
+  const { port, address } = yargs(hideBin(process.argv))
     .options({
       port: {
         type: 'number',

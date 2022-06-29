@@ -1,12 +1,13 @@
 import { RasterizationServer } from '@swirly/rasterization-server'
 import { RasterizerName } from '@swirly/types'
 import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 
-import { stylesByTheme } from './themes'
-import { CommandLineOptions, ThemeName } from './types'
+import { stylesByTheme } from './themes.js'
+import { CommandLineOptions, ThemeName } from './types.js'
 
 export const getOpts = (): CommandLineOptions => {
-  const argv = yargs
+  const argv = yargs(hideBin(process.argv))
     .usage('$0 <input> [output]')
     .demand(1)
     .options({

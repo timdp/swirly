@@ -4,10 +4,13 @@ import {
   RangeDecorationStyles
 } from '@swirly/types'
 
-import { DecorationRendererContext, DecorationRendererResult } from '../types'
-import { mergeStyles } from '../util/merge-styles'
-import { createSvgElement } from '../util/svg-xml'
-import { translate } from '../util/transform'
+import {
+  DecorationRendererContext,
+  DecorationRendererResult
+} from '../types.js'
+import { mergeStyles } from '../util/merge-styles.js'
+import { createSvgElement } from '../util/svg-xml.js'
+import { translate } from '../util/transform.js'
 
 export const renderRangeDecoration = (
   { document, styles, streamHeight, scaleTime }: DecorationRendererContext,

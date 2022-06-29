@@ -13,6 +13,7 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -35,9 +36,9 @@
   "dependencies": {
     "@swirly/rasterizer-inkscape": "^0.18.1",
     "@swirly/rasterizer-puppeteer": "^0.18.1",
-    "fastify": "^3.14.0",
+    "fastify": "^4.2.0",
     "hard-rejection": "^2.1.0",
-    "p-memoize": "^4.0.4",
+    "p-memoize": "^6.0.2",
     "source-map-support": "^0.5.19",
     "yargs": "^17.5.1"
   },

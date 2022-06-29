@@ -4,21 +4,21 @@ import {
   StreamSpecification
 } from '@swirly/types'
 
-import { renderArrow } from '../arrow'
-import { renderDecoration } from '../decoration'
+import { renderArrow } from '../arrow.js'
+import { renderDecoration } from '../decoration/index.js'
 import {
   MessageRenderer,
   Rectangle,
   RendererContext,
   RendererResult,
   TimeScaler
-} from '../types'
-import { degreesToRadians } from '../util/degrees-to-radians'
-import { rectangleUnion } from '../util/geometry'
-import { mergeStyles } from '../util/merge-styles'
-import { NotificationKind } from '../util/notification-kind'
-import { createSvgElement } from '../util/svg-xml'
-import { translate } from '../util/transform'
+} from '../types.js'
+import { degreesToRadians } from '../util/degrees-to-radians.js'
+import { rectangleUnion } from '../util/geometry.js'
+import { mergeStyles } from '../util/merge-styles.js'
+import { NotificationKind } from '../util/notification-kind.js'
+import { createSvgElement } from '../util/svg-xml.js'
+import { translate } from '../util/transform.js'
 
 const nullScaleTime: TimeScaler = (time) => time
 

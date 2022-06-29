@@ -1,4 +1,4 @@
-import { renderMessage } from '../message'
-import { createRenderStream } from './factory'
+import { renderMessage } from '../message/index.js'
+import { createRenderStream } from './factory.js'
 
 export const renderStreamBase = createRenderStream(renderMessage)

@@ -1,4 +1,4 @@
-import { StreamSpecification } from './stream'
+import { StreamSpecification } from './stream.js'
 
 export type ScalarNextNotificationSpecification = {
   kind: 'N'

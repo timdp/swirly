@@ -4,9 +4,9 @@ import {
   MessageRendererOptions,
   RendererContext,
   RendererResult
-} from '../types'
-import { nonStreamMessageRenderer } from './non-stream'
-import { streamMessageRenderer } from './stream'
+} from '../types.js'
+import { nonStreamMessageRenderer } from './non-stream.js'
+import { streamMessageRenderer } from './stream.js'
 
 export const renderMessage = (
   ctx: RendererContext,

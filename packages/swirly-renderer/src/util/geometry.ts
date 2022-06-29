@@ -1,4 +1,4 @@
-import { Point, Rectangle } from '../types'
+import { Point, Rectangle } from '../types.js'
 
 export const translatePoint = (
   x: number,

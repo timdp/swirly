@@ -8,11 +8,11 @@ import {
   MessageRendererOptions,
   RendererContext,
   RendererResult
-} from '../types'
-import { mergeStyles } from '../util/merge-styles'
-import { stringToColor } from '../util/string-to-color'
-import { createSvgElement } from '../util/svg-xml'
-import { rotate, translate } from '../util/transform'
+} from '../types.js'
+import { mergeStyles } from '../util/merge-styles.js'
+import { stringToColor } from '../util/string-to-color.js'
+import { createSvgElement } from '../util/svg-xml.js'
+import { rotate, translate } from '../util/transform.js'
 
 const COLOR_TO_MODE: Record<string, 'light' | 'dark'> = {
   auto: 'light',

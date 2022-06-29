@@ -1,4 +1,4 @@
-import { BarrierDecorationStyles, RangeDecorationStyles } from './styles'
+import { BarrierDecorationStyles, RangeDecorationStyles } from './styles.js'
 
 export type BarrierDecorationSpecification = {
   kind: 'barrier'

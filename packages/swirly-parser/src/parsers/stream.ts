@@ -8,12 +8,12 @@ import {
   StreamNextMessageSpecification
 } from '@swirly/types'
 
-import { createStreamSpecification } from '../spec/stream'
-import { kIsGhost } from '../symbols'
-import { Parser, ParserContext } from '../types'
-import { firstNonNull } from '../util/first-non-null'
-import { invertObject } from '../util/invert-object'
-import { parseConfig } from './config'
+import { createStreamSpecification } from '../spec/stream.js'
+import { kIsGhost } from '../symbols.js'
+import { Parser, ParserContext } from '../types.js'
+import { firstNonNull } from '../util/first-non-null.js'
+import { invertObject } from '../util/invert-object.js'
+import { parseConfig } from './config.js'
 
 const reName = /([A-Za-z0-9])/g
 const reNameAndMarbles = /^([A-Za-z0-9])\s*=\s*(\S+)\s*$/

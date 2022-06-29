@@ -1,4 +1,4 @@
-import { OperatorStyles } from './styles'
+import { OperatorStyles } from './styles.js'
 
 export type OperatorTitleSegment = {
   type: 'text' | 'stream'

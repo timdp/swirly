@@ -3,16 +3,16 @@ import {
   StreamNextNotificationSpecification
 } from '@swirly/types'
 
-import { createRenderStream } from '../stream/factory'
+import { createRenderStream } from '../stream/factory.js'
 import {
   MessageRendererOptions,
   RendererContext,
   RendererResult
-} from '../types'
-import { degreesToRadians } from '../util/degrees-to-radians'
-import { rotateRectangle, translateRectangle } from '../util/geometry'
-import { rotate, translate } from '../util/transform'
-import { nonStreamMessageRenderer } from './non-stream'
+} from '../types.js'
+import { degreesToRadians } from '../util/degrees-to-radians.js'
+import { rotateRectangle, translateRectangle } from '../util/geometry.js'
+import { rotate, translate } from '../util/transform.js'
+import { nonStreamMessageRenderer } from './non-stream.js'
 
 const supports = (message: MessageSpecification) =>
   !nonStreamMessageRenderer.supports(message)

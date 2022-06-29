@@ -1,10 +1,10 @@
 import { CompletionMessageStyles, MessageSpecification } from '@swirly/types'
 
-import { RendererContext, RendererResult } from '../types'
-import { mergeStyles } from '../util/merge-styles'
-import { NotificationKind } from '../util/notification-kind'
-import { createSvgElement } from '../util/svg-xml'
-import { translate } from '../util/transform'
+import { RendererContext, RendererResult } from '../types.js'
+import { mergeStyles } from '../util/merge-styles.js'
+import { NotificationKind } from '../util/notification-kind.js'
+import { createSvgElement } from '../util/svg-xml.js'
+import { translate } from '../util/transform.js'
 
 const supports = ({ notification: { kind } }: MessageSpecification) =>
   NotificationKind.COMPLETE.equals(kind)

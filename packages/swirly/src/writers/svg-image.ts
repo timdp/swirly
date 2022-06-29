@@ -1,5 +1,5 @@
-import { Writer } from '../types'
-import { createWriteStreamFactory, defaultFormatOutput } from './util'
+import { Writer } from '../types.js'
+import { createWriteStreamFactory, defaultFormatOutput } from './util.js'
 
 export const svgImageWriter: Writer = {
   match: () => true,

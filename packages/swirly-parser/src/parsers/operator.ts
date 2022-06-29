@@ -1,7 +1,7 @@
 import { OperatorTitleSegment } from '@swirly/types'
 
-import { createOperatorSpecification } from '../spec/operator'
-import { Parser, ParserContext } from '../types'
+import { createOperatorSpecification } from '../spec/operator.js'
+import { Parser, ParserContext } from '../types.js'
 
 const reInnerStream = /`(.+?)`/g
 

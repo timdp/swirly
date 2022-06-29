@@ -1,10 +1,10 @@
 import 'core-js/stable'
 
-import { Model } from './lib/model'
-import { Presenter } from './lib/presenter'
-import { StateRepository } from './lib/state'
-import { maintainFullHeight } from './lib/util/full-height'
-import { View } from './lib/view'
+import { Model } from './lib/model.js'
+import { Presenter } from './lib/presenter.js'
+import { StateRepository } from './lib/state.js'
+import { maintainFullHeight } from './lib/util/full-height.js'
+import { View } from './lib/view.js'
 
 maintainFullHeight()
 

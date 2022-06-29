@@ -1,5 +1,5 @@
-import { Parser, ParserContext } from '../types'
-import { parseConfig } from './config'
+import { Parser, ParserContext } from '../types.js'
+import { parseConfig } from './config.js'
 
 const reHeader = /^\[styles\.(.)\]$/
 

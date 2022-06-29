@@ -1,4 +1,4 @@
-import { Model } from './model'
+import { Model } from './model.js'
 
 export class StateRepository {
   read (): Model | null {

@@ -4,10 +4,10 @@ import {
   MessageRendererOptions,
   RendererContext,
   RendererResult
-} from '../types'
-import { completeMessageRenderer } from './complete'
-import { errorMessageRenderer } from './error'
-import { scalarMessageRenderer } from './scalar'
+} from '../types.js'
+import { completeMessageRenderer } from './complete.js'
+import { errorMessageRenderer } from './error.js'
+import { scalarMessageRenderer } from './scalar.js'
 
 const strategies = [
   completeMessageRenderer,

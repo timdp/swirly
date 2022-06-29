@@ -1,6 +1,6 @@
-import { OperatorSpecification } from './operator'
-import { StreamSpecification } from './stream'
-import { DiagramStyles } from './styles'
+import { OperatorSpecification } from './operator.js'
+import { StreamSpecification } from './stream.js'
+import { DiagramStyles } from './styles.js'
 
 export type DiagramContent = (StreamSpecification | OperatorSpecification)[]
 

@@ -4,7 +4,7 @@ import {
   FontStyle,
   FontWeight,
   NonNegativeNumber
-} from './primitives'
+} from './primitives.js'
 
 /* eslint-disable */
 

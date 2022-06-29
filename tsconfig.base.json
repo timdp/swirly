@@ -4,7 +4,11 @@
     "composite": true,
     "declaration": true,
     "esModuleInterop": true,
-    "module": "CommonJS",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "module": "ESNext",
     "moduleResolution": "Node",
     "paths": {
       "@swirly/*": ["packages/swirly-*/src"]
@@ -16,5 +20,8 @@
     "strict": true,
     "target": "ESNext"
   },
-  "exclude": ["**/node_modules", "**/.*"]
+  "exclude": [
+    "**/node_modules",
+    "**/.*"
+  ]
 }

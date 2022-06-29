@@ -1,6 +1,6 @@
-import { RendererContext, RendererResult } from './types'
-import { degreesToRadians } from './util/degrees-to-radians'
-import { createSvgElement } from './util/svg-xml'
+import { RendererContext, RendererResult } from './types.js'
+import { degreesToRadians } from './util/degrees-to-radians.js'
+import { createSvgElement } from './util/svg-xml.js'
 
 export const renderArrow = (
   { document, styles, streamHeight }: RendererContext,

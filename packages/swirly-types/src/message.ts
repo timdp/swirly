@@ -4,13 +4,13 @@ import {
   NotificationSpecification,
   ScalarNextNotificationSpecification,
   StreamNextNotificationSpecification
-} from './notification'
+} from './notification.js'
 import {
   CompletionMessageStyles,
   ErrorMessageStyles,
   ScalarNextMessageStyles,
   StreamNextMessageStyles
-} from './styles'
+} from './styles.js'
 
 type BaseMessageSpecification = {
   frame: number

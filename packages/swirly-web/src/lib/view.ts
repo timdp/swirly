@@ -1,12 +1,12 @@
 import split from 'split.js'
 
-import { Example, IEventTarget, ScaleMode } from './types'
-import { onDoubleClick } from './util/double-click'
+import { Example, IEventTarget, ScaleMode } from './types.js'
+import { onDoubleClick } from './util/double-click.js'
 import {
   closeSubmenu,
   createSubmenu,
   createSubmenuButton
-} from './util/submenu'
+} from './util/submenu.js'
 
 const el = <T extends HTMLElement>(className: string) =>
   document.getElementsByClassName(className)[0] as T

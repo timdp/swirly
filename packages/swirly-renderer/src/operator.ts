@@ -8,19 +8,19 @@ import {
   StreamSpecification
 } from '@swirly/types'
 
-import { renderStreamBase } from './stream/core'
+import { renderStreamBase } from './stream/core.js'
 import {
   PostRenderUpdateContext,
   RendererContext,
   UpdatableRendererResult
-} from './types'
-import { mergeStyles } from './util/merge-styles'
+} from './types.js'
+import { mergeStyles } from './util/merge-styles.js'
 import {
   createSvgDocument,
   createSvgElement,
   setSvgDimensions,
   XHTML_NS
-} from './util/svg-xml'
+} from './util/svg-xml.js'
 
 const NON_BREAKING_SPACE = '\xA0'
 

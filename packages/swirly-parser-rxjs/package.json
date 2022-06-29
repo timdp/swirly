@@ -13,19 +13,20 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/cjs/index.js",
+  "main": "dist/bundle.js",
   "browser": "src/index.ts",
   "files": [
     "src/",
-    "dist/cjs/"
+    "dist/bundle.js"
   ],
   "scripts": {
     "build": "yarn run clean && run-p \"build:*\"",
-    "build:esm": "../../scripts/build-ts.sh",
-    "build:cjs": "esbuild --bundle --platform=neutral --format=cjs src/index.ts --outfile=dist/cjs/index.js",
+    "build:modules": "../../scripts/build-ts.sh",
+    "build:bundle": "esbuild --bundle --platform=neutral --format=esm src/index.ts --outfile=dist/bundle.js",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },

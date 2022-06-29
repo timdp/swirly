@@ -1,6 +1,6 @@
-import { DecorationSpecification } from './decoration'
-import { MessageSpecification } from './message'
-import { StreamStyles } from './styles'
+import { DecorationSpecification } from './decoration.js'
+import { MessageSpecification } from './message.js'
+import { StreamStyles } from './styles.js'
 
 export type StreamSpecification = {
   kind: 'S'

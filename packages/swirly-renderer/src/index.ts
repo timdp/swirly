@@ -6,20 +6,20 @@ import {
   StreamSpecification
 } from '@swirly/types'
 
-import { renderOperator } from './operator'
-import { renderStream } from './stream/full'
+import { renderOperator } from './operator.js'
+import { renderStream } from './stream/full.js'
 import {
   RendererContext,
   RendererOptions,
   RendererResult,
   UpdatableRendererResult
-} from './types'
+} from './types.js'
 import {
   createSvgDocument,
   createSvgElement,
   setSvgDimensions
-} from './util/svg-xml'
-import { translate } from './util/transform'
+} from './util/svg-xml.js'
+import { translate } from './util/transform.js'
 
 const isOperator = (item: StreamSpecification | OperatorSpecification) =>
   item.kind === 'O'

@@ -1,5 +1,5 @@
 import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
-import execa from 'execa'
+import { execa } from 'execa'
 
 export class InkscapeRasterizer implements IRasterizer {
   async init (): Promise<void> {}

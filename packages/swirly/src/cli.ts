@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-import 'source-map-support/register'
-import 'hard-rejection/register'
+import 'source-map-support/register.js'
+import 'hard-rejection/register.js'
 
 import { renderMarbleDiagram } from '@swirly/renderer-node'
 import streamToPromise from 'stream-to-promise'
 
-import { getOpts } from './get-opts'
-import { optimizeXml } from './optimize-xml'
-import { readDiagramSpec } from './read-diagram-spec'
-import { stylesByTheme } from './themes'
-import { CommandLineOptions, Writer } from './types'
-import { writers } from './writers'
+import { getOpts } from './get-opts.js'
+import { optimizeXml } from './optimize-xml.js'
+import { readDiagramSpec } from './read-diagram-spec.js'
+import { stylesByTheme } from './themes.js'
+import { CommandLineOptions, Writer } from './types.js'
+import { writers } from './writers/index.js'
 
 const main = async () => {
   const {

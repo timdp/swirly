@@ -4,9 +4,9 @@ import {
   DecorationRenderer,
   DecorationRendererContext,
   DecorationRendererResult
-} from '../types'
-import { renderBarrierDecoration } from './barrier'
-import { renderRangeDecoration } from './range'
+} from '../types.js'
+import { renderBarrierDecoration } from './barrier.js'
+import { renderRangeDecoration } from './range.js'
 
 const strategies: Record<string, DecorationRenderer> = {
   barrier: renderBarrierDecoration,

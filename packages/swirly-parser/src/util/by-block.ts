@@ -1,4 +1,4 @@
-import { byLine } from './by-line'
+import { byLine } from './by-line.js'
 
 const reComment = /^\s*%/
 

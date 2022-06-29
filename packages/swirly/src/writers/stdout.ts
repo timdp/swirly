@@ -1,5 +1,5 @@
-import { Writer } from '../types'
-import { defaultFormatOutput } from './util'
+import { Writer } from '../types.js'
+import { defaultFormatOutput } from './util.js'
 
 export const stdoutWriter: Writer = {
   match: (file: string | null) => file == null,

@@ -1,4 +1,4 @@
-import { isNumeric } from '../util/is-numeric'
+import { isNumeric } from '../util/is-numeric.js'
 
 const reLine = /^(.*?)(?:\s*(:?)=\s*(.*))?$/
 

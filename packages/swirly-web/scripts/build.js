@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 
-require('hard-rejection/register')
-const esbuild = require('esbuild')
-const path = require('path')
+import 'hard-rejection/register.js'
 
-const { version: VERSION } = require('../../../lerna.json')
+import esbuild from 'esbuild'
+import fs from 'fs-extra'
+import path from 'node:path'
+import url from 'node:url'
 
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 const SRC = path.resolve(__dirname, '../src')
 const DIST = path.resolve(__dirname, '../dist')
+const { version: VERSION } = await fs.readJson(
+  path.resolve(__dirname, '../../../lerna.json')
+)
 
 const baseConfig = {
   target: 'es2020',

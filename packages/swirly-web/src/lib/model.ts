@@ -1,4 +1,4 @@
-import { ScaleMode } from './types'
+import { ScaleMode } from './types.js'
 
 export class Model {
   code: string = ''

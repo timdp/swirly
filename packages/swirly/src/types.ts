@@ -1,7 +1,7 @@
 import { RasterizerName } from '@swirly/types'
 import { Writable } from 'stream'
 
-import { stylesByTheme } from './themes'
+import { stylesByTheme } from './themes.js'
 
 export type ThemeName = keyof typeof stylesByTheme
 

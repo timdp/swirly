@@ -4,13 +4,13 @@ import { darkStyles } from '@swirly/theme-default-dark'
 import { lightStyles } from '@swirly/theme-default-light'
 import dedent from 'dedent'
 
-import { examples } from './examples'
-import { Model } from './model'
-import { StateRepository } from './state'
-import { Example, IEventTarget } from './types'
-import { buildDataUri } from './util/data-uri'
-import { download } from './util/download'
-import { View } from './view'
+import { examples } from './examples.js'
+import { Model } from './model.js'
+import { StateRepository } from './state.js'
+import { Example, IEventTarget } from './types.js'
+import { buildDataUri } from './util/data-uri.js'
+import { download } from './util/download.js'
+import { View } from './view.js'
 
 declare const VERSION: string
 

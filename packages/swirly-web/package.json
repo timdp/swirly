@@ -14,6 +14,7 @@
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
+  "type": "module",
   "scripts": {
     "build": "yarn run clean && shx mkdir -p dist && yarn run _build:tsconfig && run-p \"build:*\"",
     "_build:tsconfig": "node ../../scripts/build-tsconfig.js",
@@ -31,7 +32,7 @@
     "@swirly/renderer": "^0.18.1",
     "@swirly/theme-default-dark": "^0.18.1",
     "@swirly/theme-default-light": "^0.18.1",
-    "core-js": "^3.9.1",
+    "core-js": "^3.23.3",
     "dedent": "^0.7.0",
     "split.js": "^1.6.2"
   },
@@ -40,6 +41,7 @@
     "@types/split.js": "^1.6.0",
     "clean-css-cli": "^5.2.2",
     "esbuild": "^0.14.44",
+    "fs-extra": "^10.1.0",
     "hard-rejection": "^2.1.0",
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",

@@ -4,7 +4,7 @@ import { promises as fs } from 'fs'
 import YAML from 'js-yaml'
 import path from 'path'
 
-import { YAML_EXTENSIONS } from './constants'
+import { YAML_EXTENSIONS } from './constants.js'
 
 export const readDiagramSpec = async (
   inFilePath: string

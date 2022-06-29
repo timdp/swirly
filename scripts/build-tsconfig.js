@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-require('hard-rejection/register')
+import 'hard-rejection/register.js'
 
-const fs = require('fs-extra')
-const path = require('path')
+import fs from 'fs-extra'
+import path from 'path'
 
 const PKG_ROOT = '..'
 

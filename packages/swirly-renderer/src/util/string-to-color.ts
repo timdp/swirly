@@ -1,7 +1,7 @@
 // @ts-ignore
 import { sync as sha1 } from 'simple-sha1'
 
-import { hexToDec } from './hex-to-dec'
+import { hexToDec } from './hex-to-dec.js'
 
 export const stringToColor = (str: string, mode: 'light' | 'dark'): string => {
   const hashHex = sha1(str)

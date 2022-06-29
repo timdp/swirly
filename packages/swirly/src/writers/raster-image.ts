@@ -3,9 +3,9 @@ import { RasterizationServer } from '@swirly/rasterization-server'
 import { RasterizerOutputFormat } from '@swirly/types'
 import path from 'path'
 
-import { RASTER_EXTENSIONS } from '../constants'
-import { FormatOutputOptions, Writer } from '../types'
-import { createWriteStreamFactory } from './util'
+import { RASTER_EXTENSIONS } from '../constants.js'
+import { FormatOutputOptions, Writer } from '../types.js'
+import { createWriteStreamFactory } from './util.js'
 
 const getFormatFromFilename = (filename: string): RasterizerOutputFormat =>
   path.extname(filename).toLowerCase() === '.png' ? 'png' : 'jpeg'

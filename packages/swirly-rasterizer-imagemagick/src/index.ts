@@ -1,5 +1,5 @@
 import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
-import execa from 'execa'
+import { execa } from 'execa'
 
 export class ImagemagickRasterizer implements IRasterizer {
   async init (): Promise<void> {}

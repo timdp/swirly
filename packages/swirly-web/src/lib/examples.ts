@@ -1,6 +1,6 @@
 import dedent from 'dedent'
 
-import { Example } from './types'
+import { Example } from './types.js'
 
 export const examples: readonly Example[] = [
   {
