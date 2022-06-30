@@ -10,3 +10,4 @@ dist/
 .turbo/
 .nyc_output/
 *.tsbuildinfo
+/dependencies.png

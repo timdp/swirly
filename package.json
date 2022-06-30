@@ -9,11 +9,13 @@
     "lint": "yarn run lint:js && yarn run lint:deps",
     "lint:js": "eslint \"**/*.{js,ts}\"",
     "lint:deps": "polydepcheck",
+    "deps": "depviz . dependencies.png",
     "format": "prettier-eslint --write \"$PWD/**/*.{js,ts}\"",
     "publish": "lerna publish --concurrency=1",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@timdp/depviz": "^0.3.2",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
     "depcheck": "^1.4.0",
