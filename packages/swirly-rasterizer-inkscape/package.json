@@ -1,7 +1,7 @@
 {
   "name": "@swirly/rasterizer-inkscape",
   "description": "Rasterizer for Swirly marble diagrams, using Inkscape.",
-  "version": "0.18.1",
+  "version": "0.19.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
     "execa": "^6.1.0"
   },
   "devDependencies": {
-    "@swirly/types": "^0.18.1",
+    "@swirly/types": "^0.19.0",
     "@types/node": "^14",
     "shx": "^0.3.3"
   },

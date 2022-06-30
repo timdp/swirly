@@ -1,7 +1,7 @@
 {
   "name": "@swirly/renderer",
   "description": "Renderer for Swirly marble diagrams.",
-  "version": "0.18.1",
+  "version": "0.19.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,12 +31,12 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@swirly/parser": "^0.18.1",
-    "@swirly/theme-default-light": "^0.18.1",
+    "@swirly/parser": "^0.19.0",
+    "@swirly/theme-default-light": "^0.19.0",
     "simple-sha1": "^3.1.0"
   },
   "devDependencies": {
-    "@swirly/types": "^0.18.1",
+    "@swirly/types": "^0.19.0",
     "shx": "^0.3.3"
   },
   "funding": {
