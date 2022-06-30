@@ -1,7 +1,7 @@
 {
   "name": "@swirly/examples",
   "description": "Swirly example diagrams.",
-  "version": "0.19.0",
+  "version": "0.19.1",
   "private": true,
   "license": "MIT",
   "repository": {
@@ -20,8 +20,8 @@
     "clean": "shx rm -f \"../../examples/*.{svg,png}\""
   },
   "dependencies": {
-    "@swirly/rasterization-server": "^0.19.0",
-    "swirly": "^0.19.0"
+    "@swirly/rasterization-server": "^0.19.1",
+    "swirly": "^0.19.1"
   },
   "devDependencies": {
     "shx": "^0.3.3"
