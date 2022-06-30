@@ -3,7 +3,7 @@
 import 'source-map-support/register.js'
 import 'hard-rejection/register.js'
 
-import { EOL } from 'os'
+import { EOL } from 'node:os'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 

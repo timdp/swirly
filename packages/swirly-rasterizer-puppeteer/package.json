@@ -28,7 +28,7 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=14.13.1"
   },
   "dependencies": {
     "puppeteer": "^15.1.1"

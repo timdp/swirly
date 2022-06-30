@@ -3,7 +3,7 @@
 import 'hard-rejection/register.js'
 
 import fs from 'fs-extra'
-import path from 'path'
+import path from 'node:path'
 
 const PKG_ROOT = '..'
 

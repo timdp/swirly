@@ -28,7 +28,7 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=14.13.1"
   },
   "dependencies": {
     "fabric": "^5.2.1",

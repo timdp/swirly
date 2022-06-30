@@ -30,7 +30,7 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=14.13.1"
   },
   "devDependencies": {
     "esbuild": "^0.14.44",

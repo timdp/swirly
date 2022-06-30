@@ -1,5 +1,5 @@
 import { RasterizerName } from '@swirly/types'
-import { Writable } from 'stream'
+import { Writable } from 'node:stream'
 
 import { stylesByTheme } from './themes.js'
 
