@@ -1,7 +1,5 @@
-import { streamParser } from '@swirly/parser'
 import {
   Color,
-  DiagramContent,
   OperatorSpecification,
   OperatorStyles,
   OperatorTitleSegment,
@@ -37,15 +35,7 @@ const createRootDiv = (document: Document, styles: Record<string, any>) => {
   return $div
 }
 
-const renderStream = (text: string, ctx: RendererContext) => {
-  const content: DiagramContent = []
-  streamParser.run([text], {
-    content,
-    diagramStyles: {},
-    messageStyles: {},
-    allValues: {}
-  })
-  const [spec] = content as StreamSpecification[]
+const renderStream = (spec: StreamSpecification, ctx: RendererContext) => {
   const {
     element: $group,
     bbox: { x2: width, y2: height }
@@ -63,7 +53,11 @@ const segmentRenderers = {
     $div.textContent = value.replace(reSpace, NON_BREAKING_SPACE)
     return $div
   },
-  stream: (value: string, ctx: RendererContext, styles: OperatorStyles) => {
+  stream: (
+    value: StreamSpecification,
+    ctx: RendererContext,
+    styles: OperatorStyles
+  ) => {
     const { documentElement: $svg } = createSvgDocument(ctx.DOMParser)
     const { $group, width, height } = renderStream(value, ctx)
     setSvgDimensions($svg, width, height, (styles.stream_scale ?? 100) / 100)
@@ -93,8 +87,12 @@ const renderRichTitle = (
     ...fontStyles
   })
   $foreignObject.appendChild($container)
-  for (const { type, value } of segments) {
-    const $element = segmentRenderers[type](value, ctx, styles)
+  for (const segment of segments) {
+    const $element = segmentRenderers[segment.type](
+      segment.value as any,
+      ctx,
+      styles
+    )
     $container.appendChild($element)
   }
   return $foreignObject
@@ -137,7 +135,13 @@ const renderTitle = (
   const isText = segments.length === 1 && segments[0].type === 'text'
 
   const $title = isText
-    ? renderTextTitle(segments[0].value, ctx, color, styles, fontStyles)
+    ? renderTextTitle(
+        segments[0].value as string,
+        ctx,
+        color,
+        styles,
+        fontStyles
+    )
     : renderRichTitle(segments, ctx, color, styles, fontStyles)
 
   return { $title, shouldCenter: isText }

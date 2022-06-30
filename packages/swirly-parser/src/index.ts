@@ -1,11 +1,10 @@
 import { DiagramSpecification } from '@swirly/types'
 
 import { parsers } from './parsers/index.js'
-import { streamParser } from './parsers/stream.js'
 import { createDiagramSpecification } from './spec/diagram.js'
 import { createOperatorSpecification } from './spec/operator.js'
 import { createStreamSpecification } from './spec/stream.js'
-import { Parser, ParserContext } from './types.js'
+import { ParserContext } from './types.js'
 import { byBlock } from './util/by-block.js'
 
 const parseMarbleDiagramSpecification = (str: string): DiagramSpecification => {
@@ -28,7 +27,5 @@ export {
   createDiagramSpecification,
   createOperatorSpecification,
   createStreamSpecification,
-  parseMarbleDiagramSpecification,
-  Parser,
-  streamParser
+  parseMarbleDiagramSpecification
 }

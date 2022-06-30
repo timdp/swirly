@@ -31,7 +31,6 @@
     "node": ">=14.13.1"
   },
   "dependencies": {
-    "@swirly/parser": "^0.19.1",
     "@swirly/theme-default-light": "^0.19.1",
     "simple-sha1": "^3.1.0"
   },
