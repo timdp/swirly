@@ -17,14 +17,14 @@ const createHtml = (svgXml: string, width: number, height: number) => `
   </html>`
 
 export class PuppeteerRasterizer implements IRasterizer {
-  private _browser?: puppeteer.Browser
+  #browser?: puppeteer.Browser
 
   async init (): Promise<void> {
-    this._browser = await puppeteer.launch()
+    this.#browser = await puppeteer.launch()
   }
 
   async dispose (): Promise<void> {
-    await this._browser!.close()
+    await this.#browser!.close()
   }
 
   async rasterize (
@@ -34,16 +34,16 @@ export class PuppeteerRasterizer implements IRasterizer {
     format: RasterizerOutputFormat
   ): Promise<Buffer> {
     const html = createHtml(svgXml, width, height)
-    return this._capture(html, width, height, format)
+    return this.#capture(html, width, height, format)
   }
 
-  async _capture (
+  async #capture (
     html: string,
     width: number,
     height: number,
     format: RasterizerOutputFormat
   ): Promise<Buffer> {
-    const page = await this._browser!.newPage()
+    const page = await this.#browser!.newPage()
     await page.setViewport({ width, height })
     await page.setContent(html)
     return page.screenshot({

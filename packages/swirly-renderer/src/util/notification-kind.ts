@@ -3,13 +3,13 @@ export class NotificationKind {
   static COMPLETE = new NotificationKind('C')
   static ERROR = new NotificationKind('E')
 
-  private char: string
+  #char: string
 
   private constructor (char: string) {
-    this.char = char
+    this.#char = char
   }
 
   equals (x: any): boolean {
-    return typeof x === 'string' && x.charAt(0).toUpperCase() === this.char
+    return typeof x === 'string' && x.charAt(0).toUpperCase() === this.#char
   }
 }

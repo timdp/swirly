@@ -23,53 +23,53 @@ export class Presenter implements IEventTarget {
     '\n\n' +
     examples[0].code
 
-  private _model: Model
-  private _view: View
-  private _stateRepository: StateRepository
+  #model: Model
+  #view: View
+  #stateRepository: StateRepository
 
   constructor (model: Model, view: View, stateRepository: StateRepository) {
-    this._model = model
-    this._view = view
-    this._stateRepository = stateRepository
+    this.#model = model
+    this.#view = view
+    this.#stateRepository = stateRepository
   }
 
   start () {
-    if (this._model.code === '') {
-      this._model.code = Presenter.DEFAULT_CODE
+    if (this.#model.code === '') {
+      this.#model.code = Presenter.DEFAULT_CODE
     }
-    const { code, darkThemeEnabled, scaleMode } = this._model
-    this._view.init(this, VERSION, code, darkThemeEnabled, scaleMode, examples)
-    this._render()
+    const { code, darkThemeEnabled, scaleMode } = this.#model
+    this.#view.init(this, VERSION, code, darkThemeEnabled, scaleMode, examples)
+    this.#render()
   }
 
   onSpecificationChange (code: string) {
-    if (code === this._model.code) {
+    if (code === this.#model.code) {
       return
     }
-    this._model.code = code
-    this._modelUpdated()
-    this._render()
+    this.#model.code = code
+    this.#modelUpdated()
+    this.#render()
   }
 
   onThemeToggleRequested () {
-    this._model.darkThemeEnabled = !this._model.darkThemeEnabled
-    this._modelUpdated()
-    this._view.setDarkThemeEnabled(this._model.darkThemeEnabled)
-    this._render()
+    this.#model.darkThemeEnabled = !this.#model.darkThemeEnabled
+    this.#modelUpdated()
+    this.#view.setDarkThemeEnabled(this.#model.darkThemeEnabled)
+    this.#render()
   }
 
   onScaleModeToggleRequested () {
-    this._model.scaleMode = this._model.scaleMode === 'fit' ? 'none' : 'fit'
-    this._modelUpdated()
-    this._view.setScaleMode(this._model.scaleMode)
+    this.#model.scaleMode = this.#model.scaleMode === 'fit' ? 'none' : 'fit'
+    this.#modelUpdated()
+    this.#view.setScaleMode(this.#model.scaleMode)
   }
 
   onSpecificationExportRequested () {
-    download(this._getSpecDataUri(), 'diagram.txt')
+    download(this.#getSpecDataUri(), 'diagram.txt')
   }
 
   onSvgExportRequested () {
-    download(this._getSvgDataUri(), 'diagram.svg')
+    download(this.#getSvgDataUri(), 'diagram.svg')
   }
 
   onPngExportRequested () {
@@ -82,22 +82,22 @@ export class Presenter implements IEventTarget {
       context.drawImage(image, 0, 0)
       download(canvas.toDataURL('image/png'), 'diagram.png')
     }
-    image.src = this._getSvgDataUri()
+    image.src = this.#getSvgDataUri()
   }
 
   onExampleRequested (example: Example) {
     window.open('#code=' + encodeURIComponent(example.code), '_blank')
   }
 
-  _render () {
-    const { code, darkThemeEnabled } = this._model
+  #render () {
+    const { code, darkThemeEnabled } = this.#model
     const styles = darkThemeEnabled ? darkStyles : lightStyles
 
     let spec
     try {
       spec = parseMarbleDiagramSpecification(code)
     } catch (err) {
-      this._view.setRenderErrorMessage(
+      this.#view.setRenderErrorMessage(
         'Failed to parse: ' + (err as Error).stack
       )
       return
@@ -107,24 +107,24 @@ export class Presenter implements IEventTarget {
     try {
       result = renderMarbleDiagram(spec, { styles })
     } catch (err) {
-      this._view.setRenderErrorMessage(
+      this.#view.setRenderErrorMessage(
         'Failed to render: ' + (err as Error).stack
       )
       return
     }
 
-    this._view.setDiagramRendering(result.document.documentElement)
+    this.#view.setDiagramRendering(result.document.documentElement)
   }
 
-  _modelUpdated () {
-    this._stateRepository.write(this._model)
+  #modelUpdated () {
+    this.#stateRepository.write(this.#model)
   }
 
-  _getSpecDataUri (): string {
-    return buildDataUri('text/plain', 'utf-8', this._model.code)
+  #getSpecDataUri (): string {
+    return buildDataUri('text/plain', 'utf-8', this.#model.code)
   }
 
-  _getSvgDataUri (): string {
-    return buildDataUri('image/svg+xml', 'utf-8', this._view.getDiagramSvgXml())
+  #getSvgDataUri (): string {
+    return buildDataUri('image/svg+xml', 'utf-8', this.#view.getDiagramSvgXml())
   }
 }

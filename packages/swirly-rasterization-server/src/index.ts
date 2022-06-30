@@ -15,29 +15,25 @@ const rasterizerImpls: Record<RasterizerName, { new (): IRasterizer }> = {
 }
 
 export class RasterizationServer {
-  static readonly RASTERIZER_NAMES = Object.keys(
-    rasterizerImpls
-  ) as RasterizerName[]
+  static readonly RASTERIZER_NAMES = Object.keys(rasterizerImpls)
 
-  private _port: number
-
-  private _address: string
-
-  private _fastify?: FastifyInstance
-
-  private _rasterizers: Map<RasterizerName, IRasterizer>
+  #port: number
+  #address: string
+  #fastify?: FastifyInstance
+  #rasterizers: Map<RasterizerName, IRasterizer>
+  #createRasterizerOnce: (name: RasterizerName) => Promise<IRasterizer>
 
   constructor (port: number = 0, address: string | null = null) {
-    this._port = port
-    this._address = address != null ? address : '0.0.0.0'
-    this._rasterizers = new Map<RasterizerName, IRasterizer>()
-    this._createRasterizer = pMemoize(this._createRasterizer.bind(this), {
+    this.#port = port
+    this.#address = address != null ? address : '0.0.0.0'
+    this.#rasterizers = new Map<RasterizerName, IRasterizer>()
+    this.#createRasterizerOnce = pMemoize(this.#createRasterizer.bind(this), {
       cachePromiseRejection: true
     })
   }
 
   get url (): string {
-    const { address, port } = this._fastify!.server.address() as {
+    const { address, port } = this.#fastify!.server.address() as {
       address: string
       port: number
     }
@@ -45,17 +41,17 @@ export class RasterizationServer {
   }
 
   async start (): Promise<void> {
-    this._fastify = fastify()
-    this._registerRoutes()
-    await this._fastify!.listen({
-      host: this._address,
-      port: this._port
+    this.#fastify = fastify()
+    this.#registerRoutes()
+    await this.#fastify!.listen({
+      host: this.#address,
+      port: this.#port
     })
   }
 
   async stop (): Promise<void> {
-    await this._fastify!.close()
-    const rasterizers = Array.from(this._rasterizers.values())
+    await this.#fastify!.close()
+    const rasterizers = Array.from(this.#rasterizers.values())
     await Promise.all(
       rasterizers.map(async (rasterizer) => {
         await rasterizer.dispose()
@@ -63,16 +59,16 @@ export class RasterizationServer {
     )
   }
 
-  _registerRoutes () {
-    this._fastify!.get('/', (request: FastifyRequest, reply: FastifyReply) => {
+  #registerRoutes () {
+    this.#fastify!.get('/', (request: FastifyRequest, reply: FastifyReply) => {
       reply.send({})
     })
-    this._fastify!.post(
+    this.#fastify!.post(
       '/rasterize',
       async (request: FastifyRequest, reply: FastifyReply) => {
         const { rasterizer, svgXml, width, height, format } =
           request.body as RasterizationRequest
-        const rasterizerImpl: IRasterizer = await this._createRasterizer(
+        const rasterizerImpl: IRasterizer = await this.#createRasterizerOnce(
           rasterizer
         )
         const output = await rasterizerImpl.rasterize(
@@ -87,11 +83,11 @@ export class RasterizationServer {
     )
   }
 
-  async _createRasterizer (name: RasterizerName): Promise<IRasterizer> {
+  async #createRasterizer (name: RasterizerName): Promise<IRasterizer> {
     const RasterizerImpl = rasterizerImpls[name]
     const rasterizer: IRasterizer = new RasterizerImpl()
     await rasterizer.init()
-    this._rasterizers.set(name, rasterizer)
+    this.#rasterizers.set(name, rasterizer)
     return rasterizer
   }
 }

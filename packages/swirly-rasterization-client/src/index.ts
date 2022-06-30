@@ -7,10 +7,10 @@ import {
 import fetch from 'minipass-fetch'
 
 export class RasterizationClient {
-  private _serverUrl: string
+  #serverUrl: string
 
   constructor (serverUrl: string) {
-    this._serverUrl = serverUrl
+    this.#serverUrl = serverUrl
   }
 
   async rasterize (
@@ -20,7 +20,7 @@ export class RasterizationClient {
     height: number,
     format: RasterizerOutputFormat
   ): Promise<Buffer> {
-    const url = this._serverUrl + '/rasterize'
+    const url = this.#serverUrl + '/rasterize'
     const body: RasterizationRequest = {
       rasterizer,
       svgXml,
