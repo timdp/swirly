@@ -4,19 +4,20 @@ import 'hard-rejection/register.js'
 
 import esbuild from 'esbuild'
 import fs from 'fs-extra'
-import path from 'node:path'
-import url from 'node:url'
+import { fileURLToPath } from 'node:url'
 
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
-const SRC = path.resolve(__dirname, '../src')
-const DIST = path.resolve(__dirname, '../dist')
-const { version: VERSION } = await fs.readJson(
-  path.resolve(__dirname, '../../../lerna.json')
-)
+const PKG_ROOT = new URL('../', import.meta.url)
+const REPO_ROOT = new URL('../../', PKG_ROOT)
+
+const SRC_DIR = new URL('src/', PKG_ROOT)
+const DIST_DIR = new URL('dist/', PKG_ROOT)
+const LERNA_JSON = new URL('lerna.json', REPO_ROOT)
+
+const { version: VERSION } = await fs.readJson(fileURLToPath(LERNA_JSON))
 
 const baseConfig = {
   target: 'es2020',
-  entryPoints: [path.resolve(SRC, 'app.ts')],
+  entryPoints: [fileURLToPath(new URL('app.ts', SRC_DIR))],
   bundle: true,
   define: {
     VERSION: JSON.stringify(VERSION)
@@ -26,13 +27,13 @@ const baseConfig = {
 const configs = [
   {
     ...baseConfig,
-    outfile: path.resolve(DIST, 'bundle.js'),
+    outfile: fileURLToPath(new URL('bundle.js', DIST_DIR)),
     minify: false,
     sourcemap: 'inline'
   },
   {
     ...baseConfig,
-    outfile: path.resolve(DIST, 'bundle.min.js'),
+    outfile: fileURLToPath(new URL('bundle.min.js', DIST_DIR)),
     minify: true,
     sourcemap: false
   }
