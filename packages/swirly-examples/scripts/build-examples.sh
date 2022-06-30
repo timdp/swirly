@@ -12,7 +12,7 @@ MAX_PROBES=10
 cd "$DIRNAME/../../../examples"
 
 cli_path() {
-  echo "../packages/$1/dist/cli"
+  echo "../packages/$1/dist/cli.js"
 }
 
 echo "Starting server at $SERVER_URL"
