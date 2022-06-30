@@ -1,7 +1,7 @@
 {
   "name": "@swirly/renderer",
   "description": "Renderer for Swirly marble diagrams.",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "license": "MIT",
   "repository": {
     "type": "git",

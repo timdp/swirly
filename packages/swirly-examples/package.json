@@ -1,7 +1,7 @@
 {
   "name": "@swirly/examples",
   "description": "Swirly example diagrams.",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "private": true,
   "license": "MIT",
   "repository": {
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@swirly/rasterization-server": "^0.19.1",
-    "swirly": "^0.19.1"
+    "swirly": "^0.19.2"
   },
   "devDependencies": {
     "shx": "^0.3.3"
