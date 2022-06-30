@@ -35,7 +35,7 @@
   "devDependencies": {
     "esbuild": "^0.14.44",
     "rxjs": "7.5.5",
-    "shx": "^0.3.3"
+    "shx": "^0.3.4"
   },
   "funding": {
     "type": "github",

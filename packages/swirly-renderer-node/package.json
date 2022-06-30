@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@swirly/types": "^0.19.1",
-    "shx": "^0.3.3"
+    "shx": "^0.3.4"
   },
   "funding": {
     "type": "github",

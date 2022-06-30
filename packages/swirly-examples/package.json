@@ -24,7 +24,7 @@
     "swirly": "^0.19.2"
   },
   "devDependencies": {
-    "shx": "^0.3.3"
+    "shx": "^0.3.4"
   },
   "funding": {
     "type": "github",
