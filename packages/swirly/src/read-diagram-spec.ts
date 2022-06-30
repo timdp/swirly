@@ -1,7 +1,7 @@
 import { parseMarbleDiagramSpecification } from '@swirly/parser'
 import { DiagramSpecification } from '@swirly/types'
 import YAML from 'js-yaml'
-import { promises as fs } from 'node:fs'
+import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import { YAML_EXTENSIONS } from './constants.js'
