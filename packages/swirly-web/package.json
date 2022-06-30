@@ -1,7 +1,7 @@
 {
   "name": "@swirly/web",
   "description": "The Swirly Web app.",
-  "version": "0.19.2",
+  "version": "0.20.0",
   "private": true,
   "license": "MIT",
   "repository": {
@@ -28,10 +28,10 @@
     "clean": "shx rm -rf dist"
   },
   "dependencies": {
-    "@swirly/parser": "^0.19.1",
-    "@swirly/renderer": "^0.19.2",
-    "@swirly/theme-default-dark": "^0.19.1",
-    "@swirly/theme-default-light": "^0.19.1",
+    "@swirly/parser": "^0.20.0",
+    "@swirly/renderer": "^0.20.0",
+    "@swirly/theme-default-dark": "^0.20.0",
+    "@swirly/theme-default-light": "^0.20.0",
     "core-js": "^3.23.3",
     "dedent": "^0.7.0",
     "split.js": "^1.6.2"
