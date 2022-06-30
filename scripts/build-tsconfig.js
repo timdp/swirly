@@ -54,30 +54,24 @@ const dependenciesToKnownPaths = (allDepNames, pkgs) =>
     .filter(Boolean)
     .map((pkg) => pkg.path)
 
-const main = async () => {
-  const [pkg, tsconfig, pkgs] = await Promise.all([
-    fs.readJson('package.json'),
-    fs.readJson('tsconfig.json'),
-    listCandidateReferences()
-  ])
-  if (tsconfig.references == null) {
-    tsconfig.references = []
-  }
+const [pkg, tsconfig, pkgs] = await Promise.all([
+  fs.readJson('package.json'),
+  fs.readJson('tsconfig.json'),
+  listCandidateReferences()
+])
+if (tsconfig.references == null) {
+  tsconfig.references = []
+}
 
-  const allDepNames = pkgToDependencies(pkg)
-  const tsDepPaths = dependenciesToKnownPaths(allDepNames, pkgs)
+const allDepNames = pkgToDependencies(pkg)
+const tsDepPaths = dependenciesToKnownPaths(allDepNames, pkgs)
 
-  const missingTsDepPaths = tsDepPaths.filter(
-    (path) => !tsconfig.references.some((ref) => ref.path === path)
-  )
+const missingTsDepPaths = tsDepPaths.filter(
+  (path) => !tsconfig.references.some((ref) => ref.path === path)
+)
 
-  if (missingTsDepPaths.length === 0) {
-    return
-  }
-
+if (missingTsDepPaths.length > 0) {
   tsconfig.references.push(...missingTsDepPaths.map((path) => ({ path })))
   tsconfig.references.sort((a, b) => a.path.localeCompare(b.path))
   await fs.writeJson('tsconfig.json', tsconfig, { spaces: 2 })
 }
-
-main()

@@ -50,12 +50,8 @@ const listenForKillSignals = (server: RasterizationServer) => {
   process.on('SIGTERM', stopServerAndExit)
 }
 
-const main = async () => {
-  const { port, address } = getOpts()
-  const server = await startServer(port, address)
-  listenForKillSignals(server)
-  process.stdout.write(server.url)
-  process.stdout.write(EOL)
-}
-
-main()
+const { port, address } = getOpts()
+const server = await startServer(port, address)
+listenForKillSignals(server)
+process.stdout.write(server.url)
+process.stdout.write(EOL)
