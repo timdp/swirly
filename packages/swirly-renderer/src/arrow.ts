@@ -50,9 +50,9 @@ export const renderArrow = (
 
   const bbox = {
     x1: 0,
-    y1,
+    y1: 0,
     x2: width,
-    y2
+    y2: streamHeight
   }
 
   return {

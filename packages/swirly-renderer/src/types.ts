@@ -43,7 +43,7 @@ export type PostRenderUpdateContext = {
 }
 
 export type UpdatableRendererResult = RendererResult & {
-  update: (ctx: PostRenderUpdateContext) => void
+  update?: (ctx: PostRenderUpdateContext) => void
 }
 
 export type MessageRendererOptions = {

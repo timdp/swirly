@@ -4,8 +4,8 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**"],
-      "outputs": ["dist/**"]
+      "inputs": ["src/**/*"],
+      "outputs": ["dist/**/*"]
     },
     "@swirly/examples#build": {
       "dependsOn": ["^build"],
