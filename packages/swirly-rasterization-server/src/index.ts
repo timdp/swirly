@@ -47,7 +47,10 @@ export class RasterizationServer {
   async start (): Promise<void> {
     this._fastify = fastify()
     this._registerRoutes()
-    await this._fastify!.listen(this._port, this._address)
+    await this._fastify!.listen({
+      host: this._address,
+      port: this._port
+    })
   }
 
   async stop (): Promise<void> {
