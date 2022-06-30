@@ -80,8 +80,8 @@ const renderRichTitle = (
   fontStyles: Record<string, any>
 ) => {
   const $foreignObject = createSvgElement(ctx.document, 'foreignObject', {
-    y: styles.spacing,
-    height: styles.height
+    y: styles.spacing!,
+    height: styles.height! - styles.stroke_width!
   })
   const $container = createRootDiv(ctx.document, {
     width: '100%',
