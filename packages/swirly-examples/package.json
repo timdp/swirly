@@ -23,6 +23,9 @@
     "@swirly/rasterization-server": "^0.19.0",
     "swirly": "^0.19.0"
   },
+  "devDependencies": {
+    "shx": "^0.3.3"
+  },
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/timdp"
