@@ -40,6 +40,7 @@ export type RendererResult = {
 export type PostRenderUpdateContext = {
   width: number
   height: number
+  dx: number
 }
 
 export type UpdatableRendererResult = RendererResult & {

@@ -13,6 +13,8 @@ export const renderArrow = (
   const arrowheadWidth = arrowStyles.width!
   const arrowheadHeight =
     arrowheadWidth * Math.tan(degreesToRadians(arrowheadAngle / 2))
+  const arrowHeadProtrusion =
+    arrowStyles.stroke_width! / Math.sin(degreesToRadians(arrowheadAngle))
   const y1 = y - arrowheadHeight
   const y2 = y + arrowheadHeight
 
@@ -51,7 +53,7 @@ export const renderArrow = (
   const bbox = {
     x1: 0,
     y1: 0,
-    x2: width,
+    x2: width + arrowHeadProtrusion,
     y2: streamHeight
   }
 

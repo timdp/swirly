@@ -3,7 +3,9 @@ import {
   OperatorSpecification,
   OperatorStyles,
   OperatorTitleSegment,
-  StreamSpecification
+  StreamOperatorTitleSegment,
+  StreamSpecification,
+  TextOperatorTitleSegment
 } from '@swirly/types'
 
 import { renderStreamBase } from './stream/core.js'
@@ -19,6 +21,7 @@ import {
   setSvgDimensions,
   XHTML_NS
 } from './util/svg-xml.js'
+import { translate } from './util/transform.js'
 
 const NON_BREAKING_SPACE = '\xA0'
 
@@ -38,31 +41,55 @@ const createRootDiv = (document: Document, styles: Record<string, any>) => {
 const renderStream = (spec: StreamSpecification, ctx: RendererContext) => {
   const {
     element: $group,
-    bbox: { x2: width, y2: height }
+    bbox: { x1, x2, y2 }
   } = renderStreamBase(ctx, spec, false, false)
+  let width
+  if (x1 < 0) {
+    translate($group, -x1, 0)
+    width = x2 - x1
+  } else {
+    width = x2
+  }
   return {
     $group,
     width,
-    height
+    height: y2
   }
 }
 
-const segmentRenderers = {
-  text: (value: string, ctx: RendererContext) => {
-    const $div = ctx.document.createElement('div')
-    $div.textContent = value.replace(reSpace, NON_BREAKING_SPACE)
-    return $div
-  },
-  stream: (
-    value: StreamSpecification,
-    ctx: RendererContext,
-    styles: OperatorStyles
-  ) => {
-    const { documentElement: $svg } = createSvgDocument(ctx.DOMParser)
-    const { $group, width, height } = renderStream(value, ctx)
-    setSvgDimensions($svg, width, height, (styles.stream_scale ?? 100) / 100)
-    $svg.appendChild($group)
-    return $svg
+const renderTextTitleSegment = (
+  segment: TextOperatorTitleSegment,
+  ctx: RendererContext
+) => {
+  const $div = ctx.document.createElement('div')
+  $div.textContent = segment.value.replace(reSpace, NON_BREAKING_SPACE)
+  return $div
+}
+
+const renderStreamTitleSegment = (
+  segment: StreamOperatorTitleSegment,
+  ctx: RendererContext,
+  styles: OperatorStyles
+) => {
+  const { documentElement: $svg } = createSvgDocument(ctx.DOMParser)
+  const { $group, width, height } = renderStream(segment.value, ctx)
+  setSvgDimensions($svg, width, height, (styles.stream_scale ?? 100) / 100)
+  $svg.appendChild($group)
+  return $svg
+}
+
+const renderTitleSegment = (
+  segment: OperatorTitleSegment,
+  ctx: RendererContext,
+  styles: OperatorStyles
+) => {
+  switch (segment.type) {
+    case 'stream':
+      return renderStreamTitleSegment(segment, ctx, styles)
+    case 'text':
+      return renderTextTitleSegment(segment, ctx)
+    default:
+      return null
   }
 }
 
@@ -75,7 +102,7 @@ const renderRichTitle = (
 ) => {
   const $foreignObject = createSvgElement(ctx.document, 'foreignObject', {
     y: styles.spacing!,
-    height: styles.height! - styles.stroke_width!
+    height: styles.height!
   })
   const $container = createRootDiv(ctx.document, {
     width: '100%',
@@ -88,11 +115,7 @@ const renderRichTitle = (
   })
   $foreignObject.appendChild($container)
   for (const segment of segments) {
-    const $element = segmentRenderers[segment.type](
-      segment.value as any,
-      ctx,
-      styles
-    )
+    const $element = renderTitleSegment(segment, ctx, styles)!
     $container.appendChild($element)
   }
   return $foreignObject
@@ -136,11 +159,11 @@ const renderTitle = (
 
   const $title = isText
     ? renderTextTitle(
-        segments[0].value as string,
-        ctx,
-        color,
-        styles,
-        fontStyles
+      (segments[0] as TextOperatorTitleSegment).value,
+      ctx,
+      color,
+      styles,
+      fontStyles
     )
     : renderRichTitle(segments, ctx, color, styles, fontStyles)
 
@@ -160,8 +183,8 @@ export const renderOperator = (
   const $group = createSvgElement(ctx.document, 'g')
 
   const $rect = createSvgElement(ctx.document, 'rect', {
-    x: 0,
-    y: s.spacing!,
+    x: s.stroke_width! / 2,
+    y: s.spacing! + s.stroke_width! / 2,
     width: 1,
     height: s.height! - s.stroke_width!,
     fill: s.fill_color!,
@@ -181,9 +204,10 @@ export const renderOperator = (
     y2: s.height! + 2 * s.spacing!
   }
 
-  const update = ({ width }: PostRenderUpdateContext) => {
-    $rect.setAttribute('width', String(width))
+  const update = ({ width, dx }: PostRenderUpdateContext) => {
+    $rect.setAttribute('width', String(width - s.stroke_width!))
     $title.setAttribute('width', String(width))
+    translate($group, -dx, 0)
     if (shouldCenter) {
       $title.setAttribute('x', String(width / 2))
     }

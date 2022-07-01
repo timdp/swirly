@@ -64,6 +64,7 @@ const renderMarbleDiagram = (
 
   const updaters = []
 
+  let minX = 0
   let maxX = 0
   let y = 0
   for (const item of spec.content) {
@@ -75,6 +76,7 @@ const renderMarbleDiagram = (
     translate(element, 0, y - bbox.y1)
     $group.appendChild(element)
 
+    minX = Math.min(minX, bbox.x1)
     maxX = Math.max(maxX, bbox.x2)
 
     const height = bbox.y2 - bbox.y1
@@ -85,10 +87,14 @@ const renderMarbleDiagram = (
     }
   }
 
-  y -= styles.stream_spacing!
+  const dx = minX < 0 ? -minX : 0
+  translate($group, dx, 0)
 
-  const width = styles.canvas_padding! + maxX + styles.canvas_padding!
-  const height = styles.canvas_padding! + y + styles.canvas_padding!
+  const innerWidth = maxX - minX
+  const innerHeight = y - styles.stream_spacing!
+
+  const width = styles.canvas_padding! + innerWidth + styles.canvas_padding!
+  const height = styles.canvas_padding! + innerHeight + styles.canvas_padding!
 
   setSvgDimensions($svg, width, height)
 
@@ -105,7 +111,11 @@ const renderMarbleDiagram = (
   }
 
   for (const update of updaters) {
-    update({ width: maxX, height: y })
+    update({
+      width: innerWidth,
+      height: innerHeight,
+      dx
+    })
   }
 
   return {
