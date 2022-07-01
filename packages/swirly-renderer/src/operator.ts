@@ -57,15 +57,6 @@ const renderStream = (spec: StreamSpecification, ctx: RendererContext) => {
   }
 }
 
-const renderTextTitleSegment = (
-  segment: TextOperatorTitleSegment,
-  ctx: RendererContext
-) => {
-  const $div = ctx.document.createElement('div')
-  $div.textContent = segment.value.replace(reSpace, NON_BREAKING_SPACE)
-  return $div
-}
-
 const renderStreamTitleSegment = (
   segment: StreamOperatorTitleSegment,
   ctx: RendererContext,
@@ -76,6 +67,15 @@ const renderStreamTitleSegment = (
   setSvgDimensions($svg, width, height, (styles.stream_scale ?? 100) / 100)
   $svg.appendChild($group)
   return $svg
+}
+
+const renderTextTitleSegment = (
+  segment: TextOperatorTitleSegment,
+  ctx: RendererContext
+) => {
+  const $div = ctx.document.createElement('div')
+  $div.textContent = segment.value.replace(reSpace, NON_BREAKING_SPACE)
+  return $div
 }
 
 const renderTitleSegment = (
