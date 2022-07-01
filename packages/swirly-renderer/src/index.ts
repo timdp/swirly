@@ -90,8 +90,11 @@ export const renderMarbleDiagram = (
   const dx = minX < 0 ? -minX : 0
   translate($group, dx, 0)
 
-  const innerWidth = maxX - minX
-  const innerHeight = y - styles.stream_spacing!
+  const innerWidth = Math.max(maxX - minX, styles.minimum_width!)
+  const innerHeight = Math.max(
+    y - styles.stream_spacing!,
+    styles.minimum_height!
+  )
 
   const width = styles.canvas_padding! + innerWidth + styles.canvas_padding!
   const height = styles.canvas_padding! + innerHeight + styles.canvas_padding!

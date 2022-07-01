@@ -22,6 +22,8 @@ export const baseStyles: DiagramStyles = {
   ghost_opacity: 50,
   higher_order_angle: 18,
   higher_order_event_value_angle: 0,
+  minimum_height: 0,
+  minimum_width: 0,
   operator_corner_radius: 0,
   operator_stroke_width: 2,
   operator_title_font_family: 'Arial, Helvetica, sans-serif',

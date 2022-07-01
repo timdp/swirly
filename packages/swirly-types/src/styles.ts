@@ -107,6 +107,8 @@ export type DiagramStyles = {
   ghost_opacity?: NonNegativeNumber
   higher_order_angle?: NonNegativeNumber
   higher_order_event_value_angle?: NonNegativeNumber
+  minimum_height?: NonNegativeNumber
+  minimum_width?: NonNegativeNumber
   operator_corner_radius?: NonNegativeNumber
   operator_fill_color?: Color
   operator_height?: NonNegativeNumber
