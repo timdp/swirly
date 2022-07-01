@@ -71,7 +71,11 @@ export class View {
   }
 
   getDiagramSvgXml (): string {
-    return this.#diagramContainer.innerHTML
+    const svgElement = this.#diagramContainer.firstElementChild!
+    const serializer = new XMLSerializer()
+    const xml = serializer.serializeToString(svgElement)
+    // Replace non-breaking spaces with named entities
+    return xml.replace(/\xA0/g, '&#xA0;')
   }
 
   setDiagramRendering (svgElement: SVGElement) {
