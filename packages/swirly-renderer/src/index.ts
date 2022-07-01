@@ -3,6 +3,7 @@ import {
   DiagramRendering,
   DiagramSpecification,
   OperatorSpecification,
+  RendererOptions,
   StreamSpecification
 } from '@swirly/types'
 
@@ -10,7 +11,6 @@ import { renderOperator } from './operator.js'
 import { renderStream } from './stream/full.js'
 import {
   RendererContext,
-  RendererOptions,
   RendererResult,
   UpdatableRendererResult
 } from './types.js'
@@ -27,7 +27,7 @@ const isOperator = (item: StreamSpecification | OperatorSpecification) =>
 const isStream = (item: StreamSpecification | OperatorSpecification) =>
   !isOperator(item)
 
-const renderMarbleDiagram = (
+export const renderMarbleDiagram = (
   spec: DiagramSpecification,
   options: RendererOptions = {}
 ): DiagramRendering => {
@@ -124,5 +124,3 @@ const renderMarbleDiagram = (
     height
   }
 }
-
-export { RendererOptions, renderMarbleDiagram }

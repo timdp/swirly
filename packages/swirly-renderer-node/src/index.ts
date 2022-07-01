@@ -1,8 +1,9 @@
+import { renderMarbleDiagram as renderMarbleDiagramBase } from '@swirly/renderer'
 import {
-  RendererOptions,
-  renderMarbleDiagram as renderMarbleDiagramBase
-} from '@swirly/renderer'
-import { DiagramRendering, DiagramSpecification } from '@swirly/types'
+  DiagramRendering,
+  DiagramSpecification,
+  RendererOptions
+} from '@swirly/types'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 
 type NodeDiagramRendering = DiagramRendering & { xml: string }

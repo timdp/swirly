@@ -19,11 +19,6 @@ export type Rectangle = {
 
 export type TimeScaler = (time: number) => number
 
-export type RendererOptions = {
-  DOMParser?: typeof DOMParser
-  styles?: DiagramStyles
-}
-
 export type RendererContext = {
   DOMParser?: typeof DOMParser
   document: SVGDocument
