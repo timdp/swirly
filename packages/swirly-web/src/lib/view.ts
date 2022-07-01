@@ -8,6 +8,8 @@ import {
   createSubmenuButton
 } from './util/submenu.js'
 
+const reNbsp = /\xA0/g
+
 const el = <T extends HTMLElement>(className: string) =>
   document.getElementsByClassName(className)[0] as T
 
@@ -75,7 +77,7 @@ export class View {
     const serializer = new XMLSerializer()
     const xml = serializer.serializeToString(svgElement)
     // Replace non-breaking spaces with named entities
-    return xml.replace(/\xA0/g, '&#xA0;')
+    return xml.replace(reNbsp, '&#xA0;')
   }
 
   setDiagramRendering (svgElement: SVGElement) {
