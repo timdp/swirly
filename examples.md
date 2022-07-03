@@ -1,18 +1,18 @@
 # Examples
 
-[concatAll](#concatAll)
+[concatAll](#concatall)
 ·
 [debounce](#debounce)
 ·
-[exhaustAll](#exhaustAll)
+[exhaustAll](#exhaustall)
 ·
-[onErrorResumeNext](#onErrorResumeNext)
+[onErrorResumeNext](#onerrorresumenext)
 ·
 [pluck](#pluck)
 ·
-[skipUntil](#skipUntil)
+[skipUntil](#skipuntil)
 ·
-[zipAll](#zipAll)
+[zipAll](#zipall)
 
 ## concatAll
 
