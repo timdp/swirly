@@ -1,4 +1,5 @@
 % An example application of the zipAll operator.
+% Showcases higher-order observables and notification values.
 % Based on RxJS's zipAll diagram:
 % https://github.com/ReactiveX/rxjs/blob/fc3d4264395d88887cae1df2de1b931964f3e684/spec/operators/zipAll-spec.ts
 
