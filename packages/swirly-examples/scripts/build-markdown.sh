@@ -13,10 +13,14 @@ echo "Rendering examples.md"
   names=$(basename -a -s .txt *.txt)
   echo '# Examples'
   echo
-  echo '## Contents'
-  echo
+  sep=0
   for name in $names; do
-    echo "- [$name](#$name)"
+    if (( sep == 1 )); then
+      echo '·'
+    else
+      sep=1
+    fi
+    echo "[$name](#$name)"
   done
   echo
   for name in $names; do
