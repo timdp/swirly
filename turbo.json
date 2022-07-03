@@ -9,7 +9,11 @@
     "@swirly/examples#build": {
       "dependsOn": ["^build"],
       "inputs": ["../../examples/*.txt"],
-      "outputs": ["../../examples/*.svg", "../../examples/*.png"]
+      "outputs": [
+        "../../examples/*.svg",
+        "../../examples/*.png",
+        "../../examples.md"
+      ]
     },
     "clean": {
       "cache": false,
