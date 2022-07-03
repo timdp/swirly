@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "turbo run build && shx chmod a-x \"examples/*.{svg,png}\"",
+    "build": "turbo run build && shx chmod a-x \"examples/*.{svg,png}\" examples.md",
     "clean": "turbo run clean",
     "test": "yarn run lint",
     "lint": "yarn run lint:js && yarn run lint:deps",
