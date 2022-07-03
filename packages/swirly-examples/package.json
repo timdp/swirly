@@ -1,6 +1,6 @@
 {
   "name": "@swirly/examples",
-  "description": "Swirly example diagrams.",
+  "description": "Builder for Swirly example diagrams.",
   "version": "0.20.0",
   "private": true,
   "license": "MIT",
@@ -16,8 +16,10 @@
   },
   "type": "module",
   "scripts": {
-    "build": "yarn run clean && scripts/build-examples.sh",
-    "clean": "shx rm -f \"../../examples/*.{svg,png}\""
+    "build": "yarn run clean && yarn run build:img && yarn run build:md",
+    "build:img": "scripts/build-images.sh",
+    "build:md": "scripts/build-markdown.sh",
+    "clean": "shx rm -f ../../examples.md \"../../examples/*.{svg,png}\""
   },
   "dependencies": {
     "@swirly/rasterization-server": "^0.20.0",

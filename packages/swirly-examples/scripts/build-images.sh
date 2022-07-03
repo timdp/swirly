@@ -41,9 +41,9 @@ done
 echo "Server ready, rendering examples"
 
 for input in *.txt; do
+  name=$(basename "$input" .txt)
   for ext in svg png; do
-    output=${input/.txt/.$ext}
-    echo "$input" "$output"
+    echo "$input" "$name.$ext"
   done
 done | xargs -r -t -n2 -P4 \
   node "$(cli_path swirly)" \
