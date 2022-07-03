@@ -10,10 +10,16 @@ cd "$DIRNAME/../../../examples"
 echo "Rendering examples.md"
 
 {
+  names=$(basename -a -s .txt *.txt)
   echo '# Examples'
   echo
-  for file in *.txt; do
-    name=$(basename "$file" .txt)
+  echo '## Contents'
+  echo
+  for name in $names; do
+    echo "- [$name](#$name)"
+  done
+  echo
+  for name in $names; do
     echo "## $name"
     echo
     echo "[Spec](examples/$name.txt)"
@@ -25,7 +31,7 @@ echo "Rendering examples.md"
     echo "![$name](examples/$name.png)"
     echo
     echo '```'
-    cat "$file"
+    cat "$name.txt"
     echo '```'
     echo
   done
