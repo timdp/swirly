@@ -31,7 +31,7 @@
     "node": ">=14.13.1"
   },
   "dependencies": {
-    "puppeteer": "^15.1.1"
+    "puppeteer": "^15.3.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.20.0",
