@@ -19,21 +19,21 @@ export class RasterizationServer {
 
   #port: number
   #address: string
-  #fastify?: FastifyInstance
   #rasterizers: Map<RasterizerName, IRasterizer>
   #createRasterizerOnce: (name: RasterizerName) => Promise<IRasterizer>
+  #fastify: FastifyInstance
 
   constructor (port: number = 0, address: string | null = null) {
     this.#port = port
     this.#address = address != null ? address : '0.0.0.0'
     this.#rasterizers = new Map<RasterizerName, IRasterizer>()
-    this.#createRasterizerOnce = pMemoize(this.#createRasterizer.bind(this), {
-      cachePromiseRejection: true
-    })
+    this.#createRasterizerOnce = pMemoize(this.#createRasterizer.bind(this))
+    this.#fastify = fastify()
+    this.#registerRoutes()
   }
 
   get url (): string {
-    const { address, port } = this.#fastify!.server.address() as {
+    const { address, port } = this.#fastify.server.address() as {
       address: string
       port: number
     }
@@ -41,16 +41,14 @@ export class RasterizationServer {
   }
 
   async start (): Promise<void> {
-    this.#fastify = fastify()
-    this.#registerRoutes()
-    await this.#fastify!.listen({
+    await this.#fastify.listen({
       host: this.#address,
       port: this.#port
     })
   }
 
   async stop (): Promise<void> {
-    await this.#fastify!.close()
+    await this.#fastify.close()
     const rasterizers = Array.from(this.#rasterizers.values())
     await Promise.all(
       rasterizers.map(async (rasterizer) => {
@@ -60,17 +58,13 @@ export class RasterizationServer {
   }
 
   #registerRoutes () {
-    this.#fastify!.get('/', (request: FastifyRequest, reply: FastifyReply) => {
-      reply.send({})
-    })
-    this.#fastify!.post(
+    this.#fastify.get('/', () => ({}))
+    this.#fastify.post(
       '/rasterize',
       async (request: FastifyRequest, reply: FastifyReply) => {
         const { rasterizer, svgXml, width, height, format } =
           request.body as RasterizationRequest
-        const rasterizerImpl: IRasterizer = await this.#createRasterizerOnce(
-          rasterizer
-        )
+        const rasterizerImpl = await this.#createRasterizerOnce(rasterizer)
         const output = await rasterizerImpl.rasterize(
           svgXml,
           width,

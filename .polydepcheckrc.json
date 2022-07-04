@@ -9,9 +9,6 @@
     "@swirly/examples": [
       "swirly",
       "@swirly/rasterization-server"
-    ],
-    "@swirly/web": [
-      "run-sequence"
     ]
   }
 }

@@ -16,7 +16,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "yarn run clean && yarn run build:img && yarn run build:md",
+    "build": "yarn run clean && run-p \"build:*\"",
     "build:img": "scripts/build-images.sh",
     "build:md": "scripts/build-markdown.sh",
     "clean": "shx rm -f ../../examples.md \"../../examples/*.{svg,png}\""
@@ -26,6 +26,7 @@
     "swirly": "^0.21.0"
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
     "shx": "^0.3.4"
   },
   "funding": {
