@@ -20,7 +20,8 @@ echo "Rendering examples.md"
     else
       sep=1
     fi
-    echo "[$name](#${name,,})"
+    id=$(echo "$name" | tr A-Z a-z)
+    echo "[$name](#$id)"
   done
   echo
   for name in $names; do
