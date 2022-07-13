@@ -80,10 +80,9 @@ export class View {
     return xml.replace(reNbsp, '&#xA0;')
   }
 
-  setDiagramRendering (svgElement: SVGElement) {
+  setDiagramRendering (value: string) {
     this.#resultContainer.classList.remove('failed')
-    this.#diagramContainer.innerHTML = ''
-    this.#diagramContainer.appendChild(svgElement)
+    this.#diagramContainer.innerHTML = value
     this.#setControlsEnabled(true)
   }
 

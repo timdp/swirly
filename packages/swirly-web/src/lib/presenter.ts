@@ -1,8 +1,9 @@
 import { parseMarbleDiagramSpecification } from '@swirly/parser'
-import { renderMarbleDiagram } from '@swirly/renderer'
+import { diagramView } from '@swirly/renderer-next'
 import { darkStyles } from '@swirly/theme-default-dark'
 import { lightStyles } from '@swirly/theme-default-light'
 import dedent from 'dedent'
+import { Font } from 'opentype.js'
 
 import { examples } from './examples.js'
 import { Model } from './model.js'
@@ -24,11 +25,18 @@ export class Presenter implements IEventTarget {
     examples[0].code
 
   #model: Model
+  #font: Font
   #view: View
   #stateRepository: StateRepository
 
-  constructor (model: Model, view: View, stateRepository: StateRepository) {
+  constructor (
+    model: Model,
+    font: Font,
+    view: View,
+    stateRepository: StateRepository
+  ) {
     this.#model = model
+    this.#font = font
     this.#view = view
     this.#stateRepository = stateRepository
   }
@@ -91,6 +99,8 @@ export class Presenter implements IEventTarget {
 
   #render () {
     const { code, darkThemeEnabled } = this.#model
+    // TODO
+    // eslint-disable-next-line no-unused-vars
     const styles = darkThemeEnabled ? darkStyles : lightStyles
 
     let spec
@@ -103,17 +113,18 @@ export class Presenter implements IEventTarget {
       return
     }
 
-    let result
+    let result: string
     try {
-      result = renderMarbleDiagram(spec, { styles })
+      result = diagramView({}, this.#font, spec).toXmlString()
     } catch (err) {
+      console.error(err)
       this.#view.setRenderErrorMessage(
         'Failed to render: ' + (err as Error).stack
       )
       return
     }
 
-    this.#view.setDiagramRendering(result.document.documentElement)
+    this.#view.setDiagramRendering(result)
   }
 
   #modelUpdated () {
