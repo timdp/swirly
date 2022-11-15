@@ -1,5 +1,7 @@
 import 'core-js/stable'
 
+import { load } from 'opentype.js'
+
 import { Model } from './lib/model.js'
 import { Presenter } from './lib/presenter.js'
 import { StateRepository } from './lib/state.js'
@@ -24,5 +26,7 @@ if (paramsStr !== '') {
 
 const view = new View()
 
-const presenter = new Presenter(model, view, stateRepository)
-presenter.start()
+load('Roboto-Medium.ttf').then((font) => {
+  const presenter = new Presenter(model, font, view, stateRepository)
+  presenter.start()
+})
