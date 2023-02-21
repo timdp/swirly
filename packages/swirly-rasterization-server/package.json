@@ -37,7 +37,6 @@
     "@swirly/rasterizer-inkscape": "^0.21.0",
     "@swirly/rasterizer-puppeteer": "^0.21.0",
     "fastify": "^4.13.0",
-    "hard-rejection": "^2.1.0",
     "p-memoize": "^7.1.1",
     "source-map-support": "^0.5.19",
     "yargs": "^17.7.0"

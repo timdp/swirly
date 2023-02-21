@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import 'source-map-support/register.js'
-import 'hard-rejection/register.js'
 
 import { renderMarbleDiagram } from '@swirly/renderer-node'
 import streamToPromise from 'stream-to-promise'

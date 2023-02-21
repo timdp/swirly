@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import 'hard-rejection/register.js'
-
 import path from 'node:path'
 
 import fs from 'fs-extra'

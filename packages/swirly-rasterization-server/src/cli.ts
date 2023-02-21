@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import 'source-map-support/register.js'
-import 'hard-rejection/register.js'
 
 import { EOL } from 'node:os'
 
@@ -44,7 +43,7 @@ const listenForKillSignals = (server: RasterizationServer) => {
   const stopServerAndExit = () => {
     process.removeListener('SIGINT', stopServerAndExit)
     process.removeListener('SIGTERM', stopServerAndExit)
-    // Fire-and-forget, relying on hard-rejection
+    // Fire-and-forget, relying on unhandledRejection
     server.stop()
   }
   process.on('SIGINT', stopServerAndExit)

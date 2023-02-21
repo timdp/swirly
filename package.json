@@ -27,7 +27,6 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "fs-extra": "^11.1.0",
-    "hard-rejection": "^2.1.0",
     "husky": "^8.0.1",
     "lerna": "^6.5.1",
     "lint-staged": "^13.0.3",

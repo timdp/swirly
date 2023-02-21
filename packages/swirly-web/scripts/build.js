@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import 'hard-rejection/register.js'
-
 import { fileURLToPath } from 'node:url'
 
 import esbuild from 'esbuild'
