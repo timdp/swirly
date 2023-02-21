@@ -28,11 +28,11 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14.13.1"
+    "node": ">=16"
   },
   "dependencies": {
     "@swirly/renderer": "^0.21.0",
-    "@xmldom/xmldom": "^0.8.2"
+    "@xmldom/xmldom": "^0.8.6"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",

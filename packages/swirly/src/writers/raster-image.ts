@@ -1,7 +1,8 @@
+import path from 'node:path'
+
 import { RasterizationClient } from '@swirly/rasterization-client'
 import { RasterizationServer } from '@swirly/rasterization-server'
 import { RasterizerOutputFormat } from '@swirly/types'
-import path from 'node:path'
 
 import { RASTER_EXTENSIONS } from '../constants.js'
 import { FormatOutputOptions, Writer } from '../types.js'

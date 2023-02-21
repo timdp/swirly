@@ -28,10 +28,10 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14.13.1"
+    "node": ">=16"
   },
   "dependencies": {
-    "minipass-fetch": "^2.1.0"
+    "minipass-fetch": "^3.0.1"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",

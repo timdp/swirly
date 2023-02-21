@@ -30,11 +30,11 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14.13.1"
+    "node": ">=16"
   },
   "devDependencies": {
-    "esbuild": "^0.14.44",
-    "rxjs": "7.5.5",
+    "esbuild": "^0.17.10",
+    "rxjs": "7.8.0",
     "shx": "^0.3.4"
   },
   "funding": {

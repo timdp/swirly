@@ -1,4 +1,4 @@
-import { optimize, OptimizedSvg } from 'svgo'
+import { optimize } from 'svgo'
 
 const replacer = (searchValue: RegExp, replaceValue: string) => (str: string) =>
   str.replace(searchValue, replaceValue)
@@ -22,6 +22,6 @@ export const optimizeXml = (unoptXml: string): string => {
         }
       }
     ]
-  }) as OptimizedSvg
+  })
   return unmangle(data)
 }

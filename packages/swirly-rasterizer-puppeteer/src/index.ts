@@ -1,5 +1,5 @@
 import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
-import puppeteer from 'puppeteer'
+import { Browser, launch } from 'puppeteer'
 
 const createHtml = (svgXml: string, width: number, height: number) => `
   <!doctype html>
@@ -17,10 +17,10 @@ const createHtml = (svgXml: string, width: number, height: number) => `
   </html>`
 
 export class PuppeteerRasterizer implements IRasterizer {
-  #browser?: puppeteer.Browser
+  #browser?: Browser
 
   async init (): Promise<void> {
-    this.#browser = await puppeteer.launch()
+    this.#browser = await launch()
   }
 
   async dispose (): Promise<void> {

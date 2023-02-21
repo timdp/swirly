@@ -30,15 +30,11 @@ jobs:
           command: yarn run build
 
 workflows:
-  test_node14:
-    jobs:
-      - test_node_version:
-          version: "14.19.3"
   test_node16:
     jobs:
       - test_node_version:
-          version: "16.15.0"
+          version: "16.19.1"
   test_node18:
     jobs:
       - test_node_version:
-          version: "18.2.0"
+          version: "18.14.1"

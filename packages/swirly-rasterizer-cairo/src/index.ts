@@ -1,6 +1,7 @@
+import { Readable } from 'node:stream'
+
 import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
 import { fabric } from 'fabric'
-import { Readable } from 'node:stream'
 import streamToPromise from 'stream-to-promise'
 
 // XXX Typings for fabric are incomplete

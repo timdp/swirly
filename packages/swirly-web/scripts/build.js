@@ -2,9 +2,10 @@
 
 import 'hard-rejection/register.js'
 
+import { fileURLToPath } from 'node:url'
+
 import esbuild from 'esbuild'
 import fs from 'fs-extra'
-import { fileURLToPath } from 'node:url'
 
 const PKG_ROOT = new URL('../', import.meta.url)
 const REPO_ROOT = new URL('../../', PKG_ROOT)

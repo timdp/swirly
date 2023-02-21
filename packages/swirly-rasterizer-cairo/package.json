@@ -28,16 +28,16 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14.13.1"
+    "node": ">=16"
   },
   "dependencies": {
-    "fabric": "^5.2.1",
+    "fabric": "^5.3.0",
     "stream-to-promise": "^3.0.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",
     "@types/fabric": "^4.5.9",
-    "@types/node": "^14",
+    "@types/node": "^16",
     "@types/stream-to-promise": "^2.2.1",
     "shx": "^0.3.4"
   },

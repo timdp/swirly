@@ -28,10 +28,10 @@
     "prepare": "yarn run build"
   },
   "engines": {
-    "node": ">=14.13.1"
+    "node": ">=16"
   },
   "dependencies": {
-    "puppeteer": "^15.3.0"
+    "puppeteer": "^19.7.2"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",
