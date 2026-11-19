@@ -1,6 +1,6 @@
 {
   "name": "@swirly/renderer-node",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Renderer for Swirly marble diagrams, for Node.js.",
   "homepage": "https://swirly.tmdpw.eu",
   "license": "MIT",
@@ -32,11 +32,11 @@
     "prepare": "yarn run build"
   },
   "dependencies": {
-    "@swirly/renderer": "^0.21.0",
+    "@swirly/renderer": "^0.22.0",
     "@xmldom/xmldom": "^0.9.12"
   },
   "devDependencies": {
-    "@swirly/types": "^0.21.0",
+    "@swirly/types": "^0.22.0",
     "shx": "^0.4.0"
   },
   "engines": {

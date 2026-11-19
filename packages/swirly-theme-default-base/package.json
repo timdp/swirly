@@ -1,6 +1,6 @@
 {
   "name": "@swirly/theme-default-base",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Base theme for Swirly marble diagrams.",
   "homepage": "https://swirly.tmdpw.eu",
   "license": "MIT",
@@ -33,7 +33,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@swirly/types": "^0.21.0",
+    "@swirly/types": "^0.22.0",
     "shx": "^0.4.0"
   },
   "engines": {

@@ -1,6 +1,6 @@
 {
   "name": "@swirly/rasterizer-cairo",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Rasterizer for Swirly marble diagrams, using Cairo.",
   "homepage": "https://swirly.tmdpw.eu",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "fabric": "^7.4.0"
   },
   "devDependencies": {
-    "@swirly/types": "^0.21.0",
+    "@swirly/types": "^0.22.0",
     "shx": "^0.4.0"
   },
   "engines": {
