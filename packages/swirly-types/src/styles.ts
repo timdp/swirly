@@ -1,10 +1,4 @@
-import {
-  Color,
-  FontFamily,
-  FontStyle,
-  FontWeight,
-  NonNegativeNumber,
-} from './primitives.js'
+import { Color, FontFamily, FontStyle, FontWeight, NonNegativeNumber } from "./primitives.js";
 
 export type StreamStyles = {
   title_color?: Color;
@@ -13,17 +7,17 @@ export type StreamStyles = {
   title_font_style?: FontStyle;
   title_font_weight?: FontWeight;
   title_width?: NonNegativeNumber;
-}
+};
 
 export type ArrowStyles = {
-  fill_color?: Color | '';
+  fill_color?: Color | "";
   stroke_color?: Color;
   stroke_width?: NonNegativeNumber;
   width?: NonNegativeNumber;
-}
+};
 
 export type ScalarNextMessageStyles = {
-  fill_color?: Color | 'auto_light' | 'auto_dark' | 'auto';
+  fill_color?: Color | "auto_light" | "auto_dark" | "auto";
   stroke_color?: Color;
   stroke_width?: NonNegativeNumber;
   value_color?: Color;
@@ -31,21 +25,21 @@ export type ScalarNextMessageStyles = {
   value_font_size?: NonNegativeNumber;
   value_font_style?: FontStyle;
   value_font_weight?: FontWeight;
-}
+};
 
-export type StreamNextMessageStyles = {}
+export type StreamNextMessageStyles = {};
 
 export type CompletionMessageStyles = {
   height?: NonNegativeNumber;
   stroke_color?: Color;
   stroke_width?: NonNegativeNumber;
-}
+};
 
 export type ErrorMessageStyles = {
   color?: Color;
   size?: NonNegativeNumber;
   stroke_width?: NonNegativeNumber;
-}
+};
 
 export type OperatorStyles = {
   corner_radius?: NonNegativeNumber;
@@ -60,23 +54,23 @@ export type OperatorStyles = {
   title_font_style?: FontStyle;
   title_font_weight?: FontWeight;
   stream_scale?: number;
-}
+};
 
 export type BarrierDecorationStyles = {
   color?: Color;
   stroke_dash_width?: NonNegativeNumber;
   stroke_width?: NonNegativeNumber;
-}
+};
 
 export type RangeDecorationStyles = {
   fill_color?: Color;
   height?: NonNegativeNumber;
   stroke_color?: Color;
   stroke_width?: NonNegativeNumber;
-}
+};
 
 export type DiagramStyles = {
-  arrow_fill_color?: Color | '';
+  arrow_fill_color?: Color | "";
   arrow_stroke_color?: Color;
   arrow_stroke_width?: NonNegativeNumber;
   arrow_width?: NonNegativeNumber;
@@ -92,7 +86,7 @@ export type DiagramStyles = {
   error_color?: Color;
   error_size?: NonNegativeNumber;
   error_stroke_width?: NonNegativeNumber;
-  event_fill_color?: Color | 'auto_light' | 'auto_dark' | 'auto';
+  event_fill_color?: Color | "auto_light" | "auto_dark" | "auto";
   event_radius?: NonNegativeNumber;
   event_stroke_color?: Color;
   event_stroke_width?: NonNegativeNumber;
@@ -131,4 +125,4 @@ export type DiagramStyles = {
   stream_title_font_style?: FontStyle;
   stream_title_font_weight?: FontWeight;
   stream_title_width?: NonNegativeNumber;
-}
+};

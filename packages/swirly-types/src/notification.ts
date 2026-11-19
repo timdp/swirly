@@ -1,29 +1,29 @@
-import { StreamSpecification } from './stream.js'
+import { StreamSpecification } from "./stream.js";
 
 export type ScalarNextNotificationSpecification = {
-  kind: 'N'
-  value: string
-}
+  kind: "N";
+  value: string;
+};
 
 export type StreamNextNotificationSpecification = {
-  kind: 'N'
-  value: StreamSpecification
-  isGhost: boolean
-}
+  kind: "N";
+  value: StreamSpecification;
+  isGhost: boolean;
+};
 
 export type NextNotificationSpecification =
   | ScalarNextNotificationSpecification
-  | StreamNextNotificationSpecification
+  | StreamNextNotificationSpecification;
 
 export type CompletionNotificationSpecification = {
-  kind: 'C'
-}
+  kind: "C";
+};
 
 export type ErrorNotificationSpecification = {
-  kind: 'E'
-}
+  kind: "E";
+};
 
 export type NotificationSpecification =
   | NextNotificationSpecification
   | CompletionNotificationSpecification
-  | ErrorNotificationSpecification
+  | ErrorNotificationSpecification;

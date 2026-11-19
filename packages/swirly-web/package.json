@@ -1,23 +1,24 @@
 {
   "name": "@swirly/web",
   "version": "0.21.0",
-  "description": "The Swirly Web app.",
   "private": true,
-  "license": "MIT",
-  "repository": {
-    "directory": "packages/swirly-web",
-    "type": "git",
-    "url": "https://github.com/timdp/swirly.git"
-  },
+  "description": "The Swirly Web app.",
   "homepage": "https://swirly.tmdpw.eu",
+  "license": "MIT",
   "author": {
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
-  "type": "module",
-  "engines": {
-    "node": ">=22"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-web"
   },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
+  },
+  "type": "module",
   "scripts": {
     "_build:html:01_minify": "html-minifier --collapse-whitespace src/index.html > dist/index.html",
     "_build:html:02_dev": "shx sed s/__SCRIPT__/bundle.js/ dist/index.html > dist/debug.html",
@@ -46,8 +47,7 @@
     "npm-run-all2": "^9.0.4",
     "shx": "^0.4.0"
   },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/timdp"
+  "engines": {
+    "node": ">=22"
   }
 }

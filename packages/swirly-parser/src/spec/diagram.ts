@@ -1,13 +1,9 @@
-import {
-  DiagramContent,
-  DiagramSpecification,
-  DiagramStyles
-} from '@swirly/types'
+import { DiagramContent, DiagramSpecification, DiagramStyles } from "@swirly/types";
 
 export const createDiagramSpecification = (
   content: DiagramContent,
-  styles: DiagramStyles
+  styles: DiagramStyles,
 ): DiagramSpecification => ({
   content,
-  styles
-})
+  styles,
+});

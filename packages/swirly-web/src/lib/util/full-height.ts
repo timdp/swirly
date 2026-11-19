@@ -1,10 +1,10 @@
 const updateBodyHeight = () => {
-  document.body.style.height = window.innerHeight + 'px'
-}
+  document.body.style.height = window.innerHeight + "px";
+};
 
 export const maintainFullHeight = () => {
-  updateBodyHeight()
-  window.addEventListener('resize', updateBodyHeight)
-  window.addEventListener('orientationchange', updateBodyHeight)
-  setInterval(updateBodyHeight, 250)
-}
+  updateBodyHeight();
+  window.addEventListener("resize", updateBodyHeight);
+  window.addEventListener("orientationchange", updateBodyHeight);
+  setInterval(updateBodyHeight, 250);
+};

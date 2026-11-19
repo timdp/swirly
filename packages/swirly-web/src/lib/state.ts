@@ -1,34 +1,34 @@
-import { Model } from './model.js'
+import { Model } from "./model.js";
 
 export class StateRepository {
-  read (): Model | null {
-    let state
+  read(): Model | null {
+    let state;
     try {
-      state = JSON.parse(localStorage.state)
+      state = JSON.parse(localStorage.state);
     } catch {}
 
-    if (state == null || typeof state !== 'object') {
-      return null
+    if (state == null || typeof state !== "object") {
+      return null;
     }
 
-    const model = new Model()
+    const model = new Model();
 
-    if (typeof state.code === 'string') {
-      model.code = state.code
+    if (typeof state.code === "string") {
+      model.code = state.code;
     }
 
-    model.darkThemeEnabled = !!state.darkThemeEnabled
+    model.darkThemeEnabled = !!state.darkThemeEnabled;
 
-    if (typeof state.scaleMode === 'string') {
-      model.scaleMode = state.scaleMode
+    if (typeof state.scaleMode === "string") {
+      model.scaleMode = state.scaleMode;
     }
 
-    return model
+    return model;
   }
 
-  write (model: Model) {
+  write(model: Model) {
     try {
-      localStorage.state = JSON.stringify(model.toJSON())
+      localStorage.state = JSON.stringify(model.toJSON());
     } catch {}
   }
 }

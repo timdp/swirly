@@ -1,6 +1,9 @@
 # @swirly/types
 
-[![npm](https://img.shields.io/npm/v/@swirly/types.svg)](https://www.npmjs.com/package/@swirly/types) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm][npm-badge]][npm]
+
+[npm-badge]: https://img.shields.io/npm/v/@swirly/types.svg
+[npm]: https://www.npmjs.com/package/@swirly/types
 
 TypeScript typings for [Swirly](https://github.com/timdp/swirly).
 

@@ -1,14 +1,7 @@
 {
-  "ignorePatterns": [
-    "dist/"
-  ],
+  "ignorePatterns": ["dist/"],
   "ignoreUnused": {
-    "*": [
-      "@types/*"
-    ],
-    "@swirly/examples": [
-      "swirly",
-      "@swirly/rasterization-server"
-    ]
+    "*": ["@types/*"],
+    "@swirly/examples": ["swirly", "@swirly/rasterization-server"]
   }
 }

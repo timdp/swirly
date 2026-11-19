@@ -1,22 +1,20 @@
 {
   "name": "swirly",
   "private": true,
-  "type": "module",
-  "packageManager": "yarn@1.22.22",
-  "engines": {
-    "node": ">=22"
-  },
   "workspaces": [
     "packages/*"
   ],
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
     "deps": "depviz -o dependencies.png",
-    "format": "eslint --fix \"**/*.{js,ts}\"",
-    "lint": "yarn run lint:js && yarn run lint:deps",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "yarn run format:check && yarn run lint:oxlint && yarn run lint:markdown && yarn run lint:deps",
     "lint:deps": "polydepcheck",
-    "lint:js": "eslint \"**/*.{js,ts}\"",
+    "lint:markdown": "markdownlint-cli2",
+    "lint:oxlint": "oxlint",
     "prepare": "husky",
     "publish": "lerna publish --concurrency=1",
     "test": "yarn run lint"
@@ -24,14 +22,19 @@
   "devDependencies": {
     "@timdp/depviz": "^0.5.1",
     "depcheck": "^1.4.7",
-    "eslint": "^10.15.0",
-    "eslint-plugin-simple-import-sort": "^14.0.0",
     "husky": "^9.1.7",
     "lerna": "^10.1.1",
     "lint-staged": "^17.6.1",
-    "neostandard": "^0.14.1",
+    "markdownlint-cli2": "^0.24.1",
+    "oxfmt": "^0.79.0",
+    "oxlint": "^1.94.0",
     "polydepcheck": "^0.2.3",
+    "tsrs": "0.25.0-ts7.1.0-beta",
     "turbo": "^2.11.13",
     "typescript": "^6.0.3"
-  }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "yarn@1.22.22"
 }

@@ -2,19 +2,21 @@
   "name": "@swirly/rasterization-server",
   "version": "0.21.0",
   "description": "Rasterization server for Swirly marble diagrams.",
-  "license": "MIT",
-  "repository": {
-    "directory": "packages/swirly-rasterization-server",
-    "type": "git",
-    "url": "https://github.com/timdp/swirly.git"
-  },
   "homepage": "https://swirly.tmdpw.eu",
+  "license": "MIT",
   "author": {
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
-  "type": "module",
-  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-rasterization-server"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
+  },
   "bin": {
     "swirly-rasterization-server": "dist/cli.js"
   },
@@ -22,11 +24,10 @@
     "src/",
     "dist/"
   ],
+  "type": "module",
+  "main": "dist/index.js",
   "publishConfig": {
     "access": "public"
-  },
-  "engines": {
-    "node": ">=22"
   },
   "scripts": {
     "build": "yarn run clean && ../../scripts/build-ts.sh",
@@ -45,8 +46,7 @@
     "@swirly/types": "^0.21.0",
     "shx": "^0.4.0"
   },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/timdp"
+  "engines": {
+    "node": ">=22"
   }
 }

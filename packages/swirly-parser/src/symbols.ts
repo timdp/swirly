@@ -1,1 +1,1 @@
-export const kIsGhost = Symbol('isGhost')
+export const kIsGhost = Symbol("isGhost");

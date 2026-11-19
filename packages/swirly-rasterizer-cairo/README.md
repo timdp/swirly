@@ -1,8 +1,12 @@
 # @swirly/rasterizer-cairo
 
-[![npm](https://img.shields.io/npm/v/@swirly/rasterizer-cairo.svg)](https://www.npmjs.com/package/@swirly/rasterizer-cairo) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm][npm-badge]][npm]
 
-Rasterizer for [Swirly](https://github.com/timdp/swirly) marble diagrams, using Cairo.
+[npm-badge]: https://img.shields.io/npm/v/@swirly/rasterizer-cairo.svg
+[npm]: https://www.npmjs.com/package/@swirly/rasterizer-cairo
+
+Rasterizer for [Swirly](https://github.com/timdp/swirly) marble diagrams using
+Cairo.
 
 ## Author
 

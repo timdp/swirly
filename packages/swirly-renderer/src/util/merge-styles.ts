@@ -1,24 +1,22 @@
-import { FreeformStyles } from '@swirly/types'
+import { FreeformStyles } from "@swirly/types";
 
 export const mergeStyles = (
   globalStyles: FreeformStyles,
   localStyles: FreeformStyles | null | undefined,
   globalPrefix: string,
-  localStylesPrefixed: boolean = false
+  localStylesPrefixed: boolean = false,
 ): FreeformStyles => {
-  const result: FreeformStyles = {}
+  const result: FreeformStyles = {};
 
-  const globalKeys = Object.keys(globalStyles).filter((key) =>
-    key.startsWith(globalPrefix)
-  )
+  const globalKeys = Object.keys(globalStyles).filter((key) => key.startsWith(globalPrefix));
   for (const globalKey of globalKeys) {
-    const simpleKey = globalKey.substring(globalPrefix.length)
-    const localKey = localStylesPrefixed ? globalKey : simpleKey
+    const simpleKey = globalKey.substring(globalPrefix.length);
+    const localKey = localStylesPrefixed ? globalKey : simpleKey;
     result[simpleKey] =
       localStyles != null && localStyles[localKey] != null
         ? localStyles[localKey]
-        : globalStyles[globalKey]
+        : globalStyles[globalKey];
   }
 
-  return result
-}
+  return result;
+};

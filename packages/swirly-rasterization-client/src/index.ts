@@ -1,45 +1,41 @@
-import {
-  RasterizationRequest,
-  RasterizerName,
-  RasterizerOutputFormat,
-} from '@swirly/types'
+import { RasterizationRequest, RasterizerName, RasterizerOutputFormat } from "@swirly/types";
 export class RasterizationClient {
-  #serverUrl: string
+  #serverUrl: string;
 
-  constructor (serverUrl: string) {
-    this.#serverUrl = serverUrl
+  constructor(serverUrl: string) {
+    this.#serverUrl = serverUrl;
   }
 
-  async rasterize (
+  async rasterize(
     rasterizer: RasterizerName,
     svgXml: string,
     width: number,
     height: number,
-    format: RasterizerOutputFormat
+    format: RasterizerOutputFormat,
   ): Promise<Buffer> {
-    const url = this.#serverUrl + '/rasterize'
+    const url = this.#serverUrl + "/rasterize";
     const body: RasterizationRequest = {
       rasterizer,
       svgXml,
       width,
       height,
       format,
-    }
+    };
     const resp = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
       body: JSON.stringify(body),
-    })
+    });
     if (!resp.ok) {
-      let msg: string | null = null
+      let msg: string | null = null;
       try {
-        msg = (await resp.json()).message
+        msg = (await resp.json()).message;
       } catch {}
-      throw new Error(`HTTP ${resp.status}: ${msg ?? 'Unknown error'}`)
+      throw new Error(`HTTP ${resp.status}: ${msg ?? "Unknown error"}`);
     }
-    const arrayBuffer = await resp.arrayBuffer()
-    return Buffer.from(arrayBuffer)
+    const arrayBuffer = await resp.arrayBuffer();
+    return Buffer.from(arrayBuffer);
   }
 }

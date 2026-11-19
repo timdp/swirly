@@ -1,23 +1,24 @@
 {
   "name": "@swirly/examples",
   "version": "0.21.0",
-  "description": "Builder for Swirly example diagrams.",
   "private": true,
-  "license": "MIT",
-  "repository": {
-    "directory": "packages/swirly-examples",
-    "type": "git",
-    "url": "https://github.com/timdp/swirly.git"
-  },
+  "description": "Builder for Swirly example diagrams.",
   "homepage": "https://swirly.tmdpw.eu",
+  "license": "MIT",
   "author": {
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
-  "type": "module",
-  "engines": {
-    "node": ">=22"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly-examples"
   },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
+  },
+  "type": "module",
   "scripts": {
     "build": "yarn run clean && run-p \"build:*\"",
     "build:img": "scripts/build-images.sh",
@@ -32,8 +33,7 @@
     "npm-run-all2": "^9.0.4",
     "shx": "^0.4.0"
   },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/timdp"
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -1,73 +1,74 @@
 <!doctype html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Swirly</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <title>Swirly</title>
-</head>
-
-<body>
-  <div class="menu">
-    <div class="branding">
-      <a class="logo" href="https://github.com/timdp/swirly" target="_blank">
-        <img src="logo.png" alt="Swirly" height="24">
-      </a>
-      <span class="version"></span>
-    </div>
-    <div class="button">
-      <button class="icon-and-text save" title="Save" accesskey="s">
-        <span class="icon">💾</span>
-        <span class="text">▾</span>
-      </button>
-      <div class="submenu save-menu">
-        <div class="button">
-          <button class="icon-and-text save-spec" accesskey="c">
-            <span class="icon">✏️</span>
-            <span class="text">Code</span>
-          </button>
-        </div>
-        <div class="button">
-          <button class="icon-and-text save-svg" accesskey="v">
-            <span class="icon">🐯</span>
-            <span class="text">SVG</span>
-          </button>
-        </div>
-        <div class="button">
-          <button class="icon-and-text save-png" accesskey="p">
-            <span class="icon">👾</span>
-            <span class="text">PNG</span>
-          </button>
+  <body>
+    <div class="menu">
+      <div class="branding">
+        <a class="logo" href="https://github.com/timdp/swirly" target="_blank">
+          <img src="logo.png" alt="Swirly" height="24" />
+        </a>
+        <span class="version"></span>
+      </div>
+      <div class="button">
+        <button class="icon-and-text save" title="Save" accesskey="s">
+          <span class="icon">💾</span>
+          <span class="text">▾</span>
+        </button>
+        <div class="submenu save-menu">
+          <div class="button">
+            <button class="icon-and-text save-spec" accesskey="c">
+              <span class="icon">✏️</span>
+              <span class="text">Code</span>
+            </button>
+          </div>
+          <div class="button">
+            <button class="icon-and-text save-svg" accesskey="v">
+              <span class="icon">🐯</span>
+              <span class="text">SVG</span>
+            </button>
+          </div>
+          <div class="button">
+            <button class="icon-and-text save-png" accesskey="p">
+              <span class="icon">👾</span>
+              <span class="text">PNG</span>
+            </button>
+          </div>
         </div>
       </div>
+      <div class="button">
+        <button class="icon-and-text examples" title="Examples" accesskey="e">
+          <span class="icon">🍭</span>
+          <span class="text">▾</span>
+        </button>
+        <div class="submenu examples-menu"></div>
+      </div>
+      <div class="button">
+        <button class="icon-only theme-toggle" title="Theme" accesskey="t">
+          <span class="label-light">☀️</span>
+          <span class="label-dark">🌙</span>
+        </button>
+      </div>
     </div>
-    <div class="button">
-      <button class="icon-and-text examples" title="Examples" accesskey="e">
-        <span class="icon">🍭</span>
-        <span class="text">▾</span>
-      </button>
-      <div class="submenu examples-menu"></div>
+    <div class="split">
+      <div class="input">
+        <textarea class="spec" accesskey="c"></textarea>
+      </div>
+      <div class="result">
+        <div class="diagram"></div>
+        <div class="error"></div>
+      </div>
     </div>
-    <div class="button">
-      <button class="icon-only theme-toggle" title="Theme" accesskey="t">
-        <span class="label-light">☀️</span>
-        <span class="label-dark">🌙</span>
-      </button>
-    </div>
-  </div>
-  <div class="split">
-    <div class="input">
-      <textarea class="spec" accesskey="c"></textarea>
-    </div>
-    <div class="result">
-      <div class="diagram"></div>
-      <div class="error"></div>
-    </div>
-  </div>
-  <div class="overlay"></div>
-  <script src="__SCRIPT__"></script>
-</body>
-
+    <div class="overlay"></div>
+    <script src="__SCRIPT__"></script>
+  </body>
 </html>

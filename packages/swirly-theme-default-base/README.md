@@ -1,6 +1,9 @@
 # @swirly/theme-default-base
 
-[![npm](https://img.shields.io/npm/v/@swirly/theme-default-base.svg)](https://www.npmjs.com/package/@swirly/theme-default-base) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm][npm-badge]][npm]
+
+[npm-badge]: https://img.shields.io/npm/v/@swirly/theme-default-base.svg
+[npm]: https://www.npmjs.com/package/@swirly/theme-default-base
 
 Base theme for [Swirly](https://github.com/timdp/swirly) marble diagrams.
 

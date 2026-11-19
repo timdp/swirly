@@ -1,15 +1,13 @@
-<p align="center">
-  <img alt="Swirly" src="https://user-images.githubusercontent.com/201034/82764045-6173da00-9e0c-11ea-9bee-4fb6543d977a.png" width="480">
-</p>
+# Swirly
 
-<p align="center">
-  A marble diagram generator.
-</p>
+![Swirly](https://user-images.githubusercontent.com/201034/82764045-6173da00-9e0c-11ea-9bee-4fb6543d977a.png)
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/swirly"><img alt="npm" src="https://img.shields.io/npm/v/swirly.svg"></a>
-  <a href="https://standardjs.com"><img alt="JavaScript Standard Style" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"></a>
-</p>
+A marble diagram generator.
+
+[![npm][npm-badge]][npm]
+
+[npm-badge]: https://img.shields.io/npm/v/swirly.svg
+[npm]: https://www.npmjs.com/package/swirly
 
 ## Example
 

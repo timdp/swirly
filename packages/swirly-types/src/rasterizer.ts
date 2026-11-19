@@ -1,8 +1,8 @@
-import type { Buffer } from 'node:buffer'
+import type { Buffer } from "node:buffer";
 
-export type RasterizerName = 'puppeteer' | 'inkscape'
+export type RasterizerName = "puppeteer" | "inkscape";
 
-export type RasterizerOutputFormat = 'png' | 'jpeg'
+export type RasterizerOutputFormat = "png" | "jpeg";
 
 export interface IRasterizer {
   init(): Promise<void>;
@@ -21,4 +21,4 @@ export type RasterizationRequest = {
   width: number;
   height: number;
   format: RasterizerOutputFormat;
-}
+};

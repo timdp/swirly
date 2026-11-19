@@ -1,6 +1,9 @@
 # @swirly/renderer
 
-[![npm](https://img.shields.io/npm/v/@swirly/renderer.svg)](https://www.npmjs.com/package/@swirly/renderer) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm][npm-badge]][npm]
+
+[npm-badge]: https://img.shields.io/npm/v/@swirly/renderer.svg
+[npm]: https://www.npmjs.com/package/@swirly/renderer
 
 Renderer for [Swirly](https://github.com/timdp/swirly) marble diagrams.
 

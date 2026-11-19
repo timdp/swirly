@@ -3,11 +3,10 @@
   "compilerOptions": {
     "composite": false,
     "declaration": false,
-    "outDir": "dist"
+    "outDir": "dist",
+    "rootDir": "src"
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "references": [
     {
       "path": "../swirly-parser"

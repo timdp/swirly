@@ -1,5 +1,5 @@
-import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
-import { Browser, launch } from 'puppeteer'
+import { IRasterizer, RasterizerOutputFormat } from "@swirly/types";
+import { Browser, launch } from "puppeteer";
 
 const createHtml = (svgXml: string, width: number, height: number) => `
   <!doctype html>
@@ -14,46 +14,46 @@ const createHtml = (svgXml: string, width: number, height: number) => `
     <body>
       ${svgXml}
     </body>
-  </html>`
+  </html>`;
 
 export class PuppeteerRasterizer implements IRasterizer {
-  #browser?: Browser
+  #browser?: Browser;
 
-  async init (): Promise<void> {
-    this.#browser = await launch()
+  async init(): Promise<void> {
+    this.#browser = await launch();
   }
 
-  async dispose (): Promise<void> {
-    await this.#browser!.close()
+  async dispose(): Promise<void> {
+    await this.#browser!.close();
   }
 
-  async rasterize (
+  async rasterize(
     svgXml: string,
     width: number,
     height: number,
-    format: RasterizerOutputFormat
+    format: RasterizerOutputFormat,
   ): Promise<Buffer> {
-    const html = createHtml(svgXml, width, height)
-    return this.#capture(html, width, height, format)
+    const html = createHtml(svgXml, width, height);
+    return this.#capture(html, width, height, format);
   }
 
-  async #capture (
+  async #capture(
     html: string,
     width: number,
     height: number,
-    format: RasterizerOutputFormat
+    format: RasterizerOutputFormat,
   ): Promise<Buffer> {
-    const page = await this.#browser!.newPage()
-    await page.setViewport({ width, height })
-    await page.setContent(html)
+    const page = await this.#browser!.newPage();
+    await page.setViewport({ width, height });
+    await page.setContent(html);
     return page.screenshot({
       type: format,
       clip: {
         x: 0,
         y: 0,
         width,
-        height
-      }
-    }) as Promise<Buffer>
+        height,
+      },
+    }) as Promise<Buffer>;
   }
 }

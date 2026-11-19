@@ -1,10 +1,10 @@
-import dedent from 'dedent'
+import dedent from "dedent";
 
-import { Example } from './types.js'
+import { Example } from "./types.js";
 
 export const examples: readonly Example[] = [
   {
-    title: 'concatAll',
+    title: "concatAll",
     code: dedent(`
       x = ----a------b------|
 
@@ -17,20 +17,20 @@ export const examples: readonly Example[] = [
       > concatAll
 
       -----a------b---------c-d------e--f-|
-    `)
+    `),
   },
   {
-    title: 'debounce',
+    title: "debounce",
     code: dedent(`
       -a--bc--d---|
 
       > debounce(() => \`--|\`)
 
       ---a---c--d-|
-    `)
+    `),
   },
   {
-    title: 'exhaustAll',
+    title: "exhaustAll",
     code: dedent(`
       x = --a---b---c--|
 
@@ -44,10 +44,10 @@ export const examples: readonly Example[] = [
       > exhaustAll
 
       --------a---b---c-------g--h---i---|
-    `)
+    `),
   },
   {
-    title: 'onErrorResumeNext',
+    title: "onErrorResumeNext",
     code: dedent(`
       --a--b--#
       title = source
@@ -59,10 +59,10 @@ export const examples: readonly Example[] = [
 
       --a--b----c--d--|
       title = output
-    `)
+    `),
   },
   {
-    title: 'pluck',
+    title: "pluck",
     code: dedent(`
       [styles]
       event_radius = 30
@@ -79,10 +79,10 @@ export const examples: readonly Example[] = [
       x := 1
       y := 2
       z := 3
-    `)
+    `),
   },
   {
-    title: 'skipUntil',
+    title: "skipUntil",
     code: dedent(`
       --a--b--c--d--e----|
 
@@ -91,10 +91,10 @@ export const examples: readonly Example[] = [
       > skipUntil
 
       -----------d--e----|
-    `)
+    `),
   },
   {
-    title: 'zipAll',
+    title: "zipAll",
     code: dedent(`
       x = -a-----b-|
 
@@ -107,6 +107,6 @@ export const examples: readonly Example[] = [
       -----------------A----B-|
       A := a1
       B := b2
-    `)
-  }
-]
+    `),
+  },
+];

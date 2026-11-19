@@ -2,18 +2,21 @@
   "name": "swirly",
   "version": "0.21.0",
   "description": "A marble diagram generator.",
-  "license": "MIT",
-  "repository": {
-    "directory": "packages/swirly",
-    "type": "git",
-    "url": "https://github.com/timdp/swirly.git"
-  },
   "homepage": "https://swirly.tmdpw.eu",
+  "license": "MIT",
   "author": {
     "name": "Tim De Pauw",
     "url": "https://tmdpw.eu"
   },
-  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timdp/swirly.git",
+    "directory": "packages/swirly"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/timdp"
+  },
   "bin": {
     "swirly": "dist/cli.js"
   },
@@ -21,11 +24,9 @@
     "src/",
     "dist/"
   ],
+  "type": "module",
   "publishConfig": {
     "access": "public"
-  },
-  "engines": {
-    "node": ">=22"
   },
   "scripts": {
     "build": "yarn run clean && ../../scripts/build-ts.sh",
@@ -50,8 +51,7 @@
     "@types/yargs": "^17.0.35",
     "shx": "^0.4.0"
   },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/timdp"
+  "engines": {
+    "node": ">=22"
   }
 }

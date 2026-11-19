@@ -14,11 +14,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F0F0F0;
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D0D0D0;
+  background: #d0d0d0;
 }
 
 html,
@@ -57,7 +57,7 @@ a img {
 
 a:link,
 a:visited {
-  color: #0060FF;
+  color: #0060ff;
   text-decoration: none;
 }
 
@@ -88,8 +88,8 @@ textarea {
 
 .gutter,
 .menu {
-  background: #ECECEC;
-  border: 1px solid #DCDCDC;
+  background: #ececec;
+  border: 1px solid #dcdcdc;
   border-left: 0;
   border-right: 0;
 }
@@ -114,7 +114,7 @@ textarea {
 .button button {
   margin: 0;
   padding: 3px 12px;
-  border: 1px solid #DCDCDC;
+  border: 1px solid #dcdcdc;
   border-radius: 1000px;
   background: white;
   color: black;
@@ -254,7 +254,7 @@ button.icon-and-text .icon {
 
 .result.failed .error {
   display: block;
-  color: #C00000;
+  color: #c00000;
   white-space: pre-wrap;
   padding: 15px;
 }
@@ -295,7 +295,7 @@ body.dark .menu {
 }
 
 body.dark .error {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 body.dark .spec {

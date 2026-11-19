@@ -3,10 +3,7 @@
     "composite": true,
     "declaration": true,
     "esModuleInterop": true,
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "lib": ["DOM", "ESNext"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "paths": {
@@ -20,8 +17,5 @@
     "target": "ESNext",
     "types": ["node"]
   },
-  "exclude": [
-    "**/node_modules",
-    "**/.*"
-  ]
+  "exclude": ["**/node_modules", "**/.*"]
 }

@@ -1,35 +1,35 @@
-import { IRasterizer, RasterizerOutputFormat } from '@swirly/types'
-import { execa } from 'execa'
+import { IRasterizer, RasterizerOutputFormat } from "@swirly/types";
+import { execa } from "execa";
 
 export class InkscapeRasterizer implements IRasterizer {
-  async init (): Promise<void> {}
+  async init(): Promise<void> {}
 
-  async dispose (): Promise<void> {}
+  async dispose(): Promise<void> {}
 
-  async rasterize (
+  async rasterize(
     svgXml: string,
     width: number,
     height: number,
-    format: RasterizerOutputFormat
+    format: RasterizerOutputFormat,
   ): Promise<Buffer> {
-    if (format !== 'png') {
+    if (format !== "png") {
       // TODO Support jpeg
-      throw new Error('Output type must be "png"')
+      throw new Error('Output type must be "png"');
     }
-    const cmd = 'inkscape'
+    const cmd = "inkscape";
     const args = [
-      '--pipe',
-      '--export-type',
+      "--pipe",
+      "--export-type",
       format,
-      '--export-width',
+      "--export-width",
       String(width),
-      '--export-height',
+      "--export-height",
       String(height),
-    ]
+    ];
     const { stdout } = await execa(cmd, args, {
-      encoding: 'buffer',
+      encoding: "buffer",
       input: svgXml,
-    })
-    return Buffer.from(stdout)
+    });
+    return Buffer.from(stdout);
   }
 }

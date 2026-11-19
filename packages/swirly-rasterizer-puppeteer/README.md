@@ -1,8 +1,12 @@
 # @swirly/rasterizer-puppeteer
 
-[![npm](https://img.shields.io/npm/v/@swirly/rasterizer-puppeteer.svg)](https://www.npmjs.com/package/@swirly/rasterizer-puppeteer) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm][npm-badge]][npm]
 
-Rasterizer for [Swirly](https://github.com/timdp/swirly) marble diagrams, using Puppeteer.
+[npm-badge]: https://img.shields.io/npm/v/@swirly/rasterizer-puppeteer.svg
+[npm]: https://www.npmjs.com/package/@swirly/rasterizer-puppeteer
+
+Rasterizer for [Swirly](https://github.com/timdp/swirly) marble diagrams using
+Puppeteer.
 
 ## Author
 

@@ -1,6 +1,9 @@
 # @swirly/rasterization-client
 
-[![npm](https://img.shields.io/npm/v/@swirly/rasterization-client.svg)](https://www.npmjs.com/package/@swirly/rasterization-client) [![JavaScript Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm][npm-badge]][npm]
+
+[npm-badge]: https://img.shields.io/npm/v/@swirly/rasterization-client.svg
+[npm]: https://www.npmjs.com/package/@swirly/rasterization-client
 
 Rasterization client for [Swirly](https://github.com/timdp/swirly) marble diagrams.
 

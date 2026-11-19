@@ -3,45 +3,45 @@ import {
   ErrorNotificationSpecification,
   NotificationSpecification,
   ScalarNextNotificationSpecification,
-  StreamNextNotificationSpecification
-} from './notification.js'
+  StreamNextNotificationSpecification,
+} from "./notification.js";
 import {
   CompletionMessageStyles,
   ErrorMessageStyles,
   ScalarNextMessageStyles,
-  StreamNextMessageStyles
-} from './styles.js'
+  StreamNextMessageStyles,
+} from "./styles.js";
 
 type BaseMessageSpecification = {
-  frame: number
-  notification: NotificationSpecification
-}
+  frame: number;
+  notification: NotificationSpecification;
+};
 
 export type ScalarNextMessageSpecification = BaseMessageSpecification & {
-  notification: ScalarNextNotificationSpecification
-  styles?: ScalarNextMessageStyles
-}
+  notification: ScalarNextNotificationSpecification;
+  styles?: ScalarNextMessageStyles;
+};
 
 export type StreamNextMessageSpecification = BaseMessageSpecification & {
-  notification: StreamNextNotificationSpecification
-  styles?: StreamNextMessageStyles
-}
+  notification: StreamNextNotificationSpecification;
+  styles?: StreamNextMessageStyles;
+};
 
 export type NextMessageSpecification =
   | ScalarNextMessageSpecification
-  | StreamNextMessageSpecification
+  | StreamNextMessageSpecification;
 
 export type CompletionMessageSpecification = BaseMessageSpecification & {
-  notification: CompletionNotificationSpecification
-  styles?: CompletionMessageStyles
-}
+  notification: CompletionNotificationSpecification;
+  styles?: CompletionMessageStyles;
+};
 
 export type ErrorMessageSpecification = BaseMessageSpecification & {
-  notification: ErrorNotificationSpecification
-  styles?: ErrorMessageStyles
-}
+  notification: ErrorNotificationSpecification;
+  styles?: ErrorMessageStyles;
+};
 
 export type MessageSpecification =
   | NextMessageSpecification
   | CompletionMessageSpecification
-  | ErrorMessageSpecification
+  | ErrorMessageSpecification;
