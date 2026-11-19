@@ -3,15 +3,18 @@ import { PuppeteerRasterizer } from '@swirly/rasterizer-puppeteer'
 import {
   IRasterizer,
   RasterizationRequest,
-  RasterizerName
+  RasterizerName,
 } from '@swirly/types'
-import fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
+import fastify, {
+  FastifyInstance,
+  FastifyReply,
+  FastifyRequest,
+} from 'fastify'
 import pMemoize from 'p-memoize'
 
-// eslint-disable-next-line no-unused-vars
 const rasterizerImpls: Record<RasterizerName, { new (): IRasterizer }> = {
   puppeteer: PuppeteerRasterizer,
-  inkscape: InkscapeRasterizer
+  inkscape: InkscapeRasterizer,
 }
 
 export class RasterizationServer {
@@ -34,8 +37,8 @@ export class RasterizationServer {
 
   get url (): string {
     const { address, port } = this.#fastify.server.address() as {
-      address: string
-      port: number
+      address: string;
+      port: number;
     }
     return `http://${address}:${port}`
   }
@@ -43,7 +46,7 @@ export class RasterizationServer {
   async start (): Promise<void> {
     await this.#fastify.listen({
       host: this.#address,
-      port: this.#port
+      port: this.#port,
     })
   }
 

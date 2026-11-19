@@ -1,12 +1,12 @@
 {
   "name": "@swirly/parser-rxjs",
-  "description": "The RxJS marble parser, extracted for Swirly.",
   "version": "0.21.0",
+  "description": "The RxJS marble parser, extracted for Swirly.",
   "license": "MIT",
   "repository": {
+    "directory": "packages/swirly-parser-rxjs",
     "type": "git",
-    "url": "https://github.com/timdp/swirly.git",
-    "directory": "packages/swirly-parser-rxjs"
+    "url": "https://github.com/timdp/swirly.git"
   },
   "homepage": "https://swirly.dev",
   "author": {
@@ -14,28 +14,32 @@
     "url": "https://tmdpw.eu"
   },
   "type": "module",
+  "main": "dist/bundle.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src/",
+    "dist/"
+  ],
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/bundle.js",
-  "files": [
-    "src/",
-    "dist/bundle.js"
-  ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "yarn run clean && run-p \"build:*\"",
-    "build:modules": "../../scripts/build-ts.sh",
     "build:bundle": "esbuild --bundle --platform=neutral --format=esm src/index.ts --outfile=dist/bundle.js",
+    "build:modules": "../../scripts/build-ts.sh",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },
-  "engines": {
-    "node": ">=16"
+  "dependencies": {
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
-    "esbuild": "^0.17.10",
-    "rxjs": "7.8.0",
-    "shx": "^0.3.4"
+    "esbuild": "^0.28.2",
+    "npm-run-all2": "^9.0.4",
+    "shx": "^0.4.0"
   },
   "funding": {
     "type": "github",

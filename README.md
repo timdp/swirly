@@ -34,8 +34,8 @@ export them to an SVG or a PNG image.
 
 ## CLI Version
 
-Swirly is also available as a command-line utility. To run it, you need a
-sufficiently recent version of [Node.js](https://nodejs.org/).
+Swirly is also available as a command-line utility. To run it, you need
+[Node.js](https://nodejs.org/) 22 or later.
 
 To install Swirly on your machine, just install the `swirly` npm package:
 

@@ -1,12 +1,12 @@
 {
   "name": "@swirly/rasterizer-inkscape",
-  "description": "Rasterizer for Swirly marble diagrams, using Inkscape.",
   "version": "0.21.0",
+  "description": "Rasterizer for Swirly marble diagrams, using Inkscape.",
   "license": "MIT",
   "repository": {
+    "directory": "packages/swirly-rasterizer-inkscape",
     "type": "git",
-    "url": "https://github.com/timdp/swirly.git",
-    "directory": "packages/swirly-rasterizer-inkscape"
+    "url": "https://github.com/timdp/swirly.git"
   },
   "homepage": "https://swirly.dev",
   "author": {
@@ -14,29 +14,29 @@
     "url": "https://tmdpw.eu"
   },
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "dist/index.js",
   "files": [
     "src/",
     "dist/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "yarn run clean && ../../scripts/build-ts.sh",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },
-  "engines": {
-    "node": ">=16"
-  },
   "dependencies": {
-    "execa": "^7.0.0"
+    "@types/node": "^22.20.5",
+    "execa": "^10.2.1"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",
-    "@types/node": "^16",
-    "shx": "^0.3.4"
+    "shx": "^0.4.0"
   },
   "funding": {
     "type": "github",

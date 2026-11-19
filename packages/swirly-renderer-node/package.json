@@ -1,12 +1,12 @@
 {
   "name": "@swirly/renderer-node",
-  "description": "Renderer for Swirly marble diagrams, for Node.js.",
   "version": "0.21.0",
+  "description": "Renderer for Swirly marble diagrams, for Node.js.",
   "license": "MIT",
   "repository": {
+    "directory": "packages/swirly-renderer-node",
     "type": "git",
-    "url": "https://github.com/timdp/swirly.git",
-    "directory": "packages/swirly-renderer-node"
+    "url": "https://github.com/timdp/swirly.git"
   },
   "homepage": "https://swirly.dev",
   "author": {
@@ -14,29 +14,29 @@
     "url": "https://tmdpw.eu"
   },
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "dist/index.js",
   "files": [
     "src/",
     "dist/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "yarn run clean && ../../scripts/build-ts.sh",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },
-  "engines": {
-    "node": ">=16"
-  },
   "dependencies": {
     "@swirly/renderer": "^0.21.0",
-    "@xmldom/xmldom": "^0.8.6"
+    "@xmldom/xmldom": "^0.9.12"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",
-    "shx": "^0.3.4"
+    "shx": "^0.4.0"
   },
   "funding": {
     "type": "github",

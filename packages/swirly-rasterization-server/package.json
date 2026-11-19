@@ -1,12 +1,12 @@
 {
   "name": "@swirly/rasterization-server",
-  "description": "Rasterization server for Swirly marble diagrams.",
   "version": "0.21.0",
+  "description": "Rasterization server for Swirly marble diagrams.",
   "license": "MIT",
   "repository": {
+    "directory": "packages/swirly-rasterization-server",
     "type": "git",
-    "url": "https://github.com/timdp/swirly.git",
-    "directory": "packages/swirly-rasterization-server"
+    "url": "https://github.com/timdp/swirly.git"
   },
   "homepage": "https://swirly.dev",
   "author": {
@@ -14,36 +14,36 @@
     "url": "https://tmdpw.eu"
   },
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "dist/index.js",
+  "bin": {
+    "swirly-rasterization-server": "dist/cli.js"
+  },
   "files": [
     "src/",
     "dist/"
   ],
-  "bin": {
-    "swirly-rasterization-server": "dist/cli.js"
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "scripts": {
     "build": "yarn run clean && ../../scripts/build-ts.sh",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
   },
-  "engines": {
-    "node": ">=16"
-  },
   "dependencies": {
     "@swirly/rasterizer-inkscape": "^0.21.0",
     "@swirly/rasterizer-puppeteer": "^0.21.0",
-    "fastify": "^4.13.0",
-    "p-memoize": "^7.1.1",
-    "source-map-support": "^0.5.19",
-    "yargs": "^17.7.0"
+    "fastify": "^5.12.8",
+    "p-memoize": "^9.0.0",
+    "source-map-support": "^0.5.21",
+    "yargs": "^18.2.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",
-    "shx": "^0.3.4"
+    "shx": "^0.4.0"
   },
   "funding": {
     "type": "github",

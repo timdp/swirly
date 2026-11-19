@@ -1,12 +1,12 @@
 {
   "name": "@swirly/parser",
-  "description": "Parser for the Swirly marble diagram format.",
   "version": "0.21.0",
+  "description": "Parser for the Swirly marble diagram format.",
   "license": "MIT",
   "repository": {
+    "directory": "packages/swirly-parser",
     "type": "git",
-    "url": "https://github.com/timdp/swirly.git",
-    "directory": "packages/swirly-parser"
+    "url": "https://github.com/timdp/swirly.git"
   },
   "homepage": "https://swirly.dev",
   "author": {
@@ -14,28 +14,28 @@
     "url": "https://tmdpw.eu"
   },
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "dist/index.js",
   "files": [
     "src/",
     "dist/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "yarn run clean && ../../scripts/build-ts.sh",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
-  },
-  "engines": {
-    "node": ">=16"
   },
   "dependencies": {
     "@swirly/parser-rxjs": "^0.21.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",
-    "shx": "^0.3.4"
+    "shx": "^0.4.0"
   },
   "funding": {
     "type": "github",

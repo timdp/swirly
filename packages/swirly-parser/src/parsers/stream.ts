@@ -5,7 +5,7 @@ import {
   MessageSpecification,
   ScalarNextMessageSpecification,
   ScalarNextMessageStyles,
-  StreamNextMessageSpecification
+  StreamNextMessageSpecification,
 } from '@swirly/types'
 
 import { createStreamSpecification } from '../spec/stream.js'
@@ -60,14 +60,14 @@ const buildLocalValues = (
 
 const testMessageToMessageSpecification = ({
   frame,
-  notification
+  notification,
 }: TestMessage): MessageSpecification => {
   const { kind, value } = notification as any
   switch (true) {
     case kind === 'C': // CompleteNotification
       return {
         frame,
-        notification: { kind }
+        notification: { kind },
       } as CompletionMessageSpecification
     case kind === 'E': // ErrorNotification
       return { frame, notification: { kind } } as ErrorMessageSpecification
@@ -77,16 +77,16 @@ const testMessageToMessageSpecification = ({
         notification: {
           kind: 'N',
           value: createStreamSpecification(value),
-          isGhost: !!value[kIsGhost]
-        }
+          isGhost: !!(value as { [kIsGhost]?: boolean })[kIsGhost],
+        },
       } as StreamNextMessageSpecification
     default: // NextNotification, scalar
       return {
         frame,
         notification: {
           kind: 'N',
-          value: value != null ? String(value) : ''
-        }
+          value: value != null ? String(value) : '',
+        },
       } as ScalarNextMessageSpecification
   }
 }
@@ -101,7 +101,8 @@ const testMessagesToMessageSpecifications = (
   for (const message of messageSpecs) {
     message.frame -= frame
     if (message.notification.kind === 'N') {
-      const { value } = (message as ScalarNextMessageSpecification).notification
+      const { value } = (message as ScalarNextMessageSpecification)
+        .notification
       message.styles = messageStyles[valueToLocal[value] ?? value]
     }
   }
@@ -158,5 +159,5 @@ const run = (lines: readonly string[], ctx: ParserContext) => {
 
 export const streamParser: Parser = {
   match,
-  run
+  run,
 }

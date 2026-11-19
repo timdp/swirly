@@ -2,8 +2,9 @@
 
 import 'source-map-support/register.js'
 
+import { finished } from 'node:stream/promises'
+
 import { renderMarbleDiagram } from '@swirly/renderer-node'
-import streamToPromise from 'stream-to-promise'
 
 import { getOpts } from './get-opts.js'
 import { optimizeXml } from './optimize-xml.js'
@@ -20,7 +21,7 @@ const {
   optimize,
   scale,
   rasterizer,
-  rasterizationServer
+  rasterizationServer,
 }: CommandLineOptions = getOpts()
 
 const spec = await readDiagramSpec(inFilePath)
@@ -37,10 +38,10 @@ const output = await writer.formatOutput({
   scale,
   filename: outFilePath,
   rasterizer,
-  rasterizationServer
+  rasterizationServer,
 })
 
 const outStream = writer.createWriteStream(outFilePath, force)
-const writing = streamToPromise(outStream)
+const writing = finished(outStream, { cleanup: true })
 outStream.end(output)
 await writing

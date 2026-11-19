@@ -1,11 +1,8 @@
 import {
   RasterizationRequest,
   RasterizerName,
-  RasterizerOutputFormat
+  RasterizerOutputFormat,
 } from '@swirly/types'
-// @ts-ignore
-import fetch from 'minipass-fetch'
-
 export class RasterizationClient {
   #serverUrl: string
 
@@ -26,14 +23,14 @@ export class RasterizationClient {
       svgXml,
       width,
       height,
-      format
+      format,
     }
     const resp = await fetch(url, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
     if (!resp.ok) {
       let msg: string | null = null

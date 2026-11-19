@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "composite": true,
     "declaration": true,
     "esModuleInterop": true,
@@ -8,17 +7,18 @@
       "DOM",
       "ESNext"
     ],
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "paths": {
-      "@swirly/*": ["packages/swirly-*/src"]
+      "@swirly/*": ["./packages/swirly-*/src"]
     },
     "pretty": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "types": ["node"]
   },
   "exclude": [
     "**/node_modules",

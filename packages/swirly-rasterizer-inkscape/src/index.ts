@@ -24,15 +24,12 @@ export class InkscapeRasterizer implements IRasterizer {
       '--export-width',
       String(width),
       '--export-height',
-      String(height)
+      String(height),
     ]
-    const options = {
-      encoding: null,
+    const { stdout } = await execa(cmd, args, {
+      encoding: 'buffer',
       input: svgXml,
-      stdin: undefined,
-      sderr: undefined
-    }
-    const { stdout } = await execa(cmd, args, options)
-    return stdout
+    })
+    return Buffer.from(stdout)
   }
 }

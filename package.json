@@ -2,40 +2,36 @@
   "name": "swirly",
   "private": true,
   "type": "module",
-  "scripts": {
-    "build": "turbo run build",
-    "clean": "turbo run clean",
-    "test": "yarn run lint",
-    "lint": "yarn run lint:js && yarn run lint:deps",
-    "lint:js": "eslint \"**/*.{js,ts}\"",
-    "lint:deps": "polydepcheck",
-    "deps": "depviz -o dependencies.png",
-    "format": "prettier-eslint --write \"**/*.{js,ts}\"",
-    "publish": "lerna publish --concurrency=1",
-    "prepare": "husky install"
-  },
-  "devDependencies": {
-    "@timdp/depviz": "^0.5.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.4",
-    "@typescript-eslint/parser": "^5.30.4",
-    "depcheck": "^1.4.0",
-    "eslint": "^8.19.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "fs-extra": "^11.1.0",
-    "husky": "^8.0.1",
-    "lerna": "^6.5.1",
-    "lint-staged": "^13.0.3",
-    "polydepcheck": "^0.2.3",
-    "prettier-eslint-cli": "^7.1.0",
-    "turbo": "1.8.1",
-    "typescript": "^5.0.0-beta"
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=22"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "deps": "depviz -o dependencies.png",
+    "format": "eslint --fix \"**/*.{js,ts}\"",
+    "lint": "yarn run lint:js && yarn run lint:deps",
+    "lint:deps": "polydepcheck",
+    "lint:js": "eslint \"**/*.{js,ts}\"",
+    "prepare": "husky",
+    "publish": "lerna publish --concurrency=1",
+    "test": "yarn run lint"
+  },
+  "devDependencies": {
+    "@timdp/depviz": "^0.5.1",
+    "depcheck": "^1.4.7",
+    "eslint": "^10.15.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "husky": "^9.1.7",
+    "lerna": "^10.1.1",
+    "lint-staged": "^17.6.1",
+    "neostandard": "^0.14.1",
+    "polydepcheck": "^0.2.3",
+    "turbo": "^2.11.13",
+    "typescript": "^6.0.3"
+  }
 }

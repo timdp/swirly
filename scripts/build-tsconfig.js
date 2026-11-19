@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
+import fs from 'node:fs/promises'
 import path from 'node:path'
-
-import fs from 'fs-extra'
 
 const PKG_ROOT = '..'
 
@@ -20,8 +19,8 @@ const listCandidateReferences = async () => {
       let name, tsBuildInfoFile
       try {
         const [pkg, tsconfig] = await Promise.all([
-          fs.readJson(path.join(dir, 'package.json')),
-          fs.readJson(path.join(dir, 'tsconfig.json'))
+          fs.readFile(path.join(dir, 'package.json'), 'utf8').then(JSON.parse),
+          fs.readFile(path.join(dir, 'tsconfig.json'), 'utf8').then(JSON.parse),
         ])
         name = pkg.name
         tsBuildInfoFile = tsconfig.compilerOptions.tsBuildInfoFile
@@ -35,7 +34,7 @@ const listCandidateReferences = async () => {
 
       pkgs.push({
         path: dir,
-        name
+        name,
       })
     })
   )
@@ -54,9 +53,9 @@ const dependenciesToKnownPaths = (allDepNames, pkgs) =>
     .map((pkg) => pkg.path)
 
 const [pkg, tsconfig, pkgs] = await Promise.all([
-  fs.readJson('package.json'),
-  fs.readJson('tsconfig.json'),
-  listCandidateReferences()
+  fs.readFile('package.json', 'utf8').then(JSON.parse),
+  fs.readFile('tsconfig.json', 'utf8').then(JSON.parse),
+  listCandidateReferences(),
 ])
 if (tsconfig.references == null) {
   tsconfig.references = []
@@ -72,5 +71,5 @@ const missingTsDepPaths = tsDepPaths.filter(
 if (missingTsDepPaths.length > 0) {
   tsconfig.references.push(...missingTsDepPaths.map((path) => ({ path })))
   tsconfig.references.sort((a, b) => a.path.localeCompare(b.path))
-  await fs.writeJson('tsconfig.json', tsconfig, { spaces: 2 })
+  await fs.writeFile('tsconfig.json', `${JSON.stringify(tsconfig, null, 2)}\n`)
 }

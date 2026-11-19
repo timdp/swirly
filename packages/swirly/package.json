@@ -1,12 +1,12 @@
 {
   "name": "swirly",
-  "description": "A marble diagram generator.",
   "version": "0.21.0",
+  "description": "A marble diagram generator.",
   "license": "MIT",
   "repository": {
+    "directory": "packages/swirly",
     "type": "git",
-    "url": "https://github.com/timdp/swirly.git",
-    "directory": "packages/swirly"
+    "url": "https://github.com/timdp/swirly.git"
   },
   "homepage": "https://swirly.dev",
   "author": {
@@ -14,23 +14,23 @@
     "url": "https://tmdpw.eu"
   },
   "type": "module",
-  "publishConfig": {
-    "access": "public"
+  "bin": {
+    "swirly": "dist/cli.js"
   },
   "files": [
     "src/",
     "dist/"
   ],
-  "bin": {
-    "swirly": "dist/cli.js"
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "scripts": {
     "build": "yarn run clean && ../../scripts/build-ts.sh",
     "clean": "shx rm -rf dist",
     "prepare": "yarn run build"
-  },
-  "engines": {
-    "node": ">=16"
   },
   "dependencies": {
     "@swirly/parser": "^0.21.0",
@@ -39,20 +39,16 @@
     "@swirly/renderer-node": "^0.21.0",
     "@swirly/theme-default-dark": "^0.21.0",
     "@swirly/theme-default-light": "^0.21.0",
-    "js-yaml": "^4.0.0",
-    "source-map-support": "^0.5.19",
-    "stream-to-promise": "^3.0.0",
-    "svgo": "^3.0.2",
-    "yargs": "^17.7.0"
+    "@types/node": "^22.20.5",
+    "js-yaml": "^5.5.0",
+    "source-map-support": "^0.5.21",
+    "svgo": "^4.1.0",
+    "yargs": "^18.2.0"
   },
   "devDependencies": {
     "@swirly/types": "^0.21.0",
-    "@types/js-yaml": "^4.0.0",
-    "@types/node": "^16",
-    "@types/stream-to-promise": "^2.2.1",
-    "@types/svgo": "^3.0.0",
-    "@types/yargs": "^17.0.10",
-    "shx": "^0.3.4"
+    "@types/yargs": "^17.0.35",
+    "shx": "^0.4.0"
   },
   "funding": {
     "type": "github",

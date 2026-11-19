@@ -14,13 +14,10 @@ export class ImagemagickRasterizer implements IRasterizer {
   ): Promise<Buffer> {
     const cmd = 'convert'
     const args = ['-resize', `${width}x${height}!`, 'svg:-', `${format}:-`]
-    const options = {
-      encoding: null,
+    const { stdout } = await execa(cmd, args, {
+      encoding: 'buffer',
       input: svgXml,
-      stdin: undefined,
-      sderr: undefined
-    }
-    const { stdout } = await execa(cmd, args, options)
-    return stdout
+    })
+    return Buffer.from(stdout)
   }
 }

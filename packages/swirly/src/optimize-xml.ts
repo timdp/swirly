@@ -12,16 +12,7 @@ const unmangle = replacer(/\0/g, '\xA0')
 
 export const optimizeXml = (unoptXml: string): string => {
   const { data } = optimize(mangle(unoptXml), {
-    plugins: [
-      {
-        name: 'preset-default',
-        params: {
-          overrides: {
-            removeViewBox: false
-          }
-        }
-      }
-    ]
+    plugins: ['preset-default'],
   })
   return unmangle(data)
 }
