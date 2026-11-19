@@ -27,7 +27,7 @@ Please consult the [examples](examples.md) to learn how to create diagrams.
 ## Web Version
 
 You can use Swirly in your browser at
-[**swirly.dev**](https://swirly.dev/).
+[**swirly.tmdpw.eu**](https://swirly.tmdpw.eu/).
 
 The Web version allows you to edit diagram specifications in real time and
 export them to an SVG or a PNG image.
